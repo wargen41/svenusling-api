@@ -13,6 +13,7 @@ use App\Controllers\AwardsController;
 use App\Controllers\ReviewController;
 use App\Controllers\MediaController;
 use App\Controllers\AuthController;
+use App\Controllers\AdminController;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\AdminAuthMiddleware;
 use Slim\App;
