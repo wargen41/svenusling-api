@@ -180,7 +180,6 @@ class AdminController
      */
     public function genresPage(Request $request, Response $response): Response
     {
-        session_start();
         $user = $_SESSION['user'] ?? null;
         $token = $_SESSION['jwt_token'] ?? null;
 
