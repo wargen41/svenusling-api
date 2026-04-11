@@ -31,6 +31,7 @@ unzip main.zip "$source_dir/*"
 # Move files to their respective homes
 rsync -av "$source_dir/public/" public_html/
 rsync -av "$source_dir/src" ./
+rsync -av "$source_dir/views" ./
 mv "$source_dir/composer.json" ./
 
 # Remove temporary directories and files
