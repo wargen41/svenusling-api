@@ -14,6 +14,7 @@ use App\Controllers\ReviewController;
 use App\Controllers\MediaController;
 use App\Controllers\AuthController;
 use App\Middleware\AuthMiddleware;
+use App\Middleware\AdminAuthMiddleware;
 use Slim\App;
 
 class Routes
@@ -129,5 +130,16 @@ class Routes
         $app->post('/media', [MediaController::class, 'createMedia'])->add(new AuthMiddleware());
         $app->put('/media/{id}', [MediaController::class, 'updateMedia'])->add(new AuthMiddleware());
         $app->delete('/media/{id}', [MediaController::class, 'deleteMedia'])->add(new AuthMiddleware());
+
+        // Admin pages
+        $app->get('/admin', [AdminController::class, 'dashboard'])->add(new AdminAuthMiddleware());
+        $app->get('/admin/login', [AdminController::class, 'loginPage']);
+        $app->post('/admin/login', [AdminController::class, 'handleLogin']);
+        $app->get('/admin/logout', [AdminController::class, 'logout']);
+
+        // Other admin pages (protected)
+        $app->get('/admin/movies', [AdminController::class, 'moviesPage'])->add(new AdminAuthMiddleware());
+        $app->get('/admin/persons', [AdminController::class, 'personsPage'])->add(new AdminAuthMiddleware());
+        // etc.
     }
 }

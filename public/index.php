@@ -11,19 +11,17 @@ use Slim\Factory\AppFactory;
 use App\Config\Database;
 use App\Routes;
 
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
+
 // Log startup
-error_log('=== APPLICATION STARTUP ===');
 error_log('Environment: ' . ENVIRONMENT);
 error_log('Database path: ' . DB_PATH);
 
 try {
-    error_log('Step 1: Getting database instance...');
     $database = Database::getInstance();
-    error_log('Step 2: Database instance obtained');
     
-    error_log('Step 3: Initializing tables...');
     $database->initializeTables();
-    error_log('Step 4: Tables initialized');
     
     if (file_exists(DB_PATH)) {
         error_log('✓ Database file exists: ' . DB_PATH);
@@ -51,18 +49,12 @@ try {
     exit(1);
 }
 
-error_log('Step 5: Creating Slim app...');
-
 // Create Slim app
 $app = AppFactory::create();
-
-error_log('Step 6: Adding middleware...');
 
 // Add BodyParsingMiddleware to parse JSON request bodies
 // This is CRITICAL for POST requests with JSON data
 $app->addBodyParsingMiddleware();
-
-error_log('Step 7: Adding error middleware...');
 
 // Add error handling middleware with detailed errors in development
 $errorMiddleware = $app->addErrorMiddleware(
@@ -95,8 +87,6 @@ $errorMiddleware->setDefaultErrorHandler(function ($request, $exception, $displa
         ->withHeader('Content-Type', 'application/json');
 });
 
-error_log('Step 8: Adding CORS middleware...');
-
 // Add CORS middleware
 $app->add(function ($request, $handler) {
     $response = $handler->handle($request);
@@ -106,14 +96,14 @@ $app->add(function ($request, $handler) {
         ->withHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 });
 
-error_log('Step 9: Adding preflight handler...');
+// Add Twig middleware
+$twig = Twig::create(__DIR__ . '/../views', ['cache' => false]); // disable cache in dev
+$app->add(TwigMiddleware::create($app, $twig));
 
 // Handle preflight requests
 $app->options('/{routes:.+}', function ($request, $response) {
     return $response;
 });
-
-error_log('Step 10: Registering routes...');
 
 // Register routes
 try {
@@ -124,9 +114,6 @@ try {
     error_log('Trace: ' . $e->getTraceAsString());
     throw $e;
 }
-
-error_log('Step 11: Running application...');
-error_log('=== APPLICATION READY ===');
 
 // Run app
 $app->run();
