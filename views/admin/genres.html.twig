@@ -323,39 +323,50 @@
         const apiBaseUrl = '/admin/api';
 
         document.getElementById('addGenreForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+    e.preventDefault();
 
-            const sv = document.getElementById('sv').value.trim();
-            const en = document.getElementById('en').value.trim();
-            const common = document.getElementById('common').checked ? 1 : 0;
+    const sv = document.getElementById('sv').value.trim();
+    const en = document.getElementById('en').value.trim();
+    const common = document.getElementById('common').checked ? 1 : 0;
 
-            if (!sv || !en) {
-                alert('Please fill in both Swedish and English names');
-                return;
-            }
+    if (!sv || !en) {
+        alert('Please fill in both Swedish and English names');
+        return;
+    }
 
-            try {
-                const response = await fetch(apiBaseUrl + '/genres', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ sv, en, common })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    showSuccess('Genre added successfully!');
-                    document.getElementById('addGenreForm').reset();
-                    setTimeout(() => location.reload(), 1000);
-                } else {
-                    alert('Error: ' + (data.error || 'Failed to add genre'));
-                }
-            } catch (error) {
-                alert('Error: ' + error.message);
-            }
+    try {
+        const response = await fetch(apiBaseUrl + '/genres', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ sv, en, common })
         });
+
+        const text = await response.text();
+        console.log('Raw response:', text);
+        console.log('Response status:', response.status);
+
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch (e) {
+            console.error('Failed to parse JSON:', e);
+            alert('Server error: ' + text);
+            return;
+        }
+
+        if (response.ok) {
+            showSuccess('Genre added successfully!');
+            document.getElementById('addGenreForm').reset();
+            setTimeout(() => location.reload(), 1000);
+        } else {
+            alert('Error: ' + (data.error || 'Failed to add genre'));
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+});
 
         function editGenre(genreId) {
             const item = document.querySelector(`[data-genre-id="${genreId}"]`);
