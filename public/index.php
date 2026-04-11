@@ -105,16 +105,10 @@ $app->add(TwigMiddleware::create($app, $twig));
 //     return $response;
 // });
 // Handle OPTIONS preflight requests for all routes
-// $app->options('/{routes:.*}', function ($request, $response) {
-//     error_log('OPTIONS request handled for: ' . $request->getUri()->getPath());
-//     return $response;
-// });
-// Admin routes with explicit OPTIONS
-$app->options('/admin/login', function ($request, $response) {
+$app->options('/{routes:.*}', function ($request, $response) {
+    error_log('OPTIONS request handled for: ' . $request->getUri()->getPath());
     return $response;
 });
-$app->get('/admin/login', [AdminController::class, 'loginPage']);
-$app->post('/admin/login', [AdminController::class, 'handleLogin']);
 
 // Register routes
 try {
