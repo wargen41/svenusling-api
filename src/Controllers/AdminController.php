@@ -176,10 +176,90 @@ class AdminController
     }
 
     /**
+     * API: Create genre
+     */
+    public function apiCreateGenre(Request $request, Response $response): Response
+    {
+        // Start session if not already started
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+
+        try {
+            $result = $this->callApiPost('/genres', $data, $token);
+
+            return $this->jsonResponse($response, $result, 201);
+        } catch (\Exception $e) {
+            error_log('Error in apiCreateGenre: ' . $e->getMessage());
+            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
+        }
+    }
+
+    /**
+     * API: Update genre
+     */
+    public function apiUpdateGenre(Request $request, Response $response, array $args): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $genreId = $args['id'] ?? null;
+        $data = $request->getParsedBody();
+
+        if (!$genreId) {
+            return $this->jsonResponse($response, ['error' => 'Genre ID is required'], 400);
+        }
+
+        try {
+            $result = $this->callApiPut('/genres/' . $genreId, $data, $token);
+
+            return $this->jsonResponse($response, $result, 200);
+        } catch (\Exception $e) {
+            error_log('Error in apiUpdateGenre: ' . $e->getMessage());
+            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
+        }
+    }
+
+    /**
+     * API: Delete genre
+     */
+    public function apiDeleteGenre(Request $request, Response $response, array $args): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $genreId = $args['id'] ?? null;
+
+        if (!$genreId) {
+            return $this->jsonResponse($response, ['error' => 'Genre ID is required'], 400);
+        }
+
+        try {
+            $result = $this->callApiDelete('/genres/' . $genreId, $token);
+
+            return $this->jsonResponse($response, $result, 200);
+        } catch (\Exception $e) {
+            error_log('Error in apiDeleteGenre: ' . $e->getMessage());
+            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
+        }
+    }
+
+    /**
      * Genres management page (protected)
      */
     public function genresPage(Request $request, Response $response): Response
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $user = $_SESSION['user'] ?? null;
         $token = $_SESSION['jwt_token'] ?? null;
 
@@ -206,72 +286,6 @@ class AdminController
                                                        'genres' => []
                 ]
             );
-        }
-    }
-
-    /**
-     * API: Create genre
-     */
-    public function apiCreateGenre(Request $request, Response $response): Response
-    {
-        session_start();
-        $token = $_SESSION['jwt_token'] ?? null;
-        $data = $request->getParsedBody();
-
-        try {
-            $result = $this->callApiPost('/genres', $data, $token);
-
-            return $this->jsonResponse($response, $result, 201);
-        } catch (\Exception $e) {
-            error_log('Error in apiCreateGenre: ' . $e->getMessage());
-            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
-        }
-    }
-
-    /**
-     * API: Update genre
-     */
-    public function apiUpdateGenre(Request $request, Response $response, array $args): Response
-    {
-        session_start();
-        $token = $_SESSION['jwt_token'] ?? null;
-        $genreId = $args['id'] ?? null;
-        $data = $request->getParsedBody();
-
-        if (!$genreId) {
-            return $this->jsonResponse($response, ['error' => 'Genre ID is required'], 400);
-        }
-
-        try {
-            $result = $this->callApiPut('/genres/' . $genreId, $data, $token);
-
-            return $this->jsonResponse($response, $result, 200);
-        } catch (\Exception $e) {
-            error_log('Error in apiUpdateGenre: ' . $e->getMessage());
-            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
-        }
-    }
-
-    /**
-     * API: Delete genre
-     */
-    public function apiDeleteGenre(Request $request, Response $response, array $args): Response
-    {
-        session_start();
-        $token = $_SESSION['jwt_token'] ?? null;
-        $genreId = $args['id'] ?? null;
-
-        if (!$genreId) {
-            return $this->jsonResponse($response, ['error' => 'Genre ID is required'], 400);
-        }
-
-        try {
-            $result = $this->callApiDelete('/genres/' . $genreId, $token);
-
-            return $this->jsonResponse($response, $result, 200);
-        } catch (\Exception $e) {
-            error_log('Error in apiDeleteGenre: ' . $e->getMessage());
-            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
         }
     }
 
