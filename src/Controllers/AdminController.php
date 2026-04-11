@@ -104,8 +104,8 @@ class AdminController
     {
         error_log('callApiLogin called with email: ' . $email);
 
-        $apiUrl = ADMIN_API_URL . '/auth/login';
-        error_log('Calling API endpoint: ' . $apiUrl);
+        $apiUrl = ADMIN_API_BASE_URL . '/auth/login';
+        error_log('API URL: ' . $apiUrl);
 
         $ch = curl_init();
         curl_setopt_array($ch, [
@@ -119,7 +119,8 @@ class AdminController
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json'
             ],
-            CURLOPT_TIMEOUT => 10
+            CURLOPT_TIMEOUT => 10,
+            CURLOPT_FOLLOWLOCATION => true
         ]);
 
         $result = curl_exec($ch);
@@ -127,13 +128,14 @@ class AdminController
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-        // Check for cURL errors
+        error_log('cURL errno: ' . curl_errno($ch));
+        error_log('HTTP code: ' . $httpCode);
+
         if ($curlError) {
             error_log('cURL error: ' . $curlError);
             throw new \Exception('API connection failed: ' . $curlError);
         }
 
-        error_log('API response HTTP code: ' . $httpCode);
         error_log('API response body: ' . $result);
 
         $response = json_decode($result, true);
