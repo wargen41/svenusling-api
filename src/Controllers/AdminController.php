@@ -24,7 +24,8 @@ class AdminController
             $response,
             'admin/login.html.twig',
             [
-                'adminBaseStyles' => ADMIN_BASE_STYLES
+                'adminBaseStyles' => ADMIN_BASE_STYLES,
+                'siteName' => SITE_NAME
             ]
         );
     }

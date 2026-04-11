@@ -3,6 +3,9 @@
 $projectRoot = __DIR__;
 define('DB_PATH', $projectRoot . '/movies.db');
 
+// Site configuration
+define('SITE_NAME', 'Site Name');
+
 // Admin frontend configuration
 define('ADMIN_API_BASE_URL', getenv('ADMIN_API_BASE_URL') ?: 'http://localhost:8000');
 define('ADMIN_BASE_STYLES', getenv('ADMIN_BASE_STYLES') ?: 'http://localhost/styles.css');
