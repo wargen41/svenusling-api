@@ -6,6 +6,7 @@ use App\Controllers\MovieController;
 use App\Controllers\SeriesController;
 use App\Controllers\MoviePersonsController;
 use App\Controllers\MovieGenresController;
+use App\Controllers\MovieQuotesController;
 use App\Controllers\PersonController;
 use App\Controllers\RelationsController;
 use App\Controllers\AwardsController;
@@ -59,6 +60,15 @@ class Routes
         $app->post('/api/movies/media/bulk', [MovieController::class, 'addMultipleMediaToMovie'])->add(AuthMiddleware::class);
         $app->put('/api/movies/{id}/media', [MovieController::class, 'replaceMovieMedia'])->add(AuthMiddleware::class);
         $app->delete('/api/movies/{movie_id}/media/{media_id}', [MovieController::class, 'removeMediaFromMovie'])->add(AuthMiddleware::class);
+
+        // Movie quotes endpoints
+        $app->get('/api/movies/{id}/quotes', [MovieQuotesController::class, 'getMovieQuotes']);
+        $app->get('/api/quotes/{quote_id}', [MovieQuotesController::class, 'getQuote']);
+        $app->post('/api/movies/quotes', [MovieQuotesController::class, 'addQuote'])->add(AuthMiddleware::class);
+        $app->post('/api/movies/quotes/bulk', [MovieQuotesController::class, 'addMultipleQuotes'])->add(AuthMiddleware::class);
+        $app->put('/api/quotes/{quote_id}', [MovieQuotesController::class, 'updateQuote'])->add(AuthMiddleware::class);
+        $app->delete('/api/quotes/{quote_id}', [MovieQuotesController::class, 'deleteQuote'])->add(AuthMiddleware::class);
+        $app->delete('/api/movies/{id}/quotes', [MovieQuotesController::class, 'deleteAllMovieQuotes'])->add(AuthMiddleware::class);
 
         // Person routes
         $app->get('/api/persons', [PersonController::class, 'listPersons']);
