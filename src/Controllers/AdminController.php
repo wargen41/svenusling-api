@@ -75,7 +75,6 @@ class AdminController
      */
     public function dashboard(Request $request, Response $response): Response
     {
-        session_start();
         $user = $_SESSION['user'] ?? null;
 
         return Twig::fromRequest($request)->render(
@@ -90,7 +89,6 @@ class AdminController
      */
     public function logout(Request $request, Response $response): Response
     {
-        session_start();
         session_destroy();
 
         $response = $response->withStatus(302)->withHeader('Location', '/admin/login');
