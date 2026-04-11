@@ -1,34 +1,11 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logga in | {{ siteName }}</title>
-    <link rel="stylesheet" href="{{ adminBaseStyles }}">
-</head>
-<body>
-{# Länk för tillgänglighet #}
-    <a class="skip-link" href="#main-content">Hoppa till huvudinnehållet</a>
-{# Sidhuvud #}
-    <header id="header">
-        <nav><ul>
-            <li><a href="">Filmer</a></li>
-            <li><a href="">Personer</a></li>
-        </ul></nav>
-    </header>
-{# Navigeringsmojäng #}
-    <div class="widget left" id="navigation-widget"></div>
-{# Menymojäng #}
-    <label for="menu-widget-button" class="widget-label" id="menu-widget-label">Meny</label><div class="widget right" id="menu-widget"><button popovertarget="menu-main" class="button" id="menu-widget-button" title="Meny"><img class="circle" alt="Meny" src="https://svenusling.jlxli.eu/assets/logo.jpg"></button></div><nav popover class="main menu" id="menu-main"><div class="mobile-menu-navigation"><button popovertargetaction="hide" popovertarget="menu-main"></button></div><div class="content"><form action="search.php" method="get"><input autofocus type="search" size="12" id="menu-search-input" required name="query" value=""><input type="submit" value="Sök"></form><ul><li><a href="movies.php" data-moreinfo="alla">Betygsatta</a><ul><li><button popovertarget="menu-movies-type" class="button" id="menu-movies-type-button">Efter typ</button></li><li><button popovertarget="menu-movies-rating" class="button" id="menu-movies-rating-button">Efter betyg</button></li><li><button popovertarget="menu-movies-year" class="button" id="menu-movies-year-button">Efter år</button></li><li><button popovertarget="menu-movies-genre" class="button" id="menu-movies-genre-button">Efter genre</button></li><li><a href="reviews.php">Recensioner</a></li></ul></li><li><a href="persons.php" data-moreinfo="alla">Viktiga personer</a><ul><li><button popovertarget="menu-persons-type" class="button" id="menu-persons-type-button">Efter typ</button></li><li><button popovertarget="menu-persons-relations" class="button" id="menu-persons-relations-button">Efter relation</button></li></ul></li><li><a href="./">Feed</a><ul><li><a href="./#latest">Senast sedda</a></li><li><a href="./#videos">Videorecensioner</a></li></ul></li></ul></div></nav><nav popover class="sub menu movies type" id="menu-movies-type"><div class="mobile-menu-navigation"><button popovertargetaction="hide" popovertarget="menu-movies-type" id="back-menu-movies-type"></button><label for="back-menu-movies-type">Filtrera efter typ</label><button popovertargetaction="hide" popovertarget="menu-main"></button></div><ul><li><a href="films.php">Filmer</a></li><li><a href="series.php">Serier</a></li><li><a href="miniseries.php">Miniserier</a></li></ul></nav><nav popover class="sub menu movies rating" id="menu-movies-rating"><div class="mobile-menu-navigation"><button popovertargetaction="hide" popovertarget="menu-movies-rating" id="back-menu-movies-rating"></button><label for="back-menu-movies-rating">Filtrera efter betyg</label><button popovertargetaction="hide" popovertarget="menu-main"></button></div><ul><li><a href="">+++++</a></li><li><a href="">++++</a></li><li><a href="">+++</a></li><li><a href="">++</a></li><li><a href="">+</a></li><li><a href="">-</a></li></ul></nav><nav popover class="sub menu movies year" id="menu-movies-year"><div class="mobile-menu-navigation"><button popovertargetaction="hide" popovertarget="menu-movies-year" id="back-menu-movies-year"></button><label for="back-menu-movies-year">Filtrera efter år</label><button popovertargetaction="hide" popovertarget="menu-main"></button></div><ul class="content"><li><a href="">2020-tal</a></li><li><a href="">2010-tal</a></li><li><a href="">2000-tal</a></li><li><a href="">1990-tal</a></li><li><a href="">1980-tal</a></li><li><a href="">1970-tal</a></li><li><a href="">1960-tal</a></li><li><a href="">1950-tal</a></li><li><a href="">1940-tal</a></li><li><a href="">1930-tal</a></li><li><a href="">1920-tal</a></li><li><a href="">1910-tal</a></li><li><a href="">1900-tal</a></li><li><a href="">1890-tal</a></li></ul></nav><nav popover class="sub menu movies genres" id="menu-movies-genre"><div class="mobile-menu-navigation"><button popovertargetaction="hide" popovertarget="menu-movies-genre" id="back-menu-movies-genre"></button><label for="back-menu-movies-genre">Filtrera efter genre</label><button popovertargetaction="hide" popovertarget="menu-main"></button></div><div class="content"><ul class="genres common"><li><a href="">action</a></li><li><a href="">drama</a></li><li><a href="">kriminalare</a></li><li><a href="">komedi</a></li><li><a href="">romantik</a></li><li><a href="">skräck</a></li><li><a href="">thriller</a></li><li><a href="">äventyr</a></li></ul><ul class="genres uncommon"><li><a href="">animerat</a></li><li><a href="">biografi</a></li><li><a href="">b-film</a></li><li><a href="">dokumentär</a></li><li><a href="">erotik</a></li><li><a href="">familjefilm</a></li><li><a href="">fantasy</a></li><li><a href="">film noir</a></li><li><a href="">historia</a></li><li><a href="">kortfilm</a></li><li><a href="">krig</a></li><li><a href="">kung fu</a></li><li><a href="">musik</a></li><li><a href="">musikal</a></li><li><a href="">mystik</a></li><li><a href="">sci-fi</a></li><li><a href="">splatter</a></li><li><a href="">sport</a></li><li><a href="">teater</a></li><li><a href="">västern</a></li></ul></div></nav><nav popover class="sub menu persons type" id="menu-persons-type"><div class="mobile-menu-navigation"><button popovertargetaction="hide" popovertarget="menu-persons-type" id="back-menu-persons-type"></button><label for="back-menu-persons-type">Filtrera efter typ</label><button popovertargetaction="hide" popovertarget="menu-main"></button></div><ul><li><a href="actors.php">Skådespelare</a></li><li><a href="directors.php">Regissörer</a></li></ul></nav><nav popover class="sub menu persons relations" id="menu-persons-relations"><div class="mobile-menu-navigation"><button popovertargetaction="hide" popovertarget="menu-persons-relations" id="back-menu-persons-relations"></button><label for="back-menu-persons-relations">Filtrera efter relationer</label><button popovertargetaction="hide" popovertarget="menu-main"></button></div><ul><li><a href="">Affärspartner</a></li><li><a href="">Avkomma</a></li><li><a href="">Förälder</a></li><li><a href="">Gifta</a></li><li><a href="">Kusin</a></li><li><a href="">Syskon</a></li><li><a href="">Övrig släkt</a></li></ul></nav>
-{# Huvudinnehåll #}
-    <main id="main-content" class="login">
-        <h1>Logga in</h1>
+{% extends "admin/base.html.twig" %}
 
-        {% if error %}
-            <div class="error">{{ error }}</div>
-        {% endif %}
+{% block pageTitle %}Logga in{% endblock %}
 
-        <form method="POST" action="/admin/login">
+{% block mainAttr %}class="login"{% endblock %}
+
+{% block mainContent %}
+    <form method="POST" action="/admin/login">
             <div class="form-group">
                 <label for="email">E-post</label>
                 <input
@@ -53,6 +30,6 @@
 
             <button type="submit">OK</button>
         </form>
-    </main>
-</body>
-</html>
+{% endblock %}
+
+
