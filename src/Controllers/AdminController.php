@@ -89,7 +89,29 @@ class AdminController
      */
     public function logout(Request $request, Response $response): Response
     {
+        // Session is already started by AdminAuthMiddleware
+
+        // Unset all session variables
+        $_SESSION = [];
+
+        // Destroy the session
         session_destroy();
+
+        // Clear the session cookie
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(
+                session_name(),
+                      '',
+                      time() - 42000,
+                      $params["path"],
+                      $params["domain"],
+                      $params["secure"],
+                      $params["httponly"]
+            );
+        }
+
+        error_log('User logged out, session destroyed');
 
         $response = $response->withStatus(302)->withHeader('Location', '/admin/login');
         return $response;
