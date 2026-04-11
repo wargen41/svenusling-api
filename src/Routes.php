@@ -138,6 +138,12 @@ class Routes
         $app->post('/admin/login', [AdminController::class, 'handleLogin']);
         $app->get('/admin/logout', [AdminController::class, 'logout']);
 
+        // Admin genre routes
+        $app->get('/admin/genres', [AdminController::class, 'genresPage'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/api/genres', [AdminController::class, 'apiCreateGenre'])->add(new AdminAuthMiddleware());
+        $app->put('/admin/api/genres/{id}', [AdminController::class, 'apiUpdateGenre'])->add(new AdminAuthMiddleware());
+        $app->delete('/admin/api/genres/{id}', [AdminController::class, 'apiDeleteGenre'])->add(new AdminAuthMiddleware());
+
         // Other admin pages (protected)
         $app->get('/admin/movies', [AdminController::class, 'moviesPage'])->add(new AdminAuthMiddleware());
         $app->get('/admin/persons', [AdminController::class, 'personsPage'])->add(new AdminAuthMiddleware());

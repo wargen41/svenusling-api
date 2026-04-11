@@ -174,4 +174,269 @@ class AdminController
         error_log('Login successful');
         return $response;
     }
+
+    /**
+     * Genres management page (protected)
+     */
+    public function genresPage(Request $request, Response $response): Response
+    {
+        session_start();
+        $user = $_SESSION['user'] ?? null;
+        $token = $_SESSION['jwt_token'] ?? null;
+
+        try {
+            // Fetch all genres from API
+            $genres = $this->callApiGet('/genres', $token);
+
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/genres.html.twig',
+                [
+                    'user' => $user,
+                    'genres' => $genres['data'] ?? []
+                ]
+            );
+        } catch (\Exception $e) {
+            error_log('Error in genresPage: ' . $e->getMessage());
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/genres.html.twig',
+                [
+                    'user' => $user,
+                    'error' => 'Failed to load genres: ' . $e->getMessage(),
+                                                       'genres' => []
+                ]
+            );
+        }
+    }
+
+    /**
+     * API: Create genre
+     */
+    public function apiCreateGenre(Request $request, Response $response): Response
+    {
+        session_start();
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+
+        try {
+            $result = $this->callApiPost('/genres', $data, $token);
+
+            return $this->jsonResponse($response, $result, 201);
+        } catch (\Exception $e) {
+            error_log('Error in apiCreateGenre: ' . $e->getMessage());
+            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
+        }
+    }
+
+    /**
+     * API: Update genre
+     */
+    public function apiUpdateGenre(Request $request, Response $response, array $args): Response
+    {
+        session_start();
+        $token = $_SESSION['jwt_token'] ?? null;
+        $genreId = $args['id'] ?? null;
+        $data = $request->getParsedBody();
+
+        if (!$genreId) {
+            return $this->jsonResponse($response, ['error' => 'Genre ID is required'], 400);
+        }
+
+        try {
+            $result = $this->callApiPut('/genres/' . $genreId, $data, $token);
+
+            return $this->jsonResponse($response, $result, 200);
+        } catch (\Exception $e) {
+            error_log('Error in apiUpdateGenre: ' . $e->getMessage());
+            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
+        }
+    }
+
+    /**
+     * API: Delete genre
+     */
+    public function apiDeleteGenre(Request $request, Response $response, array $args): Response
+    {
+        session_start();
+        $token = $_SESSION['jwt_token'] ?? null;
+        $genreId = $args['id'] ?? null;
+
+        if (!$genreId) {
+            return $this->jsonResponse($response, ['error' => 'Genre ID is required'], 400);
+        }
+
+        try {
+            $result = $this->callApiDelete('/genres/' . $genreId, $token);
+
+            return $this->jsonResponse($response, $result, 200);
+        } catch (\Exception $e) {
+            error_log('Error in apiDeleteGenre: ' . $e->getMessage());
+            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
+        }
+    }
+
+    /**
+     * Helper: Call API GET
+     */
+    private function callApiGet($endpoint, $token = null)
+    {
+        $url = ADMIN_API_BASE_URL . $endpoint;
+        error_log('GET ' . $url);
+
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+                $token ? 'Authorization: Bearer ' . $token : ''
+            ],
+            CURLOPT_TIMEOUT => 10
+        ]);
+
+        $result = curl_exec($ch);
+        $curlError = curl_error($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($curlError) {
+            throw new \Exception('API error: ' . $curlError);
+        }
+
+        $response = json_decode($result, true);
+
+        if ($httpCode >= 400) {
+            throw new \Exception($response['error'] ?? 'API error');
+        }
+
+        return $response;
+    }
+
+    /**
+     * Helper: Call API POST
+     */
+    private function callApiPost($endpoint, $data, $token = null)
+    {
+        $url = ADMIN_API_BASE_URL . $endpoint;
+        error_log('POST ' . $url);
+
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($data),
+                          CURLOPT_HTTPHEADER => [
+                              'Content-Type: application/json',
+                          $token ? 'Authorization: Bearer ' . $token : ''
+                          ],
+                          CURLOPT_TIMEOUT => 10
+        ]);
+
+        $result = curl_exec($ch);
+        $curlError = curl_error($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($curlError) {
+            throw new \Exception('API error: ' . $curlError);
+        }
+
+        $response = json_decode($result, true);
+
+        if ($httpCode >= 400) {
+            throw new \Exception($response['error'] ?? 'API error');
+        }
+
+        return $response;
+    }
+
+    /**
+     * Helper: Call API PUT
+     */
+    private function callApiPut($endpoint, $data, $token = null)
+    {
+        $url = ADMIN_API_BASE_URL . $endpoint;
+        error_log('PUT ' . $url);
+
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => 'PUT',
+            CURLOPT_POSTFIELDS => json_encode($data),
+                          CURLOPT_HTTPHEADER => [
+                              'Content-Type: application/json',
+                          $token ? 'Authorization: Bearer ' . $token : ''
+                          ],
+                          CURLOPT_TIMEOUT => 10
+        ]);
+
+        $result = curl_exec($ch);
+        $curlError = curl_error($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($curlError) {
+            throw new \Exception('API error: ' . $curlError);
+        }
+
+        $response = json_decode($result, true);
+
+        if ($httpCode >= 400) {
+            throw new \Exception($response['error'] ?? 'API error');
+        }
+
+        return $response;
+    }
+
+    /**
+     * Helper: Call API DELETE
+     */
+    private function callApiDelete($endpoint, $token = null)
+    {
+        $url = ADMIN_API_BASE_URL . $endpoint;
+        error_log('DELETE ' . $url);
+
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => 'DELETE',
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+                $token ? 'Authorization: Bearer ' . $token : ''
+            ],
+            CURLOPT_TIMEOUT => 10
+        ]);
+
+        $result = curl_exec($ch);
+        $curlError = curl_error($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($curlError) {
+            throw new \Exception('API error: ' . $curlError);
+        }
+
+        $response = json_decode($result, true);
+
+        if ($httpCode >= 400) {
+            throw new \Exception($response['error'] ?? 'API error');
+        }
+
+        return $response;
+    }
+
+    /**
+     * Helper: JSON response
+     */
+    private function jsonResponse(Response $response, $data, $status = 200): Response
+    {
+        $response->getBody()->write(json_encode($data));
+        return $response
+        ->withStatus($status)
+        ->withHeader('Content-Type', 'application/json');
+    }
 }
