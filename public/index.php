@@ -101,7 +101,12 @@ $twig = Twig::create(__DIR__ . '/../views', ['cache' => false]); // disable cach
 $app->add(TwigMiddleware::create($app, $twig));
 
 // Handle preflight requests
-$app->options('/{routes:.+}', function ($request, $response) {
+// $app->options('/{routes:.+}', function ($request, $response) {
+//     return $response;
+// });
+// Handle OPTIONS preflight requests for all routes
+$app->options('/{routes:.*}', function ($request, $response) {
+    error_log('OPTIONS request handled for: ' . $request->getUri()->getPath());
     return $response;
 });
 
