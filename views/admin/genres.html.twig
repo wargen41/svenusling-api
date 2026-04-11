@@ -157,11 +157,18 @@
 
         button.delete {
             background: #e74c3c;
-            margin-left: 0.5rem;
         }
 
         button.delete:hover {
             background: #c0392b;
+        }
+
+        button.edit {
+            background: #3498db;
+        }
+
+        button.edit:hover {
+            background: #2980b9;
         }
 
         .genres-list {
@@ -170,7 +177,7 @@
 
         .genre-item {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr auto;
+            grid-template-columns: 1fr 1fr auto;
             gap: 1rem;
             align-items: center;
             padding: 1rem;
@@ -180,46 +187,19 @@
             background: #fafafa;
         }
 
-        .genre-item.editing {
-            background: #f0f7ff;
-        }
-
-        .genre-item input {
-            width: 100%;
-        }
-
         .genre-actions {
             display: flex;
             gap: 0.5rem;
+            justify-content: flex-end;
         }
 
-        .btn-small {
+        .genre-actions form {
+            display: inline;
+        }
+
+        .genre-actions button {
             padding: 0.5rem 1rem;
             font-size: 0.9rem;
-        }
-
-        .btn-edit {
-            background: #3498db;
-        }
-
-        .btn-edit:hover {
-            background: #2980b9;
-        }
-
-        .btn-save {
-            background: #27ae60;
-        }
-
-        .btn-save:hover {
-            background: #229954;
-        }
-
-        .btn-cancel {
-            background: #95a5a6;
-        }
-
-        .btn-cancel:hover {
-            background: #7f8c8d;
         }
 
         .common-badge {
@@ -247,7 +227,7 @@
             }
 
             .genre-actions {
-                flex-wrap: wrap;
+                justify-content: flex-start;
             }
         }
     </style>
@@ -262,16 +242,16 @@
         <a href="/admin" class="back-link">← Back to Dashboard</a>
 
         <div class="content">
-            {% if error %}
-                <div class="error">{{ error }}</div>
+            {% if message %}
+                <div class="{% if message_type == 'success' %}success{% else %}error{% endif %}">
+                    {{ message }}
+                </div>
             {% endif %}
-
-            <div id="successMessage" class="success" style="display: none;"></div>
 
             <div class="form-section">
                 <h2>Add New Genre</h2>
 
-                <form id="addGenreForm">
+                <form method="POST" action="/admin/genres/add">
                     <div class="form-group">
                         <label for="sv">Swedish Name *</label>
                         <input type="text" id="sv" name="sv" required>
@@ -295,20 +275,48 @@
                 <h2>Existing Genres ({{ genres|length }})</h2>
 
                 {% if genres|length > 0 %}
-                    <div class="genres-list" id="genresList">
+                    <div class="genres-list">
                         {% for genre in genres %}
-                            <div class="genre-item" data-genre-id="{{ genre.id }}">
-                                <div class="genre-sv-display">
+                            <div class="genre-item">
+                                <div>
                                     {% if genre.common %}<span class="common-badge">Common</span> {% endif %}{{ genre.sv }}
                                 </div>
-                                <div class="genre-en-display">{{ genre.en }}</div>
-                                <div class="genre-common-display">
-                                    {% if genre.common %}Yes{% else %}No{% endif %}
-                                </div>
+                                <div>{{ genre.en }}</div>
                                 <div class="genre-actions">
-                                    <button class="btn-small btn-edit" onclick="editGenre({{ genre.id }})">Edit</button>
-                                    <button class="btn-small delete" onclick="deleteGenre({{ genre.id }})">Delete</button>
+                                    <button type="button" class="edit" onclick="document.getElementById('edit-form-{{ genre.id }}').style.display='block'">Edit</button>
+                                    <form method="POST" action="/admin/genres/delete" style="display:inline;" onsubmit="return confirm('Are you sure?');">
+                                        <input type="hidden" name="genre_id" value="{{ genre.id }}">
+                                        <button type="submit" class="delete">Delete</button>
+                                    </form>
                                 </div>
+                            </div>
+
+                            <!-- Hidden edit form for this genre -->
+                            <div id="edit-form-{{ genre.id }}" style="display:none; margin-top: 1rem; padding: 1rem; background: #f0f7ff; border-radius: 4px; border: 1px solid #667eea;">
+                                <h3>Edit Genre</h3>
+                                <form method="POST" action="/admin/genres/update">
+                                    <input type="hidden" name="genre_id" value="{{ genre.id }}">
+
+                                    <div class="form-group">
+                                        <label for="edit-sv-{{ genre.id }}">Swedish Name</label>
+                                        <input type="text" id="edit-sv-{{ genre.id }}" name="sv" value="{{ genre.sv }}" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="edit-en-{{ genre.id }}">English Name</label>
+                                        <input type="text" id="edit-en-{{ genre.id }}" name="en" value="{{ genre.en }}" required>
+                                    </div>
+
+                                    <div class="form-group checkbox-group">
+                                        <input type="checkbox" id="edit-common-{{ genre.id }}" name="common" value="1" {% if genre.common %}checked{% endif %}>
+                                        <label for="edit-common-{{ genre.id }}" style="margin-bottom: 0;">Common</label>
+                                    </div>
+
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button type="submit" style="background: #27ae60;">Save</button>
+                                        <button type="button" style="background: #95a5a6;" onclick="document.getElementById('edit-form-{{ genre.id }}').style.display='none'">Cancel</button>
+                                    </div>
+                                </form>
                             </div>
                         {% endfor %}
                     </div>
@@ -318,146 +326,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        const apiBaseUrl = '/admin/api';
-
-        document.getElementById('addGenreForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const sv = document.getElementById('sv').value.trim();
-    const en = document.getElementById('en').value.trim();
-    const common = document.getElementById('common').checked ? 1 : 0;
-
-    if (!sv || !en) {
-        alert('Please fill in both Swedish and English names');
-        return;
-    }
-
-    try {
-        const response = await fetch(apiBaseUrl + '/genres', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ sv, en, common })
-        });
-
-        const text = await response.text();
-        console.log('Raw response:', text);
-        console.log('Response status:', response.status);
-
-        let data;
-        try {
-            data = JSON.parse(text);
-        } catch (e) {
-            console.error('Failed to parse JSON:', e);
-            alert('Server error: ' + text);
-            return;
-        }
-
-        if (response.ok) {
-            showSuccess('Genre added successfully!');
-            document.getElementById('addGenreForm').reset();
-            setTimeout(() => location.reload(), 1000);
-        } else {
-            alert('Error: ' + (data.error || 'Failed to add genre'));
-        }
-    } catch (error) {
-        alert('Error: ' + error.message);
-    }
-});
-
-        function editGenre(genreId) {
-            const item = document.querySelector(`[data-genre-id="${genreId}"]`);
-            item.classList.add('editing');
-
-            const svDisplay = item.querySelector('.genre-sv-display').textContent.trim();
-            const enDisplay = item.querySelector('.genre-en-display').textContent.trim();
-            const isCommon = item.querySelector('.genre-common-display').textContent.trim() === 'Yes';
-
-            item.innerHTML = `
-                <input type="text" class="edit-sv" value="${svDisplay}">
-                <input type="text" class="edit-en" value="${enDisplay}">
-                <div class="checkbox-group">
-                    <input type="checkbox" class="edit-common" ${isCommon ? 'checked' : ''}>
-                    <label style="margin: 0;">Common</label>
-                </div>
-                <div class="genre-actions">
-                    <button class="btn-small btn-save" onclick="saveGenre(${genreId})">Save</button>
-                    <button class="btn-small btn-cancel" onclick="cancelEdit(${genreId})">Cancel</button>
-                </div>
-            `;
-        }
-
-        function saveGenre(genreId) {
-            const item = document.querySelector(`[data-genre-id="${genreId}"]`);
-            const sv = item.querySelector('.edit-sv').value.trim();
-            const en = item.querySelector('.edit-en').value.trim();
-            const common = item.querySelector('.edit-common').checked ? 1 : 0;
-
-            if (!sv || !en) {
-                alert('Please fill in both names');
-                return;
-            }
-
-            fetch(apiBaseUrl + '/genres/' + genreId, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ sv, en, common })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showSuccess('Genre updated successfully!');
-                    setTimeout(() => location.reload(), 1000);
-                } else {
-                    alert('Error: ' + (data.error || 'Failed to update genre'));
-                    cancelEdit(genreId);
-                }
-            })
-            .catch(error => {
-                alert('Error: ' + error.message);
-                cancelEdit(genreId);
-            });
-        }
-
-        function cancelEdit(genreId) {
-            location.reload();
-        }
-
-        function deleteGenre(genreId) {
-            if (!confirm('Are you sure you want to delete this genre?')) {
-                return;
-            }
-
-            fetch(apiBaseUrl + '/genres/' + genreId, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success || data.message) {
-                    showSuccess('Genre deleted successfully!');
-                    setTimeout(() => location.reload(), 1000);
-                } else {
-                    alert('Error: ' + (data.error || 'Failed to delete genre'));
-                }
-            })
-            .catch(error => {
-                alert('Error: ' + error.message);
-            });
-        }
-
-        function showSuccess(message) {
-            const successDiv = document.getElementById('successMessage');
-            successDiv.textContent = message;
-            successDiv.style.display = 'block';
-        }
-    </script>
 </body>
 </html>

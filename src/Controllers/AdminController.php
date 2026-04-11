@@ -176,11 +176,10 @@ class AdminController
     }
 
     /**
-     * API: Create genre
+     * Handle add genre form submission
      */
-    public function apiCreateGenre(Request $request, Response $response): Response
+    public function handleAddGenre(Request $request, Response $response): Response
     {
-        // Start session if not already started
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -189,70 +188,96 @@ class AdminController
         $data = $request->getParsedBody();
 
         try {
-            $result = $this->callApiPost('/genres', $data, $token);
+            $this->callApiPost('/genres', [
+                'sv' => $data['sv'] ?? '',
+                'en' => $data['en'] ?? '',
+                'common' => isset($data['common']) ? 1 : 0
+            ], $token);
 
-            return $this->jsonResponse($response, $result, 201);
+            $_SESSION['message'] = 'Genre added successfully!';
+            $_SESSION['message_type'] = 'success';
         } catch (\Exception $e) {
-            error_log('Error in apiCreateGenre: ' . $e->getMessage());
-            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
+            $_SESSION['message'] = 'Error adding genre: ' . $e->getMessage();
+            $_SESSION['message_type'] = 'error';
         }
+
+        // Redirect back to genres page
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/genres');
+        return $response;
     }
 
     /**
-     * API: Update genre
+     * Handle update genre form submission
      */
-    public function apiUpdateGenre(Request $request, Response $response, array $args): Response
+    public function handleUpdateGenre(Request $request, Response $response): Response
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
         $token = $_SESSION['jwt_token'] ?? null;
-        $genreId = $args['id'] ?? null;
         $data = $request->getParsedBody();
+        $genreId = $data['genre_id'] ?? null;
 
         if (!$genreId) {
-            return $this->jsonResponse($response, ['error' => 'Genre ID is required'], 400);
+            $_SESSION['message'] = 'Error: Genre ID missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiPut('/genres/' . $genreId, [
+                    'sv' => $data['sv'] ?? '',
+                    'en' => $data['en'] ?? '',
+                    'common' => isset($data['common']) ? 1 : 0
+                ], $token);
+
+                $_SESSION['message'] = 'Genre updated successfully!';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error updating genre: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+            }
         }
 
-        try {
-            $result = $this->callApiPut('/genres/' . $genreId, $data, $token);
-
-            return $this->jsonResponse($response, $result, 200);
-        } catch (\Exception $e) {
-            error_log('Error in apiUpdateGenre: ' . $e->getMessage());
-            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
-        }
+        // Redirect back to genres page
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/genres');
+        return $response;
     }
 
     /**
-     * API: Delete genre
+     * Handle delete genre form submission
      */
-    public function apiDeleteGenre(Request $request, Response $response, array $args): Response
+    public function handleDeleteGenre(Request $request, Response $response): Response
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
         $token = $_SESSION['jwt_token'] ?? null;
-        $genreId = $args['id'] ?? null;
+        $data = $request->getParsedBody();
+        $genreId = $data['genre_id'] ?? null;
 
         if (!$genreId) {
-            return $this->jsonResponse($response, ['error' => 'Genre ID is required'], 400);
+            $_SESSION['message'] = 'Error: Genre ID missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiDelete('/genres/' . $genreId, $token);
+
+                $_SESSION['message'] = 'Genre deleted successfully!';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error deleting genre: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+            }
         }
 
-        try {
-            $result = $this->callApiDelete('/genres/' . $genreId, $token);
-
-            return $this->jsonResponse($response, $result, 200);
-        } catch (\Exception $e) {
-            error_log('Error in apiDeleteGenre: ' . $e->getMessage());
-            return $this->jsonResponse($response, ['error' => $e->getMessage()], 400);
-        }
+        // Redirect back to genres page
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/genres');
+        return $response;
     }
 
     /**
-     * Genres management page (protected)
+     * Update genresPage to show session messages
      */
     public function genresPage(Request $request, Response $response): Response
     {
@@ -263,6 +288,12 @@ class AdminController
         $user = $_SESSION['user'] ?? null;
         $token = $_SESSION['jwt_token'] ?? null;
 
+        // Get message from session if exists
+        $message = $_SESSION['message'] ?? null;
+        $messageType = $_SESSION['message_type'] ?? null;
+        unset($_SESSION['message']);
+        unset($_SESSION['message_type']);
+
         try {
             // Fetch all genres from API
             $genres = $this->callApiGet('/genres', $token);
@@ -272,7 +303,9 @@ class AdminController
                 'admin/genres.html.twig',
                 [
                     'user' => $user,
-                    'genres' => $genres['data'] ?? []
+                    'genres' => $genres['data'] ?? [],
+                    'message' => $message,
+                    'message_type' => $messageType
                 ]
             );
         } catch (\Exception $e) {
@@ -282,7 +315,8 @@ class AdminController
                 'admin/genres.html.twig',
                 [
                     'user' => $user,
-                    'error' => 'Failed to load genres: ' . $e->getMessage(),
+                    'message' => 'Failed to load genres: ' . $e->getMessage(),
+                                                       'message_type' => 'error',
                                                        'genres' => []
                 ]
             );
