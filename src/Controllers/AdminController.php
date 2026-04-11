@@ -22,7 +22,10 @@ class AdminController
         // Render login template
         return Twig::fromRequest($request)->render(
             $response,
-            'admin/login.html.twig'
+            'admin/login.html.twig',
+            [
+                'adminBaseStyles' => ADMIN_BASE_STYLES
+            ]
         );
     }
 
@@ -306,7 +309,7 @@ class AdminController
                     'genres' => $genres['data'] ?? [],
                     'message' => $message,
                     'message_type' => $messageType,
-                    'adminApiBaseUrl' => ADMIN_API_BASE_URL
+                    'adminBaseStyles' => ADMIN_BASE_STYLES
                 ]
             );
         } catch (\Exception $e) {
@@ -319,7 +322,7 @@ class AdminController
                     'message' => 'Failed to load genres: ' . $e->getMessage(),
                     'message_type' => 'error',
                     'genres' => [],
-                    'adminApiBaseUrl' => ADMIN_API_BASE_URL
+                    'adminBaseStyles' => ADMIN_BASE_STYLES
                 ]
             );
         }
