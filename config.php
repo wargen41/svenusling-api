@@ -3,6 +3,9 @@
 $projectRoot = __DIR__;
 define('DB_PATH', $projectRoot . '/movies.db');
 
+// Admin frontend API configuration
+define('ADMIN_API_URL', getenv('ADMIN_API_URL') ?? 'http://localhost:8000');
+
 // JWT configuration - with debugging
 $jwtSecret = getenv('JWT_SECRET');
 if ($jwtSecret === false || $jwtSecret === '') {

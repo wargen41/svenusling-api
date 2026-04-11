@@ -102,9 +102,14 @@ class AdminController
      */
     private function callApiLogin($email, $password)
     {
+        error_log('callApiLogin called with email: ' . $email);
+
+        $apiUrl = ADMIN_API_URL . '/auth/login';
+        error_log('Calling API endpoint: ' . $apiUrl);
+
         $ch = curl_init();
         curl_setopt_array($ch, [
-            CURLOPT_URL => 'http://localhost:8000/auth/login', // Adjust to your API URL
+            CURLOPT_URL => $apiUrl,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => json_encode([
@@ -113,18 +118,38 @@ class AdminController
             ]),
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json'
-            ]
+            ],
+            CURLOPT_TIMEOUT => 10
         ]);
 
         $result = curl_exec($ch);
+        $curlError = curl_error($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
+
+        // Check for cURL errors
+        if ($curlError) {
+            error_log('cURL error: ' . $curlError);
+            throw new \Exception('API connection failed: ' . $curlError);
+        }
+
+        error_log('API response HTTP code: ' . $httpCode);
+        error_log('API response body: ' . $result);
 
         $response = json_decode($result, true);
 
-        if (!isset($response['success']) || !$response['success']) {
-            throw new \Exception($response['error'] ?? 'Login failed');
+        if ($response === null) {
+            error_log('JSON decode error: ' . json_last_error_msg());
+            throw new \Exception('Invalid API response: ' . $result);
         }
 
+        if (!isset($response['success']) || !$response['success']) {
+            $errorMsg = $response['error'] ?? 'Login failed';
+            error_log('Login failed. Error: ' . $errorMsg);
+            throw new \Exception($errorMsg);
+        }
+
+        error_log('Login successful');
         return $response;
     }
 }
