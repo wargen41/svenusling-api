@@ -6,7 +6,7 @@
 
 {% block mainContent %}
     <form method="POST" action="/admin/login">
-        <label for="email">E-post</label>
+        <label for="email">E-post
         <input
             type="email"
             id="email"
@@ -15,14 +15,18 @@
             autofocus
             value="{{ email|default('') }}"
         >
+        </label>
 
-        <label for="password">Lösen</label>
+
+        <label for="password">Lösen
         <input
             type="password"
             id="password"
             name="password"
             required
         >
-        <input type="submit">OK</input>
+        </label>
+
+        <button type="submit">OK</button>
     </form>
 {% endblock %}
