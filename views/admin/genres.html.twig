@@ -36,9 +36,9 @@
         <details open>
             <summary><h2>Befintliga genrer ({{ genres|length }})</h2></summary>
             {% if genres|length > 0 %}
-                <ul>
+                <ul style="list-style-type: none;">
                 {% for genre in genres %}
-                    <li {% if genre.common %}class="common"{% endif %} title="{{ genre.en }}">
+                    <li {% if genre.common %}class="common"{% endif %} title="{{ genre.en }}" style="display: inline;">
                         <button popovertarget="edit-form-{{ genre.id }}">{{ genre.sv }}</button>
                     </li>
                 {% endfor %}
