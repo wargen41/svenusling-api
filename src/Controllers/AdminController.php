@@ -42,7 +42,12 @@ class AdminController
             return Twig::fromRequest($request)->render(
                 $response,
                 'admin/login.html.twig',
-                ['error' => 'Email and password are required']
+                [
+                    'error' => 'Email and password are required',
+                    'adminBaseStyles' => ADMIN_BASE_STYLES,
+                    'siteName' => SITE_NAME,
+                    'pageTitle' => 'Logga in'
+                ]
             );
         }
 
@@ -63,14 +68,24 @@ class AdminController
                 return Twig::fromRequest($request)->render(
                     $response,
                     'admin/login.html.twig',
-                    ['error' => 'Invalid credentials']
+                    [
+                        'error' => 'Invalid credentials',
+                        'adminBaseStyles' => ADMIN_BASE_STYLES,
+                        'siteName' => SITE_NAME,
+                        'pageTitle' => 'Logga in'
+                    ]
                 );
             }
         } catch (\Exception $e) {
             return Twig::fromRequest($request)->render(
                 $response,
                 'admin/login.html.twig',
-                ['error' => 'Login failed: ' . $e->getMessage()]
+                [
+                    'error' => 'Login failed: ' . $e->getMessage(),
+                    'adminBaseStyles' => ADMIN_BASE_STYLES,
+                    'siteName' => SITE_NAME,
+                    'pageTitle' => 'Logga in'
+                ]
             );
         }
     }
