@@ -39,7 +39,7 @@
                 <ul>
                 {% for genre in genres %}
                     <li {% if genre.common %}class="common"{% endif %}>
-                        {{ genre.sv }} ({{ genre.en }})
+                        <button popovertarget="edit-form-{{ genre.id }}">{{ genre.sv }} / {{ genre.en }}</button>
                     </li>
                 {% endfor %}
                 </ul>
