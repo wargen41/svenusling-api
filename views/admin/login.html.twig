@@ -6,28 +6,23 @@
 
 {% block mainContent %}
     <form method="POST" action="/admin/login">
-            <div class="form-group">
-                <label for="email">E-post</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    autofocus
-                    value="{{ email|default('') }}"
-                >
-            </div>
+        <label for="email">E-post</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autofocus
+            value="{{ email|default('') }}"
+        >
 
-            <div class="form-group">
-                <label for="password">Lösen</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                >
-            </div>
-
-            <button type="submit">OK</button>
-        </form>
+        <label for="password">Lösen</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            required
+        >
+        <input type="submit">OK</input>
+    </form>
 {% endblock %}
