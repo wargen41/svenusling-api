@@ -44,7 +44,7 @@
                 {% endfor %}
                 </ul>
                 {% for genre in genres %}
-                <div id="edit-form-{{ genre.id }}">
+                <div id="edit-form-{{ genre.id }}" popover>
                     {{ genre.id }}: {{ genre.sv }} / {{ genre.en }}
                 </div>
                 {% endfor %}
