@@ -36,7 +36,14 @@
         <details open>
             <summary><h2>Befintliga genrer ({{ genres|length }})</h2></summary>
             {% if genres|length > 0 %}
-                    <div class="genres-list">
+                <ul>
+                {% for genre in genres %}
+                    <li {% if genre.common %}class="common"{% endif %}>
+                        {{ genre.sv }} ({{ genre.en }})
+                    </li>
+                {% endfor %}
+                </ul>
+                    {#<div class="genres-list">
                         {% for genre in genres %}
                             <div class="genre-item">
                                 <div>
@@ -80,7 +87,7 @@
                                 </form>
                             </div>
                         {% endfor %}
-                    </div>
+                    </div> #}
             {% endif %}
         </details>
 
