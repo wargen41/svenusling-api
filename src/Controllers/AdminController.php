@@ -25,7 +25,8 @@ class AdminController
             'admin/login.html.twig',
             [
                 'adminBaseStyles' => ADMIN_BASE_STYLES,
-                'siteName' => SITE_NAME
+                'siteName' => SITE_NAME,
+                'pageTitle' => 'Logga in'
             ]
         );
     }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block pageTitle %}API{% endblock %} | {{ siteName }}</title>
+    <title>{{ pageTitle }} | {{ siteName }}</title>
     <link rel="stylesheet" href="{{ adminBaseStyles }}">
 </head>
 <body>
@@ -13,7 +13,7 @@
     {% endblock %}
 
     {% block header %}
-        {% include "admin/header.html.twig" %}
+        {% include "admin/components/header.html.twig" %}
     {% endblock %}
 
 {# Huvudinnehåll #}

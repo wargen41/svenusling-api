@@ -1,3 +1,62 @@
+{% extends "admin/base.html.twig" %}
+
+{% block mainContent %}
+    <p>Välkommen {{ user.username }} <a href="/admin/logout">Logga ut</a></p>
+
+    <article>
+        <h1>Sven Admin</h1>
+
+        <details open>
+            <summary><h2>Snabbstart</h2></summary>
+            <details open>
+                <summary><h3>Mata in film</h3></summary>
+                <p>EJ KLART</p>
+                <p>Filmer inmatade här är dolda tills du aktivt valt att publicera dem.</p>
+                <form method="post" action="">
+                    <input type="hidden" name="form" value="movie">
+                    <fieldset>
+                    <legend>Ny film</legend>
+                    <div class="input-row">
+                    <label for="add-movie-rating">Betyg <input required type="number" min="0" max="5" size="1" name="rating" id="add-movie-rating"></label>
+                    <label for="add-movie-title">Titel <input required name="title" id="add-movie-title" type="text"></label>
+                    <label for="add-movie-year">År <input type="number" min="1888" max="2099" size="4" name="year" id="add-movie-year"></label>
+                    </div>
+                    </fieldset>
+                    <input type="submit" value="Mata in">
+                </form>
+            </details>
+            <details open>
+                <summary><h3>Dolda filmer</h3></summary>
+                <p>Det finns 4 som ännu inte publicerats.</p>
+                <a href="/view/movies/hidden.php">
+                <button>Visa lista med dolda filmer</button></a>
+            </details>
+        </details>
+
+        <details open>
+            <summary><h2>Databas</h2></summary>
+            <details>
+                <summary><h3>Filmer</h3></summary>
+                <ul>
+                    <li><a href="?edit=movie">Redigera film eller serie</a></li>
+                    <li><a href="?add=film">Lägg till film</a></li>
+                    <li><a href="?add=series">Lägg till serie</a></li>
+                    <li><a href="?add=season">Lägg till säsong</a></li>
+                    <li><a href="?add=episode">Lägg till avsnitt</a></li>
+                    <li><a href="?edit=quote">Redigera citat</a></li>
+                    <li><a href="?add=quote">Lägg till citat</a></li>
+                </ul>
+            </details>
+            <details>
+                <summary><h3>Personer</h3></summary>
+                Här ska finnas länkar till sidor som används för att administrera saker som har med personer att göra.<br>
+            </details>
+        </details>
+
+    </article>
+{% endblock %}
+
+{# Gammal
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,3 +194,4 @@
     </div>
 </body>
 </html>
+#}
