@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pageTitle }} | {{ siteName }}</title>
     <link rel="stylesheet" href="{{ adminBaseStyles }}">
+    <style>
+        main.login {
+            height: 100dvh;
+            display: flex;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
     {% block bodyStart %}
@@ -21,13 +28,9 @@
         {% if error %}
             <div class="error">{{ error }}</div>
         {% endif %}
+
         {% block mainContent %}{% endblock %}
-        {# <article>
-            <h1>{% block articleTitle %}Admin{% endblock %}</h1>
-            {% block articleContent %}
-                <p>Artikeltext</p>
-            {% endblock %}
-        </article> #}
+
     </main>
 </body>
 </html>

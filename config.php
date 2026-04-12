@@ -19,7 +19,7 @@ if ($jwtSecret === false || $jwtSecret === '') {
 
 define('JWT_SECRET', $jwtSecret);
 define('JWT_ALGORITHM', 'HS256');
-define('JWT_EXPIRATION', 3600); // 1 hour
+define('JWT_EXPIRATION', 18000); // 5 hours
 
 // Log config on startup
 error_log('Config loaded:');
