@@ -85,7 +85,12 @@ class AdminController
         return Twig::fromRequest($request)->render(
             $response,
             'admin/dashboard.html.twig',
-            ['user' => $user]
+            [
+                'user' => $user,
+                'adminBaseStyles' => ADMIN_BASE_STYLES,
+                'siteName' => SITE_NAME,
+                'pageTitle' => 'Start'
+            ]
         );
     }
 
