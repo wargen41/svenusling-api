@@ -15,19 +15,20 @@ class MoviePersonsController
     }
 
     /**
-     * Public: Get all persons for a movie
+     * Public: Get all persons for a movie (all categories)
      */
     public function getMoviePersons(Request $request, Response $response, array $args): Response
     {
         try {
             $movieId = $args['id'] ?? null;
+            $userRole = $request->getAttribute('user_role');
 
             if (!$movieId || !is_numeric($movieId)) {
                 return $this->jsonResponse($response, ['error' => 'Invalid movie ID'], 400);
             }
 
-            // Verify movie exists
-            $stmt = $this->db->prepare('SELECT id, title FROM movies WHERE id = ?');
+            // Verify movie exists and check visibility
+            $stmt = $this->db->prepare('SELECT id, title, hidden FROM movies WHERE id = ?');
             $stmt->execute([$movieId]);
             $movie = $stmt->fetch();
 
@@ -35,13 +36,18 @@ class MoviePersonsController
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
 
-            // Get all persons for this movie
+            // Check if movie is hidden and user is not admin
+            if ($movie['hidden'] == 1 && $userRole !== 'admin') {
+                return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
+            }
+
+            // Get all persons for this movie, grouped by category
             $stmt = $this->db->prepare('
-                SELECT mp.*, p.id as person_id, p.name, p.birth_date, p.death_date, p.poster_image_id
-                FROM movies_persons mp
-                JOIN persons p ON mp.person_id = p.id
-                WHERE mp.movie_id = ?
-                ORDER BY mp.category ASC, mp.sequence_number ASC
+            SELECT mp.*, p.id as person_id, p.name, p.birth_date, p.death_date, p.poster_image_id
+            FROM movies_persons mp
+            JOIN persons p ON mp.person_id = p.id
+            WHERE mp.movie_id = ?
+            ORDER BY mp.category ASC, mp.sequence_number ASC
             ');
             $stmt->execute([$movieId]);
             $persons = $stmt->fetchAll();
@@ -59,8 +65,12 @@ class MoviePersonsController
             return $this->jsonResponse($response, [
                 'success' => true,
                 'data' => [
-                    'movie' => $movie,
-                    'persons' => $personsByCategory
+                    'movie' => [
+                        'id' => $movie['id'],
+                        'title' => $movie['title']
+                    ],
+                    'persons' => $personsByCategory,
+                    'count' => count($persons)
                 ]
             ]);
 
@@ -78,6 +88,7 @@ class MoviePersonsController
         try {
             $movieId = $args['id'] ?? null;
             $category = $args['category'] ?? null;
+            $userRole = $request->getAttribute('user_role');
 
             if (!$movieId || !is_numeric($movieId)) {
                 return $this->jsonResponse($response, ['error' => 'Invalid movie ID'], 400);
@@ -87,8 +98,8 @@ class MoviePersonsController
                 return $this->jsonResponse($response, ['error' => 'Category is required'], 400);
             }
 
-            // Verify movie exists
-            $stmt = $this->db->prepare('SELECT id, title FROM movies WHERE id = ?');
+            // Verify movie exists and check visibility
+            $stmt = $this->db->prepare('SELECT id, title, hidden FROM movies WHERE id = ?');
             $stmt->execute([$movieId]);
             $movie = $stmt->fetch();
 
@@ -96,13 +107,18 @@ class MoviePersonsController
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
 
+            // Check if movie is hidden and user is not admin
+            if ($movie['hidden'] == 1 && $userRole !== 'admin') {
+                return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
+            }
+
             // Get persons by category
             $stmt = $this->db->prepare('
-                SELECT mp.*, p.id as person_id, p.name, p.birth_date, p.death_date, p.poster_image_id
-                FROM movies_persons mp
-                JOIN persons p ON mp.person_id = p.id
-                WHERE mp.movie_id = ? AND mp.category = ?
-                ORDER BY mp.sequence_number ASC
+            SELECT mp.*, p.id as person_id, p.name, p.birth_date, p.death_date, p.poster_image_id
+            FROM movies_persons mp
+            JOIN persons p ON mp.person_id = p.id
+            WHERE mp.movie_id = ? AND mp.category = ?
+            ORDER BY mp.sequence_number ASC
             ');
             $stmt->execute([$movieId, $category]);
             $persons = $stmt->fetchAll();
@@ -110,7 +126,10 @@ class MoviePersonsController
             return $this->jsonResponse($response, [
                 'success' => true,
                 'data' => [
-                    'movie' => $movie,
+                    'movie' => [
+                        'id' => $movie['id'],
+                        'title' => $movie['title']
+                    ],
                     'category' => $category,
                     'persons' => $persons,
                     'count' => count($persons)
