@@ -318,7 +318,7 @@ class AdminController
                     'message_type' => $messageType,
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
-                    'pageTitle' => 'Start'
+                    'pageTitle' => 'Genrer'
                 ]
             );
         } catch (\Exception $e) {
