@@ -43,6 +43,11 @@
                     </li>
                 {% endfor %}
                 </ul>
+                {% for genre in genres %}
+                <div id="edit-form-{{ genre.id }}">
+                    {{ genre.id }}: {{ genre.sv }} / {{ genre.en }}
+                </div>
+                {% endfor %}
                     {#<div class="genres-list">
                         {% for genre in genres %}
                             <div class="genre-item">
