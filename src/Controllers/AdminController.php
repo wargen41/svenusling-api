@@ -43,7 +43,7 @@ class AdminController
                 $response,
                 'admin/login.html.twig',
                 [
-                    'error' => 'Email and password are required',
+                    'error' => 'Både e-post och lösen måste vara ifyllda',
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
                     'pageTitle' => 'Logga in'
@@ -69,7 +69,7 @@ class AdminController
                     $response,
                     'admin/login.html.twig',
                     [
-                        'error' => 'Invalid credentials',
+                        'error' => 'Felaktiga inloggningsuppgifter',
                         'adminBaseStyles' => ADMIN_BASE_STYLES,
                         'siteName' => SITE_NAME,
                         'pageTitle' => 'Logga in'
@@ -81,7 +81,7 @@ class AdminController
                 $response,
                 'admin/login.html.twig',
                 [
-                    'error' => 'Login failed: ' . $e->getMessage(),
+                    'error' => 'Inloggning misslyckades: ' . $e->getMessage(),
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
                     'pageTitle' => 'Logga in'
