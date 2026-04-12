@@ -21,6 +21,7 @@ class SeriesController
     {
         try {
             $seriesId = $args['id'] ?? null;
+            $userRole = $request->getAttribute('user_role');
 
             if (!$seriesId || !is_numeric($seriesId)) {
                 return $this->jsonResponse($response, ['error' => 'Invalid series ID'], 400);
@@ -35,22 +36,31 @@ class SeriesController
                 return $this->jsonResponse($response, ['error' => 'Series not found'], 404);
             }
 
+            // Check if series is hidden and user is not admin
+            if ($series['hidden'] == 1 && $userRole !== 'admin') {
+                return $this->jsonResponse($response, ['error' => 'Series not found'], 404);
+            }
+
             // Get all seasons for this series
-            $stmt = $this->db->prepare('
-                SELECT * FROM movies
-                WHERE series_id = ? AND type = "season"
-                ORDER BY sequence_number ASC
-            ');
+            $seasonSql = 'SELECT * FROM movies WHERE series_id = ? AND type = "season"';
+            if ($userRole !== 'admin') {
+                $seasonSql .= ' AND hidden = 0';
+            }
+            $seasonSql .= ' ORDER BY sequence_number ASC';
+
+            $stmt = $this->db->prepare($seasonSql);
             $stmt->execute([$seriesId]);
             $seasons = $stmt->fetchAll();
 
             // For each season, get episodes
             foreach ($seasons as &$season) {
-                $stmt = $this->db->prepare('
-                    SELECT * FROM movies
-                    WHERE season_id = ?
-                    ORDER BY sequence_number ASC
-                ');
+                $episodeSql = 'SELECT * FROM movies WHERE season_id = ?';
+                if ($userRole !== 'admin') {
+                    $episodeSql .= ' AND hidden = 0';
+                }
+                $episodeSql .= ' ORDER BY sequence_number ASC';
+
+                $stmt = $this->db->prepare($episodeSql);
                 $stmt->execute([$season['id']]);
                 $season['episodes'] = $stmt->fetchAll();
             }
@@ -75,6 +85,7 @@ class SeriesController
     {
         try {
             $seasonId = $args['id'] ?? null;
+            $userRole = $request->getAttribute('user_role');
 
             if (!$seasonId || !is_numeric($seasonId)) {
                 return $this->jsonResponse($response, ['error' => 'Invalid season ID'], 400);
@@ -96,12 +107,19 @@ class SeriesController
                 $season['series'] = $stmt->fetch();
             }
 
-            // Get episodes
-            $stmt = $this->db->prepare('
-                SELECT * FROM movies
-                WHERE season_id = ?
-                ORDER BY sequence_number ASC
-            ');
+            // Check if season is hidden and user is not admin
+            if ($season['hidden'] == 1 && $userRole !== 'admin') {
+                return $this->jsonResponse($response, ['error' => 'Season not found'], 404);
+            }
+
+            // Get episodes with hidden filter
+            $episodeSql = 'SELECT * FROM movies WHERE season_id = ?';
+            if ($userRole !== 'admin') {
+                $episodeSql .= ' AND hidden = 0';
+            }
+            $episodeSql .= ' ORDER BY sequence_number ASC';
+
+            $stmt = $this->db->prepare($episodeSql);
             $stmt->execute([$seasonId]);
             $season['episodes'] = $stmt->fetchAll();
 

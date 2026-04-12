@@ -70,6 +70,9 @@ class MovieController
                 $bindings[] = $searchTerm;
             }
 
+            // Add hidden filter
+            $this->addHiddenFilter($where, $bindings, $request->getAttribute('user_role'));
+
             $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 
             $columns = 'id, title, original_title, year, type, rating, poster_image_id, added_date';
@@ -127,6 +130,7 @@ class MovieController
     {
         try {
             $movieId = $args['id'] ?? null;
+            $userRole = $request->getAttribute('user_role');
 
             if (!$movieId || !is_numeric($movieId)) {
                 return $this->jsonResponse($response, ['error' => 'Invalid movie ID'], 400);
@@ -138,6 +142,11 @@ class MovieController
             $movie = $stmt->fetch();
 
             if (!$movie) {
+                return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
+            }
+
+            // Check if movie is hidden and user is not admin
+            if ($movie['hidden'] == 1 && $userRole !== 'admin') {
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
 
@@ -728,6 +737,13 @@ class MovieController
         }
 
         return $errors;
+    }
+
+    private function addHiddenFilter(&$where, &$bindings, $userRole)
+    {
+        if ($userRole !== 'admin') {
+            $where[] = 'hidden = 0';
+        }
     }
 
     private function jsonResponse(Response $response, $data, $status = 200): Response
