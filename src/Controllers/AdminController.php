@@ -316,7 +316,9 @@ class AdminController
                     'genres' => $genres['data'] ?? [],
                     'message' => $message,
                     'message_type' => $messageType,
-                    'adminBaseStyles' => ADMIN_BASE_STYLES
+                    'adminBaseStyles' => ADMIN_BASE_STYLES,
+                    'siteName' => SITE_NAME,
+                    'pageTitle' => 'Start'
                 ]
             );
         } catch (\Exception $e) {
@@ -329,7 +331,9 @@ class AdminController
                     'message' => 'Failed to load genres: ' . $e->getMessage(),
                     'message_type' => 'error',
                     'genres' => [],
-                    'adminBaseStyles' => ADMIN_BASE_STYLES
+                    'adminBaseStyles' => ADMIN_BASE_STYLES,
+                    'siteName' => SITE_NAME,
+                    'pageTitle' => 'Start'
                 ]
             );
         }
