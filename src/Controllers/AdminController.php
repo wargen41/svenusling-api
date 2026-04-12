@@ -333,7 +333,7 @@ class AdminController
                     'genres' => [],
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
-                    'pageTitle' => 'Start'
+                    'pageTitle' => 'Genrer'
                 ]
             );
         }
