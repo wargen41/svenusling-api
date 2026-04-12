@@ -45,7 +45,35 @@
                 </ul>
                 {% for genre in genres %}
                 <div id="edit-form-{{ genre.id }}" popover>
-                    {{ genre.id }}: {{ genre.sv }} / {{ genre.en }}
+                    <h3>{{ genre.sv }}</h3>
+
+                    <form method="POST" action="/admin/genres/update">
+                        <input type="hidden" name="genre_id" value="{{ genre.id }}">
+
+                        <div class="form-group">
+                            <label for="edit-sv-{{ genre.id }}">Swedish Name</label>
+                            <input type="text" id="edit-sv-{{ genre.id }}" name="sv" value="{{ genre.sv }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-en-{{ genre.id }}">English Name</label>
+                            <input type="text" id="edit-en-{{ genre.id }}" name="en" value="{{ genre.en }}" required>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="edit-common-{{ genre.id }}" name="common" value="1" {% if genre.common %}checked{% endif %}>
+                            <label for="edit-common-{{ genre.id }}" style="margin-bottom: 0;">Common</label>
+                        </div>
+
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button type="submit" style="background: #27ae60;">Save</button>
+                        </div>
+                    </form>
+
+                    <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Are you sure?');">
+                        <input type="hidden" name="genre_id" value="{{ genre.id }}">
+                        <button type="submit" class="delete">Delete</button>
+                    </form>
                 </div>
                 {% endfor %}
                     {#<div class="genres-list">
