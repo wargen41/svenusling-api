@@ -70,7 +70,7 @@
                         </div>
                     </form>
 
-                    <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Are you sure?');">
+                    <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ genre.sv }}?');">
                         <input type="hidden" name="genre_id" value="{{ genre.id }}">
                         <button type="submit" class="delete">Radera</button>
                     </form>
