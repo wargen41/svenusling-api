@@ -1,3 +1,94 @@
+{% extends "admin/base.html.twig" %}
+
+{% block mainContent %}
+
+    {% if message %}
+        <div class="{% if message_type == 'success' %}success{% else %}error{% endif %}">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <article>
+        <h1>Genrer</h1>
+
+        <details open>
+            <summary><h2>Lägg till genre</h2></summary>
+                <form method="POST" action="/admin/genres/add">
+                    <div class="form-group">
+                        <label for="sv">Svenska</label>
+                        <input type="text" id="sv" name="sv" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="en">Engelska</label>
+                        <input type="text" id="en" name="en" required>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="common" name="common" value="1">
+                        <label for="common" style="margin-bottom: 0;">Vanlig</label>
+                    </div>
+
+                    <button type="submit">Lägg till genre</button>
+                </form>
+        </details>
+
+        <details open>
+            <summary><h2>Befintliga genrer ({{ genres|length }})</h2></summary>
+            {% if genres|length > 0 %}
+                    <div class="genres-list">
+                        {% for genre in genres %}
+                            <div class="genre-item">
+                                <div>
+                                    {% if genre.common %}<span class="common-badge">Common</span> {% endif %}{{ genre.sv }}
+                                </div>
+                                <div>{{ genre.en }}</div>
+                                <div class="genre-actions">
+                                    <button type="button" class="edit" onclick="document.getElementById('edit-form-{{ genre.id }}').style.display='block'">Edit</button>
+                                    <form method="POST" action="/admin/genres/delete" style="display:inline;" onsubmit="return confirm('Are you sure?');">
+                                        <input type="hidden" name="genre_id" value="{{ genre.id }}">
+                                        <button type="submit" class="delete">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Hidden edit form for this genre -->
+                            <div id="edit-form-{{ genre.id }}" style="display:none; margin-top: 1rem; padding: 1rem; background: #f0f7ff; border-radius: 4px; border: 1px solid #667eea;">
+                                <h3>Edit Genre</h3>
+                                <form method="POST" action="/admin/genres/update">
+                                    <input type="hidden" name="genre_id" value="{{ genre.id }}">
+
+                                    <div class="form-group">
+                                        <label for="edit-sv-{{ genre.id }}">Swedish Name</label>
+                                        <input type="text" id="edit-sv-{{ genre.id }}" name="sv" value="{{ genre.sv }}" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="edit-en-{{ genre.id }}">English Name</label>
+                                        <input type="text" id="edit-en-{{ genre.id }}" name="en" value="{{ genre.en }}" required>
+                                    </div>
+
+                                    <div class="form-group checkbox-group">
+                                        <input type="checkbox" id="edit-common-{{ genre.id }}" name="common" value="1" {% if genre.common %}checked{% endif %}>
+                                        <label for="edit-common-{{ genre.id }}" style="margin-bottom: 0;">Common</label>
+                                    </div>
+
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button type="submit" style="background: #27ae60;">Save</button>
+                                        <button type="button" style="background: #95a5a6;" onclick="document.getElementById('edit-form-{{ genre.id }}').style.display='none'">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    </div>
+            {% endif %}
+        </details>
+
+    </article>
+
+{% endblock %}
+
+{#
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -328,3 +419,4 @@
     </div>
 </body>
 </html>
+#}
