@@ -8,6 +8,10 @@
     {% include "admin/components/styles.html.twig" %}
 </head>
 <body>
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
     {% block bodyStart %}
 {# Länk för tillgänglighet #}
     <a class="skip-link" href="#main-content">Hoppa till huvudinnehållet</a>
@@ -19,9 +23,6 @@
 
 {# Huvudinnehåll #}
     <main id="main-content" {% block mainAttr %}{% endblock %}>
-        {% if error %}
-            <div class="error">{{ error }}</div>
-        {% endif %}
 
         {% block mainContent %}{% endblock %}
 
