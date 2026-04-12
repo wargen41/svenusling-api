@@ -29,7 +29,7 @@
                         <label for="common" style="margin-bottom: 0;">Vanlig</label>
                     </div>
 
-                    <button type="submit">Lägg till genre</button>
+                    <button type="submit">Lägg till</button>
                 </form>
         </details>
 
@@ -38,7 +38,7 @@
             {% if genres|length > 0 %}
                 <ul style="list-style-type: none;">
                 {% for genre in genres %}
-                    <li {% if genre.common %}class="common"{% endif %} title="{{ genre.en }}" style="display: inline;">
+                    <li {% if genre.common %}class="common"{% endif %} title="en: {{ genre.en }}; sv: {{ genre.sv }} id: {{ genre.id }}" style="display: inline;">
                         <button popovertarget="edit-form-{{ genre.id }}">{{ genre.sv }}</button>
                     </li>
                 {% endfor %}
