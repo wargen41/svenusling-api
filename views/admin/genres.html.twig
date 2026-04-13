@@ -47,7 +47,7 @@
                 <form method="POST" action="/admin/genres/update">
                     <input type="hidden" name="genre_id" value="{{ genre.id }}">
                     <fieldset>
-                        <legend>{{ genre.sv }}</legend>
+                        <legend>Redigera genre</legend>
 
                         <div class="form-group">
                             <label for="edit-sv-{{ genre.id }}">Svenska</label>
@@ -59,15 +59,14 @@
                             <input type="text" id="edit-en-{{ genre.id }}" name="en" value="{{ genre.en }}" required>
                         </div>
 
-                        <div class="form-group checkbox-group">
-                            <input type="checkbox" id="edit-common-{{ genre.id }}" name="common" value="1" {% if genre.common %}checked{% endif %}>
-                            <label for="edit-common-{{ genre.id }}">Vanlig</label>
+                        <div class="form-group">
+                            <label for="edit-common-{{ genre.id }}">
+                                <input type="checkbox" id="edit-common-{{ genre.id }}" name="common" value="1" {% if genre.common %}checked{% endif %}>
+                            Vanlig</label>
                         </div>
                     </fieldset>
 
-                    <div style="display: flex; gap: 0.5rem;">
-                        <button type="submit">Spara</button>
-                    </div>
+                    <button type="submit">Spara</button>
                 </form>
 
                 <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ genre.sv }}?');">
