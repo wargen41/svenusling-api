@@ -34,7 +34,7 @@
         <details open>
             <summary><h2>Befintliga genrer ({{ genres|length }})</h2></summary>
             {% if genres|length > 0 %}
-                <ul style="list-style-type: none;">
+                <ul class="button-list">
                 {% for genre in genres %}
                     <li {% if genre.common %}class="common"{% endif %} title="en: {{ genre.en }}; sv: {{ genre.sv }}; id: {{ genre.id }}" style="display: inline;">
                         <button popovertarget="edit-form-{{ genre.id }}">{{ genre.sv }}</button>
