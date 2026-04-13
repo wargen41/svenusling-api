@@ -88,11 +88,11 @@
             justify-content: start;
         }
 
-        .input-row + .input-row {
+        .form-row + .form-row {
             margin-top: .5em;
         }
 
-        .input-row
+        .form-row
         {
             display: flex;
             gap: .5em;
@@ -101,7 +101,7 @@
         }
 
         /* Allow the label to grow and shrink */
-        .input-row label
+        .form-row label
         {
             flex: auto;
             display: flex;
@@ -110,28 +110,28 @@
         }
 
         /* But where the input has a [size] attribute, do not use flexible size */
-        .input-row label:has(input[size])
+        .form-row label:has(input[size])
         {
             flex: initial;
         }
 
         /* All inputs expand to fill their label */
-        .input-row label input,
-        .input-row label select
+        .form-row label input,
+        .form-row label select
         {
             width: 100%;
             box-sizing: border-box;
         }
 
         /* But inputs with a [size] attribute keep their natural size */
-        .input-row input[size]
+        .form-row input[size]
         {
             width: auto;
             min-width: 0;
             flex: none;
         }
 
-        .input-row > select:has(+ input[type=submit])
+        .form-row > select:has(+ input[type=submit])
         {
             flex: auto;
         }
