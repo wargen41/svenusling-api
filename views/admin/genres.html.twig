@@ -64,9 +64,10 @@
                                 <input type="checkbox" id="edit-common-{{ genre.id }}" name="common" value="1" {% if genre.common %}checked{% endif %}>
                             Vanlig</label>
                         </div>
+
+                        <button type="submit">Spara</button>
                     </fieldset>
 
-                    <button type="submit">Spara</button>
                 </form>
 
                 <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ genre.sv }}?');">
