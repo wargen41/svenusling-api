@@ -147,40 +147,41 @@
             justify-content: space-between;
         }
 
-/*        @position-try --left-down {
-            inset: unset;
-            top: anchor(top);
-            right: anchor(left);
-        }
-        @position-try --right-down {
-            inset: unset;
-            top: anchor(top);
-            left: anchor(right);
-        }
-        @position-try --left-up {
-            inset: unset;
-            bottom: anchor(top);
-            right: anchor(left);
-        }
-        @position-try --right-up {
-            inset: unset;
-            bottom: anchor(top);
-            left: anchor(right);
-        }
-        @position-try --bottom-down {
+        @position-try --button-bottom-center {
             inset: unset;
             position-area: bottom center;
         }
-        @position-try --bottom-up {
+        @position-try --button-top-center {
             inset: unset;
             position-area: top center;
-        }*/
+        }
+        @position-try --button-bottom-right {
+            inset: unset;
+            position-area: bottom right;
+        }
+        @position-try --button-bottom-left {
+            inset: unset;
+            position-area: bottom left;
+        }
+        @position-try --button-top-right {
+            inset: unset;
+            position-area: top right;
+        }
+        @position-try --button-top-left {
+            inset: unset;
+            position-area: top left;
+        }
+        @position-try --button-center-center {
+            inset: unset;
+            position-area: center;
+        }
 
         .button-list-form[popover]
         {
+            margin: auto;
             inset: unset;
             position-area: bottom center;
-            position-try-fallbacks: --top-up, --right-down, --right-up, --left-up, --right-up;
+            position-try-fallbacks: --button-top-center, --button-bottom-right, --button-bottom-left, --button-top-right, --button-top-left, --button-center-center;
         }
 
         main.login

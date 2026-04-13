@@ -37,7 +37,7 @@
             <div class="button-list">
             {% for genre in genres %}
                 <button popovertarget="edit-form-{{ genre.id }}" style="anchor-name: --anchor-genre-{{ genre.id }}"
-                {% if genre.common %}class="common"{% endif %} title="en: {{ genre.en }}; sv: {{ genre.sv }}; id: {{ genre.id }}">{{ genre.sv }}</button>
+                {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
             {% endfor %}
             </div>
         </fieldset>
