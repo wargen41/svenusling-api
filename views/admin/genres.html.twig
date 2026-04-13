@@ -36,7 +36,7 @@
             </legend>Redigera genrer ({{ genres|length }})</legend>
             <ul class="button-list">
             {% for genre in genres %}
-                <li {% if genre.common %}class="common"{% endif %} title="en: {{ genre.en }}; sv: {{ genre.sv }}; id: {{ genre.id }}" style="display: inline;">
+                <li {% if genre.common %}class="common"{% endif %} title="en: {{ genre.en }}; sv: {{ genre.sv }}; id: {{ genre.id }}">
                     <button popovertarget="edit-form-{{ genre.id }}">{{ genre.sv }}</button>
                 </li>
             {% endfor %}
