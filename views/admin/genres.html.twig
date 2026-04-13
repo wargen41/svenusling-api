@@ -33,7 +33,7 @@
 
         {% if genres|length > 0 %}
         <fieldset>
-            <legend>Redigera genrer ({{ genres|length }})</legend>
+            <legend>Redigera genrer</legend>
             <div class="button-list">
             {% for genre in genres %}
                 <button popovertarget="edit-form-{{ genre.id }}" {% if genre.common %}class="common"{% endif %} title="en: {{ genre.en }}; sv: {{ genre.sv }}; id: {{ genre.id }}">{{ genre.sv }}</button>
