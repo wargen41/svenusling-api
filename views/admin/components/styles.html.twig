@@ -178,11 +178,9 @@
 
         .button-list-form[popover]
         {
-            padding: var(--padding-block) 0;
             inset: unset;
-            top: calc(anchor(top) - var(--block-total) + var(--sub-offset));
-            right: anchor(left);
-            position-try-fallbacks: --bottom-down, --bottom-up, --right-down, --right-up, --left-up, --right-up;
+            position-area: bottom center;
+            position-try-fallbacks: --bottom-up, --right-down, --right-up, --left-up, --right-up;
         }
 
         main.login
