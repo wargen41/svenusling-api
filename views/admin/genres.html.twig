@@ -73,7 +73,7 @@
                 <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ genre.sv }}?');">
                     <input type="hidden" name="genre_id" value="{{ genre.id }}">
                     <fieldset>
-                        <legend>Radera {{ genre.sv }}?</legend>
+                        <legend>Radera genren {{ genre.sv }}?</legend>
                         <button type="submit" class="delete">Ta bort</button>
                     </fieldset>
                 </form>
