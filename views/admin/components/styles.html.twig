@@ -110,7 +110,9 @@
         }
 
         /* But where the input has a [size] attribute, do not use flexible size */
-        .form-row label:has(input[size])
+        /* As well as checkboxes */
+        .form-row label:has(input[size]),
+        .form-row label:has(input[type=checkbox])
         {
             flex: initial;
         }
@@ -124,7 +126,9 @@
         }
 
         /* But inputs with a [size] attribute keep their natural size */
-        .form-row input[size]
+        /* As well as checkboxes */
+        .form-row input[size],
+        .form-row label input[type=checkbox]
         {
             width: auto;
             min-width: 0;
