@@ -15,9 +15,9 @@
                     <fieldset>
                         <legend>Ny film</legend>
                         <div class="input-row">
-                            <label for="add-movie-rating">Betyg
-                                {#<input required type="number" min="0" max="5" size="1" name="rating" id="add-movie-rating">#}
-                                <input type="range" id="rating" name="rating" list="main-ratings">
+                            <label for="rating">Betyg
+                                <input required type="number" min="0" max="100" size="3" name="rating" id="rating">
+                                <input type="range" id="rating-slider" list="main-ratings">
                                 <datalist id="main-ratings">
                                     <option value="0"></option>
                                     <option value="20"></option>
