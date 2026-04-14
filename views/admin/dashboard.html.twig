@@ -15,9 +15,23 @@
                     <fieldset>
                         <legend>Ny film</legend>
                         <div class="input-row">
-                            <label for="add-movie-rating">Betyg <input required type="number" min="0" max="5" size="1" name="rating" id="add-movie-rating"></label>
-                            <label for="add-movie-title">Titel <input required name="title" id="add-movie-title" type="text"></label>
-                            <label for="add-movie-year">År <input type="number" min="1888" max="2099" size="4" name="year" id="add-movie-year"></label>
+                            <label for="add-movie-rating">Betyg
+                                {#<input required type="number" min="0" max="5" size="1" name="rating" id="add-movie-rating">#}
+                                <input type="range" id="rating" name="rating" list="main-ratings">
+                                <datalist id="main-ratings">
+                                    <option value="0"></option>
+                                    <option value="25"></option>
+                                    <option value="50"></option>
+                                    <option value="75"></option>
+                                    <option value="100"></option>
+                                </datalist>
+                            </label>
+                            <label for="add-movie-title">Titel
+                                <input required name="title" id="add-movie-title" type="text">
+                            </label>
+                            <label for="add-movie-year">År
+                                <input type="number" min="1888" max="2099" size="4" name="year" id="add-movie-year">
+                            </label>
                         </div>
                     </fieldset>
                     <button type="submit">Mata in</button>
