@@ -18,10 +18,10 @@
                     <label for="name">Namn
                         <input type="text" id="name" name="name" size="30" required>
                     </label>
-                    <label for="birth_date">Födelsår
+                    <label for="birth_date">Födelsedag
                         <input type="date" id="birth_date" name="birth_date" min="1800-01-01" max="2099-12-31">
                     </label>
-                    <label for="death_date">Dödsår
+                    <label for="death_date">Dödsdag
                         <input type="date" id="death_date" name="death_date" min="1800-01-01" max="2099-12-31">
                     </label>
                 </div>
@@ -53,12 +53,12 @@
                         </div>
 
                         <div class="form-row">
-                            <label for="edit-birth-{{ person.id }}">Födelsår</label>
+                            <label for="edit-birth-{{ person.id }}">Födelsedag</label>
                             <input type="date" id="edit-birth-{{ person.id }}" name="birth_date" value="{{ person.birth_date }}" min="1800-01-01" max="2099-12-31">
                         </div>
 
                         <div class="form-row">
-                            <label for="edit-death-{{ person.id }}">Dödsår</label>
+                            <label for="edit-death-{{ person.id }}">Dödsdag</label>
                             <input type="date" id="edit-death-{{ person.id }}" name="death_date" value="{{ person.death_date }}" min="1800-01-01" max="2099-12-31">
                         </div>
 
