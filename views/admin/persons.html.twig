@@ -18,11 +18,11 @@
                     <label for="name">Namn
                         <input type="text" id="name" name="name" size="30" required>
                     </label>
-                    <label for="birth_year">Födelsår
-                        <input type="number" id="birth_year" name="birth_year" min="1800" max="2100">
+                    <label for="birth_date">Födelsår
+                        <input type="number" id="birth_date" name="birth_date" min="1800" max="2100">
                     </label>
-                    <label for="death_year">Dödsår
-                        <input type="number" id="death_year" name="death_year" min="1800" max="2100">
+                    <label for="death_date">Dödsår
+                        <input type="number" id="death_date" name="death_date" min="1800" max="2100">
                     </label>
                 </div>
             </fieldset>
@@ -54,12 +54,12 @@
 
                         <div class="form-row">
                             <label for="edit-birth-{{ person.id }}">Födelsår</label>
-                            <input type="number" id="edit-birth-{{ person.id }}" name="birth_year" value="{{ person.birth_year }}" min="1800" max="2100">
+                            <input type="number" id="edit-birth-{{ person.id }}" name="birth_date" value="{{ person.birth_date }}" min="1800" max="2100">
                         </div>
 
                         <div class="form-row">
                             <label for="edit-death-{{ person.id }}">Dödsår</label>
-                            <input type="number" id="edit-death-{{ person.id }}" name="death_year" value="{{ person.death_year }}" min="1800" max="2100">
+                            <input type="number" id="edit-death-{{ person.id }}" name="death_date" value="{{ person.death_date }}" min="1800" max="2100">
                         </div>
 
                         <button type="submit">Spara</button>

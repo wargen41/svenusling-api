@@ -369,8 +369,8 @@ class AdminController
         try {
             $this->callApiPost('/persons', [
                 'name' => $data['name'] ?? '',
-                'birth_year' => $data['birth_year'] ?? '',
-                'death_year' => $data['death_year'] ?? '',
+                'birth_date' => $data['birth_date'] ?? '',
+                'death_date' => $data['death_date'] ?? '',
             ], $token);
 
             $_SESSION['message'] = 'Person added successfully!';
@@ -405,8 +405,8 @@ class AdminController
             try {
                 $this->callApiPut('/persons/' . $personId, [
                     'name' => $data['name'] ?? '',
-                    'birth_year' => $data['birth_year'] ?? '',
-                    'death_year' => $data['death_year'] ?? '',
+                    'birth_date' => $data['birth_date'] ?? '',
+                    'death_date' => $data['death_date'] ?? '',
                 ], $token);
 
                 $_SESSION['message'] = 'Person updated successfully!';
