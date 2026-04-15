@@ -54,12 +54,12 @@
 
                         <div class="form-row">
                             <label for="edit-birth-{{ person.id }}">Födelsår</label>
-                            <input type="number" id="edit-birth-{{ person.id }}" name="birth_date" value="{{ person.birth_date }}" min="1800" max="2100">
+                            <input type="date" id="edit-birth-{{ person.id }}" name="birth_date" value="{{ person.birth_date }}" min="1800-01-01" max="2099-12-31">
                         </div>
 
                         <div class="form-row">
                             <label for="edit-death-{{ person.id }}">Dödsår</label>
-                            <input type="number" id="edit-death-{{ person.id }}" name="death_date" value="{{ person.death_date }}" min="1800" max="2100">
+                            <input type="date" id="edit-death-{{ person.id }}" name="death_date" value="{{ person.death_date }}" min="1800-01-01" max="2099-12-31">
                         </div>
 
                         <button type="submit">Spara</button>
