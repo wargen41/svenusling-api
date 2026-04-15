@@ -1,0 +1,84 @@
+{% extends "admin/base.html.twig" %}
+
+{% block mainContent %}
+
+    {% if message %}
+        <div class="{% if message_type == 'success' %}success{% else %}error{% endif %}">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <article>
+        <h1>Personer</h1>
+
+        <form method="POST" action="/admin/persons/add">
+            <fieldset>
+                <legend>Lägg till person</legend>
+                <div class="form-row">
+                    <label for="name">Namn
+                        <input type="text" id="name" name="name" size="30" required>
+                    </label>
+                    <label for="birth_year">Födelsår
+                        <input type="number" id="birth_year" name="birth_year" min="1800" max="2100">
+                    </label>
+                    <label for="death_year">Dödsår
+                        <input type="number" id="death_year" name="death_year" min="1800" max="2100">
+                    </label>
+                </div>
+            </fieldset>
+            <button type="submit">Spara</button>
+        </form>
+
+        {% if persons|length > 0 %}
+        <fieldset>
+            <legend>Redigera personer</legend>
+            <div class="button-list">
+            {% for person in persons %}
+                <button popovertarget="edit-form-{{ person.id }}" style="anchor-name: --anchor-person-{{ person.id }}">{{ person.name }}</button>
+            {% endfor %}
+            </div>
+        </fieldset>
+
+            {% for person in persons %}
+            <div id="edit-form-{{ person.id }}" popover style="position-anchor: --anchor-person-{{ person.id }}" class="modal">
+
+                <form method="POST" action="/admin/persons/update">
+                    <input type="hidden" name="person_id" value="{{ person.id }}">
+                    <fieldset>
+                        <legend>Redigera person</legend>
+
+                        <div class="form-row">
+                            <label for="edit-name-{{ person.id }}">Namn</label>
+                            <input type="text" id="edit-name-{{ person.id }}" name="name" value="{{ person.name }}" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="edit-birth-{{ person.id }}">Födelsår</label>
+                            <input type="number" id="edit-birth-{{ person.id }}" name="birth_year" value="{{ person.birth_year }}" min="1800" max="2100">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="edit-death-{{ person.id }}">Dödsår</label>
+                            <input type="number" id="edit-death-{{ person.id }}" name="death_year" value="{{ person.death_year }}" min="1800" max="2100">
+                        </div>
+
+                        <button type="submit">Spara</button>
+                    </fieldset>
+
+                </form>
+
+                <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort personen {{ person.name }}?');">
+                    <input type="hidden" name="person_id" value="{{ person.id }}">
+                    <fieldset>
+                        <legend>Radera personen {{ person.name }}?</legend>
+                        <button type="submit" class="delete">Ta bort</button>
+                    </fieldset>
+                </form>
+            </div>
+            {% endfor %}
+
+        {% endif %}
+
+    </article>
+
+{% endblock %}

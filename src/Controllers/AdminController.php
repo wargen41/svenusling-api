@@ -355,6 +355,160 @@ class AdminController
     }
 
     /**
+     * Handle add person form submission
+     */
+    public function handleAddPerson(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+
+        try {
+            $this->callApiPost('/persons', [
+                'name' => $data['name'] ?? '',
+                'birth_year' => $data['birth_year'] ?? '',
+                'death_year' => $data['death_year'] ?? '',
+            ], $token);
+
+            $_SESSION['message'] = 'Person added successfully!';
+            $_SESSION['message_type'] = 'success';
+        } catch (\Exception $e) {
+            $_SESSION['message'] = 'Error adding person: ' . $e->getMessage();
+            $_SESSION['message_type'] = 'error';
+        }
+
+        // Redirect back to persons page
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/persons');
+        return $response;
+    }
+
+    /**
+     * Handle update person form submission
+     */
+    public function handleUpdatePerson(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $personId = $data['person_id'] ?? null;
+
+        if (!$personId) {
+            $_SESSION['message'] = 'Error: Person ID missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiPut('/persons/' . $personId, [
+                    'name' => $data['name'] ?? '',
+                    'birth_year' => $data['birth_year'] ?? '',
+                    'death_year' => $data['death_year'] ?? '',
+                ], $token);
+
+                $_SESSION['message'] = 'Person updated successfully!';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error updating person: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+            }
+        }
+
+        // Redirect back to persons page
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/persons');
+        return $response;
+    }
+
+    /**
+     * Handle delete person form submission
+     */
+    public function handleDeletePerson(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $personId = $data['person_id'] ?? null;
+
+        if (!$personId) {
+            $_SESSION['message'] = 'Error: Person ID missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiDelete('/persons/' . $personId, $token);
+
+                $_SESSION['message'] = 'Person deleted successfully!';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error deleting person: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+            }
+        }
+
+        // Redirect back to persons page
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/persons');
+        return $response;
+    }
+
+    /**
+     * Update personsPage to show session messages
+     */
+    public function personsPage(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $user = $_SESSION['user'] ?? null;
+        $token = $_SESSION['jwt_token'] ?? null;
+
+        // Get message from session if exists
+        $message = $_SESSION['message'] ?? null;
+        $messageType = $_SESSION['message_type'] ?? null;
+        unset($_SESSION['message']);
+        unset($_SESSION['message_type']);
+
+        try {
+            // Fetch all persons from API
+            $persons = $this->callApiGet('/persons', $token);
+
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/persons.html.twig',
+                [
+                    'user' => $user,
+                    'persons' => $persons['data'] ?? [],
+                    'message' => $message,
+                    'message_type' => $messageType,
+                    'adminBaseStyles' => ADMIN_BASE_STYLES,
+                    'siteName' => SITE_NAME,
+                    'pageTitle' => 'VIP'
+                ]
+            );
+        } catch (\Exception $e) {
+            error_log('Error in personsPage: ' . $e->getMessage());
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/persons.html.twig',
+                [
+                    'user' => $user,
+                    'message' => 'Failed to load persons: ' . $e->getMessage(),
+                    'message_type' => 'error',
+                    'persons' => [],
+                    'adminBaseStyles' => ADMIN_BASE_STYLES,
+                    'siteName' => SITE_NAME,
+                    'pageTitle' => 'VIP'
+                ]
+            );
+        }
+    }
+
+    /**
      * Helper: Call API GET
      */
     private function callApiGet($endpoint, $token = null)

@@ -143,10 +143,14 @@ class Routes
         $app->post('/admin/genres/add', [AdminController::class, 'handleAddGenre'])->add(new AdminAuthMiddleware());
         $app->post('/admin/genres/update', [AdminController::class, 'handleUpdateGenre'])->add(new AdminAuthMiddleware());
         $app->post('/admin/genres/delete', [AdminController::class, 'handleDeleteGenre'])->add(new AdminAuthMiddleware());
+        // Admin person routes
+        $app->get('/admin/persons', [AdminController::class, 'personsPage'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/persons/add', [AdminController::class, 'handleAddPerson'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/persons/update', [AdminController::class, 'handleUpdatePerson'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/persons/delete', [AdminController::class, 'handleDeletePerson'])->add(new AdminAuthMiddleware());
 
         // Other admin pages (protected)
         $app->get('/admin/movies', [AdminController::class, 'moviesPage'])->add(new AdminAuthMiddleware());
-        $app->get('/admin/persons', [AdminController::class, 'personsPage'])->add(new AdminAuthMiddleware());
         // etc.
     }
 }

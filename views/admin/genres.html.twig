@@ -48,17 +48,17 @@
                     <fieldset>
                         <legend>Redigera genre</legend>
 
-                        <div class="form-group">
+                        <div class="form-row">
                             <label for="edit-sv-{{ genre.id }}">Svenska</label>
                             <input type="text" id="edit-sv-{{ genre.id }}" name="sv" value="{{ genre.sv }}" required>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-row">
                             <label for="edit-en-{{ genre.id }}">Engelska</label>
                             <input type="text" id="edit-en-{{ genre.id }}" name="en" value="{{ genre.en }}" required>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-row">
                             <label for="edit-common-{{ genre.id }}">Markera som vanlig
                                 <input type="checkbox" id="edit-common-{{ genre.id }}" name="common" value="1" {% if genre.common %}checked{% endif %}>
                             </label>
