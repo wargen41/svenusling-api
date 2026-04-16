@@ -13,10 +13,17 @@
 
         <form method="POST" action="/admin/persons/add">
             <fieldset>
-                <legend>Lägg till person</legend>
+                <legend>Ny VIP</legend>
                 <div class="form-row">
                     <label for="name">Namn
                         <input type="text" id="name" name="name" size="30" required>
+                    </label>
+                    <label for="category">Kategori
+                        <select type="text" id="category" name="category" required>
+                            <option value="director">Regissör</option>
+                            <option value="actor">Skådespelare</option>
+                            <option value="voice_actor">Röstskådespelare</option>
+                        </select>
                     </label>
                     <label for="birth_date">Födelsedag
                         <input type="date" id="birth_date" name="birth_date" min="1800-01-01" max="2099-12-31">
@@ -25,8 +32,8 @@
                         <input type="date" id="death_date" name="death_date" min="1800-01-01" max="2099-12-31">
                     </label>
                 </div>
+                <button type="submit">Lägg till VIP</button>
             </fieldset>
-            <button type="submit">Spara</button>
         </form>
 
         {% if persons|length > 0 %}
@@ -52,6 +59,15 @@
                             <div class="form-row">
                                 <label for="edit-name-{{ person.id }}">Namn</label>
                                 <input type="text" id="edit-name-{{ person.id }}" name="name" value="{{ person.name }}" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="edit-category-{{ person.id }}">Kategori
+                                    <select type="text" id="edit-category-{{ person.id }}" name="category" selected="{{ person.name }}" required>
+                                        <option value="director">Regissör</option>
+                                        <option value="actor">Skådespelare</option>
+                                        <option value="voice_actor">Röstskådespelare</option>
+                                    </select>
+                                </label>
                             </div>
                             <div class="form-row">
                                 <label for="edit-birth-{{ person.id }}">Födelsedag</label>
