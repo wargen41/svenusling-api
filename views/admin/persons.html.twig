@@ -9,7 +9,7 @@
     {% endif %}
 
     <article>
-        <h1>Personer</h1>
+        <h1>VIP-lista</h1>
 
         <form method="POST" action="/admin/persons/add">
             <fieldset>
@@ -55,7 +55,7 @@
                     <form method="POST" action="/admin/persons/update">
                         <input type="hidden" name="person_id" value="{{ person.id }}">
                         <fieldset>
-                            <legend>Redigera VIP</legend>
+                            <legend>Grunduppgifter</legend>
                             <div class="form-row">
                                 <label for="edit-name-{{ person.id }}">Namn</label>
                                 <input type="text" id="edit-name-{{ person.id }}" name="name" value="{{ person.name }}" required>
