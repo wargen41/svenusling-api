@@ -41,7 +41,7 @@
         </fieldset>
 
             {% for genre in genres %}
-            <div id="edit-form-{{ genre.id }}" popover style="position-anchor: --anchor-genre-{{ genre.id }}" class="modal">
+            <div id="edit-form-{{ genre.id }}" popover style="position-anchor: --anchor-genre-{{ genre.id }}" class="pseudo-modal">
 
                 <form method="POST" action="/admin/genres/update">
                     <input type="hidden" name="genre_id" value="{{ genre.id }}">
