@@ -176,13 +176,25 @@
             backdrop-filter: blur(2px);
         }
 
-        .pseudo-modal[popover] button[popovertargetaction=hide]
+        .pseudo-modal[popover] button
         {
-            width: 3em;
-            border-radius: 0 0 0 1.1rem;
+            text-align: center;
+            padding: 0;
+            min-height: 2rem;
+            background: var(--background-color-default);
+        }
+
+        .pseudo-modal[popover] button:hover
+        {
+            background: var(--background-color-splash);
+        }
+
+        .pseudo-modal[popover] button[popovertarget]
+        {
+            width: var(--close-button-width);
+            border-radius: 0 0 var(--border-radius) 0;
             border-bottom: 1px solid var(--border-color-default);
-            border-left: 1px solid var(--border-color-default);
-            border-right: none;
+            border-right: 1px solid var(--border-color-default);
         }
 
         main.login
