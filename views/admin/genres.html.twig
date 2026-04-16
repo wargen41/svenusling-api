@@ -13,7 +13,7 @@
 
         <form method="POST" action="/admin/genres/add">
             <fieldset>
-                <legend>Lägg till genre</legend>
+                <legend>Ny genre</legend>
                 <div class="form-row">
                     <label for="sv">Svenska
                         <input type="text" id="sv" name="sv" size="15" required>
@@ -26,7 +26,7 @@
                     Vanlig</label>
                 </div>
             </fieldset>
-            <button type="submit">Spara</button>
+            <button type="submit">Lägg till genre</button>
         </form>
 
         {% if genres|length > 0 %}
@@ -34,14 +34,14 @@
             <legend>Redigera genrer</legend>
             <div class="button-list">
             {% for genre in genres %}
-                <button popovertarget="edit-form-{{ genre.id }}" style="anchor-name: --anchor-genre-{{ genre.id }}"
+                <button popovertarget="edit-form-{{ genre.id }}"
                 {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
             {% endfor %}
             </div>
         </fieldset>
 
             {% for genre in genres %}
-            <div id="edit-form-{{ genre.id }}" popover style="position-anchor: --anchor-genre-{{ genre.id }}" class="pseudo-modal">
+            <div id="edit-form-{{ genre.id }}" class="pseudo-modal">
 
                 <form method="POST" action="/admin/genres/update">
                     <input type="hidden" name="genre_id" value="{{ genre.id }}">
@@ -72,7 +72,7 @@
                 <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ genre.sv }}?');">
                     <input type="hidden" name="genre_id" value="{{ genre.id }}">
                     <fieldset>
-                        <legend>Radera genren {{ genre.sv }}?</legend>
+                        <legend>Radera genre?</legend>
                         <button type="submit" class="delete">Ta bort</button>
                     </fieldset>
                 </form>
