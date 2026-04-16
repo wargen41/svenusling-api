@@ -369,6 +369,7 @@ class AdminController
         try {
             $this->callApiPost('/persons', [
                 'name' => $data['name'] ?? '',
+                'category' => $data['category'] ?? '',
                 'birth_date' => $data['birth_date'] ?? '',
                 'death_date' => $data['death_date'] ?? '',
             ], $token);
@@ -405,6 +406,7 @@ class AdminController
             try {
                 $this->callApiPut('/persons/' . $personId, [
                     'name' => $data['name'] ?? '',
+                    'category' => $data['category'] ?? '',
                     'birth_date' => $data['birth_date'] ?? '',
                     'death_date' => $data['death_date'] ?? '',
                 ], $token);
