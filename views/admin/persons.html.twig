@@ -62,10 +62,10 @@
                             </div>
                             <div class="form-row">
                                 <label for="edit-category-{{ person.id }}">Kategori
-                                    <select type="text" id="edit-category-{{ person.id }}" name="category" selected="{{ person.name }}" required>
-                                        <option value="director">Regissör</option>
-                                        <option value="actor">Skådespelare</option>
-                                        <option value="voice_actor">Röstskådespelare</option>
+                                    <select type="text" id="edit-category-{{ person.id }}" name="category" required>
+                                        <option value="director" {% if persons.category == 'director' %}selected{% endif %}>Regissör</option>
+                                        <option value="actor" {% if persons.category == 'actor' %}selected{% endif %}>Skådespelare</option>
+                                        <option value="voice_actor" {% if persons.category == 'voice_actor' %}selected{% endif %}>Röstskådespelare</option>
                                     </select>
                                 </label>
                             </div>
