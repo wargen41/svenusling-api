@@ -38,7 +38,7 @@
 
         {% if persons|length > 0 %}
         <fieldset>
-            <legend>Redigera personer</legend>
+            <legend>Redigera VIP</legend>
             <div class="button-list">
             {% for person in persons %}
                 <button popovertarget="edit-form-{{ person.id }}" style="anchor-name: --anchor-person-{{ person.id }}">{{ person.name }}</button>
@@ -55,7 +55,7 @@
                     <form method="POST" action="/admin/persons/update">
                         <input type="hidden" name="person_id" value="{{ person.id }}">
                         <fieldset>
-                            <legend>Redigera person</legend>
+                            <legend>Redigera VIP</legend>
                             <div class="form-row">
                                 <label for="edit-name-{{ person.id }}">Namn</label>
                                 <input type="text" id="edit-name-{{ person.id }}" name="name" value="{{ person.name }}" required>
