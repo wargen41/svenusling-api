@@ -32,7 +32,7 @@
                         <input type="date" id="death_date" name="death_date" min="1800-01-01" max="2099-12-31">
                     </label>
                 </div>
-                <button type="submit">Lägg till VIP</button>
+                <button type="submit">Lägg till i VIP-listan</button>
             </fieldset>
         </form>
 
@@ -80,11 +80,11 @@
                             <button type="submit">Spara</button>
                         </fieldset>
                     </form>
-                    <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort personen {{ person.name }}?');">
+                    <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ person.name }}?') från VIP-listan;">
                         <input type="hidden" name="person_id" value="{{ person.id }}">
                         <fieldset>
-                            <legend>Radera personen {{ person.name }}?</legend>
-                            <button type="submit" class="delete">Ta bort</button>
+                            <legend>Radera VIP?</legend>
+                            <button type="submit" class="delete">Ta bort personens uppgifter</button>
                         </fieldset>
                     </form>
                 </div>
