@@ -41,7 +41,7 @@
         </fieldset>
 
             {% for genre in genres %}
-            <div id="edit-form-{{ genre.id }}" class="pseudo-modal">
+            <dialog popover id="edit-form-{{ genre.id }}" class="pseudo-modal">
 
                 <form method="POST" action="/admin/genres/update">
                     <input type="hidden" name="genre_id" value="{{ genre.id }}">
@@ -76,7 +76,7 @@
                         <button type="submit" class="delete">Ta bort</button>
                     </fieldset>
                 </form>
-            </div>
+            </dialog>
             {% endfor %}
 
         {% endif %}
