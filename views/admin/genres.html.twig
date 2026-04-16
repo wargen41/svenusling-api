@@ -42,6 +42,7 @@
 
             {% for genre in genres %}
             <dialog popover id="edit-form-{{ genre.id }}" class="pseudo-modal">
+                <button popovertarget="edit-form-{{ genre.id }}" popovertargetaction="hide">×</button>
 
                 <form method="POST" action="/admin/genres/update">
                     <input type="hidden" name="genre_id" value="{{ genre.id }}">
