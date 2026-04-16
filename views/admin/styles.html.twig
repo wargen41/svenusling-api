@@ -150,15 +150,24 @@
 
         .pseudo-modal[popover]
         {
+            --border-radius: 1.1rem;
+            --border-thickness: 1px;
+            --padding-inline: calc(var(--border-radius) * 0.75);
+
             margin: auto;
             position: fixed;
             inset: 0;
-            padding: calc(var(--main-margin) * 0.5);
 
             background-color: var(--background-color-alternate);
             color: var(--text-color-alternate);
             border: var(--border-thickness) solid var(--border-color-default);
             border-radius: var(--border-radius);
+            margin: 0;
+            padding: 0 0 var(--border-radius) 0;
+
+            max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--padding-inline) * 2));
+            min-width: calc(var(--menu-column-width) + (var(--padding-inline) * 2));
+
             box-shadow: 2px 2px 4px #101010;
         }
 
