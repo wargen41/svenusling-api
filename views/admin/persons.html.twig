@@ -40,41 +40,39 @@
         </fieldset>
 
             {% for person in persons %}
-            <div id="edit-form-{{ person.id }}" popover style="position-anchor: --anchor-person-{{ person.id }}" class="modal">
-
-                <form method="POST" action="/admin/persons/update">
-                    <input type="hidden" name="person_id" value="{{ person.id }}">
-                    <fieldset>
-                        <legend>Redigera person</legend>
-
-                        <div class="form-row">
-                            <label for="edit-name-{{ person.id }}">Namn</label>
-                            <input type="text" id="edit-name-{{ person.id }}" name="name" value="{{ person.name }}" required>
-                        </div>
-
-                        <div class="form-row">
-                            <label for="edit-birth-{{ person.id }}">Födelsedag</label>
-                            <input type="date" id="edit-birth-{{ person.id }}" name="birth_date" value="{{ person.birth_date }}" min="1800-01-01" max="2099-12-31">
-                        </div>
-
-                        <div class="form-row">
-                            <label for="edit-death-{{ person.id }}">Dödsdag</label>
-                            <input type="date" id="edit-death-{{ person.id }}" name="death_date" value="{{ person.death_date }}" min="1800-01-01" max="2099-12-31">
-                        </div>
-
-                        <button type="submit">Spara</button>
-                    </fieldset>
-
-                </form>
-
-                <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort personen {{ person.name }}?');">
-                    <input type="hidden" name="person_id" value="{{ person.id }}">
-                    <fieldset>
-                        <legend>Radera personen {{ person.name }}?</legend>
-                        <button type="submit" class="delete">Ta bort</button>
-                    </fieldset>
-                </form>
-            </div>
+            <dialog id="edit-form-{{ person.id }}" popover class="pseudo-modal">
+                <div class="dialog-top">
+                    <button popovertarget="edit-form-{{ person.id }}" popovertargetaction="hide">×</button>
+                </div>
+                <div class="dialog-content">
+                    <form method="POST" action="/admin/persons/update">
+                        <input type="hidden" name="person_id" value="{{ person.id }}">
+                        <fieldset>
+                            <legend>Redigera person</legend>
+                            <div class="form-row">
+                                <label for="edit-name-{{ person.id }}">Namn</label>
+                                <input type="text" id="edit-name-{{ person.id }}" name="name" value="{{ person.name }}" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="edit-birth-{{ person.id }}">Födelsedag</label>
+                                <input type="date" id="edit-birth-{{ person.id }}" name="birth_date" value="{{ person.birth_date }}" min="1800-01-01" max="2099-12-31">
+                            </div>
+                            <div class="form-row">
+                                <label for="edit-death-{{ person.id }}">Dödsdag</label>
+                                <input type="date" id="edit-death-{{ person.id }}" name="death_date" value="{{ person.death_date }}" min="1800-01-01" max="2099-12-31">
+                            </div>
+                            <button type="submit">Spara</button>
+                        </fieldset>
+                    </form>
+                    <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort personen {{ person.name }}?');">
+                        <input type="hidden" name="person_id" value="{{ person.id }}">
+                        <fieldset>
+                            <legend>Radera personen {{ person.name }}?</legend>
+                            <button type="submit" class="delete">Ta bort</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </dialog>
             {% endfor %}
 
         {% endif %}
