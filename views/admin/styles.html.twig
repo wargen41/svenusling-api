@@ -176,6 +176,29 @@
             backdrop-filter: blur(2px);
         }
 
+        .menu button,
+{
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    padding: 0 var(--item-padding);
+
+    display: block;
+    min-height: var(--item-height);
+
+    align-content: center;
+
+    color: inherit;
+    background-color: inherit;
+
+    border-bottom: 1px solid transparent;
+}
+
+
         .dialog-top
         {
             margin-bottom: var(--main-margin);
@@ -187,11 +210,27 @@
             padding: 0;
             min-height: 2rem;
             background: var(--background-color-default);
+
+            font-family: inherit;
+            font-size: inherit;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            padding: 0 var(--item-padding);
+
+            display: block;
+            align-content: center;
+
+            border-bottom: 1px solid transparent;
         }
 
         .dialog-top button:hover
         {
-            background: var(--background-color-splash);
+            background-color: var(--background-color-splash);
+            border-radius: calc(var(--border-radius) * 0.5);
+            border-bottom: 1px solid var(--text-color-splash);
         }
 
         .dialog-top button[popovertarget]
