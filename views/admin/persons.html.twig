@@ -77,7 +77,9 @@
                                 <label for="edit-death-{{ person.id }}">Dödsdag</label>
                                 <input type="date" id="edit-death-{{ person.id }}" name="death_date" value="{{ person.death_date }}" min="1800-01-01" max="2099-12-31">
                             </div>
-                            <button type="submit">Spara</button>
+                            <div class="form-actions">
+                                <button type="submit">Spara</button>
+                            </div>
                         </fieldset>
                     </form>
                     <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ person.name }} från VIP-listan?');">
