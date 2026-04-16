@@ -176,7 +176,12 @@
             backdrop-filter: blur(2px);
         }
 
-        .pseudo-modal[popover] button
+        .dialog-top
+        {
+            margin-bottom: var(--main-margin);
+        }
+
+        .dialog-top button
         {
             text-align: center;
             padding: 0;
@@ -184,12 +189,12 @@
             background: var(--background-color-default);
         }
 
-        .pseudo-modal[popover] button:hover
+        .dialog-top button:hover
         {
             background: var(--background-color-splash);
         }
 
-        .pseudo-modal[popover] button[popovertarget]
+        .dialog-top button[popovertarget]
         {
             width: var(--close-button-width);
             border-radius: 0 0 var(--border-radius) 0;
