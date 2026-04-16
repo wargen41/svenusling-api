@@ -80,7 +80,7 @@
                             <button type="submit">Spara</button>
                         </fieldset>
                     </form>
-                    <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ person.name }}?') från VIP-listan?;">
+                    <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ person.name }} från VIP-listan?');">
                         <input type="hidden" name="person_id" value="{{ person.id }}">
                         <fieldset>
                             <legend>Radera VIP?</legend>
