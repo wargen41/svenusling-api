@@ -118,7 +118,7 @@
             </div>
         </dialog>
         <script>
-            const thePopover = document.getElementById('{{ dlg_id }}');
+            let thePopover = document.getElementById('{{ dlg_id }}');
             thePopover.addEventListener('toggle', function() {
                 if(thePopover.style.display){
                     console.log(thePopover.style.display)
