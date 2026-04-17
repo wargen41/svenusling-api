@@ -9,12 +9,14 @@
 </head>
 <body>
     {% if error %}
-        <div class="error">{{ error }}</div>
+    <div class="error message">
+        {{ error }}
+    </div>
     {% endif %}
     {% if message %}
-        <div class="{% if message_type == 'success' %}success{% else %}error{% endif %}">
-            {{ message }}
-        </div>
+    <div class="{% if message_type == 'success' %}success{% else %}error{% endif %} message">
+        {{ message }}
+    </div>
     {% endif %}
 
     {% block bodyStart %}
