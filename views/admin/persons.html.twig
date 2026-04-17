@@ -1,5 +1,11 @@
 {% extends "admin/base.html.twig" %}
 
+{% set categories = {
+    'director': 'Regissör',
+    'actor': 'Skådespelare',
+    'voice_actor': 'Röstskådespelare'
+} %}
+
 {% block mainContent %}
 
     {% if message %}
@@ -20,9 +26,9 @@
                     </label>
                     <label for="category">Kategori
                         <select type="text" id="category" name="category" required>
-                            <option value="director">Regissör</option>
-                            <option value="actor">Skådespelare</option>
-                            <option value="voice_actor">Röstskådespelare</option>
+                            {% for value, label in categories %}
+                            <option value="{{ value }}">{{ label }}</option>
+                            {% endfor %}
                         </select>
                     </label>
                     <label for="birth_date">Födelsedag
@@ -63,9 +69,9 @@
                             <div class="form-row">
                                 <label for="edit-category-{{ person.id }}">Kategori
                                     <select type="text" id="edit-category-{{ person.id }}" name="category" required>
-                                        <option value="director" {% if person.category == 'director' %}selected{% endif %}>Regissör</option>
-                                        <option value="actor" {% if person.category == 'actor' %}selected{% endif %}>Skådespelare</option>
-                                        <option value="voice_actor" {% if person.category == 'voice_actor' %}selected{% endif %}>Röstskådespelare</option>
+                                        {% for value, label in categories %}
+                                        <option value="{{ value }}" {% if person.category == value %}selected{% endif %}>{{ label }}</option>
+                                        {% endfor %}
                                     </select>
                                 </label>
                             </div>
