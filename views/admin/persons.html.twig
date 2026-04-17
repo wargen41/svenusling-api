@@ -64,9 +64,10 @@
                 </label>
             </form>#}
             <div class="button-list">
-            {% if persons|length == 0 %}<p>Inget att visa</p>{% endif %}
             {% for person in persons %}
                 <button popovertarget="edit-form-{{ person.id }}" style="anchor-name: --anchor-person-{{ person.id }}">{{ person.name }}</button>
+            {% else %}
+                <p>Inget att visa</p>
             {% endfor %}
             </div>
         </fieldset>
