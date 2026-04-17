@@ -5,9 +5,9 @@
     'limit': 200
 } %} #}
 
-{% set filter = {
+{#{% set filter = {
     'category': 'actor'
-} %}
+} %}#}
 
 {% set categories = {
     'actor': 'Skådespelare',
@@ -53,14 +53,14 @@
 
         <fieldset>
             <legend>Redigera VIP</legend>
-            <form class="pagination" method="GET" action="/admin/persons">
+            {#<form class="pagination" method="GET" action="/admin/persons">
                 <label for="limit">
                     <input type="number" id="limit" name="limit" size="4" value="{{ pagination.limit }}">
                 per sida</label>
                 <label for="page">Börja på
                     <input type="number" id="page" name="skip" size="2" value="{{ pagination.skip }}">
                 </label>
-            </form>
+            </form>#}
             <div class="button-list">
             {% if persons|length > 0 %}<p>Inget att visa</p>{% endif %}
             {% for person in persons %}
