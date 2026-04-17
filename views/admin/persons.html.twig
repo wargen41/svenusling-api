@@ -55,7 +55,10 @@
             <legend>Redigera VIP</legend>
             <form class="pagination" method="GET" action="/admin/persons">
                 <label for="limit">
-                    <input type="text" id="limit" name="limit" value="{{ pagination.limit }}">
+                    <input type="number" id="limit" name="limit" size="4" value="{{ pagination.limit }}">
+                per sida</label>
+                <label for="page">
+                    <input type="number" id="page" name="skip" size="2" value="{{ pagination.skip }}">
                 per sida</label>
             </form>
             <div class="button-list">
