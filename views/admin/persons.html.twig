@@ -54,8 +54,9 @@
         <fieldset>
             <legend>Redigera VIP</legend>
             <form class="pagination" method="GET" action="/admin/persons">
-                {{ pagination.limit }}
-                <input type="text" name="test">
+                <label for="limit">
+                    <input type="text" id="limit" name="limit" value="{{ pagination.limit }}">
+                per sida</label>
             </form>
             <div class="button-list">
             {% if persons|length > 0 %}<p>Inget att visa</p>{% endif %}
