@@ -288,4 +288,25 @@
         {
             text-align: center;
         }
+
+        @media (width <= 32rem) {
+            .pseudo-modal[popover]
+            {
+                position: fixed;
+                max-width: unset;
+                min-width: unset;
+                width: auto;
+                height: auto;
+                top: var(--mobile-menu-margin);
+                left: var(--mobile-menu-margin);
+                right: var(--mobile-menu-margin);
+                bottom: var(--mobile-menu-margin);
+            }
+
+            .pseudo-modal[popover] .dialog-content
+            {
+                max-height: caLc(100% - 4rem);
+                overflow: auto;
+            }
+        }
     </style>
