@@ -1,5 +1,14 @@
 {% extends "admin/base.html.twig" %}
 
+{% set pagination = {
+    'skip': 0,
+    'limit': 200
+} %}
+
+{% set filter = {
+    'category': 'actor'
+} %}
+
 {% set categories = {
     'actor': 'Skådespelare',
     'director': 'Regissör',
@@ -42,66 +51,67 @@
             </fieldset>
         </form>
 
-        {% if persons|length > 0 %}
         <fieldset>
             <legend>Redigera VIP</legend>
+            <form class="pagination" method="GET" action="/admin/persons">
+                <input type="text" name="test">
+            </form>
             <div class="button-list">
+            {% if persons|length > 0 %}<p>Inget att visa</p>{% endif %}
             {% for person in persons %}
                 <button popovertarget="edit-form-{{ person.id }}" style="anchor-name: --anchor-person-{{ person.id }}">{{ person.name }}</button>
             {% endfor %}
             </div>
         </fieldset>
 
-            {% for person in persons %}
-            <dialog id="edit-form-{{ person.id }}" popover class="pseudo-modal">
-                <div class="dialog-top">
-                    <button popovertarget="edit-form-{{ person.id }}" popovertargetaction="hide">×</button>
-                </div>
-                <div class="dialog-content">
-                    <form method="POST" action="/admin/persons/update">
-                        <input type="hidden" name="person_id" value="{{ person.id }}">
-                        <fieldset>
-                            <legend>Grunduppgifter</legend>
-                            <div class="form-row">
-                                <label for="edit-name-{{ person.id }}">Namn</label>
-                                <input type="text" id="edit-name-{{ person.id }}" name="name" value="{{ person.name }}" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-category-{{ person.id }}">Kategori
-                                    <select type="text" id="edit-category-{{ person.id }}" name="category" required>
-                                        {% for value, label in categories %}
-                                        <option value="{{ value }}" {% if person.category == value %}selected{% endif %}>{{ label }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </label>
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-birth-{{ person.id }}">Födelsedag</label>
-                                <input type="date" id="edit-birth-{{ person.id }}" name="birth_date" value="{{ person.birth_date }}" min="1800-01-01" max="2099-12-31">
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-death-{{ person.id }}">Dödsdag</label>
-                                <input type="date" id="edit-death-{{ person.id }}" name="death_date" value="{{ person.death_date }}" min="1800-01-01" max="2099-12-31">
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit">Spara</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ person.name }} från VIP-listan?');">
-                        <input type="hidden" name="person_id" value="{{ person.id }}">
-                        <fieldset>
-                            <legend>Radera VIP?</legend>
-                            <div class="form-actions">
-                                <button type="submit" class="delete">Ta bort från VIP-listan</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </dialog>
-            {% endfor %}
-
-        {% endif %}
+        {% for person in persons %}
+        <dialog id="edit-form-{{ person.id }}" popover class="pseudo-modal">
+            <div class="dialog-top">
+                <button popovertarget="edit-form-{{ person.id }}" popovertargetaction="hide">×</button>
+            </div>
+            <div class="dialog-content">
+                <form method="POST" action="/admin/persons/update">
+                    <input type="hidden" name="person_id" value="{{ person.id }}">
+                    <fieldset>
+                        <legend>Grunduppgifter</legend>
+                        <div class="form-row">
+                            <label for="edit-name-{{ person.id }}">Namn</label>
+                            <input type="text" id="edit-name-{{ person.id }}" name="name" value="{{ person.name }}" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="edit-category-{{ person.id }}">Kategori
+                                <select type="text" id="edit-category-{{ person.id }}" name="category" required>
+                                    {% for value, label in categories %}
+                                    <option value="{{ value }}" {% if person.category == value %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                        </div>
+                        <div class="form-row">
+                            <label for="edit-birth-{{ person.id }}">Födelsedag</label>
+                            <input type="date" id="edit-birth-{{ person.id }}" name="birth_date" value="{{ person.birth_date }}" min="1800-01-01" max="2099-12-31">
+                        </div>
+                        <div class="form-row">
+                            <label for="edit-death-{{ person.id }}">Dödsdag</label>
+                            <input type="date" id="edit-death-{{ person.id }}" name="death_date" value="{{ person.death_date }}" min="1800-01-01" max="2099-12-31">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit">Spara</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ person.name }} från VIP-listan?');">
+                    <input type="hidden" name="person_id" value="{{ person.id }}">
+                    <fieldset>
+                        <legend>Radera VIP?</legend>
+                        <div class="form-actions">
+                            <button type="submit" class="delete">Ta bort från VIP-listan</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </dialog>
+        {% endfor %}
 
     </article>
 
