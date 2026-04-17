@@ -7,11 +7,11 @@
 
             background-color: var(--background-color-default);
         }
-        @supports (animation-timeline: view(0% 50%)) {
+        @supports (animation-timeline: scroll(0% 50%)) {
             body > .message
             {
                 animation: page-message linear;
-                animation-timeline: view(0% 50%);
+                animation-timeline: scroll(0% 50%);
                 opacity: 0;
             }
         }
