@@ -97,7 +97,7 @@ $app->add(function ($request, $handler) {
 });
 
 // Add Twig middleware
-$twig = Twig::create(__DIR__ . '/../views', ['cache' => false, 'debug' => true, 'autoescape' => 'name']);
+$twig = Twig::create(__DIR__ . '/../views', ['cache' => false, 'debug' => true/*, 'autoescape' => 'name'*/]);
 $app->add(TwigMiddleware::create($app, $twig));
 
 // Handle preflight requests
