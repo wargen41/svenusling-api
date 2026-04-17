@@ -1,7 +1,7 @@
     <style>
         body > .message
         {
-            position: absolute;
+            position: fixed;
             bottom: var(--main-margin);
             left: var(--main-margin);
             animation: page-message linear;
@@ -12,7 +12,7 @@
 
         @keyframes page-message {
             to {
-                transform: translate(-100vw);
+                opacity: 0;
             }
         }
 
