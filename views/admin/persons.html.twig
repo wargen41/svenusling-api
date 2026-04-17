@@ -57,9 +57,9 @@
                 <label for="limit">
                     <input type="number" id="limit" name="limit" size="4" value="{{ pagination.limit }}">
                 per sida</label>
-                <label for="page">
+                <label for="page">Börja på
                     <input type="number" id="page" name="skip" size="2" value="{{ pagination.skip }}">
-                per sida</label>
+                </label>
             </form>
             <div class="button-list">
             {% if persons|length > 0 %}<p>Inget att visa</p>{% endif %}
