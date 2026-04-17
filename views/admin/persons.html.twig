@@ -70,9 +70,10 @@
         </fieldset>
 
         {% for person in persons %}
-        <dialog id="edit-form-{{ person.id }}" popover class="pseudo-modal">
+        {% set dlg_id = 'edit-form-' ~ person.id %}
+        <dialog id="{{ dlg_id }}" popover class="pseudo-modal">
             <div class="dialog-top">
-                <button popovertarget="edit-form-{{ person.id }}" popovertargetaction="hide">×</button>
+                <button popovertarget="{{ dlg_id }}" popovertargetaction="hide">×</button>
             </div>
             <div class="dialog-content">
                 <form method="POST" action="/admin/persons/update">
@@ -116,6 +117,11 @@
                 </form>
             </div>
         </dialog>
+        <script>
+            document.getElementById({{ dlg_id }}).addEventListener('toggle', function() {
+                console.log('Popover visibility has changed.');
+            });
+        </script>
         {% endfor %}
 
     </article>
