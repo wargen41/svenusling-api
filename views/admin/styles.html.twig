@@ -4,6 +4,16 @@
             position: absolute;
             bottom: var(--main-margin);
             left: var(--main-margin);
+            animation: page-message ease-out;
+            animation-timeline: view(0 50%);
+
+            background-color: var(--background-color-default);
+        }
+
+        @keyframes page-message {
+            to {
+                transform: translate(-100vw);
+            }
         }
 
         main > details
