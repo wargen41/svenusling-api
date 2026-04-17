@@ -59,7 +59,7 @@
             </form>#}
             <div class="button-list">
             {% for person in persons %}
-                <button popovertarget="edit-form-{{ person.id }}" {#style="anchor-name: --anchor-person-{{ person.id }}"#}>{{ person.name }}</button>
+                <button class="vip {{ person.category }}" popovertarget="edit-form-{{ person.id }}" {#style="anchor-name: --anchor-person-{{ person.id }}"#}>{{ person.name }}</button>
             {% else %}
                 <p>Inget att visa</p>
             {% endfor %}
