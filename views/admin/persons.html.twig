@@ -1,9 +1,9 @@
 {% extends "admin/base.html.twig" %}
 
-{% set pagination = {
-    'skip': 0,
-    'limit': 200
-} %}
+# {% set pagination = {
+#     'skip': 0,
+#     'limit': 200
+# } %}
 
 {% set filter = {
     'category': 'actor'
@@ -54,6 +54,7 @@
         <fieldset>
             <legend>Redigera VIP</legend>
             <form class="pagination" method="GET" action="/admin/persons">
+                {{ pagination.limit }}
                 <input type="text" name="test">
             </form>
             <div class="button-list">

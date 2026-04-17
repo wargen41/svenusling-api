@@ -485,6 +485,7 @@ class AdminController
                 [
                     'user' => $user,
                     'persons' => $persons['data'] ?? [],
+                    'pagination' => $persons['pagination'] ?? [],
                     'message' => $message,
                     'message_type' => $messageType,
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
@@ -502,6 +503,7 @@ class AdminController
                     'message' => 'Failed to load persons: ' . $e->getMessage(),
                     'message_type' => 'error',
                     'persons' => [],
+                    'pagination' => $persons['pagination'] ?? [],
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
                     'pageTitle' => 'VIP'
