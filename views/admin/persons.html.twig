@@ -118,7 +118,11 @@
             </div>
         </dialog>
         <script>
-            document.getElementById('{{ dlg_id }}').addEventListener('toggle', function() {
+            const thePopover = document.getElementById('{{ dlg_id }}');
+            thePopover.addEventListener('toggle', function() {
+                if(thePopover.style.display){
+                    console.log(thePopover.style.display)
+                }
                 console.log('Popover visibility has changed.');
             });
         </script>
