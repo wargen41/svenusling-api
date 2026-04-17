@@ -4,13 +4,22 @@
             position: fixed;
             bottom: var(--main-margin);
             left: var(--main-margin);
-            animation: page-message linear;
-            animation-timeline: view(0 50%);
 
             background-color: var(--background-color-default);
         }
+        @supports (animation-timeline: view(0 50%)) {
+            body > .message
+            {
+                animation: page-message linear;
+                animation-timeline: view(0 50%);
+                opacity: 0;
+            }
+        }
 
         @keyframes page-message {
+            from {
+                opacity: 100;
+            }
             to {
                 opacity: 0;
             }
