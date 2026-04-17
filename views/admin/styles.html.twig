@@ -16,21 +16,22 @@
             {
                 animation: page-message linear;
                 animation-timeline: scroll();
-                opacity: 0;
+                /*opacity: 0;*/
             }
         }
 
         @keyframes page-message {
             0% {
-                opacity: 100;
-            }
-            3% {
+                /*opacity: 100;*/
                 transform: translateY(0%);
             }
-            10% {
-                opacity: 0;
+            5% {
                 transform: translateY(100%);
             }
+            /*10% {
+                opacity: 0;
+                transform: translateY(100%);
+            }*/
         }
 
         main > details
