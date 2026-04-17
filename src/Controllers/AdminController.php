@@ -477,7 +477,7 @@ class AdminController
 
         try {
             // Fetch all persons from API
-            $persons = $this->callApiGet('/persons?limit=200', $token);
+            $persons = $this->callApiGet('/persons?limit=-1', $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
