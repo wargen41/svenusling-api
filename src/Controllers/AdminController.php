@@ -535,6 +535,7 @@ class AdminController
 
         $token = $_SESSION['jwt_token'] ?? null;
         $data = $request->getParsedBody();
+        $page_return = $data['form_redirect'] ?? '/admin';
 
         try {
             $this->callApiPost('/movies', [
@@ -565,8 +566,8 @@ class AdminController
             $_SESSION['message_type'] = 'error';
         }
 
-        // Redirect back to movies page
-        $response = $response->withStatus(302)->withHeader('Location', '/admin/movies');
+        // Redirect
+        $response = $response->withStatus(302)->withHeader('Location', $form_redirect);
         return $response;
     }
 
@@ -675,7 +676,7 @@ class AdminController
 
         try {
             $params = $request->getQueryParams();
-            $limit = $params['limit'] ?? '-1';
+            $limit = $params['limit'] ?? '10';
             $search = $params['search'] ?? null;
             $type = $params['type'] ?? null;
             if($type == 'all'){
