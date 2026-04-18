@@ -78,6 +78,7 @@
             </div>
             <div class="dialog-content">
                 <form method="POST" action="/admin/movies/update">
+                    <input type="hidden" name="form_redirect" value="/admin/films">
                     <input type="hidden" name="movie_id" value="{{ movie.id }}">
                     <fieldset>
                         <legend>Grunduppgifter</legend>
@@ -101,6 +102,7 @@
                     </fieldset>
                 </form>
                 <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ movie.type }}?');">
+                    <input type="hidden" name="form_redirect" value="/admin/films">
                     <input type="hidden" name="movie_id" value="{{ movie.id }}">
                     <fieldset>
                         <legend>Radera</legend>

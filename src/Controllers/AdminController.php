@@ -535,7 +535,7 @@ class AdminController
 
         $token = $_SESSION['jwt_token'] ?? null;
         $data = $request->getParsedBody();
-        $page_return = $data['form_redirect'] ?? '/admin';
+        $form_redirect = $data['form_redirect'] ?? '/admin';
 
         try {
             $this->callApiPost('/movies', [
@@ -582,6 +582,7 @@ class AdminController
 
         $token = $_SESSION['jwt_token'] ?? null;
         $data = $request->getParsedBody();
+        $form_redirect = $data['form_redirect'] ?? '/admin';
         $movieId = $data['movie_id'] ?? null;
 
         if (!$movieId) {
@@ -618,8 +619,8 @@ class AdminController
             }
         }
 
-        // Redirect back to movies page
-        $response = $response->withStatus(302)->withHeader('Location', '/admin/movies');
+        // Redirect
+        $response = $response->withStatus(302)->withHeader('Location', $form_redirect);
         return $response;
     }
 
@@ -634,6 +635,7 @@ class AdminController
 
         $token = $_SESSION['jwt_token'] ?? null;
         $data = $request->getParsedBody();
+        $form_redirect = $data['form_redirect'] ?? '/admin';
         $movieId = $data['movie_id'] ?? null;
 
         if (!$movieId) {
@@ -652,7 +654,7 @@ class AdminController
         }
 
         // Redirect back to movies page
-        $response = $response->withStatus(302)->withHeader('Location', '/admin/movies');
+        $response = $response->withStatus(302)->withHeader('Location', $form_redirect);
         return $response;
     }
 
