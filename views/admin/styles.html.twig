@@ -242,7 +242,7 @@
 
         .pseudo-modal[popover]::backdrop
         {
-            backdrop-filter: brightness(0.9) contrast(0.8);
+            backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
         }
 
         .dialog-top
@@ -354,8 +354,8 @@
 
             .pseudo-modal[popover]::backdrop
             {
-                background-color: transparent; /*rgba(0, 0, 0, 0.1);*/
-                backdrop-filter: none;
+                background-color: transparent;
+                backdrop-filter: grayscale(1);
             }
 
             .button-list > .vip
