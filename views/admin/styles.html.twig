@@ -325,6 +325,11 @@
                 flex-direction: column;
             }
 
+            body:has(.pseudo-modal[popover]:popover-open)
+            {
+                margin-bottom: 100vh;
+            }
+
             .pseudo-modal[popover] .dialog-content
             {
                 max-height: calc(100% - 4rem);
@@ -340,11 +345,6 @@
             .button-list > .vip
             {
                 /*flex: 100%;*/
-            }
-
-            body
-            {
-                margin-bottom: 100vh;
             }
         }
     </style>
