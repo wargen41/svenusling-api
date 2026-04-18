@@ -128,9 +128,9 @@
                 <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ person.name }}?');">
                     <input type="hidden" name="person_id" value="{{ person.id }}">
                     <fieldset>
-                        <legend>Radera VIP?</legend>
+                        <legend>Radera person</legend>
                         <div class="form-actions">
-                            <button type="submit" class="delete">Ta bort</button>
+                            <button type="submit" class="delete">Ta bort VIP...</button>
                         </div>
                     </fieldset>
                 </form>
