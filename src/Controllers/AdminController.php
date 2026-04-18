@@ -499,7 +499,7 @@ class AdminController
                     'message_type' => $messageType,
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
-                    'pageTitle' => 'VIP'
+                    'pageTitle' => 'Personer'
                 ]
             );
         } catch (\Exception $e) {
@@ -516,7 +516,7 @@ class AdminController
                     'params' => $params,
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
-                    'pageTitle' => 'VIP'
+                    'pageTitle' => 'Personer'
                 ]
             );
         }
