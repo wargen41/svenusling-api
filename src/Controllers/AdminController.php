@@ -487,7 +487,7 @@ class AdminController
             }
 
             // Fetch persons from API
-            $persons = $this->callApiGet("/persons?details=minimal&limit=$limit&category=$category&search=$search", $token);
+            $persons = $this->callApiGet("/persons?limit=$limit&category=$category&search=$search", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
@@ -685,7 +685,7 @@ class AdminController
             }
 
             // Fetch movies from API
-            $movies = $this->callApiGet("/movies?details=minimal&limit=$limit&category=$category&search=$search", $token);
+            $movies = $this->callApiGet("/movies?limit=$limit&category=$category&search=$search", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
