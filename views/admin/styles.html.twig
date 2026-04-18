@@ -220,13 +220,6 @@
             box-shadow: 2px 2px 4px #101010;
         }
 
-        .pseudo-modal[popover]:popover-open
-        {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
         .pseudo-modal[popover]::backdrop
         {
             background-color: rgba(0, 0, 0, 0.1);
@@ -317,11 +310,19 @@
                 min-width: unset;
                 width: auto;
                 height: auto;
-                top: 10rem;
+                --mobile-modal-margin-top: 10rem;
+                top: var(--mobile-modal-margin-top);
                 bottom: 0rem;
                 --mobile-modal-margin-inline: 1rem;
                 left: var(--mobile-modal-margin-inline);
                 right: var(--mobile-modal-margin-inline);
+            }
+
+            .pseudo-modal[popover]:popover-open
+            {
+                height: calc(100% - var(--mobile-modal-margin-top));
+                display: flex;
+                flex-direction: column;
             }
 
             .pseudo-modal[popover] .dialog-content
