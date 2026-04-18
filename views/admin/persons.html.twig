@@ -50,40 +50,43 @@
             </form>
         </details>
 
-        <fieldset>
-            <legend>Redigera VIP-lista</legend>
-            {#<form class="pagination" method="GET" action="/admin/persons">
-                <label for="limit">
-                    <input type="number" id="limit" name="limit" size="4" value="{{ pagination.limit }}">
-                per sida</label>
-                <label for="page">Börja på
-                    <input type="number" id="page" name="skip" size="2" value="{{ pagination.skip }}">
-                </label>
-            </form>#}
-            <form class="filter" method="GET" action="/admin/persons">
-                <fieldset>
-                    <legend>Filter</legend>
-                    <label for="category">Kategori
-                        <select id="category" name="category">
-                            <option value="all" {% if params.category == 'all' %}selected{% endif %}>Alla</option>
-                        {% for value, label in categories %}
-                            <option value="{{ value }}" {% if params.category == value %}selected{% endif %}>{{ label }}</option>
-                        {% endfor %}
-                        </select>
+        <details>
+            <summary><h2>Redigera VIP-lista</h2></summary>
+            {#<fieldset>
+                <legend>Redigera VIP-lista</legend>#}
+                {#<form class="pagination" method="GET" action="/admin/persons">
+                    <label for="limit">
+                        <input type="number" id="limit" name="limit" size="4" value="{{ pagination.limit }}">
+                    per sida</label>
+                    <label for="page">Börja på
+                        <input type="number" id="page" name="skip" size="2" value="{{ pagination.skip }}">
                     </label>
+                </form>#}
+                <form class="filter" method="GET" action="/admin/persons">
+                    <fieldset>
+                        <legend>Filter</legend>
+                        <label for="category">Kategori
+                            <select id="category" name="category">
+                                <option value="all" {% if params.category == 'all' %}selected{% endif %}>Alla</option>
+                            {% for value, label in categories %}
+                                <option value="{{ value }}" {% if params.category == value %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                            </select>
+                        </label>
 
-                    <button type="submit">Visa lista</button>
-                </fieldset>
-            </form>
-            {% if params.category != '' %}<h2>{{ persons|length }} personer</h2>{% endif %}
-            <div class="button-list">
-            {% for person in persons %}
-                <button class="vip {{ person.category }}" popovertarget="edit-form-{{ person.id }}" {#style="anchor-name: --anchor-person-{{ person.id }}"#}>{{ person.name }}</button>
-            {#{% else %}
-                <p>Inget att visa</p>#}
-            {% endfor %}
-            </div>
-        </fieldset>
+                        <button type="submit">Visa lista</button>
+                    </fieldset>
+                </form>
+                {% if params.category != '' %}<h2>{{ persons|length }} personer</h2>{% endif %}
+                <div class="button-list">
+                {% for person in persons %}
+                    <button class="vip {{ person.category }}" popovertarget="edit-form-{{ person.id }}" {#style="anchor-name: --anchor-person-{{ person.id }}"#}>{{ person.name }}</button>
+                {#{% else %}
+                    <p>Inget att visa</p>#}
+                {% endfor %}
+                </div>
+            {#</fieldset>#}
+        </details>
 
         {% for person in persons %}
         {% set dlg_id = 'edit-form-' ~ person.id %}
