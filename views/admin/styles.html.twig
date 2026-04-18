@@ -203,7 +203,8 @@
             --border-thickness: 1px;
             --padding-inline: calc(var(--border-radius) * 0.75);
             --close-button-width: 3em;
-            --mobile-modal-margin-block: 2.8rem;
+            --mobile-modal-margin-top: 3rem;
+            --mobile-modal-margin-bottom: 4rem;
             --mobile-modal-margin-inline: 1rem;
 
             margin: auto;
@@ -307,10 +308,10 @@
                 min-width: unset;
                 width: auto;
                 height: auto;
-                top: var(--mobile-modal-margin-block);
+                top: var(--mobile-modal-margin-top);
                 left: var(--mobile-modal-margin-inline);
                 right: var(--mobile-modal-margin-inline);
-                bottom: var(--mobile-modal-margin-block);
+                bottom: var(--mobile-modal-margin-bottom);
             }
 
             .pseudo-modal[popover] .dialog-content
