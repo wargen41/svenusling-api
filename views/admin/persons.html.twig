@@ -69,7 +69,7 @@
                     {{ label }}</label>
                     {% endfor %}
                     <button type="submit">Uppdatera</button>
-                    <p>{{ persons|length }} personer</p>
+                    {% if params.category != '' %}<p>{{ persons|length }} personer</p>{% endif %}
                 </fieldset>
             </form>
             <div class="button-list">
