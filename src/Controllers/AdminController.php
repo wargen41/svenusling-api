@@ -492,7 +492,7 @@ class AdminController
                     'user' => $user,
                     'persons' => $persons['data'] ?? [],
                     'pagination' => $persons['pagination'] ?? [],
-                    'param_category' => $params['category'],
+                    'params' => $params,
                     'message' => $message,
                     'message_type' => $messageType,
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
@@ -511,7 +511,7 @@ class AdminController
                     'message_type' => 'error',
                     'persons' => [],
                     'pagination' => $persons['pagination'] ?? [],
-                    'param_category' => $params['category'],
+                    'params' => $params,
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
                     'pageTitle' => 'VIP'
