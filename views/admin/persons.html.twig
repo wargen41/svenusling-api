@@ -61,7 +61,7 @@
                 <fieldset>
                     <legend>Filter</legend>
                     <label for="all">
-                        <input type="radio" id="all" name="category" value="all" {% if params.category == 'all' %}checked{% endif %}>
+                        <input type="radio" id="all" name="category" value="all" {% if params.category == 'all' or params.category == 'nothing' %}checked{% endif %}>
                     Alla</label>
                     {% for value, label in categories %}
                     <label for="{{ value }}">
