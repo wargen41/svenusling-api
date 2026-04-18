@@ -302,7 +302,7 @@ class AdminController
     }
 
     /**
-     * Update genresPage to show session messages
+     * Genres page (protected)
      */
     public function genresPage(Request $request, Response $response): Response
     {
@@ -458,7 +458,7 @@ class AdminController
     }
 
     /**
-     * Update personsPage to show session messages
+     * Persons page (protected)
      */
     public function personsPage(Request $request, Response $response): Response
     {
@@ -487,7 +487,7 @@ class AdminController
             }
 
             // Fetch persons from API
-            $persons = $this->callApiGet("/persons?limit=$limit&category=$category&search=$search", $token);
+            $persons = $this->callApiGet("/persons?details=minimal&limit=$limit&category=$category&search=$search", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
@@ -519,6 +519,204 @@ class AdminController
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
                     'pageTitle' => 'Personer'
+                ]
+            );
+        }
+    }
+
+    /**
+     * Handle add movie form submission
+     */
+    public function handleAddMovie(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+
+        try {
+            $this->callApiPost('/movies', [
+                'hidden' => $data['hidden'] ?? '',
+                'added_date' => $data['added_date'] ?? '',
+                'type' => $data['type'] ?? '',
+                'genre_ids' => $data['genre_ids'] ?? [],
+                'series_id' => $data['series_id'] ?? '',
+                'season_id' => $data['season_id'] ?? '',
+                'sequence_number' => $data['sequence_number'] ?? '',
+                'sequence_number_2' => $data['sequence_number_2'] ?? '',
+                'title' => $data['title'] ?? '',
+                'original_title' => $data['original_title'] ?? '',
+                'sorting_title' => $data['sorting_title'] ?? '',
+                'year' => $data['year'] ?? '',
+                'year_2' => $data['year_2'] ?? '',
+                'rating' => $data['rating'] ?? '',
+                'poster_image_id' => $data['poster_image_id'] ?? '',
+                'large_image_id' => $data['large_image_id'] ?? '',
+                'imdb_id' => $data['imdb_id'] ?? '',
+                'description' => $data['description'] ?? '',
+            ], $token);
+
+            $_SESSION['message'] = 'Movie added successfully!';
+            $_SESSION['message_type'] = 'success';
+        } catch (\Exception $e) {
+            $_SESSION['message'] = 'Error adding movie: ' . $e->getMessage();
+            $_SESSION['message_type'] = 'error';
+        }
+
+        // Redirect back to movies page
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/movies');
+        return $response;
+    }
+
+    /**
+     * Handle update movie form submission
+     */
+    public function handleUpdateMovie(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $movieId = $data['movie_id'] ?? null;
+
+        if (!$movieId) {
+            $_SESSION['message'] = 'Error: Movie ID missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiPut('/movies/' . $movieId, [
+                    'hidden' => $data['hidden'] ?? '',
+                    'added_date' => $data['added_date'] ?? '',
+                    'type' => $data['type'] ?? '',
+                    'genre_ids' => $data['genre_ids'] ?? [],
+                    'series_id' => $data['series_id'] ?? '',
+                    'season_id' => $data['season_id'] ?? '',
+                    'sequence_number' => $data['sequence_number'] ?? '',
+                    'sequence_number_2' => $data['sequence_number_2'] ?? '',
+                    'title' => $data['title'] ?? '',
+                    'original_title' => $data['original_title'] ?? '',
+                    'sorting_title' => $data['sorting_title'] ?? '',
+                    'year' => $data['year'] ?? '',
+                    'year_2' => $data['year_2'] ?? '',
+                    'rating' => $data['rating'] ?? '',
+                    'poster_image_id' => $data['poster_image_id'] ?? '',
+                    'large_image_id' => $data['large_image_id'] ?? '',
+                    'imdb_id' => $data['imdb_id'] ?? '',
+                    'description' => $data['description'] ?? '',
+                ], $token);
+
+                $_SESSION['message'] = 'Movie updated successfully!';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error updating movie: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+            }
+        }
+
+        // Redirect back to movies page
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/movies');
+        return $response;
+    }
+
+    /**
+     * Handle delete movie form submission
+     */
+    public function handleDeleteMovie(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $movieId = $data['movie_id'] ?? null;
+
+        if (!$movieId) {
+            $_SESSION['message'] = 'Error: Movie ID missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiDelete('/movies/' . $movieId, $token);
+
+                $_SESSION['message'] = 'Movie deleted successfully!';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error deleting movie: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+            }
+        }
+
+        // Redirect back to movies page
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/movies');
+        return $response;
+    }
+
+    /**
+     * Movies page (protected)
+     */
+    public function moviesPage(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $user = $_SESSION['user'] ?? null;
+        $token = $_SESSION['jwt_token'] ?? null;
+
+        // Get message from session if exists
+        $message = $_SESSION['message'] ?? null;
+        $messageType = $_SESSION['message_type'] ?? null;
+        unset($_SESSION['message']);
+        unset($_SESSION['message_type']);
+
+        try {
+            $params = $request->getQueryParams();
+            $limit = $params['limit'] ?? '-1';
+            $search = $params['search'] ?? null;
+            $category = $params['category'] ?? null;
+            if($category == 'all'){
+                $category = null;
+            }else if($category == null){
+                $category = 'nothing'; // Visa inget genom att ange en kategori som inte finns
+            }
+
+            // Fetch movies from API
+            $movies = $this->callApiGet("/movies?details=minimal&limit=$limit&category=$category&search=$search", $token);
+
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/movies.html.twig',
+                [
+                    'user' => $user,
+                    'movies' => $movies['data'] ?? [],
+                    'pagination' => $movies['pagination'] ?? [],
+                    'params' => $params,
+                    'message' => $message,
+                    'message_type' => $messageType,
+                    'adminBaseStyles' => ADMIN_BASE_STYLES,
+                    'siteName' => SITE_NAME,
+                    'pageTitle' => 'Movieer'
+                ]
+            );
+        } catch (\Exception $e) {
+            error_log('Error in moviesPage: ' . $e->getMessage());
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/movies.html.twig',
+                [
+                    'user' => $user,
+                    'message' => 'Failed to load movies: ' . $e->getMessage(),
+                    'message_type' => 'error',
+                    'movies' => [],
+                    'pagination' => $movies['pagination'] ?? [],
+                    'params' => $params,
+                    'adminBaseStyles' => ADMIN_BASE_STYLES,
+                    'siteName' => SITE_NAME,
+                    'pageTitle' => 'Movieer'
                 ]
             );
         }
