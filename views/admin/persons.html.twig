@@ -60,13 +60,16 @@
             <form class="filter" method="GET" action="/admin/persons">
                 <fieldset>
                     <legend>Filter</legend>
+                    <label for="all">
+                        <input type="radio" id="all" name="category" value="all">
+                    Alla</label>
                     {% for value, label in categories %}
                     <label for="{{ value }}">
                         <input type="radio" id="{{ value }}" name="category" value="{{ value }}">
                     {{ label }}</label>
                     {% endfor %}
+                    <button type="submit">Uppdatera</button>
                 </fieldset>
-                <button type="submit">Uppdatera</button>
             </form>
             <div class="button-list">
             {% for person in persons %}
