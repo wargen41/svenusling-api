@@ -73,6 +73,9 @@
                             {% endfor %}
                             </select>
                         </label>
+                        <label for="search">Sök
+                            <input type="search" id="search" name="search" {% if params.search %}value="{{ params.search }}"{% endif %}>
+                        </label>
 
                         <button type="submit">Visa lista</button>
                     </fieldset>
