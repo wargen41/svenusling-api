@@ -69,8 +69,8 @@
                             <label for="search">Sök
                                 <input type="search" id="search" name="search" {% if params.search %}value="{{ params.search }}"{% endif %}>
                             </label>
-                            <label for="category">Kategori
-                                <select id="category" name="category">
+                            <label for="filter-category">Kategori
+                                <select id="filter-category" name="category">
                                     <option value="all" {% if params.category == 'all' %}selected{% endif %}>Alla</option>
                                 {% for value, label in categories %}
                                     <option value="{{ value }}" {% if params.category == value %}selected{% endif %}>{{ label }}</option>

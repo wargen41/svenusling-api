@@ -656,9 +656,9 @@ class AdminController
     }
 
     /**
-     * Movies page (protected)
+     * Films page (protected)
      */
-    public function moviesPage(Request $request, Response $response): Response
+    public function filmsPage(Request $request, Response $response): Response
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -677,19 +677,19 @@ class AdminController
             $params = $request->getQueryParams();
             $limit = $params['limit'] ?? '-1';
             $search = $params['search'] ?? null;
-            $category = $params['category'] ?? null;
-            if($category == 'all'){
-                $category = null;
-            }else if($category == null){
-                $category = 'nothing'; // Visa inget genom att ange en kategori som inte finns
+            $type = $params['type'] ?? null;
+            if($type == 'all'){
+                $type = null;
+            }else if($type == null){
+                $type = 'nothing'; // Visa inget genom att ange en typ som inte finns
             }
 
             // Fetch movies from API
-            $movies = $this->callApiGet("/movies?limit=$limit&category=$category&search=$search", $token);
+            $movies = $this->callApiGet("/movies?limit=$limit&type=$type&search=$search", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
-                'admin/movies.html.twig',
+                'admin/films.html.twig',
                 [
                     'user' => $user,
                     'movies' => $movies['data'] ?? [],
@@ -699,14 +699,14 @@ class AdminController
                     'message_type' => $messageType,
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
-                    'pageTitle' => 'Movieer'
+                    'pageTitle' => 'Filmer'
                 ]
             );
         } catch (\Exception $e) {
             error_log('Error in moviesPage: ' . $e->getMessage());
             return Twig::fromRequest($request)->render(
                 $response,
-                'admin/movies.html.twig',
+                'admin/films.html.twig',
                 [
                     'user' => $user,
                     'message' => 'Failed to load movies: ' . $e->getMessage(),
@@ -716,7 +716,7 @@ class AdminController
                     'params' => $params,
                     'adminBaseStyles' => ADMIN_BASE_STYLES,
                     'siteName' => SITE_NAME,
-                    'pageTitle' => 'Movieer'
+                    'pageTitle' => 'Filmer'
                 ]
             );
         }

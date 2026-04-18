@@ -1,0 +1,117 @@
+{% extends "admin/base.html.twig" %}
+
+{% set types = {
+    'film': 'Film',
+    'short': 'Kortfilm',
+} %}
+
+{% block mainContent %}
+
+    <article>
+        <h1>Filmer</h1>
+
+        <details>
+            <summary><h2>Lägg till ny</h2></summary>
+            <form method="POST" action="/admin/movies/add">
+                <fieldset>
+                    <legend>Ny film</legend>
+                    <div class="form-row">
+                        <label for="type">Typ
+                            <select type="text" id="type" name="type" required>
+                                {% for value, label in types %}
+                                <option value="{{ value }}">{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <label for="title">Titel
+                            <input type="text" id="title" name="title" size="24" required>
+                        </label>
+                    </div>
+
+                    <button type="submit">Lägg till film</button>
+                </fieldset>
+            </form>
+        </details>
+
+        <details open>
+            <summary><h2>Redigera filmer</h2></summary>
+
+                <form class="filter" method="GET" action="/admin/movies">
+                    <fieldset>
+                        <legend>Filter</legend>
+                        <div class="form-row">
+                            <label for="search">Sök
+                                <input type="search" id="search" name="search" {% if params.search %}value="{{ params.search }}"{% endif %}>
+                            </label>
+                            <label for="filter-type">Typ
+                                <select id="filter-type" name="type">
+                                    <option value="all" {% if params.type == 'all' %}selected{% endif %}>Alla</option>
+                                {% for value, label in types %}
+                                    <option value="{{ value }}" {% if params.type == value %}selected{% endif %}>{{ label }}</option>
+                                {% endfor %}
+                                </select>
+                            </label>
+                        </div>
+
+                        <button type="submit">Visa lista</button>
+                    </fieldset>
+                </form>
+
+                {% if params.type != '' %}
+                <fieldset>
+                    <legend><h3>{{ movies|length }} filmer</h3></legend>
+                    <div class="button-list">
+                    {% for movie in movies %}
+                        <button class="movie {{ movie.type }}" popovertarget="edit-form-{{ movie.id }}">{{ movie.name }}</button>
+                    {% endfor %}
+                    </div>
+                </fieldset>
+                {% endif %}
+        </details>
+
+        {% for movie in movies %}
+        {% set dlg_id = 'edit-form-' ~ movie.id %}
+        <dialog id="{{ dlg_id }}" popover class="pseudo-modal">
+            <div class="dialog-top">
+                <button popovertarget="{{ dlg_id }}" popovertargetaction="hide">×</button>
+            </div>
+            <div class="dialog-content">
+                <form method="POST" action="/admin/movies/update">
+                    <input type="hidden" name="movie_id" value="{{ movie.id }}">
+                    <fieldset>
+                        <legend>Grunduppgifter</legend>
+                        <div class="form-row">
+                            <label for="edit-title-{{ movie.id }}">Titel</label>
+                            <input type="text" id="edit-title-{{ movie.id }}" name="title" value="{{ movie.title }}" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="edit-type-{{ movie.id }}">Typ
+                                <select type="text" id="edit-type-{{ movie.id }}" name="type" required>
+                                    {% for value, label in types %}
+                                    <option value="{{ value }}" {% if movie.type == value %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit">Spara</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ movie.type }}?');">
+                    <input type="hidden" name="movie_id" value="{{ movie.id }}">
+                    <fieldset>
+                        <legend>Radera</legend>
+                        <div class="form-actions">
+                            <button type="submit" class="delete">Ta bort film</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </dialog>
+        {% endfor %}
+
+    </article>
+
+{% endblock %}
