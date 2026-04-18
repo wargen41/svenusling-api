@@ -220,6 +220,12 @@
             box-shadow: 2px 2px 4px #101010;
         }
 
+        .pseudo-modal[popover] .dialog-content
+        {
+            max-height: calc(100% - 4rem);
+            overflow: auto;
+        }
+
         .pseudo-modal[popover]::backdrop
         {
             background-color: rgba(0, 0, 0, 0.1);
@@ -332,12 +338,6 @@
             body:has(.pseudo-modal[popover]:popover-open)
             {
                 margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
-            }
-
-            .pseudo-modal[popover] .dialog-content
-            {
-                max-height: calc(100% - 4rem);
-                overflow: auto;
             }
 
             .pseudo-modal[popover]::backdrop
