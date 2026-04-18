@@ -303,6 +303,12 @@
         }
 
         @media (width <= 32rem) {
+            :root
+            {
+                --mobile-modal-margin-top: 10rem;
+                --mobile-modal-margin-inline: 1rem;
+            }
+
             .pseudo-modal[popover]
             {
                 position: fixed;
@@ -310,10 +316,8 @@
                 min-width: unset;
                 width: auto;
                 height: auto;
-                --mobile-modal-margin-top: 10rem;
                 top: var(--mobile-modal-margin-top);
                 bottom: 0rem;
-                --mobile-modal-margin-inline: 1rem;
                 left: var(--mobile-modal-margin-inline);
                 right: var(--mobile-modal-margin-inline);
             }
