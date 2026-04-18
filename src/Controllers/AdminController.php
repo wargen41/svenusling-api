@@ -477,6 +477,7 @@ class AdminController
 
         try {
             $params = $request->getQueryParams();
+            $limit = $params['limit'] ?? '-1';
             $category = $params['category'] ?? null;
             if($category == 'all'){
                 $category = null;
@@ -485,7 +486,7 @@ class AdminController
             }
 
             // Fetch persons from API
-            $persons = $this->callApiGet("/persons?limit=-1&category=$category", $token);
+            $persons = $this->callApiGet("/persons?limit=$limit&category=$category", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
