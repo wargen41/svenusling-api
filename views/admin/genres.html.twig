@@ -5,34 +5,39 @@
     <article>
         <h1>Genrer</h1>
 
-        <form method="POST" action="/admin/genres/add">
-            <fieldset>
-                <legend>Ny genre</legend>
-                <div class="form-row">
-                    <label for="sv">Svenska
-                        <input type="text" id="sv" name="sv" size="15" required>
-                    </label>
-                    <label for="en">Engelska
-                        <input type="text" id="en" name="en" size="15" required>
-                    </label>
-                    <label for="common">
-                        <input type="checkbox" id="common" name="common" value="1">
-                    Vanlig</label>
-                </div>
-                <button type="submit">Lägg till genre</button>
-            </fieldset>
-        </form>
+        <details>
+            <summary><h2>Lägg till ny</h2></summary>
+            <form method="POST" action="/admin/genres/add">
+                <fieldset>
+                    <legend>Ny genre</legend>
+                    <div class="form-row">
+                        <label for="sv">Svenska
+                            <input type="text" id="sv" name="sv" size="15" required>
+                        </label>
+                        <label for="en">Engelska
+                            <input type="text" id="en" name="en" size="15" required>
+                        </label>
+                        <label for="common">
+                            <input type="checkbox" id="common" name="common" value="1">
+                        Vanlig</label>
+                    </div>
+                    <button type="submit">Lägg till genre</button>
+                </fieldset>
+            </form>
+        </details>
 
         {% if genres|length > 0 %}
-        <fieldset>
-            <legend>Redigera genrer</legend>
+        <details>
+            <summary><h2>Redigera genrer</h2></summary>
+        {#<fieldset>
+            <legend>Redigera genrer</legend>#}
             <div class="button-list">
             {% for genre in genres %}
                 <button popovertarget="edit-form-{{ genre.id }}"
                 {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
             {% endfor %}
             </div>
-        </fieldset>
+        {#</fieldset>#}
 
             {% for genre in genres %}
             <dialog popover id="edit-form-{{ genre.id }}" class="pseudo-modal">
@@ -74,7 +79,7 @@
                 </div>
             </dialog>
             {% endfor %}
-
+        </details>
         {% endif %}
 
     </article>
