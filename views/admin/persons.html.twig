@@ -61,11 +61,11 @@
                 <fieldset>
                     <legend>Filter</legend>
                     <label for="all">
-                        <input type="radio" id="all" name="category" value="all">
+                        <input type="radio" id="all" name="category" value="all" {% if params.category == 'all' %}selected{% endif %}>
                     Alla</label>
                     {% for value, label in categories %}
                     <label for="{{ value }}">
-                        <input type="radio" id="{{ value }}" name="category" value="{{ value }}">
+                        <input type="radio" id="{{ value }}" name="category" value="{{ value }}" {% if params.category == value %}selected{% endif %}>
                     {{ label }}</label>
                     {% endfor %}
                     <button type="submit">Uppdatera</button>
