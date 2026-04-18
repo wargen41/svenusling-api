@@ -58,13 +58,14 @@
                 </label>
             </form>#}
             <form class="filter" method="GET" action="/admin/persons">
-                <label>Kategori
+                <fieldset>
+                    <legend>Kategori</legend>
                     {% for value, label in categories %}
-                    <label for="{{ value }}">{{ label }}
+                    <label for="{{ value }}">
                         <input type="radio" id="{{ value }}" name="category" value="{{ value }}">
-                    </label>
+                    {{ label }}</label>
                     {% endfor %}
-                </label>
+                </fieldset>
                 <button type="submit">Visa</button>
             </form>
             <div class="button-list">
