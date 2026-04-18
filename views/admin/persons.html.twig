@@ -69,9 +69,9 @@
                     {{ label }}</label>
                     {% endfor %}
                     <button type="submit">Visa lista</button>
-                    {% if params.category != '' %}<p>{{ persons|length }} personer</p>{% endif %}
                 </fieldset>
             </form>
+            {% if params.category != '' %}<h2>{{ persons|length }} personer</h2>{% endif %}
             <div class="button-list">
             {% for person in persons %}
                 <button class="vip {{ person.category }}" popovertarget="edit-form-{{ person.id }}" {#style="anchor-name: --anchor-person-{{ person.id }}"#}>{{ person.name }}</button>
