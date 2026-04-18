@@ -57,6 +57,16 @@
                     <input type="number" id="page" name="skip" size="2" value="{{ pagination.skip }}">
                 </label>
             </form>#}
+            <form class="filter" method="GET" action="/admin/persons">
+                <label>Kategori
+                    {% for value, label in categories %}
+                    <label for="{{ value }}">{{ label }}
+                        <input type="radio" id="{{ value }}" name="category" value="{{ value }}">
+                    </label>
+                    {% endfor %}
+                </label>
+                <button type="submit">Visa</button>
+            </form>
             <div class="button-list">
             {% for person in persons %}
                 <button class="vip {{ person.category }}" popovertarget="edit-form-{{ person.id }}" {#style="anchor-name: --anchor-person-{{ person.id }}"#}>{{ person.name }}</button>
