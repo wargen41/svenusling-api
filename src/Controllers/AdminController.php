@@ -476,8 +476,10 @@ class AdminController
         unset($_SESSION['message_type']);
 
         try {
+            $params = $request->getQueryParams();
+            $category = $params['category'] ?? null;
             // Fetch all persons from API
-            $persons = $this->callApiGet('/persons?limit=-1', $token);
+            $persons = $this->callApiGet("/persons?limit=-1&category=$category", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
