@@ -60,14 +60,6 @@
             <form class="filter" method="GET" action="/admin/persons">
                 <fieldset>
                     <legend>Filter</legend>
-                    {#<label for="all">
-                        <input type="radio" id="all" name="category" value="all" {% if params.category == 'all' %}checked{% endif %}>
-                    Alla</label>
-                    {% for value, label in categories %}
-                    <label for="{{ value }}">
-                        <input type="radio" id="{{ value }}" name="category" value="{{ value }}" {% if params.category == value %}checked{% endif %}>
-                    {{ label }}</label>
-                    {% endfor %}#}
                     <label for="category">Kategori
                         <select id="category" name="category">
                             <option value="all" {% if params.category == 'all' %}selected{% endif %}>Alla</option>
@@ -127,12 +119,12 @@
                         </div>
                     </fieldset>
                 </form>
-                <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ person.name }} från VIP-listan?');">
+                <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ person.name }}?');">
                     <input type="hidden" name="person_id" value="{{ person.id }}">
                     <fieldset>
                         <legend>Radera VIP?</legend>
                         <div class="form-actions">
-                            <button type="submit" class="delete">Ta bort från VIP-listan</button>
+                            <button type="submit" class="delete">Ta bort</button>
                         </div>
                     </fieldset>
                 </form>
