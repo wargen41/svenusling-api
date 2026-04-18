@@ -480,6 +480,8 @@ class AdminController
             $category = $params['category'] ?? null;
             if($category == 'all'){
                 $category = null;
+            }else if($category == null){
+                $category = ''; // Visa inget
             }
 
             // Fetch persons from API
