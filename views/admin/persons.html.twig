@@ -68,7 +68,7 @@
                         <input type="radio" id="{{ value }}" name="category" value="{{ value }}" {% if params.category == value %}checked{% endif %}>
                     {{ label }}</label>
                     {% endfor %}
-                    <button type="submit">Uppdatera</button>
+                    <button type="submit">Visa lista</button>
                     {% if params.category != '' %}<p>{{ persons|length }} personer</p>{% endif %}
                 </fieldset>
             </form>
