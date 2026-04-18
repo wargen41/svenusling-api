@@ -481,7 +481,7 @@ class AdminController
             if($category == 'all'){
                 $category = null;
             }else if($category == null){
-                $category = ''; // Visa inget
+                $category = 'nothing'; // Visa inget genom att ange en kategori som inte finns
             }
 
             // Fetch persons from API
