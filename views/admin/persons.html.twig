@@ -19,7 +19,6 @@
 
     <article>
         <h1>VIP-lista</h1>
-        <p>param_category: {{param_category}}</p>
 
         <form method="POST" action="/admin/persons/add">
             <fieldset>
@@ -62,11 +61,11 @@
                 <fieldset>
                     <legend>Filter</legend>
                     <label for="all">
-                        <input type="radio" id="all" name="category" value="all" {% if param_category == 'all' %}selected{% endif %}>
+                        <input type="radio" id="all" name="category" value="all" {% if params.category == 'all' %}selected{% endif %}>
                     Alla</label>
                     {% for value, label in categories %}
                     <label for="{{ value }}">
-                        <input type="radio" id="{{ value }}" name="category" value="{{ value }}" {% if param_category == value %}selected{% endif %}>
+                        <input type="radio" id="{{ value }}" name="category" value="{{ value }}" {% if params.category == value %}selected{% endif %}>
                     {{ label }}</label>
                     {% endfor %}
                     <button type="submit">Uppdatera</button>
