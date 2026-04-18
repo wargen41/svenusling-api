@@ -327,7 +327,7 @@
 
             body:has(.pseudo-modal[popover]:popover-open)
             {
-                margin-bottom: 100vh;
+                margin-bottom: calc(100vh - var(--mobile-modal-margin-top));
             }
 
             .pseudo-modal[popover] .dialog-content
