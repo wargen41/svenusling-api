@@ -48,7 +48,7 @@
         </form>
 
         <fieldset>
-            <legend>Redigera VIP-lista ({{ persons|length }} personer)</legend>
+            <legend>Redigera VIP-lista</legend>
             {#<form class="pagination" method="GET" action="/admin/persons">
                 <label for="limit">
                     <input type="number" id="limit" name="limit" size="4" value="{{ pagination.limit }}">
@@ -69,13 +69,14 @@
                     {{ label }}</label>
                     {% endfor %}
                     <button type="submit">Uppdatera</button>
+                    <p>{{ persons|length }} personer</p>
                 </fieldset>
             </form>
             <div class="button-list">
             {% for person in persons %}
                 <button class="vip {{ person.category }}" popovertarget="edit-form-{{ person.id }}" {#style="anchor-name: --anchor-person-{{ person.id }}"#}>{{ person.name }}</button>
-            {% else %}
-                <p>Inget att visa</p>
+            {#{% else %}
+                <p>Inget att visa</p>#}
             {% endfor %}
             </div>
         </fieldset>
