@@ -262,6 +262,13 @@
             border-bottom: var(--border-width-default) var(--border-style-default) transparent;
         }
 
+        .dialog-top button:hover
+        {
+            background-color: var(--background-color-splash);
+            border-radius: calc(var(--border-radius) * 0.5);
+            border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+        }
+
         .dialog-top button[popovertarget]
         {
             width: var(--close-button-width);
@@ -269,13 +276,6 @@
             border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
             border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
             border-right: none;
-        }
-
-        .dialog-top button:hover
-        {
-            background-color: var(--background-color-splash);
-            border-radius: calc(var(--border-radius) * 0.5);
-            border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
         }
 
         .dialog-content
