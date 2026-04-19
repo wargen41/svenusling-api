@@ -53,14 +53,14 @@
                                 {% endfor %}
                                 </select>
                             </label>
-                            <label for="filter-year">Typ
+                            <label for="filter-year">År
                                 <input type="number" size="4" min="1888" max="2099-12-31" id="filter-year" name="year" {% if params.year %}value="{{ params.year }}"{% endif %}>
                             </label>
                         </div>
 
                         <div class="form-actions">
                             <button type="submit">Visa lista</button>
-                            <button type="reset">Rensa filter</button>
+                            <a href="{{ this_page }}" class="form-reset">Rensa filter</a>
                         </div>
                     </fieldset>
                 </form>
