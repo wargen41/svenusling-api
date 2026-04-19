@@ -739,8 +739,8 @@ class MovieController
 
     private function addHiddenFilter(&$where, &$bindings, $userRole)
     {
+        error_log('$userRole: ' . $userRole);
         if ($userRole !== 'admin') {
-            error_log('$userRole: ' . $userRole);
             $where[] = 'hidden = 0';
         }
     }
