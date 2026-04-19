@@ -681,6 +681,8 @@ class AdminController
             $limit = $params['limit'] ?? '-1';
             $search = $params['search'] ?? null;
             $type = $params['type'] ?? null;
+            $year = $params['year'] ?? null;
+            $rating = $params['rating'] ?? null;
             /* Att kunna välja Alla funkar inte när jag har sidor uppdelade mellan filmer och serier
             if($type == 'all'){
                 $type = null;

@@ -46,12 +46,15 @@
                                 <input type="search" id="search" name="search" {% if params.search %}value="{{ params.search }}"{% endif %}>
                             </label>
                             <label for="filter-type">Typ
-                                <select id="filter-type" name="type">
+                                <select id="filter-type" name="type" required>
                                     {#<option value="all" {% if params.type == 'all' %}selected{% endif %}>Alla</option>#}
                                 {% for value, label in types %}
                                     <option value="{{ value }}" {% if params.type == value %}selected{% endif %}>{{ label }}</option>
                                 {% endfor %}
                                 </select>
+                            </label>
+                            <label for="filter-year">Typ
+                                <input type="number" size="4" min="1888" max="2099-12-31" id="filter-year" name="year" {% if params.year %}value="{{ params.year }}"{% endif %}>
                             </label>
                         </div>
 
