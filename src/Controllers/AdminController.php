@@ -539,7 +539,7 @@ class AdminController
 
         try {
             $this->callApiPost('/movies', [
-                'hidden' => $data['hidden'] ?? '',
+                'hidden' => $data['hidden'] ?? '1',
                 'added_date' => $data['added_date'] ?? '',
                 'type' => $data['type'] ?? '',
                 'genre_ids' => $data['genre_ids'] ?? [],
@@ -549,10 +549,10 @@ class AdminController
                 'sequence_number_2' => $data['sequence_number_2'] ?? '',
                 'title' => $data['title'] ?? '',
                 'original_title' => $data['original_title'] ?? '',
-                'sorting_title' => $data['sorting_title'] ?? '',
+                'sorting_title' => $data['sorting_title'] ?? 'title',
                 'year' => $data['year'] ?? '',
                 'year_2' => $data['year_2'] ?? '',
-                'rating' => $data['rating'] ?? '',
+                'rating' => $data['rating'] ?? '0', // Detta ska ändras sen
                 'poster_image_id' => $data['poster_image_id'] ?? '',
                 'large_image_id' => $data['large_image_id'] ?? '',
                 'imdb_id' => $data['imdb_id'] ?? '',
