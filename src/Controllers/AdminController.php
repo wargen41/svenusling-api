@@ -567,7 +567,8 @@ class AdminController
         }
 
         // Redirect
-        $response = $response->withStatus(302)->withHeader('Location', $form_redirect);
+        //$response = $response->withStatus(302)->withHeader('Location', $form_redirect);
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/films');
         return $response;
     }
 
