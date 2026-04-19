@@ -47,7 +47,7 @@
                             </label>
                             <label for="filter-type">Typ
                                 <select id="filter-type" name="type">
-                                    <option value="all" {% if params.type == 'all' %}selected{% endif %}>Alla</option>
+                                    {#<option value="all" {% if params.type == 'all' %}selected{% endif %}>Alla</option>#}
                                 {% for value, label in types %}
                                     <option value="{{ value }}" {% if params.type == value %}selected{% endif %}>{{ label }}</option>
                                 {% endfor %}
