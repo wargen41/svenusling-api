@@ -64,7 +64,7 @@
                     <legend><h3>{{ movies|length }} filmer</h3></legend>
                     <div class="button-list">
                     {% for movie in movies %}
-                        <button class="movie {{ movie.type }}" popovertarget="edit-form-{{ movie.id }}">{{ movie.name }}</button>
+                        <button class="movie {{ movie.type }}" popovertarget="edit-form-{{ movie.id }}">{{ movie.title }}</button>
                     {% endfor %}
                     </div>
                 </fieldset>
