@@ -543,8 +543,8 @@ class AdminController
                 'added_date' => $data['added_date'] ?? '',
                 'type' => $data['type'] ?? '',
                 'genre_ids' => $data['genre_ids'] ?? [],
-                'series_id' => $data['series_id'] ?? '',
-                'season_id' => $data['season_id'] ?? '',
+                'series_id' => $data['series_id'] ?? null,
+                'season_id' => $data['season_id'] ?? null,
                 'sequence_number' => $data['sequence_number'] ?? '',
                 'sequence_number_2' => $data['sequence_number_2'] ?? '',
                 'title' => $data['title'] ?? '',
@@ -553,8 +553,8 @@ class AdminController
                 'year' => $data['year'] ?? '',
                 'year_2' => $data['year_2'] ?? '',
                 'rating' => $data['rating'] ?? '0', // Detta ska ändras sen
-                'poster_image_id' => $data['poster_image_id'] ?? '',
-                'large_image_id' => $data['large_image_id'] ?? '',
+                'poster_image_id' => $data['poster_image_id'] ?? null,
+                'large_image_id' => $data['large_image_id'] ?? null,
                 'imdb_id' => $data['imdb_id'] ?? '',
                 'description' => $data['description'] ?? '',
             ], $token);
