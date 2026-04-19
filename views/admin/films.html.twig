@@ -1,5 +1,6 @@
 {% extends "admin/base.html.twig" %}
 
+{% set this_page = '/admin/films' %}
 {% set types = {
     'film': 'Film',
     'short': 'Kortfilm',
@@ -13,7 +14,7 @@
         <details>
             <summary><h2>Lägg till ny</h2></summary>
             <form method="POST" action="/admin/movies/add">
-                <input type="hidden" name="form_redirect" value="/admin/films">
+                <input type="hidden" name="form_redirect" value="{{ this_page }}">
                 <fieldset>
                     <legend>Ny film</legend>
                     <div class="form-row">
@@ -37,7 +38,7 @@
         <details open>
             <summary><h2>Redigera filmer</h2></summary>
 
-                <form class="filter" method="GET" action="/admin/movies">
+                <form class="filter" method="GET" action="{{ this_page }}">
                     <fieldset>
                         <legend>Filter</legend>
                         <div class="form-row">
