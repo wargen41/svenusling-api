@@ -678,7 +678,7 @@ class AdminController
 
         try {
             $params = $request->getQueryParams();
-            $limit = $params['limit'] ?? '10';
+            $limit = $params['limit'] ?? '-1';
             $search = $params['search'] ?? null;
             $type = $params['type'] ?? null;
             if($type == 'all'){
