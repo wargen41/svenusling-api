@@ -69,6 +69,7 @@ class MovieController
 
             // Add hidden filter
             $this->addHiddenFilter($where, $bindings, $request->getAttribute('user_role'));
+            error_log('$userRole: ' . $request->getAttribute('user_role'));
 
             $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
             error_log('$whereClause: ' . $whereClause);
@@ -739,7 +740,6 @@ class MovieController
 
     private function addHiddenFilter(&$where, &$bindings, $userRole)
     {
-        error_log('$userRole: ' . $userRole);
         if ($userRole !== 'admin') {
             $where[] = 'hidden = 0';
         }
