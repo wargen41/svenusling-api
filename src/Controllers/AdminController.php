@@ -540,23 +540,23 @@ class AdminController
         try {
             $this->callApiPost('/movies', [
                 'hidden' => $data['hidden'] ?? '1',
-                'added_date' => $data['added_date'] ?? '',
-                'type' => $data['type'] ?? '',
+                'added_date' => $data['added_date'] ?? null,
+                'type' => $data['type'] ?? null,
                 'genre_ids' => $data['genre_ids'] ?? [],
                 'series_id' => $data['series_id'] ?? null,
                 'season_id' => $data['season_id'] ?? null,
-                'sequence_number' => $data['sequence_number'] ?? '',
-                'sequence_number_2' => $data['sequence_number_2'] ?? '',
-                'title' => $data['title'] ?? '',
-                'original_title' => $data['original_title'] ?? '',
+                'sequence_number' => $data['sequence_number'] ?? null,
+                'sequence_number_2' => $data['sequence_number_2'] ?? null,
+                'title' => $data['title'] ?? null,
+                'original_title' => $data['original_title'] ?? null,
                 'sorting_title' => $data['sorting_title'] ?? $data['title'],
-                'year' => $data['year'] ?? '',
-                'year_2' => $data['year_2'] ?? '',
+                'year' => $data['year'] ?? null,
+                'year_2' => $data['year_2'] ?? null,
                 'rating' => $data['rating'] ?? '0', // Detta ska ändras sen
                 'poster_image_id' => $data['poster_image_id'] ?? null,
                 'large_image_id' => $data['large_image_id'] ?? null,
-                'imdb_id' => $data['imdb_id'] ?? '',
-                'description' => $data['description'] ?? '',
+                'imdb_id' => $data['imdb_id'] ?? null,
+                'description' => $data['description'] ?? null,
             ], $token);
 
             $_SESSION['message'] = '"' . $data['title'] . '" tillagd';
@@ -591,24 +591,24 @@ class AdminController
         } else {
             try {
                 $this->callApiPut('/movies/' . $movieId, [
-                    'hidden' => $data['hidden'] ?? '',
-                    'added_date' => $data['added_date'] ?? '',
-                    'type' => $data['type'] ?? '',
+                    'hidden' => $data['hidden'] ?? '1',
+                    'added_date' => $data['added_date'] ?? null,
+                    'type' => $data['type'] ?? null,
                     'genre_ids' => $data['genre_ids'] ?? [],
                     'series_id' => $data['series_id'] ?? null,
                     'season_id' => $data['season_id'] ?? null,
-                    'sequence_number' => $data['sequence_number'] ?? '',
-                    'sequence_number_2' => $data['sequence_number_2'] ?? '',
-                    'title' => $data['title'] ?? '',
-                    'original_title' => $data['original_title'] ?? '',
-                    'sorting_title' => $data['sorting_title'] ?? '',
-                    'year' => $data['year'] ?? '',
-                    'year_2' => $data['year_2'] ?? '',
-                    'rating' => $data['rating'] ?? '',
+                    'sequence_number' => $data['sequence_number'] ?? null,
+                    'sequence_number_2' => $data['sequence_number_2'] ?? null,
+                    'title' => $data['title'] ?? null,
+                    'original_title' => $data['original_title'] ?? null,
+                    'sorting_title' => $data['sorting_title'] ?? $data['title'],
+                    'year' => $data['year'] ?? null,
+                    'year_2' => $data['year_2'] ?? null,
+                    'rating' => $data['rating'] ?? '0', // Detta ska ändras sen
                     'poster_image_id' => $data['poster_image_id'] ?? null,
                     'large_image_id' => $data['large_image_id'] ?? null,
-                    'imdb_id' => $data['imdb_id'] ?? '',
-                    'description' => $data['description'] ?? '',
+                    'imdb_id' => $data['imdb_id'] ?? null,
+                    'description' => $data['description'] ?? null,
                 ], $token);
 
                 $_SESSION['message'] = 'Movie updated successfully!';
