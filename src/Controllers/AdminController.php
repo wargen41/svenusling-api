@@ -559,7 +559,7 @@ class AdminController
                 'description' => $data['description'] ?? '',
             ], $token);
 
-            $_SESSION['message'] = 'Movie added successfully!';
+            $_SESSION['message'] = '"' . $data['title'] . '" tillagd';
             $_SESSION['message_type'] = 'success';
         } catch (\Exception $e) {
             $_SESSION['message'] = 'Error adding movie: ' . $e->getMessage();
