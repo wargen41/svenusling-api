@@ -25,8 +25,6 @@ class MovieController
     public function listMovies(Request $request, Response $response): Response
     {
         try {
-            error_log('listMovies called');
-            
             $params = $request->getQueryParams();
             $type = $params['type'] ?? null;
             $year = $params['year'] ?? null;
@@ -39,7 +37,6 @@ class MovieController
             }else{
                 $limit = min((int)($params['limit'] ?? 100), 1000);
             }
-
 
             $where = [];
             $bindings = [];
@@ -71,7 +68,7 @@ class MovieController
             }
 
             // Add hidden filter
-            $this->addHiddenFilter($where, $bindings, $request->getAttribute('user_role'));
+            $this->addHiddenFilter(&$where, &$bindings, $request->getAttribute('user_role'));
 
             $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 
