@@ -691,7 +691,7 @@ class AdminController
             } */
 
             // Fetch movies from API
-            $movies = $this->callApiGet("/movies?limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
+            $movies = $this->callApiGet("/movies?limit=$limit&type=$type&year=$year&search=$search", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
