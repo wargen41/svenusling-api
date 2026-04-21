@@ -106,7 +106,7 @@ class AdminController
                 'message_type' => 'success',
                 'adminBaseStyles' => ADMIN_BASE_STYLES,
                 'siteName' => SITE_NAME,
-                'pageTitle' => 'Start test',
+                'pageTitle' => 'Start',
             ]
         );
     }
