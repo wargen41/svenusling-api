@@ -368,10 +368,10 @@ class AdminController
 
         try {
             $this->callApiPost('/persons', [
-                'name' => $data['name'] ?? '',
-                'category' => $data['category'] ?? '',
-                'birth_date' => $data['birth_date'] ?? '',
-                'death_date' => $data['death_date'] ?? '',
+                'name' => $data['name'] ?? null,
+                'category' => $data['category'] ?? null,
+                'birth_date' => $data['birth_date'] ?? null,
+                'death_date' => $data['death_date'] ?? null,
             ], $token);
 
             $_SESSION['message'] = 'Person added successfully!';
