@@ -456,7 +456,8 @@ class AdminController
         }
 
         // Redirect back to persons page
-        $response = $response->withStatus(302)->withHeader('Location', '/admin/persons');
+        $query = isset($_SESSION['persons_query']) ? '?' . $_SESSION['persons_query'] : '';
+        $response = $response->withStatus(302)->withHeader('Location', '/admin/persons' . $query);
         return $response;
     }
 
@@ -626,7 +627,8 @@ class AdminController
         }
 
         // Redirect
-        $response = $response->withStatus(302)->withHeader('Location', $form_redirect);
+        $query = isset($_SESSION['movies_query']) ? '?' . $_SESSION['movies_query'] : '';
+        $response = $response->withStatus(302)->withHeader('Location', $form_redirect . $query);
         return $response;
     }
 
@@ -659,8 +661,9 @@ class AdminController
             }
         }
 
-        // Redirect back to movies page
-        $response = $response->withStatus(302)->withHeader('Location', $form_redirect);
+        // Redirect
+        $query = isset($_SESSION['movies_query']) ? '?' . $_SESSION['movies_query'] : '';
+        $response = $response->withStatus(302)->withHeader('Location', $form_redirect . $query);
         return $response;
     }
 
@@ -675,6 +678,9 @@ class AdminController
 
         $user = $_SESSION['user'] ?? null;
         $token = $_SESSION['jwt_token'] ?? null;
+
+        // Spara query
+        $_SESSION['movies_query'] = $_SERVER['QUERY_STRING'] ?: null;
 
         // Get message from session if exists
         $message = $_SESSION['message'] ?? null;
