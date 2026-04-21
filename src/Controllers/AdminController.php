@@ -214,12 +214,12 @@ class AdminController
 
         try {
             $this->callApiPost('/genres', [
-                'sv' => $data['sv'] ?? '',
-                'en' => $data['en'] ?? '',
+                'sv' => $data['sv'] ?? null,
+                'en' => $data['en'] ?? null,
                 'common' => isset($data['common']) ? 1 : 0
             ], $token);
 
-            $_SESSION['message'] = 'Genre added successfully!';
+            $_SESSION['message'] = 'Genre "' . $data['sv'] . '" tillagd';
             $_SESSION['message_type'] = 'success';
         } catch (\Exception $e) {
             $_SESSION['message'] = 'Error adding genre: ' . $e->getMessage();
@@ -250,12 +250,12 @@ class AdminController
         } else {
             try {
                 $this->callApiPut('/genres/' . $genreId, [
-                    'sv' => $data['sv'] ?? '',
-                    'en' => $data['en'] ?? '',
+                    'sv' => $data['sv'] ?? null,
+                    'en' => $data['en'] ?? null,
                     'common' => isset($data['common']) ? 1 : 0
                 ], $token);
 
-                $_SESSION['message'] = 'Genre updated successfully!';
+                $_SESSION['message'] = 'Genre "' . $data['sv'] . '" uppdaterad';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error updating genre: ' . $e->getMessage();
@@ -288,7 +288,7 @@ class AdminController
             try {
                 $this->callApiDelete('/genres/' . $genreId, $token);
 
-                $_SESSION['message'] = 'Genre deleted successfully!';
+                $_SESSION['message'] = 'Genre raderad';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error deleting genre: ' . $e->getMessage();
@@ -374,7 +374,7 @@ class AdminController
                 'death_date' => $data['death_date'] ?? null,
             ], $token);
 
-            $_SESSION['message'] = 'Person added successfully!';
+            $_SESSION['message'] = '"' . $data['name'] . '" tillagd';
             $_SESSION['message_type'] = 'success';
         } catch (\Exception $e) {
             $_SESSION['message'] = 'Error adding person: ' . $e->getMessage();
@@ -405,13 +405,13 @@ class AdminController
         } else {
             try {
                 $this->callApiPut('/persons/' . $personId, [
-                    'name' => $data['name'] ?? '',
-                    'category' => $data['category'] ?? '',
-                    'birth_date' => $data['birth_date'] ?? '',
-                    'death_date' => $data['death_date'] ?? '',
+                    'name' => $data['name'] ?? null,
+                    'category' => $data['category'] ?? null,
+                    'birth_date' => $data['birth_date'] ?? null,
+                    'death_date' => $data['death_date'] ?? null,
                 ], $token);
 
-                $_SESSION['message'] = 'Person updated successfully!';
+                $_SESSION['message'] = '"' . $data['name'] . '" uppdaterad';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error updating person: ' . $e->getMessage();
@@ -444,7 +444,7 @@ class AdminController
             try {
                 $this->callApiDelete('/persons/' . $personId, $token);
 
-                $_SESSION['message'] = 'Person deleted successfully!';
+                $_SESSION['message'] = 'Person raderad';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error deleting person: ' . $e->getMessage();
@@ -483,7 +483,7 @@ class AdminController
             if($category == 'all'){
                 $category = null;
             }else if($category == null){
-                $category = 'nothing'; // Visa inget genom att ange en kategori som inte finns
+                $limit = 0; // Visa inget genom att ange limit 0
             }
 
             // Fetch persons from API
@@ -611,7 +611,7 @@ class AdminController
                     'description' => $data['description'] ?? null,
                 ], $token);
 
-                $_SESSION['message'] = 'Movie updated successfully!';
+                $_SESSION['message'] = '"' . $data['title'] . '" uppdaterad';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error updating movie: ' . $e->getMessage();
@@ -645,7 +645,7 @@ class AdminController
             try {
                 $this->callApiDelete('/movies/' . $movieId, $token);
 
-                $_SESSION['message'] = 'Movie deleted successfully!';
+                $_SESSION['message'] = 'Raderades';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error deleting movie: ' . $e->getMessage();
@@ -687,7 +687,7 @@ class AdminController
             if($type == 'all'){
                 $type = null;
             }else */if($type == null){
-                $type = 'nothing'; // Visa inget genom att ange en typ som inte finns
+                $limit = 0; // Visa inget genom att ange limit 0
             }
 
             // Fetch movies from API
