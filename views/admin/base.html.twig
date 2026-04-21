@@ -14,7 +14,7 @@
     </div>
     {% endif %}
     {% if message %}
-    <div class="{% if message_type == 'success' %}success{% else %}error{% endif %} message">
+    <div class="{{ message_type }} message">
         {{ message }}
     </div>
     {% endif %}

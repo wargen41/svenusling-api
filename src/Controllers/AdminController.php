@@ -102,6 +102,9 @@ class AdminController
             'admin/dashboard.html.twig',
             [
                 'user' => $user,
+                'message' => 'Inloggad som ' . $user['username'],
+                'message_type' => 'success',
+                'user' => $user,
                 'adminBaseStyles' => ADMIN_BASE_STYLES,
                 'siteName' => SITE_NAME,
                 'pageTitle' => 'Start'
