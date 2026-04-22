@@ -14,7 +14,10 @@ class PublicAuthMiddleware implements MiddlewareInterface
 {
     public function process(Request $request, RequestHandler $handler): Response
     {
-        $token = $_SESSION['jwt_token'];
+        $token = null;
+        if(isset($_SESSION)){
+            $token = $_SESSION['jwt_token'] ?? null;
+        }
 
         if(isset($token)){
             try {
