@@ -15,6 +15,7 @@ use App\Controllers\MediaController;
 use App\Controllers\AuthController;
 use App\Controllers\AdminController;
 use App\Middleware\AuthMiddleware;
+use App\Middleware\PublicAuthMiddleware;
 use App\Middleware\AdminAuthMiddleware;
 use Slim\App;
 
