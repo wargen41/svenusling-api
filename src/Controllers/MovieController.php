@@ -72,7 +72,7 @@ class MovieController
             if ($request->getAttribute('user_role') !== 'admin') {
                 $where[] = 'hidden = 0';
             }
-            error_log('$userRole: ' . $request->getAttribute('user_role'));
+            error_log('user_role: ' . $request->getAttribute('user_role'));
 
             $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
             error_log('$whereClause: ' . $whereClause);
