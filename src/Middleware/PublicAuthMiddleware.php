@@ -18,8 +18,6 @@ class PublicAuthMiddleware implements MiddlewareInterface
         if(isset($_SESSION)){
             $token = $_SESSION['jwt_token'] ?? null;
         }
-        error_log("SESSION: ".$_SESSION);
-        error_log("TOKEN: ".$token);
 
         if(isset($token)){
             try {
