@@ -35,7 +35,7 @@ class Routes
         $app->delete('/genres/{id}', [GenreController::class, 'deleteGenre'])->add(new AuthMiddleware());
 
         // Movie routes
-        $app->get('/movies', [MovieController::class, 'listMovies'])->add(new AuthMiddleware());
+        $app->get('/movies', [MovieController::class, 'listMovies'])->add(new PublicAuthMiddleware());
         $app->get('/movies/{id}', [MovieController::class, 'getMovie']);
         $app->get('/series/{id}', [SeriesController::class, 'getSeries']);
         $app->get('/season/{id}', [SeriesController::class, 'getSeason']);
