@@ -68,14 +68,8 @@ class MovieController
             }
 
             // Add hidden filter
-            //$this->addHiddenFilter($where, $bindings, $request->getAttribute('user_role'));
-            if ($request->getAttribute('user_role') !== 'admin') {
-                $where[] = 'hidden = 0';
-            }
-            error_log('user_role: ' . $request->getAttribute('user_role'));
-
+            $this->addHiddenFilter($where, $bindings, $request->getAttribute('user_role'));
             $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
-            error_log('$whereClause: ' . $whereClause);
 
             $columns = 'id, title, original_title, year, type, rating, poster_image_id, added_date';
             if($details === 'minimal'){
