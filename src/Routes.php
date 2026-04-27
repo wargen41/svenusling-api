@@ -36,9 +36,9 @@ class Routes
 
         // Movie routes
         $app->get('/movies', [MovieController::class, 'listMovies'])->add(new PublicAuthMiddleware());
-        $app->get('/movies/{id}', [MovieController::class, 'getMovie']);
-        $app->get('/series/{id}', [SeriesController::class, 'getSeries']);
-        $app->get('/season/{id}', [SeriesController::class, 'getSeason']);
+        $app->get('/movies/{id}', [MovieController::class, 'getMovie'])->add(new PublicAuthMiddleware());
+        $app->get('/series/{id}', [SeriesController::class, 'getSeries'])->add(new PublicAuthMiddleware());
+        $app->get('/season/{id}', [SeriesController::class, 'getSeason'])->add(new PublicAuthMiddleware());
         $app->post('/movies', [MovieController::class, 'createMovie'])->add(new AuthMiddleware());
         $app->put('/movies/{id}', [MovieController::class, 'updateMovie'])->add(new AuthMiddleware());
         $app->delete('/movies/{id}', [MovieController::class, 'deleteMovie'])->add(new AuthMiddleware());
