@@ -111,7 +111,7 @@
                         </div>
                     </fieldset>
                 </form>
-                <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ movie.title }}?');">
+                <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ movie.title }} ({{ movie.id }})?');">
                     <input type="hidden" name="form_redirect" value="/admin/films">
                     <input type="hidden" name="movie_id" value="{{ movie.id }}">
                     <fieldset>
