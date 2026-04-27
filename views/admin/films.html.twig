@@ -42,7 +42,7 @@
                     <fieldset>
                         <legend>Filter</legend>
                         <div class="form-row">
-                            <label for="search">Sök
+                            <label for="search">Sökord
                                 <input type="search" id="search" name="search" {% if params.search %}value="{{ params.search }}"{% endif %}>
                             </label>
                             <label for="filter-type">Typ
@@ -54,8 +54,11 @@
                                 </select>
                             </label>
                             <label for="filter-year">År
-                                <input type="number" size="4" min="1888" max="2099-12-31" id="filter-year" name="year" {% if params.year %}value="{{ params.year }}"{% endif %}>
+                                <input type="number" size="4" min="1888" max="2099" id="filter-year" name="year" {% if params.year %}value="{{ params.year }}"{% endif %}>
                             </label>
+                            <label for="filter-hidden">
+                                <input type="checkbox" id="filter-hidden" name="hidden" {% if params.hidden %}checked{% endif %}>
+                            Endast dolda</label>
                         </div>
 
                         <div class="form-actions">
