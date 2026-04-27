@@ -14,12 +14,17 @@ class PublicAuthMiddleware implements MiddlewareInterface
 {
     public function process(Request $request, RequestHandler $handler): Response
     {
-        $token = null;
-        if(isset($_SESSION)){
-            $token = $_SESSION['jwt_token'] ?? null;
-        }
+        error_log('PublicAuthMiddleware processing request');
 
-        if(isset($token)){
+        $authHeader = $request->getHeader('Authorization');
+        error_log('Authorization header: ' . json_encode($authHeader));
+
+        if (empty($authHeader)) {
+            error_log('Anonymous user');
+        }else{
+            $token = str_replace('Bearer ', '', $authHeader[0]);
+            error_log('Token: ' . substr($token, 0, 20) . '...');
+
             try {
                 error_log('Decoding token with secret length: ' . strlen(JWT_SECRET));
 
