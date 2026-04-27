@@ -69,6 +69,7 @@ class MovieController
 
             // Add hidden filter
             $this->addHiddenFilter($where, $bindings, $request->getAttribute('user_role'));
+
             $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 
             $columns = 'id, title, original_title, year, type, rating, poster_image_id, added_date';
@@ -115,6 +116,108 @@ class MovieController
                 $response,
                 ['error' => 'Failed to fetch movies', 'message' => $e->getMessage()],
                 500
+            );
+        }
+    }
+
+    /**
+     * Public: Get hidden movies with filtering
+     */
+    public function listHiddenMovies(Request $request, Response $response): Response
+    {
+        try {
+            $params = $request->getQueryParams();
+            $type = $params['type'] ?? null;
+            $year = $params['year'] ?? null;
+            $rating = $params['rating'] ?? null;
+            $search = $params['search'] ?? null;
+            $skip = (int)($params['skip'] ?? 0);
+            $details = $params['details'] ?? null;
+            if($details === 'minimal'){
+                $limit = (int)($params['limit'] ?? -1);
+            }else{
+                $limit = min((int)($params['limit'] ?? 100), 1000);
+            }
+
+            $where = [];
+            $bindings = [];
+
+            // Filter by type (film, series, season, episode, miniseries)
+            if ($type) {
+                $where[] = 'type = ?';
+                $bindings[] = $type;
+            }
+
+            // Filter by year
+            if ($year) {
+                $where[] = 'year = ?';
+                $bindings[] = $year;
+            }
+
+            // Filter by rating
+            if ($rating !== null) {
+                $where[] = 'rating = ?';
+                $bindings[] = (int)$rating;
+            }
+
+            // Search by title
+            if ($search) {
+                $where[] = '(title LIKE ? OR original_title LIKE ?)';
+                $searchTerm = '%' . $search . '%';
+                $bindings[] = $searchTerm;
+                $bindings[] = $searchTerm;
+            }
+
+            // Add hidden filter (show only hidden)
+            $where[] = 'hidden = ?';
+            $bindings[] = 1;
+
+            $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
+
+            $columns = 'id, title, original_title, year, type, rating, poster_image_id, added_date';
+            if($details === 'minimal'){
+                $columns = 'id, title, year, type, rating';
+            }
+
+            $sql = "
+            SELECT $columns
+            FROM movies
+            $whereClause
+            ORDER BY sorting_title ASC
+            LIMIT ? OFFSET ?
+            ";
+
+            $stmt = $this->db->prepare($sql);
+            $bindings[] = $limit;
+            $bindings[] = $skip;
+            $stmt->execute($bindings);
+            $movies = $stmt->fetchAll();
+
+            // Get total count
+            $countSql = "SELECT COUNT(*) as count FROM movies $whereClause";
+            $countStmt = $this->db->prepare($countSql);
+            $countStmt->execute(array_slice($bindings, 0, -2));
+            $countResult = $countStmt->fetch();
+            $total = $countResult['count'];
+
+            error_log('Fetched ' . count($movies) . ' movies');
+
+            return $this->jsonResponse($response, [
+                'success' => true,
+                'data' => $movies,
+                'pagination' => [
+                    'count' => count($movies),
+                                       'total' => $total,
+                                       'skip' => $skip,
+                                       'limit' => $limit
+                ]
+            ]);
+        } catch (\Exception $e) {
+            error_log('Error in listMovies: ' . $e->getMessage());
+            return $this->jsonResponse(
+                $response,
+                ['error' => 'Failed to fetch movies', 'message' => $e->getMessage()],
+                                       500
             );
         }
     }
