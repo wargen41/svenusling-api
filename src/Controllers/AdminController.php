@@ -690,6 +690,8 @@ class AdminController
 
         try {
             $params = $request->getQueryParams();
+            $hidden = $params['hidden'] ?? null;
+
             $limit = $params['limit'] ?? '-1';
             $search = $params['search'] ?? null;
             $type = $params['type'] ?? null;
@@ -703,7 +705,11 @@ class AdminController
             }
 
             // Fetch movies from API
-            $movies = $this->callApiGet("/movies?limit=$limit&type=$type&year=$year&search=$search", $token);
+            if(isset($hidden)){
+                $movies = $this->callApiGet("/movies/hidden?limit=$limit&type=$type&year=$year&search=$search", $token);
+            }else{
+                $movies = $this->callApiGet("/movies?limit=$limit&type=$type&year=$year&search=$search", $token);
+            }
 
             return Twig::fromRequest($request)->render(
                 $response,
