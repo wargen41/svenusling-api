@@ -4,11 +4,17 @@ $projectRoot = __DIR__;
 define('DB_PATH', $projectRoot . '/movies.db');
 
 // Site configuration
-define('SITE_NAME', 'Site Name');
+define('API', array(
+    'PUBLIC_SITE_NAME' => 'Site Name',
+    'PUBLIC_SITE_URL' => 'http://localhost:8000',
+    'ADMIN_SITE_NAME' => 'Admin Site Name',
+    'ADMIN_API_BASE_URL' => 'http://localhost:8000',
+    'ADMIN_BASE_STYLES' => 'http://localhost:8000/styles.css'
+));
 
 // Admin frontend configuration
-define('ADMIN_API_BASE_URL', getenv('ADMIN_API_BASE_URL') ?: 'http://localhost:8000');
-define('ADMIN_BASE_STYLES', getenv('ADMIN_BASE_STYLES') ?: 'http://localhost/styles.css');
+//define('ADMIN_API_BASE_URL', getenv('ADMIN_API_BASE_URL') ?: 'http://localhost:8000');
+//define('ADMIN_BASE_STYLES', getenv('ADMIN_BASE_STYLES') ?: 'http://localhost/styles.css');
 
 // JWT configuration - with debugging
 $jwtSecret = getenv('JWT_SECRET');
