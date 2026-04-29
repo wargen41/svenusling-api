@@ -307,7 +307,7 @@ class Database
             $this->connection->exec('
                 CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY,
-                    username TEXT UNIQUE NOT NULL,
+                    username TEXT NOT NULL,
                     email TEXT UNIQUE NOT NULL,
                     password_hash TEXT NOT NULL,
                     role TEXT DEFAULT "user",
