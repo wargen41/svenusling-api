@@ -42,8 +42,6 @@ class AdminController
                 'admin/login.html.twig',
                 [
                     'error' => 'Både e-post och lösen måste vara ifyllda',
-                    'adminBaseStyles' => ADMIN_BASE_STYLES,
-                    'siteName' => SITE_NAME,
                     'pageTitle' => 'Logga in'
                 ]
             );
@@ -68,8 +66,6 @@ class AdminController
                     'admin/login.html.twig',
                     [
                         'error' => 'Felaktiga inloggningsuppgifter',
-                        'adminBaseStyles' => ADMIN_BASE_STYLES,
-                        'siteName' => SITE_NAME,
                         'pageTitle' => 'Logga in'
                     ]
                 );
@@ -80,8 +76,6 @@ class AdminController
                 'admin/login.html.twig',
                 [
                     'error' => 'Inloggning misslyckades: ' . $e->getMessage(),
-                    'adminBaseStyles' => ADMIN_BASE_STYLES,
-                    'siteName' => SITE_NAME,
                     'pageTitle' => 'Logga in'
                 ]
             );
@@ -102,8 +96,6 @@ class AdminController
                 'user' => $user,
                 'message' => 'Inloggad som ' . $user['username'],
                 'message_type' => 'success',
-                'adminBaseStyles' => ADMIN_BASE_STYLES,
-                'siteName' => SITE_NAME,
                 'pageTitle' => 'Start',
             ]
         );
@@ -331,8 +323,6 @@ class AdminController
                     'genres' => $genres['data'] ?? [],
                     'message' => $message,
                     'message_type' => $messageType,
-                    'adminBaseStyles' => ADMIN_BASE_STYLES,
-                    'siteName' => SITE_NAME,
                     'pageTitle' => 'Genrer'
                 ]
             );
@@ -346,8 +336,6 @@ class AdminController
                     'message' => 'Failed to load genres: ' . $e->getMessage(),
                     'message_type' => 'error',
                     'genres' => [],
-                    'adminBaseStyles' => ADMIN_BASE_STYLES,
-                    'siteName' => SITE_NAME,
                     'pageTitle' => 'Genrer'
                 ]
             );
@@ -504,8 +492,6 @@ class AdminController
                     'params' => $params,
                     'message' => $message,
                     'message_type' => $messageType,
-                    'adminBaseStyles' => ADMIN_BASE_STYLES,
-                    'siteName' => SITE_NAME,
                     'pageTitle' => 'Personer'
                 ]
             );
@@ -521,8 +507,6 @@ class AdminController
                     'persons' => [],
                     'pagination' => $persons['pagination'] ?? [],
                     'params' => $params,
-                    'adminBaseStyles' => ADMIN_BASE_STYLES,
-                    'siteName' => SITE_NAME,
                     'pageTitle' => 'Personer'
                 ]
             );
@@ -719,8 +703,6 @@ class AdminController
                     'params' => $params,
                     'message' => $message,
                     'message_type' => $messageType,
-                    'adminBaseStyles' => ADMIN_BASE_STYLES,
-                    'siteName' => SITE_NAME,
                     'pageTitle' => 'Filmer'
                 ]
             );
@@ -736,8 +718,6 @@ class AdminController
                     'movies' => [],
                     'pagination' => $movies['pagination'] ?? [],
                     'params' => $params,
-                    'adminBaseStyles' => ADMIN_BASE_STYLES,
-                    'siteName' => SITE_NAME,
                     'pageTitle' => 'Filmer'
                 ]
             );
