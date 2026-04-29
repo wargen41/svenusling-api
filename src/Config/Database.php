@@ -11,8 +11,6 @@ class Database
 
     private function __construct()
     {
-        error_log('Database::__construct() called');
-        
         try {
             $dbDir = dirname(DB_PATH);
             
@@ -22,16 +20,11 @@ class Database
                     throw new \Exception("Could not create database directory: $dbDir");
                 }
                 error_log("✓ Created database directory: $dbDir");
-            } else {
-                error_log('Database directory exists');
             }
             
             if (!is_writable($dbDir)) {
                 throw new \Exception("Database directory is not writable: $dbDir");
             }
-            
-            error_log('Database directory is writable');
-            error_log('Connecting to database: ' . DB_PATH);
             
             $this->connection = new PDO(
                 'sqlite:' . DB_PATH,
@@ -43,8 +36,6 @@ class Database
                 ]
             );
             
-            error_log('✓ PDO connection created');
-            
             if (file_exists(DB_PATH)) {
                 error_log('✓ Database file confirmed to exist: ' . DB_PATH);
                 $size = filesize(DB_PATH);
@@ -54,7 +45,6 @@ class Database
             }
             
             $this->connection->exec('PRAGMA foreign_keys = ON');
-            error_log('✓ Foreign keys enabled');
             
         } catch (PDOException $e) {
             error_log('✗ PDOException in Database constructor: ' . $e->getMessage());
@@ -68,14 +58,8 @@ class Database
 
     public static function getInstance()
     {
-        error_log('Database::getInstance() called');
-        
         if (self::$instance === null) {
-            error_log('Creating new Database instance...');
             self::$instance = new self();
-            error_log('✓ Database instance created');
-        } else {
-            error_log('Returning existing Database instance');
         }
         
         return self::$instance;
@@ -88,15 +72,12 @@ class Database
 
     public function initializeTables()
     {
-        error_log('Database::initializeTables() called');
-        
         try {
             $tables = $this->connection->query("SELECT name FROM sqlite_master WHERE type='table'")->fetchAll();
             $existingTables = array_column($tables, 'name');
-            error_log('Found tables: ' . json_encode($existingTables));
             
             if (in_array('movies', $existingTables)) {
-                error_log('✓ Tables already exist, skipping creation');
+                //error_log('✓ Tables already exist, skipping creation');
                 return;
             }
             
