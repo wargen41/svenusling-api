@@ -27,6 +27,9 @@ class AuthController
     {
         try {
             error_log('register() called');
+
+            $userIP=$_SERVER['REMOTE_ADDR'];
+            error_log("User IP: " . $userIP);
             
             $data = $request->getParsedBody();
             error_log('Parsed body: ' . json_encode($data));
