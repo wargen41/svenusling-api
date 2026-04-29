@@ -8,7 +8,7 @@ define('API', array(
     'PUBLIC_SITE_NAME' => 'Site Name',
     'PUBLIC_SITE_URL' => 'http://localhost:8000',
     'ADMIN_SITE_NAME' => 'Admin Site Name',
-    'ADMIN_API_BASE_URL' => 'http://localhost:8000',
+    'ADMIN_BASE_URL' => 'http://localhost:8000',
     'ADMIN_BASE_STYLES' => 'http://localhost:8000/styles.css'
 ));
 

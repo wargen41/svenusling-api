@@ -141,7 +141,7 @@ class AdminController
     {
         error_log('callApiLogin called with email: ' . $email);
 
-        $apiUrl = ADMIN_API_BASE_URL . '/auth/login';
+        $apiUrl = API['ADMIN_BASE_URL'] . '/auth/login';
         error_log('API URL: ' . $apiUrl);
 
         $ch = curl_init();
@@ -729,7 +729,7 @@ class AdminController
      */
     private function callApiGet($endpoint, $token = null)
     {
-        $url = ADMIN_API_BASE_URL . $endpoint;
+        $url = API['ADMIN_BASE_URL'] . $endpoint;
         error_log('GET ' . $url);
 
         $ch = curl_init();
@@ -766,7 +766,7 @@ class AdminController
      */
     private function callApiPost($endpoint, $data, $token = null)
     {
-        $url = ADMIN_API_BASE_URL . $endpoint;
+        $url = API['ADMIN_BASE_URL'] . $endpoint;
         error_log('POST ' . $url);
 
         $ch = curl_init();
@@ -805,7 +805,7 @@ class AdminController
      */
     private function callApiPut($endpoint, $data, $token = null)
     {
-        $url = ADMIN_API_BASE_URL . $endpoint;
+        $url = API['ADMIN_BASE_URL'] . $endpoint;
         error_log('PUT ' . $url);
 
         $ch = curl_init();
@@ -844,7 +844,7 @@ class AdminController
      */
     private function callApiDelete($endpoint, $token = null)
     {
-        $url = ADMIN_API_BASE_URL . $endpoint;
+        $url = API['ADMIN_BASE_URL'] . $endpoint;
         error_log('DELETE ' . $url);
 
         $ch = curl_init();
