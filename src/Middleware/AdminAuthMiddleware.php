@@ -16,7 +16,7 @@ class AdminAuthMiddleware implements MiddlewareInterface
     {
         error_log('AdminAuthMiddleware processing request');
 
-        $token = $_SESSION['jwt_token']);
+        $token = $_SESSION['jwt_token'];
 
         try {
             error_log('Decoding token with secret length: ' . strlen(JWT_SECRET));
