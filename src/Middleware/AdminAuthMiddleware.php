@@ -14,6 +14,11 @@ class AdminAuthMiddleware implements MiddlewareInterface
 {
     public function process(Request $request, RequestHandler $handler): Response
     {
+        // Start session if not already started
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         error_log('AdminAuthMiddleware processing request');
 
         // Check if user has JWT token in session
