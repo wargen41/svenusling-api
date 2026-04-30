@@ -16,6 +16,11 @@ class AdminAuthMiddleware implements MiddlewareInterface
     {
         error_log('AdminAuthMiddleware processing request');
 
+        // Check if user has JWT token in session
+        if (!isset($_SESSION['jwt_token']) || empty($_SESSION['jwt_token'])) {
+            return $this->redirectResponse();
+        }
+
         $token = $_SESSION['jwt_token'];
 
         try {
