@@ -15,20 +15,8 @@ class AdminAuthMiddleware implements MiddlewareInterface
     public function process(Request $request, RequestHandler $handler): Response
     {
         error_log('AdminAuthMiddleware processing request');
-        
-        $authHeader = $request->getHeader('Authorization');
-        error_log('Authorization header: ' . json_encode($authHeader));
-        
-        if (empty($authHeader)) {
-            error_log('✗ Missing authorization header');
-            return $this->jsonResponse(
-                ['error' => 'Missing authorization header'],
-                401
-            );
-        }
 
-        $token = str_replace('Bearer ', '', $authHeader[0]);
-        error_log('Token: ' . substr($token, 0, 20) . '...');
+        $token = $_SESSION['jwt_token']);
 
         try {
             error_log('Decoding token with secret length: ' . strlen(JWT_SECRET));
@@ -43,7 +31,8 @@ class AdminAuthMiddleware implements MiddlewareInterface
 
             // Confirm that user is admin
             if($decoded->role !== 'admin'){
-                return $this->jsonResponse(['error' => 'Invalid credentials'], 401);
+                // If not, redirect to login page
+                return $this->redirectResponse();
             }
             
             // Attach user info to request
@@ -56,24 +45,23 @@ class AdminAuthMiddleware implements MiddlewareInterface
                 
         } catch (ExpiredException $e) {
             error_log('✗ Token expired');
-            return $this->jsonResponse(['error' => 'Token expired'], 401);
+            return $this->redirectResponse();
         } catch (SignatureInvalidException $e) {
             error_log('✗ Invalid token signature');
-            return $this->jsonResponse(['error' => 'Invalid token signature'], 401);
+            return $this->redirectResponse();
         } catch (\Exception $e) {
             error_log('✗ Token validation error: ' . $e->getMessage());
-            return $this->jsonResponse(['error' => 'Invalid token'], 401);
+            return $this->redirectResponse();
         }
 
         return $handler->handle($request);
     }
 
-    private function jsonResponse($data, $status = 200)
+    private function redirectResponse($location = '/admin/login', $status = 302)
     {
         $response = new \Slim\Psr7\Response();
-        $response->getBody()->write(json_encode($data));
         return $response
             ->withStatus($status)
-            ->withHeader('Content-Type', 'application/json');
+            ->withHeader('Location', $location);
     }
 }
