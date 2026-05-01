@@ -7,6 +7,8 @@
                 const numInput = selector.querySelector('#rating');
                 const rangeInput = selector.querySelector('#rating-slider');
 
+                console.debug(this, numInput, rangeInput)
+
                 // Update the other input with its value
                 if (this === numInput) {
                     rangeInput.value = numInput.value;
