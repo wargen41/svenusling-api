@@ -4,8 +4,8 @@
         ratingSelectors.forEach(selector => {
             selector.addEventListener('input', function() {
                 // Get the number input and range input
-                const numInput = this.querySelector('#rating');
-                const rangeInput = this.querySelector('#rating-slider');
+                const numInput = selector.querySelector('#rating');
+                const rangeInput = selector.querySelector('#rating-slider');
 
                 // Update the other input with its value
                 if (this === numInput) {
