@@ -1,5 +1,7 @@
 {% extends "admin/base.html.twig" %}
 
+{% set this_page = '/admin' %}
+
 {% block mainContent %}
     <article>
         <h1>Sven Admin</h1>
@@ -9,7 +11,8 @@
             <details open>
                 <summary><h3>Snabbinmatning</h3></summary>
                 <p>Filmer inmatade här är dolda tills du aktivt valt att publicera dem.</p>
-                <form method="post" action="">
+                <form method="post" action="/admin/movies/add">
+                    <input type="hidden" name="form_redirect" value="{{ this_page }}?quick=1">
                     <fieldset>
                         <legend>Ny film</legend>
                         <div class="form-row">
