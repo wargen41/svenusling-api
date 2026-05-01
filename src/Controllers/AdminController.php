@@ -90,6 +90,8 @@ class AdminController
         $user = $_SESSION['user'] ?? null;
         $token = $_SESSION['jwt_token'] ?? null;
 
+        $params = $request->getQueryParams();
+
         $hiddenMovies = $this->callApiGet("/movies/hidden?limit=-1", $token);
 
         return Twig::fromRequest($request)->render(
@@ -97,6 +99,7 @@ class AdminController
             'admin/dashboard.html.twig',
             [
                 'user' => $user,
+                'params' => $params,
                 'hiddenMovies' => $hiddenMovies['data'] ?? [],
                 'message' => 'Inloggad som ' . $user['username'],
                 'message_type' => 'success',
