@@ -12,24 +12,28 @@
                 <form method="post" action="">
                     <fieldset>
                         <legend>Ny film</legend>
-                        <div class="input-row">
-                            <label for="rating">Betyg
-                                <input required type="number" min="0" max="100" size="3" name="rating" id="rating">
-                                <input title="Denna ska visas med JavaScript och dessa två ska uppdateras tillsammans" type="range" id="rating-slider" list="main-ratings">
-                                <datalist id="main-ratings">
-                                    <option value="0"></option>
-                                    <option value="20"></option>
-                                    <option value="40"></option>
-                                    <option value="60"></option>
-                                    <option value="80"></option>
-                                    <option value="100"></option>
-                                </datalist>
-                            </label>
+                        <div class="form-row">
                             <label for="add-movie-title">Titel
                                 <input required name="title" id="add-movie-title" type="text">
                             </label>
                             <label for="add-movie-year">År
                                 <input type="number" min="1888" max="2099" size="4" name="year" id="add-movie-year">
+                            </label>
+                        </div>
+                        <div class="form-row">
+                            <label for="rating">Betyg
+                                <input type="number" min="0" max="100" size="3" name="rating" id="rating">
+                                <div class="range-labels">
+                                    <input title="Denna ska visas med JavaScript och dessa två ska uppdateras tillsammans" type="range" id="rating-slider" list="main-ratings">
+                                    <datalist id="main-ratings">
+                                        <option value="0" label="-"></option>
+                                        <option value="20" label="+"></option>
+                                        <option value="40" label="++"></option>
+                                        <option value="60" label="+++"></option>
+                                        <option value="80" label="++++"></option>
+                                        <option value="100" label="+++++"></option>
+                                    </datalist>
+                                </div>
                             </label>
                         </div>
                         <button type="submit">Mata in</button>

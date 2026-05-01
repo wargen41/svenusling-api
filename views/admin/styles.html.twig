@@ -140,10 +140,34 @@
             /*border-radius: 10em;*/ /* rounded corners "pill shape" */
         }
 
+        .range-labels
+        {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .range-labels > input[type=range]
+        {
+            margin: 0;
+        }
+
+        .range-labels > datalist
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            writing-mode: vertical-lr;
+        }
+
+        .range-labels > datalist > option
+        {
+            padding: 0;
+        }
+
         {#button[type="submit"]:not(.login),
         input[type="submit"]:not(.login)#}
-        main button[type="submit"],
-        main input[type="submit"]
+        main button[type=submit],
+        main input[type=submit]
         {
             text-align: center;
             min-width: 47%;
