@@ -88,12 +88,16 @@ class AdminController
     public function dashboard(Request $request, Response $response): Response
     {
         $user = $_SESSION['user'] ?? null;
+        $token = $_SESSION['jwt_token'] ?? null;
+
+        $hiddenMovies = $this->callApiGet("/movies/hidden?limit=-1", $token);
 
         return Twig::fromRequest($request)->render(
             $response,
             'admin/dashboard.html.twig',
             [
                 'user' => $user,
+                'hiddenMovies' => $hiddenMovies,
                 'message' => 'Inloggad som ' . $user['username'],
                 'message_type' => 'success',
                 'pageTitle' => 'Start',

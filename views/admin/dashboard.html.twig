@@ -61,6 +61,11 @@
             <details open>
                 <summary><h3>Dolda filmer (4)</h3></summary>
                 <p>Det finns 4 som ännu inte publicerats.</p>
+                <div class="button-list">
+                {% for movie in hiddenMovies %}
+                    <button class="movie {{ movie.type }}" popovertarget="edit-form-{{ movie.id }}">{{ movie.title }}</button>
+                {% endfor %}
+                </div>
                 <ul>
                     <li><a href="/admin/movie/123"><button>Film 1 (2026)</button> +++</a></li>
                     <li><a href="/admin/movie/123"><button>Film 2 (2026)</button> +++</a></li>
