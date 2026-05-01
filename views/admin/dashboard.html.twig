@@ -1,6 +1,14 @@
 {% extends "admin/base.html.twig" %}
 
 {% set this_page = '/admin' %}
+{% set types = {
+    'film': 'Film',
+    'short': 'Kortfilm',
+    'episode': 'Avsnitt',
+    'season': 'Säsong',
+    'series': 'Serie',
+    'miniseries': 'Miniserie',
+} %}
 
 {% block mainContent %}
     <article>
@@ -16,6 +24,13 @@
                     <fieldset>
                         <legend>Ny film</legend>
                         <div class="form-row">
+                            <label for="add-movie-type">Typ
+                                <select type="text" id="add-movie-type" name="type" required>
+                                    {% for value, label in types %}
+                                    <option value="{{ value }}">{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
                             <label for="add-movie-title">Titel
                                 <input required name="title" id="add-movie-title" type="text">
                             </label>
