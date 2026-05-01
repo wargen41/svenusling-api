@@ -97,7 +97,7 @@ class AdminController
             'admin/dashboard.html.twig',
             [
                 'user' => $user,
-                'hiddenMovies' => $hiddenMovies,
+                'hiddenMovies' => $hiddenMovies['data'] ?? [],
                 'message' => 'Inloggad som ' . $user['username'],
                 'message_type' => 'success',
                 'pageTitle' => 'Start',
