@@ -1,0 +1,18 @@
+    <script>
+        const ratingSelectors = document.querySelectorAll('.rating-selector');
+
+        ratingSelectors.forEach(selector => {
+            selector.addEventListener('input', function() {
+                // Get the number input and range input
+                const numInput = this.querySelector('#rating');
+                const rangeInput = this.querySelector('#rating-slider');
+
+                // Update the other input with its value
+                if (this === numInput) {
+                    rangeInput.value = numInput.value;
+                } else if (this === rangeInput) {
+                    numInput.value = rangeInput.value;
+                }
+            });
+        });
+    </script>

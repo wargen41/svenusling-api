@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pageTitle }} | {{ constant('API').ADMIN_SITE_NAME }}</title>
     <link rel="stylesheet" href="{{ constant('API').ADMIN_BASE_STYLES }}">
-    {% include "admin/styles.html.twig" %}
+{% include "admin/styles.html.twig" %}
 </head>
 <body>
     {% if error %}
@@ -34,5 +34,7 @@
         {% block mainContent %}{% endblock %}
 
     </main>
+
+{% include "admin/styles.html.twig" %}
 </body>
 </html>
