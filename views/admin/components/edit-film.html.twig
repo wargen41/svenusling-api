@@ -15,7 +15,7 @@
                             <label for="edit-sorting_title-{{ item.id }}">Sorteringstitel</label>
                             <input type="text" id="edit-sorting_title-{{ item.id }}" name="sorting_title" value="{{ item.sorting_title }}">
                             <label for="edit-year-{{ item.id }}">År
-                                <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year-{{ item.id }}">
+                                <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year-{{ item.id }}" value="{{ item.year }}">
                             </label>
                         </div>
                         <div class="form-row">
@@ -25,6 +25,13 @@
                                     <option value="{{ value }}" {% if item.type == value %}selected{% endif %}>{{ label }}</option>
                                     {% endfor %}
                                 </select>
+                            </label>
+                        </div>
+                        <div class="form-row">
+                            <label for="edit-description-{{ item.id }}">Kort beskrivning
+                                <textarea id="edit-description-{{ item.id }}" name="description">
+                                    {{ item.description }}
+                                </textarea>
                             </label>
                         </div>
 
