@@ -180,10 +180,16 @@ class MovieController
 
             $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 
-            $columns = 'id, title, original_title, year, type, rating, poster_image_id, added_date';
-            if($details === 'minimal'){
-                $columns = 'id, title, year, type, rating';
+            // Select columns, based on requested detail level and user role
+            $cols = ['id', 'title', 'year', 'type', 'rating']; // Minimal
+            if($details !== 'minimal'){
+                array_push($cols, 'sequence_number', 'sequence_number_2', 'year_2', 'original_title', 'description', 'added_date');
+
+                if($userRole === 'admin'){
+                    array_push($cols, 'hidden', 'sorting_title', 'imdb_id');
+                }
             }
+            $columns = implode(', ', $cols);
 
             $sql = "
             SELECT $columns
