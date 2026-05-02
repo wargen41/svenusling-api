@@ -10,10 +10,10 @@
                             <input type="text" id="edit-title-{{ item.id }}" name="title" value="{{ item.title }}" required>
                             <label for="edit-original_title-{{ item.id }}">Originaltitel</label>
                             <input type="text" id="edit-original_title-{{ item.id }}" name="original_title" value="{{ item.original_title }}">
-                            <label for="edit-sorting_title-{{ item.id }}">Sorteringstitel</label>
-                            <input type="text" id="edit-sorting_title-{{ item.id }}" name="sorting_title" value="{{ item.sorting_title }}">
                         </div>
                         <div class="form-row">
+                            <label for="edit-sorting_title-{{ item.id }}">Sorteringstitel</label>
+                            <input type="text" id="edit-sorting_title-{{ item.id }}" name="sorting_title" value="{{ item.sorting_title }}">
                             <label for="edit-type-{{ item.id }}">Typ
                                 <select type="text" id="edit-type-{{ item.id }}" name="type" required>
                                     {% for value, label in types %}
