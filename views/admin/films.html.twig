@@ -56,6 +56,9 @@
                             <label for="filter-year">År
                                 <input type="number" size="4" min="1888" max="2099" id="filter-year" name="year" {% if params.year %}value="{{ params.year }}"{% endif %}>
                             </label>
+                            <label for="filter-rating">Betyg
+                                <input disabled type="number" size="3" min="0" max="100" id="filter-rating" name="rating" {% if params.rating %}value="{{ params.rating }}"{% endif %}>
+                            </label>
                             <label for="filter-hidden">
                                 <input type="checkbox" id="filter-hidden" name="hidden" {% if params.hidden %}checked{% endif %}>
                             Endast dolda</label>
