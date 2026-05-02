@@ -586,7 +586,7 @@ class AdminController
             $_SESSION['message_type'] = 'error';
         } else {
             try {
-                $movie = $this->callApiGet('/movies/' . $movieId);
+                $movie = $this->callApiGet('/movies/' . $movieId)['data'];
 
                 $this->callApiPut('/movies/' . $movieId, [
                     'hidden' => $data['hidden'] ?? $movie['hidden'] ?? '1',
