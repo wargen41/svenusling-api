@@ -72,7 +72,7 @@ class MovieController
 
             $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 
-            $columns = 'id, title, original_title, year, type, rating, poster_image_id, added_date';
+            $columns = 'id, title, original_title, sorting_title, year, type, rating, poster_image_id, added_date';
             if($details === 'minimal'){
                 $columns = 'id, title, year, type, rating';
             }
