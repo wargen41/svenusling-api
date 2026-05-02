@@ -1,13 +1,15 @@
 {% extends "admin/components/edit-base.html.twig" %}
 {% block content %}
                 <form method="POST" action="/admin/movies/update">
-                    <input type="hidden" name="form_redirect" value="/admin/films">
+                    <input type="hidden" name="form_redirect" value="{{ this_page }}">
                     <input type="hidden" name="movie_id" value="{{ item.id }}">
                     <fieldset>
                         <legend>Grunduppgifter</legend>
                         <div class="form-row">
                             <label for="edit-title-{{ item.id }}">Titel</label>
                             <input type="text" id="edit-title-{{ item.id }}" name="title" value="{{ item.title }}" required>
+                            <label for="edit-original_title-{{ item.id }}">Originaltitel</label>
+                            <input type="text" id="edit-original_title-{{ item.id }}" name="original_title" value="{{ item.title }}">
                         </div>
                         <div class="form-row">
                             <label for="edit-type-{{ item.id }}">Typ
@@ -25,7 +27,7 @@
                     </fieldset>
                 </form>
                 <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.title }}? ({{ item.id }})');">
-                    <input type="hidden" name="form_redirect" value="/admin/films">
+                    <input type="hidden" name="form_redirect" value="{{ this_page }}">
                     <input type="hidden" name="movie_id" value="{{ item.id }}">
                     <fieldset>
                         <legend>Radera</legend>
