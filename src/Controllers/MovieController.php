@@ -25,6 +25,8 @@ class MovieController
     public function listMovies(Request $request, Response $response): Response
     {
         try {
+            $userRole = $request->getAttribute('user_role');
+
             $params = $request->getQueryParams();
             $type = $params['type'] ?? null;
             $year = $params['year'] ?? null;
@@ -68,7 +70,7 @@ class MovieController
             }
 
             // Add hidden filter
-            $this->addHiddenFilter($where, $bindings, $request->getAttribute('user_role'));
+            $this->addHiddenFilter($where, $bindings, $userRole);
 
             $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 
@@ -132,6 +134,8 @@ class MovieController
     public function listHiddenMovies(Request $request, Response $response): Response
     {
         try {
+            $userRole = $request->getAttribute('user_role');
+
             $params = $request->getQueryParams();
             $type = $params['type'] ?? null;
             $year = $params['year'] ?? null;
