@@ -586,28 +586,30 @@ class AdminController
             $_SESSION['message_type'] = 'error';
         } else {
             try {
+                $movie = $this->callApiGet('/movies/' . $movieId);
+
                 $this->callApiPut('/movies/' . $movieId, [
-                    'hidden' => $data['hidden'] ?? '1',
-                    'added_date' => $data['added_date'] ?? null,
-                    'type' => $data['type'] ?? null,
-                    'genre_ids' => $data['genre_ids'] ?? [],
-                    'series_id' => $data['series_id'] ?? null,
-                    'season_id' => $data['season_id'] ?? null,
-                    'sequence_number' => $data['sequence_number'] ?? null,
-                    'sequence_number_2' => $data['sequence_number_2'] ?? null,
-                    'title' => $data['title'] ?? null,
-                    'original_title' => $data['original_title'] ?? null,
-                    'sorting_title' => $data['sorting_title'] ?? $data['title'],
-                    'year' => $data['year'] ?? null,
-                    'year_2' => $data['year_2'] ?? null,
-                    'rating' => $data['rating'] ?? '0', // Detta ska ändras sen
-                    'poster_image_id' => $data['poster_image_id'] ?? null,
-                    'large_image_id' => $data['large_image_id'] ?? null,
-                    'imdb_id' => $data['imdb_id'] ?? null,
-                    'description' => $data['description'] ?? null,
+                    'hidden' => $data['hidden'] ?? $movie['hidden'] ?? '1',
+                    'added_date' => $data['added_date'] ?? $movie['added_date'] ?? null,
+                    'type' => $data['type'] ?? $movie['type'] ?? null,
+                    'genre_ids' => $data['genre_ids'] ?? $movie['genre_ids'] ?? [],
+                    'series_id' => $data['series_id'] ?? $movie['series_id'] ?? null,
+                    'season_id' => $data['season_id'] ?? $movie['season_id'] ?? null,
+                    'sequence_number' => $data['sequence_number'] ?? $movie['sequence_number'] ?? null,
+                    'sequence_number_2' => $data['sequence_number_2'] ?? $movie['sequence_number_2'] ?? null,
+                    'title' => $data['title'] ?? $movie['title'] ?? null,
+                    'original_title' => $data['original_title'] ?? $movie['original_title'] ?? null,
+                    'sorting_title' => $data['sorting_title'] ?? $movie['sorting_title'] ?? $data['title'],
+                    'year' => $data['year'] ?? $movie['year'] ?? null,
+                    'year_2' => $data['year_2'] ?? $movie['year_2'] ?? null,
+                    'rating' => $data['rating'] ?? $movie['rating'] ?? null, // Detta bör hanteras på annat sätt sen
+                    'poster_image_id' => $data['poster_image_id'] ?? $movie['poster_image_id'] ?? null,
+                    'large_image_id' => $data['large_image_id'] ?? $movie['large_image_id'] ?? null,
+                    'imdb_id' => $data['imdb_id'] ?? $movie['imdb_id'] ?? null,
+                    'description' => $data['description'] ?? $movie['description'] ?? null,
                 ], $token);
 
-                $_SESSION['message'] = '"' . $data['title'] . '" uppdaterad';
+                $_SESSION['message'] = '"' . $movie['title'] . '" uppdaterad';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error updating movie: ' . $e->getMessage();
