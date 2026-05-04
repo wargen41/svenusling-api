@@ -431,6 +431,10 @@ a {
   text-decoration: 1px underline solid;
 }
 
+li + li {
+  padding-block: 0.3em;
+}
+
 label {
   white-space: nowrap;
 }
