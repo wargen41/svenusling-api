@@ -71,10 +71,6 @@ $border: (
     style-alt: solid
 );
 
-$font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-$font-size-base: 16px;
-$line-height-base: 1.5;
-
 // Definiera vilka listor med variabler som ska bli CSS-variabler och med vilket prefix
 // Exportera inte i onödan, eftersom det kan påverka prestanda
 // Övriga är endast interna Sass-variabler och ska bli fasta värden i CSS-koden
