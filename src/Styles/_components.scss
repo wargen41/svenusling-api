@@ -1,0 +1,613 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:math';
+@use 'vars' as var;
+
+$xxs: map.get(var.$spacing, 'xxs');
+$xs: map.get(var.$spacing, 'xs');
+$s: map.get(var.$spacing, 's');
+$m: map.get(var.$spacing, 'm');
+$l: map.get(var.$spacing, 'l');
+$xl: map.get(var.$spacing, 'xl');
+$xxl: map.get(var.$spacing, 'xxl');
+
+$widget: (
+    padding-top: $xs,
+    padding-bottom: $s,
+    padding-outer: $s,
+    padding-inner: .7rem,
+    border-radius-top-inner: 0rem,
+    border-radius-top-outer: $xs,
+    border-radius-bottom-inner: 1.3rem,
+    border-radius-bottom-outer: 1.3rem,
+    img-size: 2.2rem
+);
+$wpt: map.get($widget, 'padding-top');
+$wpb: map.get($widget, 'padding-bottom');
+$wpo: map.get($widget, 'padding-outer');
+$wpi: map.get($widget, 'padding-inner');
+$wbrti: map.get($widget, 'border-radius-top-inner');
+$wbrto: map.get($widget, 'border-radius-top-outer');
+$wbrbi: map.get($widget, 'border-radius-bottom-inner');
+$wbrbo: map.get($widget, 'border-radius-bottom-outer');
+$wiz: map.get($widget, 'img-size');
+
+$widget-calc: (
+    total-width: $wiz + $wpo + $wpi,
+);
+//$widget-total-width: $wiz + $wpo + $wpi;
+
+// Menyvariablerna bör sedan samköras med det jag har för popover-dialog
+// och många av variablerna bör bli mer generella än att bara gälla menyn (åtminstone det som gäller mobilläget)
+$menu: (
+    border-radius: 1.1rem,
+    border-width: map.get(var.$border, 'width'),
+    border-radius-relative-padding-inline: 0.75,
+    border-radius-relative-padding-block: 0.6,
+    padding-inline-relative-list-padding: 0.3,
+    list-padding-relative-sub-list-padding: 4,
+    // items
+    padding-inline-relative-item-padding: 0.7,
+    item-height: 2.6rem,
+    item-gap: 2px,
+    item-border-width: 0,
+    // mobile
+    mobile-margin: 2.8rem,
+    close-button-width: 3em
+);
+$menu-static: (
+    sub-offset: 0.5rem,
+    // columns
+    column-width: 10em,
+    column-gap: 1.1em,
+    section-gap: 0em,
+);
+$mbr: map.get($menu, 'border-radius');
+$mbw: map.get($menu, 'border-width');
+$mbrrpi: map.get($menu, 'border-radius-relative-padding-inline');
+$mbrrpb: map.get($menu, 'border-radius-relative-padding-block');
+$mpirlp: map.get($menu, 'padding-inline-relative-list-padding');
+$mlprslp: map.get($menu, 'list-padding-relative-sub-list-padding');
+$mso: map.get($menu, 'sub-offset');
+$mpirip: map.get($menu, 'padding-inline-relative-item-padding');
+$mih: map.get($menu, 'item-height');
+$mig: map.get($menu, 'item-gap');
+$mibw: map.get($menu, 'item-border-width');
+$mcw: map.get($menu-static, 'column-width');
+$mcg: map.get($menu-static, 'column-gap');
+
+$menu-padding-inline: $mbr * $mbrrpi;
+$menu-padding-block: $mbr * $mbrrpb;
+$menu-list-padding: $menu-padding-inline * $mpirlp;
+$menu-sub-list-padding: $menu-list-padding * $mlprslp;
+$menu-item-padding: $menu-padding-inline * $mpirip;
+
+$menu-calc: (
+    block-total: calc(var(--padding-block) + var(--item-gap) + var(--border-thickness) + var(--item-border-thickness)),
+    max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--menu-padding-inline) * 2)),
+    min-width: calc(var(--menu-column-width) + (var(--menu-padding-inline) * 2)),
+    padding-inline: $menu-padding-inline,
+    list-padding: $menu-list-padding,
+    //max-width: 100vw - ($widget-total-width * 2) - $menu-padding-inline * 2;
+);
+
+// CSS-variabler att exportera
+$export-to-css: (
+    (
+        "map": $widget-calc,
+        "prefix": "widget-"
+    ),
+    (
+        "map": $menu-static,
+        "prefix": "menu-"
+    ),
+    (
+        "map": $menu-calc,
+        "prefix": "menu-"
+    )
+);
+
+@position-try --left-down {
+    inset: unset;
+    top: anchor(top);
+    right: anchor(left);
+}
+@position-try --right-down {
+    inset: unset;
+    top: anchor(top);
+    left: anchor(right);
+}
+@position-try --left-up {
+    inset: unset;
+    bottom: anchor(top);
+    right: anchor(left);
+}
+@position-try --right-up {
+    inset: unset;
+    bottom: anchor(top);
+    left: anchor(right);
+}
+@position-try --bottom-down {
+    inset: unset;
+    position-area: bottom center;
+}
+@position-try --bottom-up {
+    inset: unset;
+    position-area: top center;
+}
+
+.widget
+{
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    display: inline-block;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+
+    img {
+        width: $wiz;
+        height: $wiz;
+    }
+
+    .button
+    {
+        background: none;
+        border: none;
+        display: inline-block;
+    }
+
+    &.left
+    {
+        float: left;
+
+        .button
+        {
+            padding: $wpt $wpi $wpb $wpo;
+        }
+    }
+
+    &.right
+    {
+
+        .button
+        {
+            padding: $wpt $wpo $wpb $wpi;
+        }
+    }
+
+    &:has(:popover-open)
+    {
+        //background-color: var(--background-color-alternate);
+        border-top-left-radius: $wbrti;
+        border-top-right-radius: $wbrto;
+        border-bottom-left-radius: $wbrbi;
+        border-bottom-right-radius: $wbrbo;
+    }
+}
+
+.widget-label
+{
+    background: none;
+    display: inline-block;
+    transform: translateY(-.7rem);
+
+    &:has(+.widget.right)
+    {
+        padding: .82rem 0 1.25rem 0;
+    }
+}
+
+.menu
+{
+    margin: 0;
+    padding: 0 0 $mbr 0;
+
+    max-width: var(--menu-max-width);
+    min-width: var(--menu-min-width);
+
+    box-shadow: 2px 2px 4px #101010;
+
+    .content
+    {
+        max-width: calc(var(--menu-column-width) * 3 + var(--menu-list-padding) * 2 + var(--menu-column-gap) * 2);
+        //max-width: $mcw * 3 + $menu-list-padding * 2 + $mcg * 2;
+    }
+
+    *[data-moreinfo]:hover::after
+    {
+        content: " (" attr(data-moreinfo) ")";
+    }
+
+    ul
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 0 $menu-list-padding;
+        display: flex;
+        flex-wrap: wrap;
+
+        &> li
+        {
+            flex: $mcw 1 0;
+            min-width: 0;
+
+            &> ul
+            {
+                padding: 0 $menu-sub-list-padding;
+
+                &> li
+                {
+                    flex: calc(var(--menu-column-width) - var(--menu-sub-list-padding)) 1 0;
+                    min-width: 0;
+                }
+            }
+        }
+    }
+
+    li
+    {
+        padding: $mig 0;
+        display: flex;
+        flex-direction: column;
+
+        //border-bottom: var(--item-border-thickness) solid var(--border-color-splash);
+
+        &:first-child
+        {
+            //border-top: var(--item-border-thickness) solid var(--border-color-splash);
+        }
+    }
+
+    button, a
+    {
+        font-family: inherit;
+        font-size: inherit;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        padding: 0 $menu-item-padding;
+
+        display: block;
+        min-height: $mih;
+
+        align-content: center;
+
+        color: inherit;
+        background-color: inherit;
+
+        border-bottom: 1px solid transparent;
+
+        &:hover
+        {
+            text-decoration: none;
+            border-radius: $mbr * 0.5;
+
+            border-bottom: 1px solid var(--color-primary-default);
+        }
+    }
+
+    button[popovertarget]::after
+    {
+        content: " >";
+    }
+
+    label
+    {
+        align-content: center;
+    }
+
+    form
+    {
+        padding: $menu-padding-inline;
+        display: flex;
+        gap: .5em;
+    }
+}
+
+.main.menu .content
+{
+    &> ul
+    {
+        gap: var(--menu-column-gap);
+
+        &> li
+        {
+
+            &> button, a
+            {
+                border-top: 1px solid var(--color-primary-80);
+
+                &:hover
+                {
+                    border-bottom-color: var(--color-primary-default);
+                }
+            }
+        }
+    }
+}
+
+.sub.menu
+{
+    padding: $menu-padding-block 0;
+    inset: unset;
+    top: calc(anchor(top) - var(--menu-block-total) + var(--menu-sub-offset));
+    right: anchor(left);
+    position-try-fallbacks: --right-down, --left-up, --right-up, --bottom-down, --bottom-up;
+
+    &:popover-open > ul
+    {
+        display: block;
+
+        &> *
+        {
+            flex: unset;
+        }
+    }
+}
+
+.mobile-menu-navigation
+{
+    display: none;
+    margin-bottom: var(--margin-default);
+
+    button
+    {
+        text-align: center;
+        padding: 0;
+        min-height: 2rem;
+        background: var(--background-color-default);
+
+        &:hover
+        {
+            background: var(--background-color-splash);
+        }
+
+        &[popovertarget]
+        {
+            width: var(--close-button-width);
+            border-radius: 0 0 var(--border-radius) 0;
+            border-bottom: 1px solid var(--border-color-default);
+            border-right: 1px solid var(--border-color-default);
+
+            &::after
+            {
+                content: "<";
+            }
+        }
+
+        &[popovertarget=menu-main]
+        {
+            width: var(--close-button-width);
+            border-radius: 0 0 0 var(--border-radius);
+            border-bottom: 1px solid var(--border-color-default);
+            border-left: 1px solid var(--border-color-default);
+            border-right: none;
+
+            &::after
+            {
+                content: "×";
+            }
+        }
+    }
+}
+
+@media (width <= 44rem) {
+    .menu{
+        &:popover-open > ul
+        {
+            display: block;
+        }
+
+        &> ul > *
+        {
+            flex: unset;
+        }
+    }
+}
+
+@media (width <= 32rem) {
+    #menu-movies,
+    #menu-persons,
+    #menu-main
+    {
+        position-anchor: unset;
+    }
+
+    #menu-main,
+    .sub.menu
+    {
+        position: fixed;
+        max-width: unset;
+        min-width: unset;
+        width: auto;
+        height: auto;
+        top: var(--mobile-menu-margin);
+        left: var(--mobile-menu-margin);
+        right: var(--mobile-menu-margin);
+        bottom: var(--mobile-menu-margin);
+    }
+
+    .sub.menu
+    {
+        padding: 0 0 var(--padding-block) 0;
+        box-shadow: none;
+
+        .content
+        {
+            max-height: caLc(100% - 4rem);
+            overflow: auto;
+        }
+    }
+
+    .main.menu .content
+    {
+        margin-top: calc(0px - (var(--padding-inline) * 1.8));
+        max-height: caLc(100% - 4rem + (var(--padding-inline) * 1.8));
+        overflow: auto;
+
+        &> ul {
+            gap: var(--menu-section-gap);
+        }
+    }
+
+    .menu ul
+    {
+        flex-direction: column;
+
+        &> li, li > ul > li
+        {
+            flex: auto;
+        }
+    }
+
+    .mobile-menu-navigation
+    {
+        display: flex;
+    }
+
+    .main.menu
+    {
+        .mobile-menu-navigation
+        {
+            justify-content: flex-end;
+        }
+
+        &::backdrop
+        {
+            background-color: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(2px);
+        }
+    }
+
+    .sub.menu
+    {
+        .mobile-menu-navigation
+        {
+            justify-content: space-between;
+        }
+    }
+}
+
+// Finns förmodligen något smidigare och bättre sätt att göra detta
+#menu-widget-button
+{
+    anchor-name: --menu-widget-button;
+}
+
+#menu-main
+{
+    inset: unset;
+    position-anchor: --menu-widget-button;
+    top: calc(anchor(top) + $wpt);
+    right: anchor(left);
+}
+
+#menu-movies-type-button
+{
+    anchor-name: --menu-movies-type-button;
+}
+
+#menu-movies-type
+{
+    position-anchor: --menu-movies-type-button;
+}
+
+#menu-movies-rating-button
+{
+    anchor-name: --menu-movies-rating-button;
+}
+
+#menu-movies-rating
+{
+    position-anchor: --menu-movies-rating-button;
+}
+
+#menu-movies-year-button
+{
+    anchor-name: --menu-movies-year-button;
+}
+
+#menu-movies-year
+{
+    position-anchor: --menu-movies-year-button;
+}
+
+#menu-movies-genre-button
+{
+    anchor-name: --menu-movies-genre-button;
+}
+
+#menu-movies-genre
+{
+    position-anchor: --menu-movies-genre-button;
+}
+
+#menu-persons-type-button
+{
+    anchor-name: --menu-persons-type-button;
+}
+
+#menu-persons-type
+{
+    position-anchor: --menu-persons-type-button;
+}
+
+#menu-persons-relations-button
+{
+    anchor-name: --menu-persons-relations-button;
+}
+
+#menu-persons-relations
+{
+    position-anchor: --menu-persons-relations-button;
+}
+
+
+// .button {
+//     display: inline-block;
+//     padding: var(--space-sm) var(--space-md);
+//     border-radius: 6px;
+//     background: var(--color-primary);
+//     color: #fff;
+//     border: none;
+//     cursor: pointer;
+//     //&:hover { background: darken($color-primary, 6%); }
+//     &--secondary { background: var(--color-secondary); }
+//     &--ghost {
+//         background: transparent;
+//         color: var(--color-primary);
+//         //border: 1px solid rgba($color-primary, 0.12);
+//     }
+// }
+//
+// // Use Sass variables for build-time needs, CSS vars at runtime
+// .button {
+//     background: var(--color-primary);
+//     color: var(--color-text);
+//     padding: var(--space-md);
+//     border-radius: 6px;
+//
+//     // use Sass for calculated values where useful
+//     // e.g., generate shadow using a Sass function
+//     //box-shadow: 0 2px 6px rgba($color: map.get($colors, primary), 0.08);
+// }
+//
+// .card {
+//     background: #fff;
+//     border: 1px solid #eef2f5;
+//     border-radius: 8px;
+//     padding: var(--space-md);
+//     box-shadow: 0 2px 6px rgba(10,10,10,0.04);
+// }
+//
+// .form {
+//     &__group { margin-bottom: var(--space-md); }
+//     label { display: block; margin-bottom: var(--space-sm); font-weight: 600; }
+//     input, textarea, select {
+//         width: 100%; padding: var(--space-sm); border: 1px solid #d8dde3; border-radius: 6px;
+//         //&:focus { outline: none; box-shadow: 0 0 0 3px rgba($color-primary, 0.08); border-color: $color-primary; }
+//     }
+// }

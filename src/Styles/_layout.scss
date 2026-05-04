@@ -1,0 +1,149 @@
+@use "sass:map";
+@use 'vars' as var;
+
+$xxs: map.get(var.$spacing, 'xxs');
+$xs: map.get(var.$spacing, 'xs');
+$s: map.get(var.$spacing, 's');
+$m: map.get(var.$spacing, 'm');
+$l: map.get(var.$spacing, 'l');
+$xl: map.get(var.$spacing, 'xl');
+$xxl: map.get(var.$spacing, 'xxl');
+
+
+body
+{
+    margin: 0 0 $xxl 0;
+    padding: 0;
+    text-align: right;
+}
+
+body *
+{
+    text-align: left;
+}
+
+main
+{
+    max-width: 36em;
+    margin: 0 auto;
+    padding: 0 var(--margin-default);
+
+    &> * + *
+    {
+        margin-top: 2em;
+    }
+}
+
+article
+{
+    &> *:not(h1) + *
+    {
+        margin-top: 1.2em;
+    }
+}
+
+details
+{
+    padding-top: $xs;
+    padding-bottom: $s;
+    padding-inline: $s;
+
+    &> summary
+    {
+        margin-top: -.5rem;
+        margin-right: -1rem;
+        margin-bottom: .5em;
+        margin-left: -1.7em;
+
+        &> *
+        {
+            display: inline-block;
+        }
+    }
+
+    &> details
+    {
+        &+ details
+        {
+            margin-top: 1em;
+        }
+
+        &> * + *
+        {
+            margin-block: .5em;
+        }
+    }
+}
+
+footer
+{
+    position: relative;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1em;
+    flex-direction: row;
+    padding: 1rem 0;
+    margin-top: 5rem;
+    border-block: 1px solid var(--border-color-default);
+}
+
+header
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-direction: row;
+    background: var(--background-color-splash);
+    color: var(--text-color-splash);
+    border-bottom: none;
+
+    box-shadow: 0 2px 4px #101010;
+
+    a
+    {
+        color: var(--text-color-splash);
+        text-decoration: 1px underline solid var(--text-color-splash-faint);
+    }
+
+    nav ul
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 1rem 0;
+        line-height: .7;
+        display: flex;
+        gap: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        &> li
+        {
+            padding: .5rem;
+        }
+    }
+}
+
+.skip-link
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: var(--background-color-alternate);
+    color: var(--text-color-alternate);
+    padding: .5rem;
+    translate: 0 -100%;
+    transition: translate 150ms ease-in-out;
+
+    &:focus
+    {
+        translate: 0;
+        z-index: 999;
+    }
+}

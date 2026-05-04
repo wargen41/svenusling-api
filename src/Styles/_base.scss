@@ -1,0 +1,55 @@
+@use "sass:map";
+@use 'vars' as var;
+
+body
+{
+    border-width: map.get(var.$border, 'width');
+    border-style: map.get(var.$border, 'style');
+}
+
+a
+{
+    color: var(--text-color-default);
+    text-decoration: 1px underline solid;
+}
+
+img.circle
+{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+dt
+{
+    float: left;
+    margin-right: 0.3em;
+}
+
+dd:before
+{
+    content: "—";
+    margin-right: 0.3em;
+}
+
+.list
+{
+    &.long
+    {
+        a
+        {
+            text-decoration: none;
+        }
+
+        li:hover a, li:active a
+        {
+            text-decoration: 1px underline solid var(--color-neutral-80);
+        }
+
+        li:hover a:hover
+        {
+            text-decoration: 1px underline solid;
+        }
+    }
+
+
+}

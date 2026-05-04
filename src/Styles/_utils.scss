@@ -1,0 +1,17 @@
+// emit map as CSS vars under a selector
+@mixin export-css-vars($map, $prefix: "") {
+    @each $key, $value in $map {
+        --#{$prefix}#{$key}: #{$value};
+    }
+}
+
+// helper for nested maps (optional)
+@mixin export-css-vars-recursive($map, $prefix: "") {
+    @each $key, $value in $map {
+        @if type-of($value) == 'map' {
+            @include export-css-vars-recursive($value, $prefix + $key + "-");
+        } @else {
+            --#{$prefix}#{$key}: #{$value};
+        }
+    }
+}

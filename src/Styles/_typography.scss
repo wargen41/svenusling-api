@@ -1,0 +1,41 @@
+@use "sass:map";
+@use 'vars' as var;
+
+h1, h2, h3, h4, h5, h6
+{
+    line-height: 1.4;
+    font-family: var(--font-heading-family);
+}
+
+main
+{
+    &>h1,
+    article > h1,
+    article > hgroup:first-of-type
+    {
+        text-align: center;
+        position: sticky;
+        top: 0;
+        padding: .5rem 4rem;
+        margin-left: var(--negative-margin-default);
+        margin-right: var(--negative-margin-default);
+        background: var(--background-sticky-heading);
+        background: var(--gradient-sticky-heading);
+    }
+
+    &> p
+    {
+        text-align: left;
+    }
+}
+
+h1,
+hgroup *
+{
+    text-align: center;
+}
+
+h1
+{
+    font-size: 200%;
+}

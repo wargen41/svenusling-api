@@ -1,0 +1,12 @@
+@mixin visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+@mixin respond-max($breakpoint) {
+    @if $breakpoint == sm { @media (max-width: 640px) { @content; } }
+    @else if $breakpoint == md { @media (max-width: 768px) { @content; } }
+    @else if $breakpoint == lg { @media (max-width: 1024px) { @content; } }
+}
