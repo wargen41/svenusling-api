@@ -678,6 +678,42 @@ header nav ul > li {
   z-index: 999;
 }
 
+body {
+  font-size: var(--font-base-size);
+  font-family: var(--font-body-text-family);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading-family);
+  line-height: 1.3;
+}
+
+main > h1,
+main article > h1,
+main article > hgroup:first-of-type {
+  text-align: center;
+  position: sticky;
+  top: 0;
+  padding: 0.5rem 4rem;
+  margin-left: var(--negative-margin-default);
+  margin-right: var(--negative-margin-default);
+  background: var(--background-sticky-heading);
+  background: var(--gradient-sticky-heading);
+}
+main > p {
+  text-align: left;
+}
+
+h1,
+hgroup * {
+  text-align: center;
+}
+
+h1 {
+  font-size: 200%;
+}
+
 @position-try --left-down {
   inset: unset;
   top: anchor(top);
