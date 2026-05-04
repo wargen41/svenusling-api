@@ -1,4 +1,44 @@
 @charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+a, button, summary, label[for]:not([for=""]), input[type=submit], input[type=button] {
+  cursor: pointer;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
 :root {
   --color-slategray-0: hsl(210, 13%, 0%);
   --color-slategray-10: hsl(210, 13%, 10%);
@@ -379,46 +419,6 @@ button:active {
 a {
   color: var(--color-on-neutral-default);
   text-decoration-color: var(--color-on-neutral-default);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  box-sizing: border-box;
-  scrollbar-gutter: stable;
-  scroll-behavior: smooth;
-}
-
-body {
-  -webkit-font-smoothing: antialiased;
-}
-
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-}
-
-input, button, textarea, select {
-  font: inherit;
-}
-
-a, button, summary, label[for]:not([for=""]), input[type=submit], input[type=button] {
-  cursor: pointer;
-}
-
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
-
-p {
-  text-wrap: pretty;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
 }
 
 body {
