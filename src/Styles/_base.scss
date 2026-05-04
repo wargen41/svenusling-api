@@ -13,6 +13,11 @@ a
     text-decoration: 1px underline solid;
 }
 
+li + li
+{
+    padding-block: .3em;
+}
+
 label
 {
     white-space: nowrap;
