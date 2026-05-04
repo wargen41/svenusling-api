@@ -52,12 +52,12 @@ $spacing: (
     xxl: 4rem
 );
 
-$margins: (
+$margin: (
     default: map.get($spacing, 'm')
 );
 
-$negative-margins: (
-    default: (0 - map.get($margins, 'default'))
+$negative-margin: (
+    default: (0 - map.get($margin, 'default'))
 );
 
 $padding: (

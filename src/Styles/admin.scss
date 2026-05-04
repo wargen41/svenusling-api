@@ -1,0 +1,32 @@
+@use 'sass:map';
+
+@use 'vars' as var;
+
+// CSS som endast behövs till adminsidorna
+.range-labels
+{
+    &> *
+    {
+        display: block;
+        width: 100%;
+    }
+
+    &> input[type=range]
+    {
+        margin: 0;
+        margin-bottom: 0.5em;
+    }
+
+    &> datalist
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        writing-mode: vertical-lr;
+
+        &> option
+        {
+            padding: 0;
+        }
+    }
+}

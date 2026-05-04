@@ -13,6 +13,57 @@ a
     text-decoration: 1px underline solid;
 }
 
+label
+{
+    white-space: nowrap;
+}
+
+fieldset
+{
+    padding-top: .5rem;
+    padding-bottom: 1rem;
+    padding-inline: 1rem;
+
+    border-radius: 0.3rem;
+    background-color: var(--background-color-default);
+
+    &> legend
+    {
+        background-color: var(--background-color-default);
+        border-radius: 10em;
+        padding-inline: 1em;
+        padding-block: .3em;
+        border-top: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+    }
+
+    &> *:not(legend) + *
+    {
+        margin-top: .65em;
+    }
+
+    ul
+    {
+        list-style-type: none;
+        padding-left: 0;
+
+        &> li + li
+        {
+            margin-top: 0.6em;
+        }
+    }
+}
+
+form + form,
+form + fieldset,
+fieldset + fieldset,
+fieldset + form,
+fieldset + input,
+fieldset + button,
+fieldset + .form-actions
+{
+    margin-top: .8em;
+}
+
 img.circle
 {
     border-radius: 50%;
@@ -50,6 +101,85 @@ dd:before
             text-decoration: 1px underline solid;
         }
     }
+}
 
+main button[type=submit],
+main input[type=submit]
+{
+    text-align: center;
+    min-width: 47%;
+}
 
+button.full-width,
+input.full-width
+{
+    text-align: center;
+    width: 100%;
+}
+
+.button-list
+{
+    display: flex;
+    gap: .5em;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.form-row + .form-row {
+    margin-top: .5em;
+}
+
+.form-row
+{
+    display: flex;
+    gap: .5em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Allow the label to grow and shrink */
+.form-row label
+{
+    flex: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+/* But where the input has a [size] attribute, do not use flexible size */
+/* As well as checkboxes */
+.form-row label:has(input[size]),
+.form-row label:has(input[type=checkbox])
+{
+    flex: initial;
+}
+
+/* All inputs expand to fill their label */
+.form-row label input,
+.form-row label select
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* But inputs with a [size] attribute keep their natural size */
+/* As well as checkboxes */
+.form-row input[size],
+.form-row label input[type=checkbox]
+{
+    width: auto;
+    min-width: 0;
+    flex: none;
+}
+
+.form-row > select:has(+ input[type=submit])
+{
+    flex: auto;
+}
+
+.form-actions
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

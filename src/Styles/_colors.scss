@@ -137,9 +137,15 @@ html
 
 body
 {
-    color: var(--color-neutral-default);
-    background-color: var(--color-on-neutral-default);
+    background-color: var(--color-neutral-default);
+    color: var(--color-on-neutral-default);
     border-color: var(--color-on-neutral-default);
+    caret-color: var(--color-on-neutral-default);
+
+    > .message
+    {
+        background-color: var(--color-primary-container-default);
+    }
 }
 
 input:where(
@@ -155,6 +161,12 @@ input:where(
 {
     background-color: var(--color-neutral-default);
     color: var(--color-on-neutral-default);
+}
+
+// Hör inte hemma här, snarare ibland temafärger och effekter, men jag bara testar nu
+button:active
+{
+    filter: hue-rotate(180deg);
 }
 
 a

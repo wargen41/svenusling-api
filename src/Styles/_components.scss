@@ -136,6 +136,30 @@ $export-to-css: (
     position-area: top center;
 }
 
+@supports (animation-timeline: scroll()) {
+    body > .message
+    {
+        animation: page-message linear;
+        animation-timeline: scroll();
+        /*opacity: 0;*/
+        transform: translateY(100%)
+    }
+}
+
+@keyframes page-message {
+    0% {
+        /*opacity: 100;*/
+        transform: translateY(0%);
+    }
+    1% {
+        transform: translateY(100%);
+    }
+    /*10% {
+     *       opacity: 0;
+     *       transform: translateY(100%);
+}*/
+}
+
 .widget
 {
     position: sticky;
@@ -563,6 +587,164 @@ $export-to-css: (
 #menu-persons-relations
 {
     position-anchor: --menu-persons-relations-button;
+}
+
+.pseudo-modal[popover] .form-actions button:only-child
+{
+    width: 100%;
+}
+
+.pseudo-modal[popover]
+{
+    --border-radius: 1.1rem;
+    --padding-inline: calc(var(--border-radius) * 0.75);
+    --close-button-width: 3em;
+
+    margin: auto;
+    position: fixed;
+    inset: 0;
+
+    background-color: var(--background-color-alternate);
+    color: var(--text-color-alternate);
+    border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+    border-radius: var(--border-radius);
+    padding: 0 0 var(--border-radius) 0;
+
+    max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--padding-inline) * 2));
+    min-width: calc(var(--menu-column-width) + (var(--padding-inline) * 2));
+    max-height: 100%;
+
+    box-shadow: 2px 2px 4px #101010;
+}
+
+.pseudo-modal[popover] .dialog-content
+{
+    max-height: calc(100% - 4rem);
+    overflow: auto;
+}
+
+.pseudo-modal[popover]::backdrop
+{
+    backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
+}
+
+.dialog-top
+{
+    margin-bottom: calc(var(--border-radius) * 0.6);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dialog-top button
+{
+    text-align: center;
+    padding: 0;
+    min-height: 2rem;
+    color: inherit;
+    background: var(--background-color-default);
+
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    padding: 0 var(--item-padding);
+
+    display: block;
+    align-content: center;
+
+    border-bottom: var(--border-width-default) var(--border-style-default) transparent;
+}
+
+.dialog-top button:hover
+{
+    background-color: var(--background-color-splash);
+    border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+}
+
+.dialog-top button[popovertarget]
+{
+    width: var(--close-button-width);
+    border-radius: 0 0 0 var(--border-radius);
+    border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+    border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+    border-right: none;
+}
+
+.dialog-content
+{
+    margin: 0 var(--border-radius);
+    flex: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main.login
+{
+    height: calc(100dvh - var(--body-margin-bottom));
+    display: flex;
+    align-items: center;
+}
+
+main.login > form
+{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+main.login button[type=submit]
+{
+    text-align: center;
+}
+
+@media (width <= 32rem) {
+    :root
+    {
+        --mobile-modal-margin-top: 10rem;
+        --mobile-modal-margin-inline: 1rem;
+    }
+
+    .pseudo-modal[popover]
+    {
+        position: fixed;
+        max-width: unset;
+        min-width: unset;
+        width: auto;
+        height: auto;
+        top: var(--mobile-modal-margin-top);
+        bottom: 0rem;
+        left: var(--mobile-modal-margin-inline);
+        right: var(--mobile-modal-margin-inline);
+    }
+
+    .pseudo-modal[popover]:popover-open
+    {
+        height: calc(100% - var(--mobile-modal-margin-top));
+        display: flex;
+        flex-direction: column;
+    }
+
+    body:has(.pseudo-modal[popover]:popover-open)
+    {
+        margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
+    }
+
+    .pseudo-modal[popover]::backdrop
+    {
+        background-color: transparent;
+        backdrop-filter: grayscale(1);
+    }
+
+    .button-list > .vip
+    {
+        /*flex: 100%;*/
+    }
 }
 
 

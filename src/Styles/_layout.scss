@@ -9,12 +9,23 @@ $l: map.get(var.$spacing, 'l');
 $xl: map.get(var.$spacing, 'xl');
 $xxl: map.get(var.$spacing, 'xxl');
 
+$margin-default: map.get(var.$margin, 'default');
 
 body
 {
     margin: 0 0 $xxl 0;
     padding: 0;
     text-align: right;
+
+    &> .message
+    {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: ($margin-default * 0.5) $margin-default;
+
+        width: 100vw;
+    }
 }
 
 body *
