@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pageTitle }} | {{ constant('API').ADMIN_SITE_NAME }}</title>
     {% set css = constant('API').EXTERNAL_CSS %}
-    {% for href in css %}
-    <link rel="stylesheet" href="{{ href }}">
-    {% endfor %}
+    {% for href in css %}<link rel="stylesheet" href="{{ href }}">{% endfor %}
 {% include "admin/styles.html.twig" %}
 </head>
 <body>
