@@ -431,7 +431,7 @@ a {
   text-decoration: 1px underline solid;
 }
 
-li + li {
+li {
   padding-block: 0.3em;
 }
 
