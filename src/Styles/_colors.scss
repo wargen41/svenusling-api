@@ -4,12 +4,14 @@
 @use 'sass:math';
 @use 'sass:color';
 
-// Definiera namn och värden för grundfärger (detta blir ton 50, men behöver inte nödvändigtvis ha ljushet 50)
+// Definiera namn och värden för grundfärger att generera palett från
+// (detta blir ton 50 i paletten, men behöver inte nödvändigtvis ha ljushet 50)
 $base-colors: (
+    "red": hsl(0 100% 50%),
+    "neutralgray": hsl(0 0% 50%),
     "slategray": hsl(210 13% 50%),
     "lightslategray": hsl(210 14% 53%),
     "darkslategray": hsl(180 25% 25%),
-    "red": hsl(0 100% 50%),
     "pink": hsl(350 100% 88%),
     "orange": hsl(39 100% 50%),
     "green": hsl(120 100% 25%)
@@ -19,7 +21,17 @@ $base-colors: (
 $tones: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 98, 99, 100;
 $base-tone: 50;
 
+// Ett standardtema med endast gråtoner som grund (förutom rött vid fel)
+$base-theme: (
+    primary: "neutralgray",
+    secondary: "neutralgray",
+    tertiary: "neutralgray",
+    neutral: "neutralgray",
+    error: "red"
+);
+
 // Vilka grundfärger som ska användas i olika teman
+// Ange två värden om det ska vara olika färger för ljus/mörk
 $themes: (
     "blank-slate": (
         primary: ("darkslategray", "lightslategray"),
@@ -129,6 +141,24 @@ $role-colors: (
             --color-#{$color-name}-#{$tone}: #{$scaled};
         }
     }
+
+    // Generera färgmappningar för grundtemat (CSS-variabler)
+    @each $hierarchy, $values in $base-theme {
+        $light-hue: null;
+        $dark-hue: null;
+        @if list.length($values) == 1 {
+            $light-hue: list.nth($values, 1);
+            $dark-hue: list.nth($values, 1);
+        } @else if list.length($values) > 1 {
+            $light-hue: list.nth($values, 1);
+            $dark-hue: list.nth($values, 2);
+        }
+
+        @each $tone in $tones {
+            --color-#{$hierarchy}-#{$tone}: light-dark(var(--color-#{$light-hue}-#{$tone}), var(--color-#{$dark-hue}-#{$tone}));
+        }
+    }
+
     // Generera olika styrkor för respektive roll (CSS-variabler)
     @each $hierarchy, $weights in $role-colors {
         @each $weight, $values in $weights {
@@ -174,7 +204,7 @@ $role-colors: (
     }
 }
 
-// Definiera några standardfärger/-roller för element (så det finns en grund att bygga på när man skapar ett temas utseende)
+// Definiera standardfärger/-roller för element (så det finns en grund att bygga på när man skapar ett temas utseende)
 // Försöker hålla låg specificity genom att använda :where(), så det är enkelt att skriva över med temafärger
 html
 {
