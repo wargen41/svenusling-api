@@ -59,8 +59,8 @@ $role-colors: (
     "primary": (
         "default": (
             "primary": 50,
-            "on-primary": (0, (0, 100)),
-            "primary-container": 80,
+            "on-primary": (0, 100),
+            "primary-container": 65,
             "on-primary-container": (30, 70)
         ),
         "feather": (
@@ -74,7 +74,7 @@ $role-colors: (
         "default": (
             "secondary": 50,
             "on-secondary": (0, 100),
-            "secondary-container": 80,
+            "secondary-container": 65,
             "on-secondary-container": (30, 70)
         ),
         "feather": (
@@ -88,7 +88,7 @@ $role-colors: (
         "default": (
             "tertiary": 50,
             "on-tertiary": (0, 100),
-            "tertiary-container": 80,
+            "tertiary-container": 65,
             "on-tertiary-container": (30, 70)
         ),
         "feather": (
@@ -102,7 +102,7 @@ $role-colors: (
         "default": (
             "neutral": 50,
             "on-neutral": (0, 100),
-            "neutral-container": 80,
+            "neutral-container": 65,
             "on-neutral-container": (30, 70)
         ),
         "feather": (
@@ -116,7 +116,7 @@ $role-colors: (
         "default": (
             "error": 50,
             "on-error": (0, 100),
-            "error-container": 80,
+            "error-container": 65,
             "on-error-container": (30, 70)
         ),
         "feather": (
@@ -219,19 +219,37 @@ $role-colors: (
 html
 {
     accent-color: var(--color-secondary-default);
-}
-
-body
-{
     background-color: var(--color-neutral-default);
     color: var(--color-on-neutral-default);
     border-color: var(--color-on-neutral-default);
     caret-color: var(--color-on-neutral-default);
+}
+
+body
+{
+    background-color: var(--color-neutral-container-default);
 
     > .message
     {
         background-color: var(--color-primary-container-default);
     }
+}
+
+// Hör inte hemma här, snarare ibland temafärger och effekter, men jag bara testar nu
+button:active
+{
+    filter: hue-rotate(180deg);
+}
+
+a
+{
+    color: var(--color-on-neutral-default);
+    text-decoration-color: var(--color-on-neutral-default);
+}
+
+header
+{
+    background: var(--color-primary-container-default);
 }
 
 input:where(
@@ -249,19 +267,3 @@ input:where(
     color: var(--color-on-neutral-default);
 }
 
-// Hör inte hemma här, snarare ibland temafärger och effekter, men jag bara testar nu
-button:active
-{
-    filter: hue-rotate(180deg);
-}
-
-a
-{
-    color: var(--color-on-neutral-default);
-    text-decoration-color: var(--color-on-neutral-default);
-}
-
-header
-{
-    background: var(--color-primary-default);
-}
