@@ -519,6 +519,11 @@ header {
   background: var(--color-primary-container-default);
 }
 
+fieldset {
+  background-color: var(--color-neutral-container-default);
+  color: var(--color-on-neutral-container-default);
+}
+
 input:where([type=date],
 [type=datetime-local],
 [type=email],

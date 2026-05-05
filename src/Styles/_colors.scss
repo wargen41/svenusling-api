@@ -216,6 +216,8 @@ $role-colors: (
 
 // Definiera standardfärger/-roller för element (så det finns en grund att bygga på när man skapar ett temas utseende)
 // Försöker hålla låg specificity genom att använda :where(), så det är enkelt att skriva över med temafärger
+// Målet är att grunden ska se okej ut "out of the box", utan att man måste sätta en massa klassnamn överallt
+// Men vid behov, när man behöver frångå standarden, så är det bara att sätta ett klassnamn för att styra färgen
 html
 {
     accent-color: var(--color-secondary-default);
@@ -251,6 +253,12 @@ a
 header
 {
     background: var(--color-primary-container-default);
+}
+
+fieldset
+{
+    background-color: var(--color-neutral-container-default);
+    color: var(--color-on-neutral-container-default);
 }
 
 input:where(
