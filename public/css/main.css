@@ -142,22 +142,42 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-primary-default: var(--color-primary-100);
   --color-primary-container-default: var(--color-primary-80);
   --color-on-primary-container-default: var(--color-primary-30);
+  --color-primary-feather: var(--color-primary-70);
+  --color-on-primary-feather: var(--color-primary-100);
+  --color-primary-container-feather: var(--color-primary-95);
+  --color-on-primary-container-feather: var(--color-primary-30);
   --color-secondary-default: var(--color-secondary-50);
   --color-on-secondary-default: var(--color-secondary-100);
   --color-secondary-container-default: var(--color-secondary-80);
   --color-on-secondary-container-default: var(--color-secondary-30);
+  --color-secondary-feather: var(--color-secondary-70);
+  --color-on-secondary-feather: var(--color-secondary-100);
+  --color-secondary-container-feather: var(--color-secondary-95);
+  --color-on-secondary-container-feather: var(--color-secondary-30);
   --color-tertiary-default: var(--color-tertiary-50);
   --color-on-tertiary-default: var(--color-tertiary-100);
   --color-tertiary-container-default: var(--color-tertiary-80);
   --color-on-tertiary-container-default: var(--color-tertiary-30);
+  --color-secondary-feather: var(--color-tertiary-70);
+  --color-on-secondary-feather: var(--color-tertiary-100);
+  --color-secondary-container-feather: var(--color-tertiary-95);
+  --color-on-secondary-container-feather: var(--color-tertiary-30);
   --color-neutral-default: var(--color-neutral-50);
   --color-on-neutral-default: var(--color-neutral-100);
   --color-neutral-container-default: var(--color-neutral-80);
   --color-on-neutral-container-default: var(--color-neutral-30);
+  --color-secondary-feather: var(--color-neutral-70);
+  --color-on-secondary-feather: var(--color-neutral-100);
+  --color-secondary-container-feather: var(--color-neutral-95);
+  --color-on-secondary-container-feather: var(--color-neutral-30);
   --color-error-default: var(--color-error-50);
   --color-on-error-default: var(--color-error-100);
   --color-error-container-default: var(--color-error-80);
   --color-on-error-container-default: var(--color-error-30);
+  --color-secondary-feather: var(--color-error-70);
+  --color-on-secondary-feather: var(--color-error-100);
+  --color-secondary-container-feather: var(--color-error-95);
+  --color-on-secondary-container-feather: var(--color-error-30);
 }
 
 .blank-slate {
@@ -419,6 +439,10 @@ button:active {
 a {
   color: var(--color-on-neutral-default);
   text-decoration-color: var(--color-on-neutral-default);
+}
+
+header {
+  background: var(--color-primary-default);
 }
 
 :root {

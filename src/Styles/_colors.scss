@@ -37,37 +37,80 @@ $themes: (
     )
 );
 
-// Vilka färgtoner som ska användas i olika roller (detta blir CSS-klasser att använda)
+// Standardvärden för vilka färgtoner som ska användas i olika roller (detta blir CSS-klasser med namngivna vikter att använda)
+// När man gör ett tema kan man antingen använda de här standardtonerna eller skriva över utvalda variabler med temats egna värden
+// Man behöver inte definiera onödigt många såna här standardnamn, eftersom det är fritt fram att ange toner direkt från paletten
+// Se till att bakgrundsfärg och textfärg (on-) har tillräckligt bra kontrast
 $role-colors: (
     "primary": (
-        "primary": 50,
-        "on-primary": 100,
-        "primary-container": 80,
-        "on-primary-container": 30
+        "default": (
+            "primary": 50,
+            "on-primary": 100,
+            "primary-container": 80,
+            "on-primary-container": 30
+        ),
+        "feather": (
+            "primary": 70,
+            "on-primary": 100,
+            "primary-container": 95,
+            "on-primary-container": 30
+        )
     ),
     "secondary": (
-        "secondary": 50,
-        "on-secondary": 100,
-        "secondary-container": 80,
-        "on-secondary-container": 30
+        "default": (
+            "secondary": 50,
+            "on-secondary": 100,
+            "secondary-container": 80,
+            "on-secondary-container": 30
+        ),
+        "feather": (
+            "secondary": 70,
+            "on-secondary": 100,
+            "secondary-container": 95,
+            "on-secondary-container": 30
+        )
     ),
     "tertiary": (
-        "tertiary": 50,
-        "on-tertiary": 100,
-        "tertiary-container": 80,
-        "on-tertiary-container": 30
+        "default": (
+            "tertiary": 50,
+            "on-tertiary": 100,
+            "tertiary-container": 80,
+            "on-tertiary-container": 30
+        ),
+        "feather": (
+            "secondary": 70,
+            "on-secondary": 100,
+            "secondary-container": 95,
+            "on-secondary-container": 30
+        )
     ),
     "neutral": (
-        "neutral": 50,
-        "on-neutral": 100,
-        "neutral-container": 80,
-        "on-neutral-container": 30
+        "default": (
+            "neutral": 50,
+            "on-neutral": 100,
+            "neutral-container": 80,
+            "on-neutral-container": 30
+        ),
+        "feather": (
+            "secondary": 70,
+            "on-secondary": 100,
+            "secondary-container": 95,
+            "on-secondary-container": 30
+        )
     ),
     "error": (
-        "error": 50,
-        "on-error": 100,
-        "error-container": 80,
-        "on-error-container": 30
+        "default": (
+            "error": 50,
+            "on-error": 100,
+            "error-container": 80,
+            "on-error-container": 30
+        ),
+        "feather": (
+            "secondary": 70,
+            "on-secondary": 100,
+            "secondary-container": 95,
+            "on-secondary-container": 30
+        )
     )
 );
 
@@ -86,10 +129,12 @@ $role-colors: (
             --color-#{$color-name}-#{$tone}: #{$scaled};
         }
     }
-    // Generera roller (CSS-variabler)
-    @each $hierarchy, $values in $role-colors {
-        @each $role, $tone in $values {
-            --color-#{$role}-default: var(--color-#{$hierarchy}-#{$tone});
+    // Generera olika styrkor för respektive roll (CSS-variabler)
+    @each $hierarchy, $weights in $role-colors {
+        @each $weight, $values in $weights {
+            @each $role, $tone in $values {
+                --color-#{$role}-#{$weight}: var(--color-#{$hierarchy}-#{$tone});
+            }
         }
     }
 }
@@ -116,7 +161,8 @@ $role-colors: (
 }
 
 // Generera roller (CSS-klasser)
-@each $hierarchy, $values in $role-colors {
+@each $hierarchy, $weights in $role-colors {
+    $values: map.get($weights, 'default');
     @each $role, $tone in $values {
         .#{$role} {
             $property: "background-color";
@@ -128,7 +174,7 @@ $role-colors: (
     }
 }
 
-// Definiera några standardfärger (så det finns en grund att bygga på när man skapar ett temas utseende)
+// Definiera några standardfärger/-roller för element (så det finns en grund att bygga på när man skapar ett temas utseende)
 // Försöker hålla låg specificity genom att använda :where(), så det är enkelt att skriva över med temafärger
 html
 {
@@ -175,3 +221,7 @@ a
     text-decoration-color: var(--color-on-neutral-default);
 }
 
+header
+{
+    background: var(--color-primary-default);
+}
