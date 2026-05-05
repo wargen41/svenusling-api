@@ -106,10 +106,10 @@ $role-colors: (
             "on-neutral-container": (30, 70)
         ),
         "feather": (
-            "secondary": 70,
-            "on-secondary": (0, 100),
-            "secondary-container": 95,
-            "on-secondary-container": (30, 70)
+            "neutral": 70,
+            "on-neutral": (0, 100),
+            "neutral-container": 95,
+            "on-neutral-container": (30, 70)
         )
     ),
     "error": (
@@ -120,10 +120,10 @@ $role-colors: (
             "on-error-container": (30, 70)
         ),
         "feather": (
-            "secondary": 70,
-            "on-secondary": (0, 100),
-            "secondary-container": 95,
-            "on-secondary-container": (30, 70)
+            "error": 70,
+            "on-error": (0, 100),
+            "error-container": 95,
+            "on-error-container": (30, 70)
         )
     )
 );
@@ -277,8 +277,8 @@ input:where(
     [type=url]
 )
 {
-    background-color: var(--color-neutral-feather-default);
-    color: var(--color-on-neutral-feather-default);
+    background-color: var(--color-neutral-feather);
+    color: var(--color-on-neutral-feather);
 }
 
 .skip-link
