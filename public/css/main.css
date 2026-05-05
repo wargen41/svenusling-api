@@ -544,6 +544,10 @@ input:where([type=date],
   color: var(--color-on-tertiary-container-default);
 }
 
+html {
+  border: 10px dashed black;
+}
+
 a {
   text-decoration: 1px underline solid;
 }
