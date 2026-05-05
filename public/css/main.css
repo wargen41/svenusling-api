@@ -523,6 +523,9 @@ fieldset {
   background-color: var(--color-neutral-container-default);
   color: var(--color-on-neutral-container-default);
 }
+fieldset > legend {
+  background-color: inherit;
+}
 
 input:where([type=date],
 [type=datetime-local],
@@ -532,8 +535,8 @@ input:where([type=date],
 [type=search],
 [type=text],
 [type=url]) {
-  background-color: var(--color-neutral-feather);
-  color: var(--color-on-neutral-feather);
+  background-color: var(--color-neutral-feather-default);
+  color: var(--color-on-neutral-feather-default);
 }
 
 .skip-link {
