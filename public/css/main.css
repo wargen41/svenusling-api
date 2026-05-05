@@ -750,8 +750,8 @@ footer {
   height: 3em;
   font-size: 40px;
   margin-left: -10px;
-  margin-top: calc(50vh - 1em);
-  margin-bottom: calc(50vh - 1em);
+  margin-top: calc(50vh - 0em);
+  margin-bottom: calc(50vh - 2em);
   display: flex;
   align-items: center;
   justify-content: center;
