@@ -749,7 +749,7 @@ footer {
   width: 100dvw;
   height: 3em;
   font-size: 40px;
-  margin-left: 10px;
+  margin-left: -10px;
   display: flex;
   align-items: center;
   justify-content: center;
