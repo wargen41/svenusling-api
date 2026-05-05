@@ -526,17 +526,11 @@ input:where([type=date],
 [type=search],
 [type=text],
 [type=url]) {
-  background-color: var(--color-neutral-default);
-  color: var(--color-on-neutral-default);
-}
-
-:root {
-  border-width: 2px;
-  border-style: groove;
+  background-color: var(--color-neutral-feather);
+  color: var(--color-on-neutral-feather);
 }
 
 a {
-  color: var(--text-color-default);
   text-decoration: 1px underline solid;
 }
 
@@ -553,10 +547,8 @@ fieldset {
   padding-bottom: 1rem;
   padding-inline: 1rem;
   border-radius: 0.3rem;
-  background-color: var(--background-color-default);
 }
 fieldset > legend {
-  background-color: var(--background-color-default);
   border-radius: 10em;
   padding-inline: 1em;
   padding-block: 0.3em;
@@ -1316,6 +1308,10 @@ main.login button[type=submit] {
   --space-l: 2rem;
   --space-xl: 3rem;
   --space-xxl: 4rem;
+  --border-width: 2px;
+  --border-style: groove;
+  --border-width-alt: 1px;
+  --border-style-alt: solid;
   --widget-total-width: 3.9rem;
   --menu-sub-offset: 0.5rem;
   --menu-column-width: 10em;

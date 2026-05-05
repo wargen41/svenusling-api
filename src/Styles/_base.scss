@@ -1,15 +1,8 @@
 @use "sass:map";
 @use 'vars' as var;
 
-:root
-{
-    border-width: map.get(var.$border, 'width');
-    border-style: map.get(var.$border, 'style');
-}
-
 a
 {
-    color: var(--text-color-default);
     text-decoration: 1px underline solid;
 }
 
@@ -30,11 +23,9 @@ fieldset
     padding-inline: 1rem;
 
     border-radius: 0.3rem;
-    background-color: var(--background-color-default);
 
     &> legend
     {
-        background-color: var(--background-color-default);
         border-radius: 10em;
         padding-inline: 1em;
         padding-block: .3em;
