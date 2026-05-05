@@ -27,7 +27,7 @@ $base-theme: (
     primary: "neutralgray",
     secondary: "neutralgray",
     tertiary: "neutralgray",
-    neutral: "neutralgray",
+    surface: "neutralgray",
     error: "red"
 );
 
@@ -38,14 +38,14 @@ $themes: (
         primary: ("darkslategray", "lightslategray"),
         secondary: "slategray",
         tertiary: ("lightslategray", "darkslategray"),
-        neutral: "slategray",
+        surface: "slategray",
         error: "red"
     ),
     "test-theme": (
         primary: "pink",
         secondary: ("orange", "green"),
         tertiary: ("green", "orange"),
-        neutral: "slategray",
+        surface: "slategray",
         error: "red"
     )
 );
@@ -55,6 +55,8 @@ $themes: (
 // Man behöver inte definiera onödigt många såna här standardnamn, eftersom det är fritt fram att ange toner direkt från paletten
 // Se till att bakgrundsfärg och textfärg (on-) har tillräckligt bra kontrast
 // Ange två värden om det ska vara olika toner för ljust/mörkt tema
+
+// Här skulle jag vilja göra lite justeringar så småningom, så att man inte måste fylla i så mycket. Ha en tabell med standardinställningar liknande $base-theme och $themes
 $role-colors: (
     "primary": (
         "default": (
@@ -98,18 +100,18 @@ $role-colors: (
             "on-secondary-container": (30, 70)
         )
     ),
-    "neutral": (
+    "surface": (
         "default": (
-            "neutral": 50,
-            "on-neutral": (0, 100),
-            "neutral-container": 70,
-            "on-neutral-container": (30, 70)
+            "surface": 50,
+            "on-surface": (0, 100),
+            "surface-container": 70,
+            "on-surface-container": (30, 70)
         ),
         "feather": (
-            "neutral": 70,
-            "on-neutral": (0, 100),
-            "neutral-container": 95,
-            "on-neutral-container": (30, 70)
+            "surface": 70,
+            "on-surface": (0, 100),
+            "surface-container": 95,
+            "on-surface-container": (30, 70)
         )
     ),
     "error": (
@@ -222,14 +224,14 @@ html
 {
     accent-color: var(--color-secondary-default);
     background-color: var(--color-primary-container-default);
-    border-color: var(--color-on-neutral-default);
-    caret-color: var(--color-on-neutral-default);
+    border-color: var(--color-on-surface-default);
+    caret-color: var(--color-on-surface-default);
 }
 
 body
 {
-    background-color: var(--color-neutral-default);
-    color: var(--color-on-neutral-default);
+    background-color: var(--color-surface-default);
+    color: var(--color-on-surface-default);
 
     > .message
     {
@@ -246,8 +248,8 @@ button:active
 
 a
 {
-    color: var(--color-on-neutral-default);
-    text-decoration-color: var(--color-on-neutral-default);
+    color: var(--color-on-surface-default);
+    text-decoration-color: var(--color-on-surface-default);
 }
 
 header
@@ -257,8 +259,8 @@ header
 
 fieldset
 {
-    background-color: var(--color-neutral-container-default);
-    color: var(--color-on-neutral-container-default);
+    background-color: var(--color-surface-container-default);
+    color: var(--color-on-surface-container-default);
 
     > legend
     {
@@ -277,8 +279,8 @@ input:where(
     [type=url]
 )
 {
-    background-color: var(--color-neutral-feather);
-    color: var(--color-on-neutral-feather);
+    background-color: var(--color-surface-feather);
+    color: var(--color-on-surface-feather);
 }
 
 .skip-link

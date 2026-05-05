@@ -194,20 +194,20 @@ h1, h2, h3, h4, h5, h6 {
   --color-tertiary-98: var(--color-neutralgray-98);
   --color-tertiary-99: var(--color-neutralgray-99);
   --color-tertiary-100: var(--color-neutralgray-100);
-  --color-neutral-0: var(--color-neutralgray-0);
-  --color-neutral-10: var(--color-neutralgray-10);
-  --color-neutral-20: var(--color-neutralgray-20);
-  --color-neutral-30: var(--color-neutralgray-30);
-  --color-neutral-40: var(--color-neutralgray-40);
-  --color-neutral-50: var(--color-neutralgray-50);
-  --color-neutral-60: var(--color-neutralgray-60);
-  --color-neutral-70: var(--color-neutralgray-70);
-  --color-neutral-80: var(--color-neutralgray-80);
-  --color-neutral-90: var(--color-neutralgray-90);
-  --color-neutral-95: var(--color-neutralgray-95);
-  --color-neutral-98: var(--color-neutralgray-98);
-  --color-neutral-99: var(--color-neutralgray-99);
-  --color-neutral-100: var(--color-neutralgray-100);
+  --color-surface-0: var(--color-neutralgray-0);
+  --color-surface-10: var(--color-neutralgray-10);
+  --color-surface-20: var(--color-neutralgray-20);
+  --color-surface-30: var(--color-neutralgray-30);
+  --color-surface-40: var(--color-neutralgray-40);
+  --color-surface-50: var(--color-neutralgray-50);
+  --color-surface-60: var(--color-neutralgray-60);
+  --color-surface-70: var(--color-neutralgray-70);
+  --color-surface-80: var(--color-neutralgray-80);
+  --color-surface-90: var(--color-neutralgray-90);
+  --color-surface-95: var(--color-neutralgray-95);
+  --color-surface-98: var(--color-neutralgray-98);
+  --color-surface-99: var(--color-neutralgray-99);
+  --color-surface-100: var(--color-neutralgray-100);
   --color-error-0: var(--color-red-0);
   --color-error-10: var(--color-red-10);
   --color-error-20: var(--color-red-20);
@@ -246,14 +246,14 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-secondary-feather: light-dark(var(--color-tertiary-0), var(--color-tertiary-100));
   --color-secondary-container-feather: var(--color-tertiary-95);
   --color-on-secondary-container-feather: light-dark(var(--color-tertiary-30), var(--color-tertiary-70));
-  --color-neutral-default: var(--color-neutral-50);
-  --color-on-neutral-default: light-dark(var(--color-neutral-0), var(--color-neutral-100));
-  --color-neutral-container-default: var(--color-neutral-70);
-  --color-on-neutral-container-default: light-dark(var(--color-neutral-30), var(--color-neutral-70));
-  --color-neutral-feather: var(--color-neutral-70);
-  --color-on-neutral-feather: light-dark(var(--color-neutral-0), var(--color-neutral-100));
-  --color-neutral-container-feather: var(--color-neutral-95);
-  --color-on-neutral-container-feather: light-dark(var(--color-neutral-30), var(--color-neutral-70));
+  --color-surface-default: var(--color-surface-50);
+  --color-on-surface-default: light-dark(var(--color-surface-0), var(--color-surface-100));
+  --color-surface-container-default: var(--color-surface-70);
+  --color-on-surface-container-default: light-dark(var(--color-surface-30), var(--color-surface-70));
+  --color-surface-feather: var(--color-surface-70);
+  --color-on-surface-feather: light-dark(var(--color-surface-0), var(--color-surface-100));
+  --color-surface-container-feather: var(--color-surface-95);
+  --color-on-surface-container-feather: light-dark(var(--color-surface-30), var(--color-surface-70));
   --color-error-default: var(--color-error-50);
   --color-on-error-default: light-dark(var(--color-error-0), var(--color-error-100));
   --color-error-container-default: var(--color-error-70);
@@ -307,20 +307,20 @@ h1, h2, h3, h4, h5, h6 {
   --color-tertiary-98: light-dark(var(--color-lightslategray-98), var(--color-darkslategray-98));
   --color-tertiary-99: light-dark(var(--color-lightslategray-99), var(--color-darkslategray-99));
   --color-tertiary-100: light-dark(var(--color-lightslategray-100), var(--color-darkslategray-100));
-  --color-neutral-0: var(--color-slategray-0);
-  --color-neutral-10: var(--color-slategray-10);
-  --color-neutral-20: var(--color-slategray-20);
-  --color-neutral-30: var(--color-slategray-30);
-  --color-neutral-40: var(--color-slategray-40);
-  --color-neutral-50: var(--color-slategray-50);
-  --color-neutral-60: var(--color-slategray-60);
-  --color-neutral-70: var(--color-slategray-70);
-  --color-neutral-80: var(--color-slategray-80);
-  --color-neutral-90: var(--color-slategray-90);
-  --color-neutral-95: var(--color-slategray-95);
-  --color-neutral-98: var(--color-slategray-98);
-  --color-neutral-99: var(--color-slategray-99);
-  --color-neutral-100: var(--color-slategray-100);
+  --color-surface-0: var(--color-slategray-0);
+  --color-surface-10: var(--color-slategray-10);
+  --color-surface-20: var(--color-slategray-20);
+  --color-surface-30: var(--color-slategray-30);
+  --color-surface-40: var(--color-slategray-40);
+  --color-surface-50: var(--color-slategray-50);
+  --color-surface-60: var(--color-slategray-60);
+  --color-surface-70: var(--color-slategray-70);
+  --color-surface-80: var(--color-slategray-80);
+  --color-surface-90: var(--color-slategray-90);
+  --color-surface-95: var(--color-slategray-95);
+  --color-surface-98: var(--color-slategray-98);
+  --color-surface-99: var(--color-slategray-99);
+  --color-surface-100: var(--color-slategray-100);
   --color-error-0: var(--color-red-0);
   --color-error-10: var(--color-red-10);
   --color-error-20: var(--color-red-20);
@@ -380,20 +380,20 @@ h1, h2, h3, h4, h5, h6 {
   --color-tertiary-98: light-dark(var(--color-green-98), var(--color-orange-98));
   --color-tertiary-99: light-dark(var(--color-green-99), var(--color-orange-99));
   --color-tertiary-100: light-dark(var(--color-green-100), var(--color-orange-100));
-  --color-neutral-0: var(--color-slategray-0);
-  --color-neutral-10: var(--color-slategray-10);
-  --color-neutral-20: var(--color-slategray-20);
-  --color-neutral-30: var(--color-slategray-30);
-  --color-neutral-40: var(--color-slategray-40);
-  --color-neutral-50: var(--color-slategray-50);
-  --color-neutral-60: var(--color-slategray-60);
-  --color-neutral-70: var(--color-slategray-70);
-  --color-neutral-80: var(--color-slategray-80);
-  --color-neutral-90: var(--color-slategray-90);
-  --color-neutral-95: var(--color-slategray-95);
-  --color-neutral-98: var(--color-slategray-98);
-  --color-neutral-99: var(--color-slategray-99);
-  --color-neutral-100: var(--color-slategray-100);
+  --color-surface-0: var(--color-slategray-0);
+  --color-surface-10: var(--color-slategray-10);
+  --color-surface-20: var(--color-slategray-20);
+  --color-surface-30: var(--color-slategray-30);
+  --color-surface-40: var(--color-slategray-40);
+  --color-surface-50: var(--color-slategray-50);
+  --color-surface-60: var(--color-slategray-60);
+  --color-surface-70: var(--color-slategray-70);
+  --color-surface-80: var(--color-slategray-80);
+  --color-surface-90: var(--color-slategray-90);
+  --color-surface-95: var(--color-slategray-95);
+  --color-surface-98: var(--color-slategray-98);
+  --color-surface-99: var(--color-slategray-99);
+  --color-surface-100: var(--color-slategray-100);
   --color-error-0: var(--color-red-0);
   --color-error-10: var(--color-red-10);
   --color-error-20: var(--color-red-20);
@@ -458,20 +458,20 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-on-tertiary-container-default);
 }
 
-.neutral {
-  background-color: var(--color-neutral-default);
+.surface {
+  background-color: var(--color-surface-default);
 }
 
-.on-neutral {
-  color: var(--color-on-neutral-default);
+.on-surface {
+  color: var(--color-on-surface-default);
 }
 
-.neutral-container {
-  background-color: var(--color-neutral-container-default);
+.surface-container {
+  background-color: var(--color-surface-container-default);
 }
 
-.on-neutral-container {
-  color: var(--color-on-neutral-container-default);
+.on-surface-container {
+  color: var(--color-on-surface-container-default);
 }
 
 .error {
@@ -493,13 +493,13 @@ h1, h2, h3, h4, h5, h6 {
 html {
   accent-color: var(--color-secondary-default);
   background-color: var(--color-primary-container-default);
-  border-color: var(--color-on-neutral-default);
-  caret-color: var(--color-on-neutral-default);
+  border-color: var(--color-on-surface-default);
+  caret-color: var(--color-on-surface-default);
 }
 
 body {
-  background-color: var(--color-neutral-default);
-  color: var(--color-on-neutral-default);
+  background-color: var(--color-surface-default);
+  color: var(--color-on-surface-default);
 }
 body > .message {
   background-color: var(--color-primary-container-default);
@@ -511,8 +511,8 @@ button:active {
 }
 
 a {
-  color: var(--color-on-neutral-default);
-  text-decoration-color: var(--color-on-neutral-default);
+  color: var(--color-on-surface-default);
+  text-decoration-color: var(--color-on-surface-default);
 }
 
 header {
@@ -520,8 +520,8 @@ header {
 }
 
 fieldset {
-  background-color: var(--color-neutral-container-default);
-  color: var(--color-on-neutral-container-default);
+  background-color: var(--color-surface-container-default);
+  color: var(--color-on-surface-container-default);
 }
 fieldset > legend {
   background-color: inherit;
@@ -535,8 +535,8 @@ input:where([type=date],
 [type=search],
 [type=text],
 [type=url]) {
-  background-color: var(--color-neutral-feather);
-  color: var(--color-on-neutral-feather);
+  background-color: var(--color-surface-feather);
+  color: var(--color-on-surface-feather);
 }
 
 .skip-link {
