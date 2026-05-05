@@ -219,19 +219,20 @@ $role-colors: (
 html
 {
     accent-color: var(--color-secondary-default);
-    background-color: var(--color-neutral-default);
-    color: var(--color-on-neutral-default);
+    background-color: var(--color-primary-container-default);
     border-color: var(--color-on-neutral-default);
     caret-color: var(--color-on-neutral-default);
 }
 
 body
 {
-    background-color: var(--color-neutral-container-default);
+    background-color: var(--color-neutral-default);
+    color: var(--color-on-neutral-default);
 
     > .message
     {
         background-color: var(--color-primary-container-default);
+        color: var(--color-on-primary-container-default);
     }
 }
 
@@ -265,5 +266,11 @@ input:where(
 {
     background-color: var(--color-neutral-feather);
     color: var(--color-on-neutral-feather);
+}
+
+.skip-link
+{
+    background-color: var(--color-tertiary-container-default);
+    color: var(--color-on-tertiary-container-default);
 }
 

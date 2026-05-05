@@ -16,7 +16,7 @@ body
     padding-bottom: $xxl;
     text-align: right;
 
-    &> .message
+    > .message
     {
         position: fixed;
         bottom: 0;
@@ -38,7 +38,7 @@ main
     margin: 0 auto;
     padding: 0 var(--margin-default);
 
-    &> * + *
+    > * + *
     {
         margin-top: 2em;
     }
@@ -46,7 +46,7 @@ main
 
 article
 {
-    &> *:not(h1) + *
+    > *:not(h1) + *
     {
         margin-top: 1.2em;
     }
@@ -58,27 +58,27 @@ details
     padding-bottom: $s;
     padding-inline: $s;
 
-    &> summary
+    > summary
     {
         margin-top: -.5rem;
         margin-right: -1rem;
         margin-bottom: .5em;
         margin-left: -1.7em;
 
-        &> *
+        > *
         {
             display: inline-block;
         }
     }
 
-    &> details
+    > details
     {
-        &+ details
+        + details
         {
             margin-top: 1em;
         }
 
-        &> * + *
+        > * + *
         {
             margin-block: .5em;
         }
@@ -96,7 +96,7 @@ footer
     flex-direction: row;
     padding: 1rem 0;
     margin-top: 5rem;
-    border-block: 1px solid var(--border-color-default);
+    border-block: 1px solid;
 }
 
 header
@@ -108,17 +108,9 @@ header
     justify-content: center;
     gap: 3rem;
     flex-direction: row;
-    background: var(--background-color-splash);
-    color: var(--text-color-splash);
     border-bottom: none;
 
     box-shadow: 0 2px 4px #101010;
-
-    a
-    {
-        color: var(--text-color-splash);
-        text-decoration: 1px underline solid var(--text-color-splash-faint);
-    }
 
     nav ul
     {
@@ -131,7 +123,7 @@ header
         flex-direction: row;
         flex-wrap: wrap;
 
-        &> li
+        > li
         {
             padding: .5rem;
         }
@@ -145,8 +137,6 @@ header
     left: 0;
     right: 0;
     text-align: center;
-    background-color: var(--background-color-alternate);
-    color: var(--text-color-alternate);
     padding: .5rem;
     translate: 0 -100%;
     transition: translate 150ms ease-in-out;

@@ -251,16 +251,16 @@ $export-to-css: (
         display: flex;
         flex-wrap: wrap;
 
-        &> li
+        > li
         {
             flex: $mcw 1 0;
             min-width: 0;
 
-            &> ul
+            > ul
             {
                 padding: 0 $menu-sub-list-padding;
 
-                &> li
+                > li
                 {
                     flex: calc(var(--menu-column-width) - var(--menu-sub-list-padding)) 1 0;
                     min-width: 0;
@@ -333,14 +333,14 @@ $export-to-css: (
 
 .main.menu .content
 {
-    &> ul
+    > ul
     {
         gap: var(--menu-column-gap);
 
-        &> li
+        > li
         {
 
-            &> button, a
+            > button, a
             {
                 border-top: 1px solid var(--color-primary-80);
 
@@ -365,7 +365,7 @@ $export-to-css: (
     {
         display: block;
 
-        &> *
+        > *
         {
             flex: unset;
         }
@@ -425,7 +425,7 @@ $export-to-css: (
             display: block;
         }
 
-        &> ul > *
+        > ul > *
         {
             flex: unset;
         }
@@ -472,7 +472,7 @@ $export-to-css: (
         max-height: caLc(100% - 4rem + (var(--padding-inline) * 1.8));
         overflow: auto;
 
-        &> ul {
+        > ul {
             gap: var(--menu-section-gap);
         }
     }
@@ -481,7 +481,7 @@ $export-to-css: (
     {
         flex-direction: column;
 
-        &> li, li > ul > li
+        > li, li > ul > li
         {
             flex: auto;
         }

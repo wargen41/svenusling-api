@@ -492,17 +492,18 @@ h1, h2, h3, h4, h5, h6 {
 
 html {
   accent-color: var(--color-secondary-default);
-  background-color: var(--color-neutral-default);
-  color: var(--color-on-neutral-default);
+  background-color: var(--color-primary-container-default);
   border-color: var(--color-on-neutral-default);
   caret-color: var(--color-on-neutral-default);
 }
 
 body {
-  background-color: var(--color-neutral-container-default);
+  background-color: var(--color-neutral-default);
+  color: var(--color-on-neutral-default);
 }
 body > .message {
   background-color: var(--color-primary-container-default);
+  color: var(--color-on-primary-container-default);
 }
 
 button:active {
@@ -528,6 +529,11 @@ input:where([type=date],
 [type=url]) {
   background-color: var(--color-neutral-feather);
   color: var(--color-on-neutral-feather);
+}
+
+.skip-link {
+  background-color: var(--color-tertiary-container-default);
+  color: var(--color-on-tertiary-container-default);
 }
 
 a {
@@ -731,7 +737,7 @@ footer {
   flex-direction: row;
   padding: 1rem 0;
   margin-top: 5rem;
-  border-block: 1px solid var(--border-color-default);
+  border-block: 1px solid;
 }
 
 header {
@@ -742,14 +748,8 @@ header {
   justify-content: center;
   gap: 3rem;
   flex-direction: row;
-  background: var(--background-color-splash);
-  color: var(--text-color-splash);
   border-bottom: none;
   box-shadow: 0 2px 4px #101010;
-}
-header a {
-  color: var(--text-color-splash);
-  text-decoration: 1px underline solid var(--text-color-splash-faint);
 }
 header nav ul {
   list-style-type: none;
@@ -771,8 +771,6 @@ header nav ul > li {
   left: 0;
   right: 0;
   text-align: center;
-  background-color: var(--background-color-alternate);
-  color: var(--text-color-alternate);
   padding: 0.5rem;
   translate: 0 -100%;
   transition: translate 150ms ease-in-out;

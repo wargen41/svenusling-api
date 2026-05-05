@@ -24,7 +24,7 @@ fieldset
 
     border-radius: 0.3rem;
 
-    &> legend
+    > legend
     {
         border-radius: 10em;
         padding-inline: 1em;
@@ -32,7 +32,7 @@ fieldset
         border-top: var(--border-width-default) var(--border-style-default) var(--border-color-default);
     }
 
-    &> *:not(legend) + *
+    > *:not(legend) + *
     {
         margin-top: .65em;
     }
@@ -42,7 +42,7 @@ fieldset
         list-style-type: none;
         padding-left: 0;
 
-        &> li + li
+        > li + li
         {
             margin-top: 0.6em;
         }
