@@ -828,6 +828,10 @@ h1 {
   font-size: 200%;
 }
 
+footer {
+  font-family: var(--font-stack-slab-serif);
+}
+
 @position-try --left-down {
   inset: unset;
   top: anchor(top);
