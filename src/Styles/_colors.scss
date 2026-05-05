@@ -18,7 +18,8 @@ $base-colors: (
 );
 
 // Definiera vilka toner som ska genereras utifrån grundfärgen
-$tones: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 98, 99, 100;
+// Detta motsvarar ljushet i procent
+$palette-tones: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 98, 99, 100;
 $base-tone: 50;
 
 // Ett standardtema med endast gråtoner som grund (förutom rött vid fel)
@@ -31,7 +32,7 @@ $base-theme: (
 );
 
 // Vilka grundfärger som ska användas i olika teman
-// Ange två värden om det ska vara olika färger för ljus/mörk
+// Ange två värden om det ska vara olika färger för ljust/mörkt tema
 $themes: (
     "blank-slate": (
         primary: ("darkslategray", "lightslategray"),
@@ -53,75 +54,76 @@ $themes: (
 // När man gör ett tema kan man antingen använda de här standardtonerna eller skriva över utvalda variabler med temats egna värden
 // Man behöver inte definiera onödigt många såna här standardnamn, eftersom det är fritt fram att ange toner direkt från paletten
 // Se till att bakgrundsfärg och textfärg (on-) har tillräckligt bra kontrast
+// Ange två värden om det ska vara olika toner för ljust/mörkt tema
 $role-colors: (
     "primary": (
         "default": (
             "primary": 50,
-            "on-primary": 100,
+            "on-primary": (0, (0, 100)),
             "primary-container": 80,
-            "on-primary-container": 30
+            "on-primary-container": (30, 70)
         ),
         "feather": (
             "primary": 70,
-            "on-primary": 100,
+            "on-primary": (0, 100),
             "primary-container": 95,
-            "on-primary-container": 30
+            "on-primary-container": (30, 70)
         )
     ),
     "secondary": (
         "default": (
             "secondary": 50,
-            "on-secondary": 100,
+            "on-secondary": (0, 100),
             "secondary-container": 80,
-            "on-secondary-container": 30
+            "on-secondary-container": (30, 70)
         ),
         "feather": (
             "secondary": 70,
-            "on-secondary": 100,
+            "on-secondary": (0, 100),
             "secondary-container": 95,
-            "on-secondary-container": 30
+            "on-secondary-container": (30, 70)
         )
     ),
     "tertiary": (
         "default": (
             "tertiary": 50,
-            "on-tertiary": 100,
+            "on-tertiary": (0, 100),
             "tertiary-container": 80,
-            "on-tertiary-container": 30
+            "on-tertiary-container": (30, 70)
         ),
         "feather": (
             "secondary": 70,
-            "on-secondary": 100,
+            "on-secondary": (0, 100),
             "secondary-container": 95,
-            "on-secondary-container": 30
+            "on-secondary-container": (30, 70)
         )
     ),
     "neutral": (
         "default": (
             "neutral": 50,
-            "on-neutral": 100,
+            "on-neutral": (0, 100),
             "neutral-container": 80,
-            "on-neutral-container": 30
+            "on-neutral-container": (30, 70)
         ),
         "feather": (
             "secondary": 70,
-            "on-secondary": 100,
+            "on-secondary": (0, 100),
             "secondary-container": 95,
-            "on-secondary-container": 30
+            "on-secondary-container": (30, 70)
         )
     ),
     "error": (
         "default": (
             "error": 50,
-            "on-error": 100,
+            "on-error": (0, 100),
             "error-container": 80,
-            "on-error-container": 30
+            "on-error-container": (30, 70)
         ),
         "feather": (
             "secondary": 70,
-            "on-secondary": 100,
+            "on-secondary": (0, 100),
             "secondary-container": 95,
-            "on-secondary-container": 30
+            "on-secondary-container": (30, 70)
         )
     )
 );
@@ -129,7 +131,7 @@ $role-colors: (
 // Generera färgvarianter från grundfärger (CSS-variabler)
 :root {
     @each $color-name, $color-value in $base-colors {
-        @each $tone in $tones {
+        @each $tone in $palette-tones {
             $percent: 100%;
             @if $tone < $base-tone {
                 $percent: 0% - (100 - (math.div($tone, $base-tone) * 100));
@@ -144,26 +146,35 @@ $role-colors: (
 
     // Generera färgmappningar för grundtemat (CSS-variabler)
     @each $hierarchy, $values in $base-theme {
-        $light-hue: null;
-        $dark-hue: null;
         @if list.length($values) == 1 {
-            $light-hue: list.nth($values, 1);
-            $dark-hue: list.nth($values, 1);
+            $hue: list.nth($values, 1);
+            @each $tone in $palette-tones {
+                --color-#{$hierarchy}-#{$tone}: var(--color-#{$hue}-#{$tone});
+            }
         } @else if list.length($values) > 1 {
             $light-hue: list.nth($values, 1);
             $dark-hue: list.nth($values, 2);
-        }
-
-        @each $tone in $tones {
-            --color-#{$hierarchy}-#{$tone}: light-dark(var(--color-#{$light-hue}-#{$tone}), var(--color-#{$dark-hue}-#{$tone}));
+            @each $tone in $palette-tones {
+                --color-#{$hierarchy}-#{$tone}: light-dark(var(--color-#{$light-hue}-#{$tone}), var(--color-#{$dark-hue}-#{$tone}));
+            }
         }
     }
 
     // Generera olika styrkor för respektive roll (CSS-variabler)
     @each $hierarchy, $weights in $role-colors {
         @each $weight, $values in $weights {
-            @each $role, $tone in $values {
-                --color-#{$role}-#{$weight}: var(--color-#{$hierarchy}-#{$tone});
+            // @each $role, $tone in $values {
+            //     --color-#{$role}-#{$weight}: var(--color-#{$hierarchy}-#{$tone});
+            // }
+            @each $role, $tones in $values {
+                @if list.length($tones) == 1 {
+                    $tone: list.nth($tones, 1);
+                    --color-#{$role}-#{$weight}: var(--color-#{$hierarchy}-#{$tone});
+                } @else if list.length($tones) > 1 {
+                    $light-tone: list.nth($tones, 1);
+                    $dark-tone: list.nth($tones, 2);
+                    --color-#{$role}-#{$weight}: light-dark(var(--color-#{$hierarchy}-#{$light-tone}), var(--color-#{$hierarchy}-#{$dark-tone}));
+                }
             }
         }
     }
@@ -173,18 +184,17 @@ $role-colors: (
 @each $theme-name, $theme-colors in $themes {
     .#{$theme-name} {
         @each $hierarchy, $values in $theme-colors {
-            $light-hue: null;
-            $dark-hue: null;
             @if list.length($values) == 1 {
-                $light-hue: list.nth($values, 1);
-                $dark-hue: list.nth($values, 1);
+                $hue: list.nth($values, 1);
+                @each $tone in $palette-tones {
+                    --color-#{$hierarchy}-#{$tone}: var(--color-#{$hue}-#{$tone});
+                }
             } @else if list.length($values) > 1 {
                 $light-hue: list.nth($values, 1);
                 $dark-hue: list.nth($values, 2);
-            }
-
-            @each $tone in $tones {
-                --color-#{$hierarchy}-#{$tone}: light-dark(var(--color-#{$light-hue}-#{$tone}), var(--color-#{$dark-hue}-#{$tone}));
+                @each $tone in $palette-tones {
+                    --color-#{$hierarchy}-#{$tone}: light-dark(var(--color-#{$light-hue}-#{$tone}), var(--color-#{$dark-hue}-#{$tone}));
+                }
             }
         }
     }
