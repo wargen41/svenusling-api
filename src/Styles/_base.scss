@@ -1,7 +1,7 @@
 @use "sass:map";
 @use 'vars' as var;
 
-body
+:root
 {
     border-width: map.get(var.$border, 'width');
     border-style: map.get(var.$border, 'style');

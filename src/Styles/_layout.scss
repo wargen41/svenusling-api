@@ -13,8 +13,7 @@ $margin-default: map.get(var.$margin, 'default');
 
 body
 {
-    margin: 0 0 $xxl 0;
-    padding: 0;
+    padding-bottom: $xxl;
     text-align: right;
 
     &> .message
