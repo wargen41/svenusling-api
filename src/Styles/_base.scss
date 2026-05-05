@@ -1,6 +1,11 @@
 @use "sass:map";
 @use 'vars' as var;
 
+html
+{
+    border: 10px dashed black;
+}
+
 a
 {
     text-decoration: 1px underline solid;
