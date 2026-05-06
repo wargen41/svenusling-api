@@ -242,7 +242,8 @@ main.login button[type=submit]
     }
 }
 
-.pseudo-modal[popover]
+.pseudo-modal[popover],
+.menu[popover]
 {
     --border-radius: 1.1rem;
     --padding-inline: calc(var(--border-radius) * 0.75);
