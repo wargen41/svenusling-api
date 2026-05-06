@@ -936,6 +936,23 @@ footer {
        *       transform: translateY(100%);
   }*/
 }
+main.login {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+}
+
+main.login > form {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+main.login button[type=submit] {
+  text-align: center;
+}
+
 .widget {
   position: sticky;
   z-index: 999;
@@ -978,43 +995,45 @@ footer {
   padding: 0.82rem 0 1.25rem 0;
 }
 
-.menu {
-  margin: 0;
-  padding: 0 0 1.1rem 0;
-  max-width: var(--menu-max-width);
-  min-width: var(--menu-min-width);
+.pseudo-modal[popover] {
+  --border-radius: 1.1rem;
+  --padding-inline: calc(var(--border-radius) * 0.75);
+  --close-button-width: 3em;
+  margin: auto;
+  position: fixed;
+  inset: 0;
+  background-color: var(--background-color-alternate);
+  color: var(--text-color-alternate);
+  border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+  border-radius: var(--border-radius);
+  padding: 0 0 var(--border-radius) 0;
+  max-width: calc(100vw - var(--widget-total-width) * 2 - var(--padding-inline) * 2);
+  min-width: calc(var(--menu-column-width) + var(--padding-inline) * 2);
+  max-height: 100%;
   box-shadow: 2px 2px 4px #101010;
 }
-.menu .content {
-  max-width: calc(var(--menu-column-width) * 3 + var(--menu-list-padding) * 2 + var(--menu-column-gap) * 2);
+.pseudo-modal[popover] .form-actions button:only-child {
+  width: 100%;
 }
-.menu *[data-moreinfo]:hover::after {
-  content: " (" attr(data-moreinfo) ")";
+.pseudo-modal[popover] .dialog-content {
+  max-height: calc(100% - 4rem);
+  overflow: auto;
 }
-.menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0 0.2475rem;
+.pseudo-modal[popover]::backdrop {
+  backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
+}
+
+.dialog-top {
+  margin-bottom: calc(var(--border-radius) * 0.6);
   display: flex;
-  flex-wrap: wrap;
+  justify-content: flex-end;
 }
-.menu ul > li {
-  flex: 10em 1 0;
-  min-width: 0;
-}
-.menu ul > li > ul {
-  padding: 0 0.99rem;
-}
-.menu ul > li > ul > li {
-  flex: calc(var(--menu-column-width) - var(--menu-sub-list-padding)) 1 0;
-  min-width: 0;
-}
-.menu li {
-  padding: 2px 0;
-  display: flex;
-  flex-direction: column;
-}
-.menu button, .menu a {
+.dialog-top button {
+  text-align: center;
+  padding: 0;
+  min-height: 2rem;
+  color: inherit;
+  background: var(--background-color-default);
   font-family: inherit;
   font-size: inherit;
   -webkit-appearance: none;
@@ -1022,148 +1041,66 @@ footer {
   cursor: pointer;
   text-decoration: none;
   border: none;
-  padding: 0 0.5775rem;
+  padding: 0 var(--item-padding);
   display: block;
-  min-height: 2.6rem;
   align-content: center;
-  color: inherit;
-  background-color: inherit;
-  border-bottom: 1px solid transparent;
+  border-bottom: var(--border-width-default) var(--border-style-default) transparent;
 }
-.menu button:hover, .menu a:hover {
-  text-decoration: none;
-  border-radius: 0.55rem;
-  border-bottom: 1px solid var(--color-primary-default);
+.dialog-top button:hover {
+  background-color: var(--background-color-splash);
+  border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
 }
-.menu button[popovertarget]::after {
-  content: " >";
-}
-.menu label {
-  align-content: center;
-}
-.menu form {
-  padding: 0.825rem;
-  display: flex;
-  gap: 0.5em;
-}
-
-.main.menu .content > ul {
-  gap: var(--menu-column-gap);
-}
-.main.menu .content > ul > li > button, .main.menu .content > ul > li a {
-  border-top: 1px solid var(--color-primary-80);
-}
-.main.menu .content > ul > li > button:hover, .main.menu .content > ul > li a:hover {
-  border-bottom-color: var(--color-primary-default);
-}
-
-.sub.menu {
-  padding: 0.66rem 0;
-  inset: unset;
-  top: calc(anchor(top) - var(--menu-block-total) + var(--menu-sub-offset));
-  right: anchor(left);
-  position-try-fallbacks: --right-down, --left-up, --right-up, --bottom-down, --bottom-up;
-}
-.sub.menu:popover-open > ul {
-  display: block;
-}
-.sub.menu:popover-open > ul > * {
-  flex: unset;
-}
-
-.mobile-menu-navigation {
-  display: none;
-  margin-bottom: var(--margin-default);
-}
-.mobile-menu-navigation button {
-  text-align: center;
-  padding: 0;
-  min-height: 2rem;
-  background: var(--background-color-default);
-}
-.mobile-menu-navigation button:hover {
-  background: var(--background-color-splash);
-}
-.mobile-menu-navigation button[popovertarget] {
-  width: var(--close-button-width);
-  border-radius: 0 0 var(--border-radius) 0;
-  border-bottom: 1px solid var(--border-color-default);
-  border-right: 1px solid var(--border-color-default);
-}
-.mobile-menu-navigation button[popovertarget]::after {
-  content: "<";
-}
-.mobile-menu-navigation button[popovertarget=menu-main] {
+.dialog-top button[popovertarget] {
   width: var(--close-button-width);
   border-radius: 0 0 0 var(--border-radius);
-  border-bottom: 1px solid var(--border-color-default);
-  border-left: 1px solid var(--border-color-default);
+  border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+  border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
   border-right: none;
 }
-.mobile-menu-navigation button[popovertarget=menu-main]::after {
-  content: "×";
+
+.dialog-content {
+  margin: 0 var(--border-radius);
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+@media (width <= 32rem) {
+  :root {
+    --mobile-modal-margin-top: 10rem;
+    --mobile-modal-margin-inline: 1rem;
+  }
+  .pseudo-modal[popover] {
+    position: fixed;
+    max-width: unset;
+    min-width: unset;
+    width: auto;
+    height: auto;
+    top: var(--mobile-modal-margin-top);
+    bottom: 0rem;
+    left: var(--mobile-modal-margin-inline);
+    right: var(--mobile-modal-margin-inline);
+  }
+  .pseudo-modal[popover]:popover-open {
+    height: calc(100% - var(--mobile-modal-margin-top));
+    display: flex;
+    flex-direction: column;
+  }
+  .pseudo-modal[popover]::backdrop {
+    background-color: transparent;
+    backdrop-filter: grayscale(1);
+  }
+  body:has(.pseudo-modal[popover]:popover-open) {
+    margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
+  }
+}
 @media (width <= 44rem) {
   .menu:popover-open > ul {
     display: block;
   }
   .menu > ul > * {
     flex: unset;
-  }
-}
-@media (width <= 32rem) {
-  #menu-movies,
-  #menu-persons,
-  #menu-main {
-    position-anchor: unset;
-  }
-  #menu-main,
-  .sub.menu {
-    position: fixed;
-    max-width: unset;
-    min-width: unset;
-    width: auto;
-    height: auto;
-    top: var(--mobile-menu-margin);
-    left: var(--mobile-menu-margin);
-    right: var(--mobile-menu-margin);
-    bottom: var(--mobile-menu-margin);
-  }
-  .sub.menu {
-    padding: 0 0 var(--padding-block) 0;
-    box-shadow: none;
-  }
-  .sub.menu .content {
-    max-height: calc(100% - 4rem);
-    overflow: auto;
-  }
-  .main.menu .content {
-    margin-top: calc(0px - var(--padding-inline) * 1.8);
-    max-height: calc(100% - 4rem + var(--padding-inline) * 1.8);
-    overflow: auto;
-  }
-  .main.menu .content > ul {
-    gap: var(--menu-section-gap);
-  }
-  .menu ul {
-    flex-direction: column;
-  }
-  .menu ul > li, .menu ul li > ul > li {
-    flex: auto;
-  }
-  .mobile-menu-navigation {
-    display: flex;
-  }
-  .main.menu .mobile-menu-navigation {
-    justify-content: flex-end;
-  }
-  .main.menu::backdrop {
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2px);
-  }
-  .sub.menu .mobile-menu-navigation {
-    justify-content: space-between;
   }
 }
 #menu-widget-button {
@@ -1225,132 +1162,6 @@ footer {
   position-anchor: --menu-persons-relations-button;
 }
 
-.pseudo-modal[popover] .form-actions button:only-child {
-  width: 100%;
-}
-
-.pseudo-modal[popover] {
-  --border-radius: 1.1rem;
-  --padding-inline: calc(var(--border-radius) * 0.75);
-  --close-button-width: 3em;
-  margin: auto;
-  position: fixed;
-  inset: 0;
-  background-color: var(--background-color-alternate);
-  color: var(--text-color-alternate);
-  border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-  border-radius: var(--border-radius);
-  padding: 0 0 var(--border-radius) 0;
-  max-width: calc(100vw - var(--widget-total-width) * 2 - var(--padding-inline) * 2);
-  min-width: calc(var(--menu-column-width) + var(--padding-inline) * 2);
-  max-height: 100%;
-  box-shadow: 2px 2px 4px #101010;
-}
-
-.pseudo-modal[popover] .dialog-content {
-  max-height: calc(100% - 4rem);
-  overflow: auto;
-}
-
-.pseudo-modal[popover]::backdrop {
-  backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
-}
-
-.dialog-top {
-  margin-bottom: calc(var(--border-radius) * 0.6);
-  display: flex;
-  justify-content: flex-end;
-}
-
-.dialog-top button {
-  text-align: center;
-  padding: 0;
-  min-height: 2rem;
-  color: inherit;
-  background: var(--background-color-default);
-  font-family: inherit;
-  font-size: inherit;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  padding: 0 var(--item-padding);
-  display: block;
-  align-content: center;
-  border-bottom: var(--border-width-default) var(--border-style-default) transparent;
-}
-
-.dialog-top button:hover {
-  background-color: var(--background-color-splash);
-  border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-}
-
-.dialog-top button[popovertarget] {
-  width: var(--close-button-width);
-  border-radius: 0 0 0 var(--border-radius);
-  border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-  border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-  border-right: none;
-}
-
-.dialog-content {
-  margin: 0 var(--border-radius);
-  flex: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-main.login {
-  height: calc(100dvh - var(--body-margin-bottom));
-  display: flex;
-  align-items: center;
-}
-
-main.login > form {
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
-main.login button[type=submit] {
-  text-align: center;
-}
-
-@media (width <= 32rem) {
-  :root {
-    --mobile-modal-margin-top: 10rem;
-    --mobile-modal-margin-inline: 1rem;
-  }
-  .pseudo-modal[popover] {
-    position: fixed;
-    max-width: unset;
-    min-width: unset;
-    width: auto;
-    height: auto;
-    top: var(--mobile-modal-margin-top);
-    bottom: 0rem;
-    left: var(--mobile-modal-margin-inline);
-    right: var(--mobile-modal-margin-inline);
-  }
-  .pseudo-modal[popover]:popover-open {
-    height: calc(100% - var(--mobile-modal-margin-top));
-    display: flex;
-    flex-direction: column;
-  }
-  body:has(.pseudo-modal[popover]:popover-open) {
-    margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
-  }
-  .pseudo-modal[popover]::backdrop {
-    background-color: transparent;
-    backdrop-filter: grayscale(1);
-  }
-  .button-list > .vip {
-    /*flex: 100%;*/
-  }
-}
 :root {
   --font-stack-system-ui: system-ui, sans-serif;
   --font-stack-transitional: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;

@@ -160,6 +160,26 @@ $export-to-css: (
 }*/
 }
 
+main.login
+{
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+}
+
+main.login > form
+{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+main.login button[type=submit]
+{
+    text-align: center;
+}
+
 .widget
 {
     position: sticky;
@@ -222,69 +242,59 @@ $export-to-css: (
     }
 }
 
-.menu
+.pseudo-modal[popover]
 {
-    margin: 0;
-    padding: 0 0 $mbr 0;
+    --border-radius: 1.1rem;
+    --padding-inline: calc(var(--border-radius) * 0.75);
+    --close-button-width: 3em;
 
-    max-width: var(--menu-max-width);
-    min-width: var(--menu-min-width);
+    margin: auto;
+    position: fixed;
+    inset: 0;
+
+    background-color: var(--background-color-alternate);
+    color: var(--text-color-alternate);
+    border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+    border-radius: var(--border-radius);
+    padding: 0 0 var(--border-radius) 0;
+
+    max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--padding-inline) * 2));
+    min-width: calc(var(--menu-column-width) + (var(--padding-inline) * 2));
+    max-height: 100%;
 
     box-shadow: 2px 2px 4px #101010;
 
-    .content
+    .form-actions button:only-child
     {
-        max-width: calc(var(--menu-column-width) * 3 + var(--menu-list-padding) * 2 + var(--menu-column-gap) * 2);
-        //max-width: $mcw * 3 + $menu-list-padding * 2 + $mcg * 2;
+        width: 100%;
     }
 
-    *[data-moreinfo]:hover::after
+    .dialog-content
     {
-        content: " (" attr(data-moreinfo) ")";
+        max-height: calc(100% - 4rem);
+        overflow: auto;
     }
 
-    ul
+    &::backdrop
     {
-        list-style-type: none;
-        margin: 0;
-        padding: 0 $menu-list-padding;
-        display: flex;
-        flex-wrap: wrap;
-
-        > li
-        {
-            flex: $mcw 1 0;
-            min-width: 0;
-
-            > ul
-            {
-                padding: 0 $menu-sub-list-padding;
-
-                > li
-                {
-                    flex: calc(var(--menu-column-width) - var(--menu-sub-list-padding)) 1 0;
-                    min-width: 0;
-                }
-            }
-        }
+        backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
     }
+}
 
-    li
+.dialog-top
+{
+    margin-bottom: calc(var(--border-radius) * 0.6);
+    display: flex;
+    justify-content: flex-end;
+
+    button
     {
-        padding: $mig 0;
-        display: flex;
-        flex-direction: column;
+        text-align: center;
+        padding: 0;
+        min-height: 2rem;
+        color: inherit;
+        background: var(--background-color-default);
 
-        //border-bottom: var(--item-border-thickness) solid var(--border-color-splash);
-
-        &:first-child
-        {
-            //border-top: var(--item-border-thickness) solid var(--border-color-splash);
-        }
-    }
-
-    button, a
-    {
         font-family: inherit;
         font-size: inherit;
         -webkit-appearance: none;
@@ -292,132 +302,277 @@ $export-to-css: (
         cursor: pointer;
         text-decoration: none;
         border: none;
-        padding: 0 $menu-item-padding;
+        padding: 0 var(--item-padding);
 
         display: block;
-        min-height: $mih;
-
         align-content: center;
 
-        color: inherit;
-        background-color: inherit;
-
-        border-bottom: 1px solid transparent;
+        border-bottom: var(--border-width-default) var(--border-style-default) transparent;
 
         &:hover
         {
-            text-decoration: none;
-            border-radius: $mbr * 0.5;
-
-            border-bottom: 1px solid var(--color-primary-default);
-        }
-    }
-
-    button[popovertarget]::after
-    {
-        content: " >";
-    }
-
-    label
-    {
-        align-content: center;
-    }
-
-    form
-    {
-        padding: $menu-padding-inline;
-        display: flex;
-        gap: .5em;
-    }
-}
-
-.main.menu .content
-{
-    > ul
-    {
-        gap: var(--menu-column-gap);
-
-        > li
-        {
-
-            > button, a
-            {
-                border-top: 1px solid var(--color-primary-80);
-
-                &:hover
-                {
-                    border-bottom-color: var(--color-primary-default);
-                }
-            }
-        }
-    }
-}
-
-.sub.menu
-{
-    padding: $menu-padding-block 0;
-    inset: unset;
-    top: calc(anchor(top) - var(--menu-block-total) + var(--menu-sub-offset));
-    right: anchor(left);
-    position-try-fallbacks: --right-down, --left-up, --right-up, --bottom-down, --bottom-up;
-
-    &:popover-open > ul
-    {
-        display: block;
-
-        > *
-        {
-            flex: unset;
-        }
-    }
-}
-
-.mobile-menu-navigation
-{
-    display: none;
-    margin-bottom: var(--margin-default);
-
-    button
-    {
-        text-align: center;
-        padding: 0;
-        min-height: 2rem;
-        background: var(--background-color-default);
-
-        &:hover
-        {
-            background: var(--background-color-splash);
+            background-color: var(--background-color-splash);
+            border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
         }
 
         &[popovertarget]
         {
             width: var(--close-button-width);
-            border-radius: 0 0 var(--border-radius) 0;
-            border-bottom: 1px solid var(--border-color-default);
-            border-right: 1px solid var(--border-color-default);
-
-            &::after
-            {
-                content: "<";
-            }
-        }
-
-        &[popovertarget=menu-main]
-        {
-            width: var(--close-button-width);
             border-radius: 0 0 0 var(--border-radius);
-            border-bottom: 1px solid var(--border-color-default);
-            border-left: 1px solid var(--border-color-default);
+            border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+            border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
             border-right: none;
-
-            &::after
-            {
-                content: "×";
-            }
         }
     }
 }
 
+.dialog-content
+{
+    margin: 0 var(--border-radius);
+    flex: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (width <= 32rem) {
+    :root
+    {
+        --mobile-modal-margin-top: 10rem;
+        --mobile-modal-margin-inline: 1rem;
+    }
+
+    .pseudo-modal[popover]
+    {
+        position: fixed;
+        max-width: unset;
+        min-width: unset;
+        width: auto;
+        height: auto;
+        top: var(--mobile-modal-margin-top);
+        bottom: 0rem;
+        left: var(--mobile-modal-margin-inline);
+        right: var(--mobile-modal-margin-inline);
+
+        &:popover-open
+        {
+            height: calc(100% - var(--mobile-modal-margin-top));
+            display: flex;
+            flex-direction: column;
+        }
+
+        &::backdrop
+        {
+            background-color: transparent;
+            backdrop-filter: grayscale(1);
+        }
+    }
+
+    body:has(.pseudo-modal[popover]:popover-open)
+    {
+        margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
+    }
+}
+
+// Menyn behöver göras om så att den använder sig av samma grund som .pseudo-modal för mobilutseendet
+
+// .menu
+// {
+//     margin: 0;
+//     padding: 0 0 $mbr 0;
+//
+//     max-width: var(--menu-max-width);
+//     min-width: var(--menu-min-width);
+//
+//     box-shadow: 2px 2px 4px #101010;
+//
+//     .content
+//     {
+//         max-width: calc(var(--menu-column-width) * 3 + var(--menu-list-padding) * 2 + var(--menu-column-gap) * 2);
+//         //max-width: $mcw * 3 + $menu-list-padding * 2 + $mcg * 2;
+//     }
+//
+//     *[data-moreinfo]:hover::after
+//     {
+//         content: " (" attr(data-moreinfo) ")";
+//     }
+//
+//     ul
+//     {
+//         list-style-type: none;
+//         margin: 0;
+//         padding: 0 $menu-list-padding;
+//         display: flex;
+//         flex-wrap: wrap;
+//
+//         > li
+//         {
+//             flex: $mcw 1 0;
+//             min-width: 0;
+//
+//             > ul
+//             {
+//                 padding: 0 $menu-sub-list-padding;
+//
+//                 > li
+//                 {
+//                     flex: calc(var(--menu-column-width) - var(--menu-sub-list-padding)) 1 0;
+//                     min-width: 0;
+//                 }
+//             }
+//         }
+//     }
+//
+//     li
+//     {
+//         padding: $mig 0;
+//         display: flex;
+//         flex-direction: column;
+//
+//         //border-bottom: var(--item-border-thickness) solid var(--border-color-splash);
+//
+//         &:first-child
+//         {
+//             //border-top: var(--item-border-thickness) solid var(--border-color-splash);
+//         }
+//     }
+//
+//     button, a
+//     {
+//         font-family: inherit;
+//         font-size: inherit;
+//         -webkit-appearance: none;
+//         -moz-appearance: none;
+//         cursor: pointer;
+//         text-decoration: none;
+//         border: none;
+//         padding: 0 $menu-item-padding;
+//
+//         display: block;
+//         min-height: $mih;
+//
+//         align-content: center;
+//
+//         color: inherit;
+//         background-color: inherit;
+//
+//         border-bottom: 1px solid transparent;
+//
+//         &:hover
+//         {
+//             text-decoration: none;
+//             border-radius: $mbr * 0.5;
+//
+//             border-bottom: 1px solid var(--color-primary-default);
+//         }
+//     }
+//
+//     button[popovertarget]::after
+//     {
+//         content: " >";
+//     }
+//
+//     label
+//     {
+//         align-content: center;
+//     }
+//
+//     form
+//     {
+//         padding: $menu-padding-inline;
+//         display: flex;
+//         gap: .5em;
+//     }
+// }
+//
+// .main.menu .content
+// {
+//     > ul
+//     {
+//         gap: var(--menu-column-gap);
+//
+//         > li
+//         {
+//
+//             > button, a
+//             {
+//                 border-top: 1px solid var(--color-primary-80);
+//
+//                 &:hover
+//                 {
+//                     border-bottom-color: var(--color-primary-default);
+//                 }
+//             }
+//         }
+//     }
+// }
+//
+// .sub.menu
+// {
+//     padding: $menu-padding-block 0;
+//     inset: unset;
+//     top: calc(anchor(top) - var(--menu-block-total) + var(--menu-sub-offset));
+//     right: anchor(left);
+//     position-try-fallbacks: --right-down, --left-up, --right-up, --bottom-down, --bottom-up;
+//
+//     &:popover-open > ul
+//     {
+//         display: block;
+//
+//         > *
+//         {
+//             flex: unset;
+//         }
+//     }
+// }
+//
+// .mobile-menu-navigation
+// {
+//     display: none;
+//     margin-bottom: var(--margin-default);
+//
+//     button
+//     {
+//         text-align: center;
+//         padding: 0;
+//         min-height: 2rem;
+//         background: var(--background-color-default);
+//
+//         &:hover
+//         {
+//             background: var(--background-color-splash);
+//         }
+//
+//         &[popovertarget]
+//         {
+//             width: var(--close-button-width);
+//             border-radius: 0 0 var(--border-radius) 0;
+//             border-bottom: 1px solid var(--border-color-default);
+//             border-right: 1px solid var(--border-color-default);
+//
+//             &::after
+//             {
+//                 content: "<";
+//             }
+//         }
+//
+//         &[popovertarget=menu-main]
+//         {
+//             width: var(--close-button-width);
+//             border-radius: 0 0 0 var(--border-radius);
+//             border-bottom: 1px solid var(--border-color-default);
+//             border-left: 1px solid var(--border-color-default);
+//             border-right: none;
+//
+//             &::after
+//             {
+//                 content: "×";
+//             }
+//         }
+//     }
+// }
+//
 @media (width <= 44rem) {
     .menu{
         &:popover-open > ul
@@ -431,89 +586,89 @@ $export-to-css: (
         }
     }
 }
-
-@media (width <= 32rem) {
-    #menu-movies,
-    #menu-persons,
-    #menu-main
-    {
-        position-anchor: unset;
-    }
-
-    #menu-main,
-    .sub.menu
-    {
-        position: fixed;
-        max-width: unset;
-        min-width: unset;
-        width: auto;
-        height: auto;
-        top: var(--mobile-menu-margin);
-        left: var(--mobile-menu-margin);
-        right: var(--mobile-menu-margin);
-        bottom: var(--mobile-menu-margin);
-    }
-
-    .sub.menu
-    {
-        padding: 0 0 var(--padding-block) 0;
-        box-shadow: none;
-
-        .content
-        {
-            max-height: caLc(100% - 4rem);
-            overflow: auto;
-        }
-    }
-
-    .main.menu .content
-    {
-        margin-top: calc(0px - (var(--padding-inline) * 1.8));
-        max-height: caLc(100% - 4rem + (var(--padding-inline) * 1.8));
-        overflow: auto;
-
-        > ul {
-            gap: var(--menu-section-gap);
-        }
-    }
-
-    .menu ul
-    {
-        flex-direction: column;
-
-        > li, li > ul > li
-        {
-            flex: auto;
-        }
-    }
-
-    .mobile-menu-navigation
-    {
-        display: flex;
-    }
-
-    .main.menu
-    {
-        .mobile-menu-navigation
-        {
-            justify-content: flex-end;
-        }
-
-        &::backdrop
-        {
-            background-color: rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(2px);
-        }
-    }
-
-    .sub.menu
-    {
-        .mobile-menu-navigation
-        {
-            justify-content: space-between;
-        }
-    }
-}
+//
+// @media (width <= 32rem) {
+//     #menu-movies,
+//     #menu-persons,
+//     #menu-main
+//     {
+//         position-anchor: unset;
+//     }
+//
+//     #menu-main,
+//     .sub.menu
+//     {
+//         position: fixed;
+//         max-width: unset;
+//         min-width: unset;
+//         width: auto;
+//         height: auto;
+//         top: var(--mobile-menu-margin);
+//         left: var(--mobile-menu-margin);
+//         right: var(--mobile-menu-margin);
+//         bottom: var(--mobile-menu-margin);
+//     }
+//
+//     .sub.menu
+//     {
+//         padding: 0 0 var(--padding-block) 0;
+//         box-shadow: none;
+//
+//         .content
+//         {
+//             max-height: caLc(100% - 4rem);
+//             overflow: auto;
+//         }
+//     }
+//
+//     .main.menu .content
+//     {
+//         margin-top: calc(0px - (var(--padding-inline) * 1.8));
+//         max-height: caLc(100% - 4rem + (var(--padding-inline) * 1.8));
+//         overflow: auto;
+//
+//         > ul {
+//             gap: var(--menu-section-gap);
+//         }
+//     }
+//
+//     .menu ul
+//     {
+//         flex-direction: column;
+//
+//         > li, li > ul > li
+//         {
+//             flex: auto;
+//         }
+//     }
+//
+//     .mobile-menu-navigation
+//     {
+//         display: flex;
+//     }
+//
+//     .main.menu
+//     {
+//         .mobile-menu-navigation
+//         {
+//             justify-content: flex-end;
+//         }
+//
+//         &::backdrop
+//         {
+//             background-color: rgba(0, 0, 0, 0.1);
+//             backdrop-filter: blur(2px);
+//         }
+//     }
+//
+//     .sub.menu
+//     {
+//         .mobile-menu-navigation
+//         {
+//             justify-content: space-between;
+//         }
+//     }
+// }
 
 // Finns förmodligen något smidigare och bättre sätt att göra detta
 #menu-widget-button
@@ -587,164 +742,6 @@ $export-to-css: (
 #menu-persons-relations
 {
     position-anchor: --menu-persons-relations-button;
-}
-
-.pseudo-modal[popover] .form-actions button:only-child
-{
-    width: 100%;
-}
-
-.pseudo-modal[popover]
-{
-    --border-radius: 1.1rem;
-    --padding-inline: calc(var(--border-radius) * 0.75);
-    --close-button-width: 3em;
-
-    margin: auto;
-    position: fixed;
-    inset: 0;
-
-    background-color: var(--background-color-alternate);
-    color: var(--text-color-alternate);
-    border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-    border-radius: var(--border-radius);
-    padding: 0 0 var(--border-radius) 0;
-
-    max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--padding-inline) * 2));
-    min-width: calc(var(--menu-column-width) + (var(--padding-inline) * 2));
-    max-height: 100%;
-
-    box-shadow: 2px 2px 4px #101010;
-}
-
-.pseudo-modal[popover] .dialog-content
-{
-    max-height: calc(100% - 4rem);
-    overflow: auto;
-}
-
-.pseudo-modal[popover]::backdrop
-{
-    backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
-}
-
-.dialog-top
-{
-    margin-bottom: calc(var(--border-radius) * 0.6);
-    display: flex;
-    justify-content: flex-end;
-}
-
-.dialog-top button
-{
-    text-align: center;
-    padding: 0;
-    min-height: 2rem;
-    color: inherit;
-    background: var(--background-color-default);
-
-    font-family: inherit;
-    font-size: inherit;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-    padding: 0 var(--item-padding);
-
-    display: block;
-    align-content: center;
-
-    border-bottom: var(--border-width-default) var(--border-style-default) transparent;
-}
-
-.dialog-top button:hover
-{
-    background-color: var(--background-color-splash);
-    border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-}
-
-.dialog-top button[popovertarget]
-{
-    width: var(--close-button-width);
-    border-radius: 0 0 0 var(--border-radius);
-    border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-    border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-    border-right: none;
-}
-
-.dialog-content
-{
-    margin: 0 var(--border-radius);
-    flex: auto;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-main.login
-{
-    height: calc(100dvh - var(--body-margin-bottom));
-    display: flex;
-    align-items: center;
-}
-
-main.login > form
-{
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-
-main.login button[type=submit]
-{
-    text-align: center;
-}
-
-@media (width <= 32rem) {
-    :root
-    {
-        --mobile-modal-margin-top: 10rem;
-        --mobile-modal-margin-inline: 1rem;
-    }
-
-    .pseudo-modal[popover]
-    {
-        position: fixed;
-        max-width: unset;
-        min-width: unset;
-        width: auto;
-        height: auto;
-        top: var(--mobile-modal-margin-top);
-        bottom: 0rem;
-        left: var(--mobile-modal-margin-inline);
-        right: var(--mobile-modal-margin-inline);
-    }
-
-    .pseudo-modal[popover]:popover-open
-    {
-        height: calc(100% - var(--mobile-modal-margin-top));
-        display: flex;
-        flex-direction: column;
-    }
-
-    body:has(.pseudo-modal[popover]:popover-open)
-    {
-        margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
-    }
-
-    .pseudo-modal[popover]::backdrop
-    {
-        background-color: transparent;
-        backdrop-filter: grayscale(1);
-    }
-
-    .button-list > .vip
-    {
-        /*flex: 100%;*/
-    }
 }
 
 
