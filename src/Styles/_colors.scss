@@ -69,7 +69,7 @@ $role-colors: (
             "primary": 50,
             "on-primary": (0, 100),
             "primary-container": (70, 30),
-            "on-primary-container": (0, 100)
+            "on-primary-container": (0, 90)
         ),
         "feather": (
             "primary": 70,
@@ -111,21 +111,21 @@ $role-colors: (
             "surface": (90, 20),
             "on-surface": (0, 100),
             "surface-container": (70, 40),
-            "on-surface-container": (0, 100)
+            "on-surface-container": (0, 90)
         ),
         "feather": (
             "surface": (95, 2),
             "on-surface": (0, 100),
             "surface-container": (98, 30),
-            "on-surface-container": (0, 100)
+            "on-surface-container": (0, 90)
         )
     ),
     "input": (
         "default": (
-            "input-text": (95, 10),
-            "on-input-text": (0, 100),
+            "input-text": (95, 70),
+            "on-input-text": (0, 90),
             "input-button": (70, 30),
-            "on-input-button": (0, 100)
+            "on-input-button": (0, 90)
         ),
     ),
     "error": (
@@ -145,6 +145,8 @@ $role-colors: (
 );
 
 // Generera färgvarianter från grundfärger (CSS-variabler)
+// Jag tänker att detta nog bara är tillfälligt under utvecklingen
+// Sedan kan jag ändra så det inte genereras lika många CSS-variabler, för jag har inte behov av att kunna ändra enskilda färgtoner on the fly
 :root {
     @each $color-name, $color-value in $base-colors {
         @each $tone in $palette-tones {
