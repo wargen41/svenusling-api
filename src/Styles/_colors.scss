@@ -67,8 +67,8 @@ $role-colors: (
         "default": (
             "primary": 50,
             "on-primary": (0, 100),
-            "primary-container": 70,
-            "on-primary-container": (30, 70)
+            "primary-container": (70, 30),
+            "on-primary-container": (0, 100)
         ),
         "feather": (
             "primary": 70,
@@ -107,9 +107,9 @@ $role-colors: (
     ),
     "surface": (
         "default": (
-            "surface": (90, 10),
+            "surface": (90, 20),
             "on-surface": (0, 100),
-            "surface-container": (80, 20),
+            "surface-container": (70, 40),
             "on-surface-container": (0, 100)
         ),
         "feather": (
@@ -247,6 +247,16 @@ body
     background-color: var(--color-surface-default);
     color: var(--color-on-surface-default);
 
+    &.light
+    {
+        color-scheme: light;
+    }
+
+    &.dark
+    {
+        color-scheme: dark;
+    }
+
     > .message
     {
         background-color: var(--color-primary-container-default);
@@ -269,6 +279,7 @@ a
 header
 {
     background: var(--color-primary-container-default);
+    color: var(--color-on-primary-container-default)
 }
 
 footer

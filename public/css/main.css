@@ -224,8 +224,8 @@ h1, h2, h3, h4, h5, h6 {
   --color-error-100: var(--color-red-100);
   --color-primary-default: var(--color-primary-50);
   --color-on-primary-default: light-dark(var(--color-primary-0), var(--color-primary-100));
-  --color-primary-container-default: var(--color-primary-70);
-  --color-on-primary-container-default: light-dark(var(--color-primary-30), var(--color-primary-70));
+  --color-primary-container-default: light-dark(var(--color-primary-70), var(--color-primary-30));
+  --color-on-primary-container-default: light-dark(var(--color-primary-0), var(--color-primary-100));
   --color-primary-feather: var(--color-primary-70);
   --color-on-primary-feather: light-dark(var(--color-primary-0), var(--color-primary-100));
   --color-primary-container-feather: var(--color-primary-95);
@@ -246,9 +246,9 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-secondary-feather: light-dark(var(--color-tertiary-0), var(--color-tertiary-100));
   --color-secondary-container-feather: var(--color-tertiary-95);
   --color-on-secondary-container-feather: light-dark(var(--color-tertiary-30), var(--color-tertiary-70));
-  --color-surface-default: light-dark(var(--color-surface-90), var(--color-surface-10));
+  --color-surface-default: light-dark(var(--color-surface-90), var(--color-surface-20));
   --color-on-surface-default: light-dark(var(--color-surface-0), var(--color-surface-100));
-  --color-surface-container-default: light-dark(var(--color-surface-80), var(--color-surface-20));
+  --color-surface-container-default: light-dark(var(--color-surface-70), var(--color-surface-40));
   --color-on-surface-container-default: light-dark(var(--color-surface-0), var(--color-surface-100));
   --color-surface-feather: light-dark(var(--color-surface-95), var(--color-surface-2));
   --color-on-surface-feather: light-dark(var(--color-surface-0), var(--color-surface-100));
@@ -522,6 +522,12 @@ body {
   background-color: var(--color-surface-default);
   color: var(--color-on-surface-default);
 }
+body.light {
+  color-scheme: light;
+}
+body.dark {
+  color-scheme: dark;
+}
 body > .message {
   background-color: var(--color-primary-container-default);
   color: var(--color-on-primary-container-default);
@@ -538,6 +544,7 @@ a {
 
 header {
   background: var(--color-primary-container-default);
+  color: var(--color-on-primary-container-default);
 }
 
 footer {
