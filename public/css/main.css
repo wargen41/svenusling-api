@@ -254,6 +254,10 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-surface-feather: light-dark(var(--color-surface-0), var(--color-surface-100));
   --color-surface-container-feather: light-dark(var(--color-surface-98), var(--color-surface-30));
   --color-on-surface-container-feather: light-dark(var(--color-surface-0), var(--color-surface-100));
+  --color-input-text-default: light-dark(var(--color-input-95), var(--color-input-10));
+  --color-on-input-text-default: light-dark(var(--color-input-0), var(--color-input-100));
+  --color-input-button-default: light-dark(var(--color-input-70), var(--color-input-30));
+  --color-on-input-button-default: light-dark(var(--color-input-0), var(--color-input-100));
   --color-error-default: var(--color-error-50);
   --color-on-error-default: light-dark(var(--color-error-0), var(--color-error-100));
   --color-error-container-default: var(--color-error-70);
@@ -474,6 +478,22 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-on-surface-container-default);
 }
 
+.input-text {
+  background-color: var(--color-input-text-default);
+}
+
+.on-input-text {
+  color: var(--color-on-input-text-default);
+}
+
+.input-button {
+  background-color: var(--color-input-button-default);
+}
+
+.on-input-button {
+  color: var(--color-on-input-button-default);
+}
+
 .error {
   background-color: var(--color-error-default);
 }
@@ -491,6 +511,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 html {
+  color-scheme: light dark;
   accent-color: var(--color-secondary-default);
   background-color: var(--color-primary-container-default);
   border-color: var(--color-on-surface-default);
@@ -540,8 +561,8 @@ input:where([type=date],
 [type=search],
 [type=text],
 [type=url]) {
-  background-color: var(--color-surface-feather);
-  color: var(--color-on-surface-feather);
+  background-color: var(--color-input-text-default);
+  color: var(--color-on-input-text-default);
 }
 
 .skip-link {

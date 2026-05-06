@@ -50,6 +50,11 @@ $themes: (
     )
 );
 
+// Jag vill göra om det mesta av systemet för role-colors. Istället för att endast definiera färgtoner med olika ljushet så vill jag kunna definiera funktioner som kan manipulera alla tre delar (Hue/Saturation/Lightness). Till exempel skulle man kunna ha en variant "dim" som drar ner mättnaden och kanske ljusar upp en aning. Varianten "default" kan väl som standard ha en funktion där grundfärgen bara går rakt igenom.
+// Också fundera på hur man gör detta så enkelt som möjligt att administrera, men samtidigt flexibelt så att man kan ändra funktionerna för olika teman. En idé är att skapa mixins med funktioner namngivna efter vad de gör (default, dim etc). För ett tema där man behöver något eget kan man då skapa en extra mixin just för det ändamålet.
+// Kanske skippar vi listorna i role-colors och utökar base-theme och themes. Om man kan ha ett system som tar värdet från base-theme ifall det inte finns angivet i temat (så man slipper underhålla en massa duplicerade siffror när det inte ska göras någon förändring). Eller kan det möjligtvis funka att ha bastemats CSS som grund och sedan bara generera en CSS för det som är ändrat i temat som läggs uppå grunden.
+// Nedanstående är gamla anteckningar innan jag hade ovanstående idéer.
+
 // Standardvärden för vilka färgtoner som ska användas i olika roller (detta blir CSS-klasser med namngivna vikter att använda)
 // När man gör ett tema kan man antingen använda de här standardtonerna eller skriva över utvalda variabler med temats egna värden
 // Man behöver inte definiera onödigt många såna här standardnamn, eftersom det är fritt fram att ange toner direkt från paletten
@@ -113,6 +118,14 @@ $role-colors: (
             "surface-container": (98, 30),
             "on-surface-container": (0, 100)
         )
+    ),
+    "input": (
+        "default": (
+            "input-text": (95, 10),
+            "on-input-text": (0, 100),
+            "input-button": (70, 30),
+            "on-input-button": (0, 100)
+        ),
     ),
     "error": (
         "default": (
@@ -222,6 +235,7 @@ $role-colors: (
 // Men vid behov, när man behöver frångå standarden, så är det bara att sätta ett klassnamn för att styra färgen
 html
 {
+    color-scheme: light dark;
     accent-color: var(--color-secondary-default);
     background-color: var(--color-primary-container-default);
     border-color: var(--color-on-surface-default);
@@ -285,8 +299,8 @@ input:where(
     [type=url]
 )
 {
-    background-color: var(--color-surface-feather);
-    color: var(--color-on-surface-feather);
+    background-color: var(--color-input-text-default);
+    color: var(--color-on-input-text-default);
 }
 
 .skip-link
