@@ -270,71 +270,68 @@ main.login button[type=submit]
         width: 100%;
     }
 
-    .dialog-content
+    > .content
     {
         max-height: calc(100% - 4rem);
         overflow: auto;
+
+        margin: 0 var(--border-radius);
+        flex: auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    > .top
+    {
+        margin-bottom: calc(var(--border-radius) * 0.6);
+        display: flex;
+        justify-content: flex-end;
+
+        button
+        {
+            text-align: center;
+            padding: 0;
+            min-height: 2rem;
+            color: inherit;
+            background: var(--background-color-default);
+
+            font-family: inherit;
+            font-size: inherit;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            padding: 0 var(--item-padding);
+
+            display: block;
+            align-content: center;
+
+            border-bottom: var(--border-width-default) var(--border-style-default) transparent;
+
+            &:hover
+            {
+                background-color: var(--background-color-splash);
+                border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+            }
+
+            &[popovertarget]
+            {
+                width: var(--close-button-width);
+                border-radius: 0 0 0 var(--border-radius);
+                border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+                border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+                border-right: none;
+            }
+        }
     }
 
     &::backdrop
     {
         backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
     }
-}
-
-.dialog-top
-{
-    margin-bottom: calc(var(--border-radius) * 0.6);
-    display: flex;
-    justify-content: flex-end;
-
-    button
-    {
-        text-align: center;
-        padding: 0;
-        min-height: 2rem;
-        color: inherit;
-        background: var(--background-color-default);
-
-        font-family: inherit;
-        font-size: inherit;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        cursor: pointer;
-        text-decoration: none;
-        border: none;
-        padding: 0 var(--item-padding);
-
-        display: block;
-        align-content: center;
-
-        border-bottom: var(--border-width-default) var(--border-style-default) transparent;
-
-        &:hover
-        {
-            background-color: var(--background-color-splash);
-            border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-        }
-
-        &[popovertarget]
-        {
-            width: var(--close-button-width);
-            border-radius: 0 0 0 var(--border-radius);
-            border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-            border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-            border-right: none;
-        }
-    }
-}
-
-.dialog-content
-{
-    margin: 0 var(--border-radius);
-    flex: auto;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 @media (width <= 32rem) {

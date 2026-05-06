@@ -1017,22 +1017,24 @@ main.login button[type=submit] {
 .menu[popover] .form-actions button:only-child {
   width: 100%;
 }
-.pseudo-modal[popover] .dialog-content,
-.menu[popover] .dialog-content {
+.pseudo-modal[popover] > .content,
+.menu[popover] > .content {
   max-height: calc(100% - 4rem);
   overflow: auto;
+  margin: 0 var(--border-radius);
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.pseudo-modal[popover]::backdrop,
-.menu[popover]::backdrop {
-  backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
-}
-
-.dialog-top {
+.pseudo-modal[popover] > .top,
+.menu[popover] > .top {
   margin-bottom: calc(var(--border-radius) * 0.6);
   display: flex;
   justify-content: flex-end;
 }
-.dialog-top button {
+.pseudo-modal[popover] > .top button,
+.menu[popover] > .top button {
   text-align: center;
   padding: 0;
   min-height: 2rem;
@@ -1050,24 +1052,22 @@ main.login button[type=submit] {
   align-content: center;
   border-bottom: var(--border-width-default) var(--border-style-default) transparent;
 }
-.dialog-top button:hover {
+.pseudo-modal[popover] > .top button:hover,
+.menu[popover] > .top button:hover {
   background-color: var(--background-color-splash);
   border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
 }
-.dialog-top button[popovertarget] {
+.pseudo-modal[popover] > .top button[popovertarget],
+.menu[popover] > .top button[popovertarget] {
   width: var(--close-button-width);
   border-radius: 0 0 0 var(--border-radius);
   border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
   border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
   border-right: none;
 }
-
-.dialog-content {
-  margin: 0 var(--border-radius);
-  flex: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.pseudo-modal[popover]::backdrop,
+.menu[popover]::backdrop {
+  backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
 }
 
 @media (width <= 32rem) {

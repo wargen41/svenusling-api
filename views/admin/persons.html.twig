@@ -100,10 +100,10 @@
         {% for person in persons %}
         {% set dlg_id = 'edit-form-' ~ person.id %}
         <dialog id="{{ dlg_id }}" popover class="pseudo-modal">
-            <div class="dialog-top">
+            <div class="top">
                 <button popovertarget="{{ dlg_id }}" popovertargetaction="hide">×</button>
             </div>
-            <div class="dialog-content">
+            <div class="content">
                 <form method="POST" action="/admin/persons/update">
                     <input type="hidden" name="person_id" value="{{ person.id }}">
                     <fieldset>
