@@ -343,7 +343,8 @@ main.login button[type=submit]
         --mobile-modal-margin-inline: 1rem;
     }
 
-    .pseudo-modal[popover]
+    .pseudo-modal[popover],
+    .menu[popover]
     {
         position: fixed;
         max-width: unset;
@@ -369,10 +370,10 @@ main.login button[type=submit]
         }
     }
 
-    body:has(.pseudo-modal[popover]:popover-open)
-    {
-        margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
-    }
+    // body:has(.pseudo-modal[popover]:popover-open)
+    // {
+    //     margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
+    // }
 }
 
 // Menyn behöver göras om så att den använder sig av samma grund som .pseudo-modal för mobilutseendet

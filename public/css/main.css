@@ -1071,7 +1071,8 @@ main.login button[type=submit] {
     --mobile-modal-margin-top: 10rem;
     --mobile-modal-margin-inline: 1rem;
   }
-  .pseudo-modal[popover] {
+  .pseudo-modal[popover],
+  .menu[popover] {
     position: fixed;
     max-width: unset;
     min-width: unset;
@@ -1082,17 +1083,16 @@ main.login button[type=submit] {
     left: var(--mobile-modal-margin-inline);
     right: var(--mobile-modal-margin-inline);
   }
-  .pseudo-modal[popover]:popover-open {
+  .pseudo-modal[popover]:popover-open,
+  .menu[popover]:popover-open {
     height: calc(100% - var(--mobile-modal-margin-top));
     display: flex;
     flex-direction: column;
   }
-  .pseudo-modal[popover]::backdrop {
+  .pseudo-modal[popover]::backdrop,
+  .menu[popover]::backdrop {
     background-color: transparent;
     backdrop-filter: grayscale(1);
-  }
-  body:has(.pseudo-modal[popover]:popover-open) {
-    margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
   }
 }
 @media (width <= 44rem) {
