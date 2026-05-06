@@ -268,7 +268,7 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-surface-feather: light-dark(var(--color-surface-0), var(--color-surface-100));
   --color-surface-container-feather: light-dark(var(--color-surface-98), var(--color-surface-30));
   --color-on-surface-container-feather: light-dark(var(--color-surface-0), var(--color-surface-90));
-  --color-input-text-default: light-dark(var(--color-input-95), var(--color-input-70));
+  --color-input-text-default: light-dark(var(--color-input-95), var(--color-input-20));
   --color-on-input-text-default: light-dark(var(--color-input-0), var(--color-input-90));
   --color-input-button-default: light-dark(var(--color-input-70), var(--color-input-30));
   --color-on-input-button-default: light-dark(var(--color-input-0), var(--color-input-90));
@@ -529,7 +529,7 @@ html {
   accent-color: var(--color-secondary-default);
   background-color: var(--color-primary-container-default);
   border-color: var(--color-on-surface-default);
-  caret-color: var(--color-on-surface-default);
+  caret-color: var(--color-primary-default);
 }
 
 body {
@@ -581,9 +581,16 @@ input:where([type=date],
 [type=password],
 [type=search],
 [type=text],
-[type=url]) {
+[type=url]),
+textarea {
   background-color: var(--color-input-text-default);
   color: var(--color-on-input-text-default);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline-color: var(--color-primary-default);
 }
 
 .skip-link {
@@ -773,8 +780,8 @@ details {
 details > summary {
   margin-top: -0.5rem;
   margin-right: -1rem;
-  margin-bottom: 0.5em;
-  margin-left: -1.7em;
+  margin-bottom: 0.8em;
+  margin-left: -1rem;
 }
 details > summary > * {
   display: inline-block;

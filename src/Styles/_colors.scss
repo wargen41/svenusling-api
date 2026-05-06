@@ -122,7 +122,7 @@ $role-colors: (
     ),
     "input": (
         "default": (
-            "input-text": (95, 70),
+            "input-text": (95, 20),
             "on-input-text": (0, 90),
             "input-button": (70, 30),
             "on-input-button": (0, 90)
@@ -242,7 +242,7 @@ html
     accent-color: var(--color-secondary-default);
     background-color: var(--color-primary-container-default);
     border-color: var(--color-on-surface-default);
-    caret-color: var(--color-on-surface-default);
+    caret-color: var(--color-primary-default);
 }
 
 body
@@ -311,10 +311,18 @@ input:where(
     [type=search],
     [type=text],
     [type=url]
-)
+),
+textarea
 {
     background-color: var(--color-input-text-default);
     color: var(--color-on-input-text-default);
+}
+
+input:focus,
+select:focus,
+textarea:focus
+{
+    outline-color: var(--color-primary-default);
 }
 
 .skip-link
