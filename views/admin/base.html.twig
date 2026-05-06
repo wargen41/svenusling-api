@@ -36,7 +36,9 @@
 
     </main>
 
-    <footer>THE END</footer>
+    {% block footer %}
+        {% include "admin/footer.html.twig" %}
+    {% endblock %}
 
 {% include "admin/scripts.html.twig" %}
 </body>
