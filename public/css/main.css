@@ -246,14 +246,14 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-secondary-feather: light-dark(var(--color-tertiary-0), var(--color-tertiary-100));
   --color-secondary-container-feather: var(--color-tertiary-95);
   --color-on-secondary-container-feather: light-dark(var(--color-tertiary-30), var(--color-tertiary-70));
-  --color-surface-default: var(--color-surface-50);
+  --color-surface-default: light-dark(var(--color-surface-90), var(--color-surface-10));
   --color-on-surface-default: light-dark(var(--color-surface-0), var(--color-surface-100));
-  --color-surface-container-default: var(--color-surface-70);
-  --color-on-surface-container-default: light-dark(var(--color-surface-30), var(--color-surface-70));
-  --color-surface-feather: var(--color-surface-70);
+  --color-surface-container-default: light-dark(var(--color-surface-80), var(--color-surface-20));
+  --color-on-surface-container-default: light-dark(var(--color-surface-0), var(--color-surface-100));
+  --color-surface-feather: light-dark(var(--color-surface-95), var(--color-surface-2));
   --color-on-surface-feather: light-dark(var(--color-surface-0), var(--color-surface-100));
-  --color-surface-container-feather: var(--color-surface-95);
-  --color-on-surface-container-feather: light-dark(var(--color-surface-30), var(--color-surface-70));
+  --color-surface-container-feather: light-dark(var(--color-surface-98), var(--color-surface-30));
+  --color-on-surface-container-feather: light-dark(var(--color-surface-0), var(--color-surface-100));
   --color-error-default: var(--color-error-50);
   --color-on-error-default: light-dark(var(--color-error-0), var(--color-error-100));
   --color-error-container-default: var(--color-error-70);
@@ -550,7 +550,7 @@ input:where([type=date],
 }
 
 html {
-  border: 10px dashed black;
+  border-inline: 10px dashed black;
 }
 
 a {

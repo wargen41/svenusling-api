@@ -102,16 +102,16 @@ $role-colors: (
     ),
     "surface": (
         "default": (
-            "surface": 50,
+            "surface": (90, 10),
             "on-surface": (0, 100),
-            "surface-container": 70,
-            "on-surface-container": (30, 70)
+            "surface-container": (80, 20),
+            "on-surface-container": (0, 100)
         ),
         "feather": (
-            "surface": 70,
+            "surface": (95, 2),
             "on-surface": (0, 100),
-            "surface-container": 95,
-            "on-surface-container": (30, 70)
+            "surface-container": (98, 30),
+            "on-surface-container": (0, 100)
         )
     ),
     "error": (
