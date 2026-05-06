@@ -10,7 +10,7 @@ define('API', array(
     'ADMIN_SITE_NAME' => 'Admin Site Name',
     'ADMIN_BASE_URL' => 'http://localhost:8000',
     'SUPER_USER_ID' => '1',
-    'EXTERNAL_CSS' => 'http://localhost:8000/styles.css',
+    'EXTERNAL_CSS' => ['/css/main.css', '/css/admin.css'],
 ));
 
 // Admin frontend configuration

@@ -1,0 +1,19 @@
+.range-labels > * {
+  display: block;
+  width: 100%;
+}
+.range-labels > input[type=range] {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+.range-labels > datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+}
+.range-labels > datalist > option {
+  padding: 0;
+}
+
+/*# sourceMappingURL=admin.css.map */
