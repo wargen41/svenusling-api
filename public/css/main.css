@@ -995,7 +995,8 @@ main.login button[type=submit] {
   padding: 0.82rem 0 1.25rem 0;
 }
 
-.pseudo-modal[popover] {
+.pseudo-modal[popover],
+.menu[popover] {
   --border-radius: 1.1rem;
   --padding-inline: calc(var(--border-radius) * 0.75);
   --close-button-width: 3em;
@@ -1012,14 +1013,17 @@ main.login button[type=submit] {
   max-height: 100%;
   box-shadow: 2px 2px 4px #101010;
 }
-.pseudo-modal[popover] .form-actions button:only-child {
+.pseudo-modal[popover] .form-actions button:only-child,
+.menu[popover] .form-actions button:only-child {
   width: 100%;
 }
-.pseudo-modal[popover] .dialog-content {
+.pseudo-modal[popover] .dialog-content,
+.menu[popover] .dialog-content {
   max-height: calc(100% - 4rem);
   overflow: auto;
 }
-.pseudo-modal[popover]::backdrop {
+.pseudo-modal[popover]::backdrop,
+.menu[popover]::backdrop {
   backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
 }
 
