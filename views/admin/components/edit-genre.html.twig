@@ -1,20 +1,20 @@
 {% extends "admin/components/edit-base.html.twig" %}
 {% block content %}
                     <form method="POST" action="/admin/genres/update">
-                        <input type="hidden" name="genre_id" value="{{ genre.id }}">
+                        <input type="hidden" name="genre_id" value="{{ item.id }}">
                         <fieldset>
                             <legend>Redigera genre</legend>
                             <div class="form-row">
-                                <label for="edit-sv-{{ genre.id }}">Svenska</label>
-                                <input type="text" id="edit-sv-{{ genre.id }}" name="sv" value="{{ genre.sv }}" required>
+                                <label for="edit-sv-{{ item.id }}">Svenska</label>
+                                <input type="text" id="edit-sv-{{ item.id }}" name="sv" value="{{ item.sv }}" required>
                             </div>
                             <div class="form-row">
-                                <label for="edit-en-{{ genre.id }}">Engelska</label>
-                                <input type="text" id="edit-en-{{ genre.id }}" name="en" value="{{ genre.en }}" required>
+                                <label for="edit-en-{{ item.id }}">Engelska</label>
+                                <input type="text" id="edit-en-{{ item.id }}" name="en" value="{{ item.en }}" required>
                             </div>
                             <div class="form-row">
-                                <label for="edit-common-{{ genre.id }}">Markera som vanlig
-                                    <input type="checkbox" id="edit-common-{{ genre.id }}" name="common" value="1" {% if genre.common %}checked{% endif %}>
+                                <label for="edit-common-{{ item.id }}">Markera som vanlig
+                                    <input type="checkbox" id="edit-common-{{ item.id }}" name="common" value="1" {% if item.common %}checked{% endif %}>
                                 </label>
                             </div>
                             <div class="form-actions">
@@ -22,8 +22,8 @@
                             </div>
                         </fieldset>
                     </form>
-                    <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ genre.sv }}?');">
-                        <input type="hidden" name="genre_id" value="{{ genre.id }}">
+                    <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ item.sv }}?');">
+                        <input type="hidden" name="genre_id" value="{{ item.id }}">
                         <fieldset>
                             <legend>Radera genre?</legend>
                             <div class="form-actions">
