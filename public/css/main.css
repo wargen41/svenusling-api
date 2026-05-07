@@ -593,6 +593,12 @@ textarea:focus {
   outline-color: var(--color-primary-default);
 }
 
+main > h1,
+main article > h1,
+main article > hgroup:first-of-type {
+  background-color: var(--color-surface-default);
+}
+
 .skip-link {
   background-color: var(--color-tertiary-container-default);
   color: var(--color-on-tertiary-container-default);
@@ -762,7 +768,7 @@ body * {
 main {
   max-width: 36em;
   margin: 0 auto;
-  padding: 0 var(--margin-default);
+  padding: 0 1.5rem;
 }
 main > * + * {
   margin-top: 2em;
@@ -864,10 +870,8 @@ main article > hgroup:first-of-type {
   position: sticky;
   top: 0;
   padding: 0.5rem 4rem;
-  margin-left: var(--negative-margin-default);
-  margin-right: var(--negative-margin-default);
-  background: var(--background-sticky-heading);
-  background: var(--gradient-sticky-heading);
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
 }
 main > p {
   text-align: left;

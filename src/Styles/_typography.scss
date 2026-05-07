@@ -1,6 +1,9 @@
 @use "sass:map";
 @use 'vars' as var;
 
+$margin-default: map.get(var.$margin, 'default');
+$negative-margin-default: map.get(var.$negative-margin, 'default');
+
 body
 {
     font-size: var(--font-base-size);
@@ -24,10 +27,8 @@ main
         position: sticky;
         top: 0;
         padding: .5rem 4rem;
-        margin-left: var(--negative-margin-default);
-        margin-right: var(--negative-margin-default);
-        background: var(--background-sticky-heading);
-        background: var(--gradient-sticky-heading);
+        margin-left: $negative-margin-default;
+        margin-right: $negative-margin-default;
     }
 
     > p

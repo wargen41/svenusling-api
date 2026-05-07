@@ -325,6 +325,16 @@ textarea:focus
     outline-color: var(--color-primary-default);
 }
 
+main
+{
+    > h1,
+    article > h1,
+    article > hgroup:first-of-type
+    {
+        background-color: var(--color-surface-default);
+    }
+}
+
 .skip-link
 {
     background-color: var(--color-tertiary-container-default);

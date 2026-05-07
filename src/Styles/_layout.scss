@@ -36,7 +36,7 @@ main
 {
     max-width: 36em;
     margin: 0 auto;
-    padding: 0 var(--margin-default);
+    padding: 0 $margin-default;
 
     > * + *
     {

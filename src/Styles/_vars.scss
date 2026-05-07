@@ -53,22 +53,22 @@ $spacing: (
 );
 
 $margin: (
-    default: map.get($spacing, 'm')
+    "default": map.get($spacing, 'm')
 );
 
 $negative-margin: (
-    default: (0 - map.get($margin, 'default'))
+    "default": (0 - map.get($margin, 'default'))
 );
 
 $padding: (
-    default: map.get($spacing, 'm')
+    "default": map.get($spacing, 'm')
 );
 
 $border: (
-    width: 2px,
-    style: groove,
-    width-alt: 1px,
-    style-alt: solid
+    "width": 2px,
+    "style": groove,
+    "width-alt": 1px,
+    "style-alt": solid
 );
 
 // Definiera vilka listor med variabler som ska bli CSS-variabler och med vilket prefix
