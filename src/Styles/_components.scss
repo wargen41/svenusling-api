@@ -85,7 +85,7 @@ $popover-sub-list-padding: $popover-list-padding * $mlprslp;
 $popover-item-padding: $popover-padding-inline * $mpirip;
 
 $popover-calc: (
-    block-total: calc($popover-padding-block + var(--menu-item-gap) + var(--menu-border-thickness) + var(--menu-item-border-thickness)),
+    block-total: calc($popover-padding-block + var(--menu-item-gap) + var(--menu-border-width) + var(--menu-item-border-width)),
     max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--menu-padding-inline) * 2)),
     min-width: calc(var(--menu-column-width) + (var(--menu-padding-inline) * 2)),
     padding-inline: $popover-padding-inline,
