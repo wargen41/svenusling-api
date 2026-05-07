@@ -279,8 +279,8 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-primary-container-feather: light-dark(var(--color-primary-30), var(--color-primary-70));
   --color-secondary-default: var(--color-secondary-50);
   --color-on-secondary-default: light-dark(var(--color-secondary-0), var(--color-secondary-100));
-  --color-secondary-container-default: var(--color-secondary-70);
-  --color-on-secondary-container-default: light-dark(var(--color-secondary-30), var(--color-secondary-70));
+  --color-secondary-container-default: light-dark(var(--color-secondary-60), var(--color-secondary-20));
+  --color-on-secondary-container-default: light-dark(var(--color-secondary-20), var(--color-secondary-60));
   --color-secondary-feather: var(--color-secondary-70);
   --color-on-secondary-feather: light-dark(var(--color-secondary-0), var(--color-secondary-100));
   --color-secondary-container-feather: var(--color-secondary-95);
