@@ -37,8 +37,8 @@ $widget-calc: (
 );
 //$widget-total-width: $wiz + $wpo + $wpi;
 
-// Menyvariablerna bör sedan samköras med det jag har för popover-dialog
-// och många av variablerna bör bli mer generella än att bara gälla menyn (åtminstone det som gäller mobilläget)
+// Detta är en salig blandning av variabler som gäller endast menyn samt både meny och popover
+// Behöver reda ut det så småningom, men just nu vill jag bara få rätt på utseendet för tillfället
 $popover: (
     border-radius: 1.1rem,
     border-width: map.get(var.$border, 'width'),
@@ -47,6 +47,11 @@ $popover: (
     border-radius-relative-padding-block: 0.6,
     padding-inline-relative-list-padding: 0.3,
     list-padding-relative-sub-list-padding: 4,
+    sub-offset: 0.5rem,
+    // columns
+    column-width: 10em,
+    column-gap: 1.1em,
+    section-gap: 0em,
     // items
     padding-inline-relative-item-padding: 0.7,
     item-height: 2.6rem,
@@ -57,13 +62,6 @@ $popover: (
     close-button-width: 3em
 );
 
-$menu-static: (
-    sub-offset: 0.5rem,
-    // columns
-    column-width: 10em,
-    column-gap: 1.1em,
-    section-gap: 0em,
-);
 $mbr: map.get($popover, 'border-radius');
 $mbw: map.get($popover, 'border-width');
 $mbs: map.get($popover, 'border-style');
@@ -76,8 +74,8 @@ $mpirip: map.get($popover, 'padding-inline-relative-item-padding');
 $mih: map.get($popover, 'item-height');
 $mig: map.get($popover, 'item-gap');
 $mibw: map.get($popover, 'item-border-width');
-$mcw: map.get($menu-static, 'column-width');
-$mcg: map.get($menu-static, 'column-gap');
+$mcw: map.get($popover, 'column-width');
+$mcg: map.get($popover, 'column-gap');
 $cbw: map.get($popover, 'close-button-width');
 
 $popover-padding-inline: $mbr * $mbrrpi;
@@ -102,7 +100,7 @@ $export-to-css: (
         "prefix": "widget-"
     ),
     (
-        "map": $menu-static,
+        "map": $popover,
         "prefix": "menu-"
     ),
     (
@@ -249,8 +247,6 @@ main.login button[type=submit]
 .pseudo-modal[popover],
 .menu[popover]
 {
-    --close-button-width: 3em;
-
     margin: auto;
     position: fixed;
     inset: 0;
@@ -310,20 +306,21 @@ main.login button[type=submit]
             display: block;
             align-content: center;
 
-            border-bottom: $mbw var(--border-style-default) transparent;
+            border-bottom-width: $mbw;
+            border-color: transparent;
 
             &:hover
             {
                 background-color: var(--background-color-splash);
-                border-bottom: $mbw var(--border-style-default) var(--border-color-default);
+                border-bottom: $mbw $mbs var(--border-color-default);
             }
 
             &[popovertarget]
             {
                 width: $cbw;
                 border-radius: 0 0 0 $mbr;
-                border-bottom: $mbw var(--border-style-default) var(--border-color-default);
-                border-left: $mbw var(--border-style-default) var(--border-color-default);
+                border-bottom-width: $mbw;
+                border-left-width: $mbw;
                 border-right: none;
             }
         }
@@ -331,7 +328,8 @@ main.login button[type=submit]
 
     &::backdrop
     {
-        backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
+        backdrop-filter: brightness(0.9) contrast(0.9) grayscale(1);
+        background-color: transparent;
     }
 }
 
@@ -360,12 +358,6 @@ main.login button[type=submit]
             height: calc(100% - var(--mobile-modal-margin-top));
             display: flex;
             flex-direction: column;
-        }
-
-        &::backdrop
-        {
-            background-color: transparent;
-            backdrop-filter: grayscale(1);
         }
     }
 

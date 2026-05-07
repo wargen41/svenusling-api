@@ -300,7 +300,7 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-input-text-default: light-dark(var(--color-input-0), var(--color-input-90));
   --color-input-button-default: light-dark(var(--color-input-70), var(--color-input-30));
   --color-on-input-button-default: light-dark(var(--color-input-0), var(--color-input-90));
-  --color-outline-default: light-dark(var(--color-outline-0), var(--color-outline-100));
+  --color-outline-default: light-dark(var(--color-outline-0), var(--color-outline-50));
   --color-error-default: var(--color-error-50);
   --color-on-error-default: light-dark(var(--color-error-0), var(--color-error-100));
   --color-error-container-default: var(--color-error-70);
@@ -1038,7 +1038,6 @@ main.login button[type=submit] {
 
 .pseudo-modal[popover],
 .menu[popover] {
-  --close-button-width: 3em;
   margin: auto;
   position: fixed;
   inset: 0;
@@ -1088,24 +1087,26 @@ main.login button[type=submit] {
   padding: 0 var(--item-padding);
   display: block;
   align-content: center;
-  border-bottom: 2px var(--border-style-default) transparent;
+  border-bottom-width: 2px;
+  border-color: transparent;
 }
 .pseudo-modal[popover] > .top button:hover,
 .menu[popover] > .top button:hover {
   background-color: var(--background-color-splash);
-  border-bottom: 2px var(--border-style-default) var(--border-color-default);
+  border-bottom: 2px groove var(--border-color-default);
 }
 .pseudo-modal[popover] > .top button[popovertarget],
 .menu[popover] > .top button[popovertarget] {
   width: 3em;
   border-radius: 0 0 0 1.1rem;
-  border-bottom: 2px var(--border-style-default) var(--border-color-default);
-  border-left: 2px var(--border-style-default) var(--border-color-default);
+  border-bottom-width: 2px;
+  border-left-width: 2px;
   border-right: none;
 }
 .pseudo-modal[popover]::backdrop,
 .menu[popover]::backdrop {
-  backdrop-filter: brightness(0.7) contrast(0.9) grayscale(1);
+  backdrop-filter: brightness(0.9) contrast(0.9) grayscale(1);
+  background-color: transparent;
 }
 
 @media (width <= 32rem) {
@@ -1130,11 +1131,6 @@ main.login button[type=submit] {
     height: calc(100% - var(--mobile-modal-margin-top));
     display: flex;
     flex-direction: column;
-  }
-  .pseudo-modal[popover]::backdrop,
-  .menu[popover]::backdrop {
-    background-color: transparent;
-    backdrop-filter: grayscale(1);
   }
 }
 @media (width <= 44rem) {
@@ -1235,10 +1231,23 @@ main.login button[type=submit] {
   --border-width-alt: 1px;
   --border-style-alt: solid;
   --widget-total-width: 3.9rem;
+  --menu-border-radius: 1.1rem;
+  --menu-border-width: 2px;
+  --menu-border-style: groove;
+  --menu-border-radius-relative-padding-inline: 0.75;
+  --menu-border-radius-relative-padding-block: 0.6;
+  --menu-padding-inline-relative-list-padding: 0.3;
+  --menu-list-padding-relative-sub-list-padding: 4;
   --menu-sub-offset: 0.5rem;
   --menu-column-width: 10em;
   --menu-column-gap: 1.1em;
   --menu-section-gap: 0em;
+  --menu-padding-inline-relative-item-padding: 0.7;
+  --menu-item-height: 2.6rem;
+  --menu-item-gap: 2px;
+  --menu-item-border-width: 0;
+  --menu-mobile-margin: 2.8rem;
+  --menu-close-button-width: 3em;
   --menu-block-total: calc(var(--padding-block) + var(--item-gap) + var(--border-thickness) + var(--item-border-thickness));
   --menu-max-width: calc(100vw - var(--widget-total-width) * 2 - var(--menu-padding-inline) * 2);
   --menu-min-width: calc(var(--menu-column-width) + var(--menu-padding-inline) * 2);
