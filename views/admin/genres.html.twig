@@ -29,54 +29,25 @@
         {% if genres|length > 0 %}
         <details open>
             <summary><h2>Redigera genrer</h2></summary>
+            <fieldset>
+                <legend><h3>{{ genres|length }} genrer</h3></legend>
+                <div class="button-list">
+                {% for genre in genres %}
+                    <button popovertarget="edit-form-{{ genre.id }}"
+                    {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
+                {% endfor %}
+                </div>
+            </fieldset>
+        </details>
+        {# <details open>
+            <summary><h2>Redigera genrer</h2></summary>
             <div class="button-list">
             {% for genre in genres %}
                 <button popovertarget="edit-form-{{ genre.id }}"
                 {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
             {% endfor %}
             </div>
-
-           {# {% for genre in genres %}
-            <dialog popover id="edit-form-{{ genre.id }}" class="pseudo-modal">
-                <div class="top">
-                    <button popovertarget="edit-form-{{ genre.id }}" popovertargetaction="hide">×</button>
-                </div>
-                <div class="content">
-                    <form method="POST" action="/admin/genres/update">
-                        <input type="hidden" name="genre_id" value="{{ genre.id }}">
-                        <fieldset>
-                            <legend>Redigera genre</legend>
-                            <div class="form-row">
-                                <label for="edit-sv-{{ genre.id }}">Svenska</label>
-                                <input type="text" id="edit-sv-{{ genre.id }}" name="sv" value="{{ genre.sv }}" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-en-{{ genre.id }}">Engelska</label>
-                                <input type="text" id="edit-en-{{ genre.id }}" name="en" value="{{ genre.en }}" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-common-{{ genre.id }}">Markera som vanlig
-                                    <input type="checkbox" id="edit-common-{{ genre.id }}" name="common" value="1" {% if genre.common %}checked{% endif %}>
-                                </label>
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit">Spara</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ genre.sv }}?');">
-                        <input type="hidden" name="genre_id" value="{{ genre.id }}">
-                        <fieldset>
-                            <legend>Radera genre?</legend>
-                            <div class="form-actions">
-                                <button type="submit" class="delete">Ta bort</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </dialog>
-            {% endfor %} #}
-        </details>
+        </details> #}
         {% endif %}
 
         {% for item in genres %}
