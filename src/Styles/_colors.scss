@@ -253,12 +253,12 @@ html
     color-scheme: light dark;
     accent-color: var(--color-secondary-default);
     background-color: var(--color-primary-container-default);
-    border-color: var(--color-outline-default);
     caret-color: var(--color-primary-default);
 }
 
 body
 {
+    border-color: var(--color-outline-default);
     background-color: var(--color-surface-default);
     color: var(--color-on-surface-default);
 
