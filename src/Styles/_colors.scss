@@ -279,6 +279,11 @@ body
     }
 }
 
+body *
+{
+    border-color: inherit;
+}
+
 // Hör inte hemma här, snarare ibland temafärger och effekter, men jag bara testar nu
 button:active
 {

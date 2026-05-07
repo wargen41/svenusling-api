@@ -580,6 +580,10 @@ body > .message {
   color: var(--color-on-primary-container-default);
 }
 
+body * {
+  border-color: inherit;
+}
+
 button:active {
   filter: hue-rotate(180deg);
 }
