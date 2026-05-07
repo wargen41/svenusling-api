@@ -300,7 +300,7 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-input-text-default: light-dark(var(--color-input-0), var(--color-input-90));
   --color-input-button-default: light-dark(var(--color-input-70), var(--color-input-30));
   --color-on-input-button-default: light-dark(var(--color-input-0), var(--color-input-90));
-  --color-outline-default: light-dark(var(--color-outline-0), var(--color-outline-50));
+  --color-outline-default: light-dark(var(--color-outline-50), var(--color-outline-95));
   --color-error-default: var(--color-error-50);
   --color-on-error-default: light-dark(var(--color-error-0), var(--color-error-100));
   --color-error-container-default: var(--color-error-70);
