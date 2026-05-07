@@ -98,7 +98,7 @@ dd:before
 
         li:hover a, li:active a
         {
-            text-decoration: 1px underline solid var(--color-neutral-80);
+            text-decoration: 1px underline solid;
         }
 
         li:hover a:hover
@@ -126,12 +126,7 @@ button
 {
     padding: 0.15em 0.6em;
     border-radius: 10em; // pill shape
-    border-width: var(--border-width-default);
-    font-family: inherit;
-    font-size: inherit;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
+    border-width: $border-width;
 }
 
 .button-list
