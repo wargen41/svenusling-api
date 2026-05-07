@@ -14,6 +14,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body * {
+  border-color: inherit;
+}
+
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
@@ -578,10 +582,6 @@ body.dark {
 body > .message {
   background-color: var(--color-primary-container-default);
   color: var(--color-on-primary-container-default);
-}
-
-body * {
-  border-color: inherit;
 }
 
 button:active {
