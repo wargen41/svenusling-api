@@ -1,47 +1,5 @@
-{% extends "admin/base.html.twig" %}
-
-{% block mainContent %}
-
-    <article>
-        <h1>Genrer</h1>
-
-        <details>
-            <summary><h2>Lägg till ny</h2></summary>
-            <form method="POST" action="/admin/genres/add">
-                <fieldset>
-                    <legend>Ny genre</legend>
-                    <div class="form-row">
-                        <label for="sv">Svenska
-                            <input type="text" id="sv" name="sv" size="15" required>
-                        </label>
-                        <label for="en">Engelska
-                            <input type="text" id="en" name="en" size="15" required>
-                        </label>
-                        <label for="common">
-                            <input type="checkbox" id="common" name="common" value="1">
-                        Vanlig</label>
-                    </div>
-                    <button type="submit">Lägg till genre</button>
-                </fieldset>
-            </form>
-        </details>
-
-        {% if genres|length > 0 %}
-        <details open>
-            <summary><h2>Redigera genrer</h2></summary>
-            <div class="button-list">
-            {% for genre in genres %}
-                <button popovertarget="edit-form-{{ genre.id }}"
-                {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
-            {% endfor %}
-            </div>
-
-           {# {% for genre in genres %}
-            <dialog popover id="edit-form-{{ genre.id }}" class="pseudo-modal">
-                <div class="top">
-                    <button popovertarget="edit-form-{{ genre.id }}" popovertargetaction="hide">×</button>
-                </div>
-                <div class="content">
+{% extends "admin/components/edit-base.html.twig" %}
+{% block content %}
                     <form method="POST" action="/admin/genres/update">
                         <input type="hidden" name="genre_id" value="{{ genre.id }}">
                         <fieldset>
@@ -73,16 +31,4 @@
                             </div>
                         </fieldset>
                     </form>
-                </div>
-            </dialog>
-            {% endfor %}
-        </details>
-        {% endif %}#}
-
-        {% for item in genres %}
-{% include "admin/components/edit-genre.html.twig" %}
-        {% endfor %}
-
-    </article>
-
 {% endblock %}
