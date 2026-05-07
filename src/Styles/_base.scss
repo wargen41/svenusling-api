@@ -127,6 +127,7 @@ button
     padding: 0.15em 0.6em;
     border-radius: 10em; // pill shape
     border-width: $border-width;
+    border-style: map.get(var.$border, 'style');
 }
 
 .button-list

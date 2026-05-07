@@ -31,6 +31,11 @@ a, button, summary, label[for]:not([for=""]), input[type=submit], input[type=but
   cursor: pointer;
 }
 
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
@@ -727,7 +732,7 @@ dd:before {
   text-decoration: none;
 }
 .list.long li:hover a, .list.long li:active a {
-  text-decoration: 1px underline solid var(--color-neutral-80);
+  text-decoration: 1px underline solid;
 }
 .list.long li:hover a:hover {
   text-decoration: 1px underline solid;
@@ -748,12 +753,8 @@ input.full-width {
 button {
   padding: 0.15em 0.6em;
   border-radius: 10em;
-  border-width: var(--border-width-default);
-  font-family: inherit;
-  font-size: inherit;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
+  border-width: 2px;
+  border-style: solid;
 }
 
 .button-list {
