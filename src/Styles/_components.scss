@@ -90,6 +90,7 @@ $popover-calc: (
     min-width: calc(var(--menu-column-width) + (var(--menu-padding-inline) * 2)),
     padding-inline: $popover-padding-inline,
     list-padding: $popover-list-padding,
+    item-padding: $popover-item-padding,
     //max-width: 100vw - ($widget-total-width * 2) - $popover-padding-inline * 2;
 );
 

@@ -118,6 +118,12 @@ input.full-width
     width: 100%;
 }
 
+button
+{
+    padding: .5em;
+    border-radius: 10em; // pill shape
+}
+
 .button-list
 {
     display: flex;
