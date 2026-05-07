@@ -128,6 +128,11 @@ $role-colors: (
             "on-input-button": (0, 90)
         ),
     ),
+    "outline": (
+        "default": (
+            "outline": (0, 100),
+        ),
+    ),
     "error": (
         "default": (
             "error": 50,
@@ -241,7 +246,7 @@ html
     color-scheme: light dark;
     accent-color: var(--color-secondary-default);
     background-color: var(--color-primary-container-default);
-    border-color: var(--color-on-surface-default);
+    border-color: var(--color-outline-default);
     caret-color: var(--color-primary-default);
 }
 

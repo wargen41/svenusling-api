@@ -272,6 +272,7 @@ h1, h2, h3, h4, h5, h6 {
   --color-on-input-text-default: light-dark(var(--color-input-0), var(--color-input-90));
   --color-input-button-default: light-dark(var(--color-input-70), var(--color-input-30));
   --color-on-input-button-default: light-dark(var(--color-input-0), var(--color-input-90));
+  --color-outline-default: light-dark(var(--color-outline-0), var(--color-outline-100));
   --color-error-default: var(--color-error-50);
   --color-on-error-default: light-dark(var(--color-error-0), var(--color-error-100));
   --color-error-container-default: var(--color-error-70);
@@ -508,6 +509,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-on-input-button-default);
 }
 
+.outline {
+  background-color: var(--color-outline-default);
+}
+
 .error {
   background-color: var(--color-error-default);
 }
@@ -528,7 +533,7 @@ html {
   color-scheme: light dark;
   accent-color: var(--color-secondary-default);
   background-color: var(--color-primary-container-default);
-  border-color: var(--color-on-surface-default);
+  border-color: var(--color-outline-default);
   caret-color: var(--color-primary-default);
 }
 
@@ -1009,7 +1014,8 @@ main.login button[type=submit] {
   margin: auto;
   position: fixed;
   inset: 0;
-  border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+  border-width: 2px;
+  border-style: groove;
   border-radius: 1.1rem;
   padding: 0 0 1.1rem 0;
   max-width: calc(100vw - var(--widget-total-width) * 2 - 1.65rem);
@@ -1054,19 +1060,19 @@ main.login button[type=submit] {
   padding: 0 var(--item-padding);
   display: block;
   align-content: center;
-  border-bottom: var(--border-width-default) var(--border-style-default) transparent;
+  border-bottom: 2px var(--border-style-default) transparent;
 }
 .pseudo-modal[popover] > .top button:hover,
 .menu[popover] > .top button:hover {
   background-color: var(--background-color-splash);
-  border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+  border-bottom: 2px var(--border-style-default) var(--border-color-default);
 }
 .pseudo-modal[popover] > .top button[popovertarget],
 .menu[popover] > .top button[popovertarget] {
   width: 3em;
   border-radius: 0 0 0 1.1rem;
-  border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-  border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+  border-bottom: 2px var(--border-style-default) var(--border-color-default);
+  border-left: 2px var(--border-style-default) var(--border-color-default);
   border-right: none;
 }
 .pseudo-modal[popover]::backdrop,
