@@ -39,7 +39,7 @@ $widget-calc: (
 
 // Menyvariablerna bör sedan samköras med det jag har för popover-dialog
 // och många av variablerna bör bli mer generella än att bara gälla menyn (åtminstone det som gäller mobilläget)
-$menu: (
+$popover: (
     border-radius: 1.1rem,
     border-width: map.get(var.$border, 'width'),
     border-radius-relative-padding-inline: 0.75,
@@ -54,6 +54,23 @@ $menu: (
     // mobile
     mobile-margin: 2.8rem,
     close-button-width: 3em
+);
+
+$menu: (
+    border-radius: map.get($popover, 'border-radius'),
+    border-width: map.get($popover, 'width'),
+    border-radius-relative-padding-inline: map.get($popover, 'border-radius-relative-padding-inline'),
+    border-radius-relative-padding-block: map.get($popover, 'border-radius-relative-padding-block'),
+    padding-inline-relative-list-padding: map.get($popover, 'padding-inline-relative-list-padding'),
+    list-padding-relative-sub-list-padding: map.get($popover, 'list-padding-relative-sub-list-padding'),
+    // items
+    padding-inline-relative-item-padding: map.get($popover, 'padding-inline-relative-item-padding'),
+    item-height: map.get($popover, 'item-height'),
+    item-gap: map.get($popover, 'item-gap'),
+    item-border-width: map.get($popover, 'item-border-width'),
+    // mobile
+    mobile-margin: map.get($popover, 'mobile-margin'),
+    close-button-width: map.get($popover, 'close-button-width')
 );
 $menu-static: (
     sub-offset: 0.5rem,
@@ -75,6 +92,7 @@ $mig: map.get($menu, 'item-gap');
 $mibw: map.get($menu, 'item-border-width');
 $mcw: map.get($menu-static, 'column-width');
 $mcg: map.get($menu-static, 'column-gap');
+$cbw: map.get($menu, 'close-button-width');
 
 $menu-padding-inline: $mbr * $mbrrpi;
 $menu-padding-block: $mbr * $mbrrpb;
@@ -245,22 +263,18 @@ main.login button[type=submit]
 .pseudo-modal[popover],
 .menu[popover]
 {
-    --border-radius: 1.1rem;
-    --padding-inline: calc(var(--border-radius) * 0.75);
     --close-button-width: 3em;
 
     margin: auto;
     position: fixed;
     inset: 0;
 
-    background-color: var(--background-color-alternate);
-    color: var(--text-color-alternate);
     border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-    border-radius: var(--border-radius);
-    padding: 0 0 var(--border-radius) 0;
+    border-radius: $mbr;
+    padding: 0 0 $mbr 0;
 
-    max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--padding-inline) * 2));
-    min-width: calc(var(--menu-column-width) + (var(--padding-inline) * 2));
+    max-width: calc(100vw - (var(--widget-total-width) * 2) - ($menu-padding-inline * 2));
+    min-width: calc(var(--menu-column-width) + ($menu-padding-inline * 2));
     max-height: 100%;
 
     box-shadow: 2px 2px 4px #101010;
@@ -275,7 +289,7 @@ main.login button[type=submit]
         max-height: calc(100% - 4rem);
         overflow: auto;
 
-        margin: 0 var(--border-radius);
+        margin: 0 $mbr;
         flex: auto;
 
         display: flex;
@@ -285,7 +299,7 @@ main.login button[type=submit]
 
     > .top
     {
-        margin-bottom: calc(var(--border-radius) * 0.6);
+        margin-bottom: calc($mbr * 0.6);
         display: flex;
         justify-content: flex-end;
 
@@ -319,8 +333,8 @@ main.login button[type=submit]
 
             &[popovertarget]
             {
-                width: var(--close-button-width);
-                border-radius: 0 0 0 var(--border-radius);
+                width: $cbw;
+                border-radius: 0 0 0 $mbr;
                 border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
                 border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
                 border-right: none;

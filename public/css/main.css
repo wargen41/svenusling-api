@@ -1005,19 +1005,15 @@ main.login button[type=submit] {
 
 .pseudo-modal[popover],
 .menu[popover] {
-  --border-radius: 1.1rem;
-  --padding-inline: calc(var(--border-radius) * 0.75);
   --close-button-width: 3em;
   margin: auto;
   position: fixed;
   inset: 0;
-  background-color: var(--background-color-alternate);
-  color: var(--text-color-alternate);
   border: var(--border-width-default) var(--border-style-default) var(--border-color-default);
-  border-radius: var(--border-radius);
-  padding: 0 0 var(--border-radius) 0;
-  max-width: calc(100vw - var(--widget-total-width) * 2 - var(--padding-inline) * 2);
-  min-width: calc(var(--menu-column-width) + var(--padding-inline) * 2);
+  border-radius: 1.1rem;
+  padding: 0 0 1.1rem 0;
+  max-width: calc(100vw - var(--widget-total-width) * 2 - 1.65rem);
+  min-width: calc(var(--menu-column-width) + 1.65rem);
   max-height: 100%;
   box-shadow: 2px 2px 4px #101010;
 }
@@ -1029,7 +1025,7 @@ main.login button[type=submit] {
 .menu[popover] > .content {
   max-height: calc(100% - 4rem);
   overflow: auto;
-  margin: 0 var(--border-radius);
+  margin: 0 1.1rem;
   flex: auto;
   display: flex;
   flex-direction: column;
@@ -1037,7 +1033,7 @@ main.login button[type=submit] {
 }
 .pseudo-modal[popover] > .top,
 .menu[popover] > .top {
-  margin-bottom: calc(var(--border-radius) * 0.6);
+  margin-bottom: 0.66rem;
   display: flex;
   justify-content: flex-end;
 }
@@ -1067,8 +1063,8 @@ main.login button[type=submit] {
 }
 .pseudo-modal[popover] > .top button[popovertarget],
 .menu[popover] > .top button[popovertarget] {
-  width: var(--close-button-width);
-  border-radius: 0 0 0 var(--border-radius);
+  width: 3em;
+  border-radius: 0 0 0 1.1rem;
   border-bottom: var(--border-width-default) var(--border-style-default) var(--border-color-default);
   border-left: var(--border-width-default) var(--border-style-default) var(--border-color-default);
   border-right: none;
