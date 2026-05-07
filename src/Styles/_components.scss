@@ -225,7 +225,6 @@ main.login button[type=submit]
 
     &:has(:popover-open)
     {
-        //background-color: var(--background-color-alternate);
         border-top-left-radius: $wbrti;
         border-top-right-radius: $wbrto;
         border-bottom-left-radius: $wbrbi;

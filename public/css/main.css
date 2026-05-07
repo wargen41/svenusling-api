@@ -589,6 +589,17 @@ body > .message {
   color: var(--color-on-primary-container-default);
 }
 
+button {
+  background-color: var(--color-secondary-container-default);
+  color: var(--color-on-secondary-container-default);
+}
+button.primary {
+  background-color: var(--color-primary-default);
+  color: var(--color-on-primary-container-default);
+}
+button:hover {
+  filter: brightness(1.8);
+}
 button:active {
   filter: hue-rotate(180deg);
 }
@@ -668,6 +679,10 @@ html {
 
 a {
   text-decoration: 1px underline solid;
+}
+
+nav ul {
+  list-style-type: none;
 }
 
 li {
@@ -891,7 +906,6 @@ header {
   box-shadow: 0 2px 4px #101010;
 }
 header nav ul {
-  list-style-type: none;
   margin: 0;
   padding: 1rem 0;
   line-height: 0.7;

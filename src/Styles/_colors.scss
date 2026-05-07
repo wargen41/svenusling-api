@@ -279,10 +279,26 @@ body
     }
 }
 
-// Hör inte hemma här, snarare ibland temafärger och effekter, men jag bara testar nu
-button:active
+button
 {
-    filter: hue-rotate(180deg);
+    background-color: var(--color-secondary-container-default);
+    color: var(--color-on-secondary-container-default);
+
+    &.primary
+    {
+        background-color: var(--color-primary-default);
+        color: var(--color-on-primary-container-default);
+    }
+
+    &:hover
+    {
+        filter: brightness(1.8);
+    }
+
+    &:active
+    {
+        filter: hue-rotate(180deg);
+    }
 }
 
 a
