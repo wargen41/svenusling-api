@@ -356,4 +356,24 @@ main
 *[popover]
 {
     background-color: var(--color-surface-default);
+    border-color: var(--color-outline-default);
+}
+
+.pseudo-modal[popover],
+.menu[popover]
+{
+    > .top
+    {
+        button
+        {
+            color: inherit;
+            border-color: transparent;
+
+            &:hover
+            {
+                background-color: var(--color-primary-default);
+                border-color: var(--color-outline-default);
+            }
+        }
+    }
 }

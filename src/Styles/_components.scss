@@ -85,7 +85,7 @@ $popover-sub-list-padding: $popover-list-padding * $mlprslp;
 $popover-item-padding: $popover-padding-inline * $mpirip;
 
 $popover-calc: (
-    block-total: calc(var(--padding-block) + var(--item-gap) + var(--border-thickness) + var(--item-border-thickness)),
+    block-total: calc($popover-padding-block + var(--menu-item-gap) + var(--menu-border-thickness) + var(--menu-item-border-thickness)),
     max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--menu-padding-inline) * 2)),
     min-width: calc(var(--menu-column-width) + (var(--menu-padding-inline) * 2)),
     padding-inline: $popover-padding-inline,
@@ -291,8 +291,6 @@ main.login button[type=submit]
             text-align: center;
             padding: 0;
             min-height: 2rem;
-            color: inherit;
-            background: var(--background-color-default);
 
             font-family: inherit;
             font-size: inherit;
@@ -301,18 +299,17 @@ main.login button[type=submit]
             cursor: pointer;
             text-decoration: none;
             border: none;
-            padding: 0 var(--item-padding);
+            padding: 0 var(--menu-item-padding);
 
             display: block;
             align-content: center;
 
             border-bottom-width: $mbw;
-            border-color: transparent;
 
             &:hover
             {
-                background-color: var(--background-color-splash);
-                border-bottom: $mbw $mbs var(--border-color-default);
+                border-bottom-width: $mbw;
+                border-bottom-style: $mbs;
             }
 
             &[popovertarget]

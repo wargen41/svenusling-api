@@ -639,6 +639,18 @@ main article > hgroup:first-of-type {
 
 *[popover] {
   background-color: var(--color-surface-default);
+  border-color: var(--color-outline-default);
+}
+
+.pseudo-modal[popover] > .top button,
+.menu[popover] > .top button {
+  color: inherit;
+  border-color: transparent;
+}
+.pseudo-modal[popover] > .top button:hover,
+.menu[popover] > .top button:hover {
+  background-color: var(--color-primary-default);
+  border-color: var(--color-outline-default);
 }
 
 html {
@@ -1075,8 +1087,6 @@ main.login button[type=submit] {
   text-align: center;
   padding: 0;
   min-height: 2rem;
-  color: inherit;
-  background: var(--background-color-default);
   font-family: inherit;
   font-size: inherit;
   -webkit-appearance: none;
@@ -1084,16 +1094,15 @@ main.login button[type=submit] {
   cursor: pointer;
   text-decoration: none;
   border: none;
-  padding: 0 var(--item-padding);
+  padding: 0 var(--menu-item-padding);
   display: block;
   align-content: center;
   border-bottom-width: 2px;
-  border-color: transparent;
 }
 .pseudo-modal[popover] > .top button:hover,
 .menu[popover] > .top button:hover {
-  background-color: var(--background-color-splash);
-  border-bottom: 2px groove var(--border-color-default);
+  border-bottom-width: 2px;
+  border-bottom-style: groove;
 }
 .pseudo-modal[popover] > .top button[popovertarget],
 .menu[popover] > .top button[popovertarget] {
@@ -1248,7 +1257,7 @@ main.login button[type=submit] {
   --menu-item-border-width: 0;
   --menu-mobile-margin: 2.8rem;
   --menu-close-button-width: 3em;
-  --menu-block-total: calc(var(--padding-block) + var(--item-gap) + var(--border-thickness) + var(--item-border-thickness));
+  --menu-block-total: calc(0.66rem + var(--menu-item-gap) + var(--menu-border-thickness) + var(--menu-item-border-thickness));
   --menu-max-width: calc(100vw - var(--widget-total-width) * 2 - var(--menu-padding-inline) * 2);
   --menu-min-width: calc(var(--menu-column-width) + var(--menu-padding-inline) * 2);
   --menu-padding-inline: 0.825rem;
