@@ -8,6 +8,7 @@
 // (detta blir ton 50 i paletten, men behöver inte nödvändigtvis ha ljushet 50)
 $base-colors: (
     "red": hsl(0 100% 50%),
+    "silver": hsl(0 0% 75%),
     "neutralgray": hsl(0 0% 50%),
     "slategray": hsl(210 13% 50%),
     "lightslategray": hsl(210 14% 53%),
@@ -16,6 +17,11 @@ $base-colors: (
     "orange": hsl(39 100% 50%),
     "green": hsl(120 100% 25%)
 );
+
+// Tror att vi skippar den här delen som genererar en palett och jobbar med fria ljushetsvärden istället
+// samt att man då som grundfärger endast definierar Hue och Saturation
+// Så det blir i princip att göra om hela färgsystemet från början, men jag tar det när jag har tid och ork
+// Nuvarande system känns för stelbent att jobba med. Man behöver kunna ange ett ljushetsvärde och veta vilken färg det blir i slutänden.
 
 // Definiera vilka toner som ska genereras utifrån grundfärgen
 // Detta motsvarar ljushet i procent
@@ -29,6 +35,7 @@ $base-theme: (
     tertiary: "neutralgray",
     surface: "neutralgray",
     input: "neutralgray",
+    outline: "silver",
     error: "red"
 );
 
