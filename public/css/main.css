@@ -604,6 +604,10 @@ main article > hgroup:first-of-type {
   color: var(--color-on-tertiary-container-default);
 }
 
+*[popover] {
+  background-color: var(--color-surface-default);
+}
+
 html {
   border-inline: 10px dashed black;
 }

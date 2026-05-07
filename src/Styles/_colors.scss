@@ -341,3 +341,7 @@ main
     color: var(--color-on-tertiary-container-default);
 }
 
+*[popover]
+{
+    background-color: var(--color-surface-default);
+}
