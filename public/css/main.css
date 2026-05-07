@@ -674,12 +674,14 @@ fieldset {
   padding-bottom: 1rem;
   padding-inline: 1rem;
   border-radius: 0.3rem;
+  border-width: 2px;
 }
 fieldset > legend {
   border-radius: 10em;
   padding-inline: 1em;
   padding-block: 0.3em;
-  border-top: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+  border-top-width: 2px;
+  border-top-style: groove;
 }
 fieldset > *:not(legend) + * {
   margin-top: 0.65em;
@@ -740,8 +742,14 @@ input.full-width {
 }
 
 button {
-  padding: 0.5em;
+  padding: 0.15em 0.6em;
   border-radius: 10em;
+  border-width: var(--border-width-default);
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
 }
 
 .button-list {

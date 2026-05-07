@@ -1,6 +1,8 @@
 @use "sass:map";
 @use 'vars' as var;
 
+$border-width: map.get(var.$border, 'width');
+
 html
 {
     border-inline: 10px dashed black;
@@ -28,13 +30,15 @@ fieldset
     padding-inline: 1rem;
 
     border-radius: 0.3rem;
+    border-width: $border-width;
 
     > legend
     {
         border-radius: 10em;
         padding-inline: 1em;
         padding-block: .3em;
-        border-top: var(--border-width-default) var(--border-style-default) var(--border-color-default);
+        border-top-width: $border-width;
+        border-top-style: groove;
     }
 
     > *:not(legend) + *
@@ -120,8 +124,14 @@ input.full-width
 
 button
 {
-    padding: .5em;
+    padding: 0.15em 0.6em;
     border-radius: 10em; // pill shape
+    border-width: var(--border-width-default);
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
 }
 
 .button-list
