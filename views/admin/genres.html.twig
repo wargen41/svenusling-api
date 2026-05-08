@@ -40,9 +40,10 @@
         {% endif %}
         #}
 
+{% set dlg_id = "add-genre-dlg" %}
         <div class="button-list">
             <div class="actions">
-                <button popovertarget="test">Lägg till…</button>
+                <button id="add-genre-button" popovertarget="{{ dlg_id }}">+</button><label for="add-genre-button">Lägg till…</label>
             </div>
 
             <div class="items">
@@ -54,7 +55,6 @@
         </div>
 
         {# Popover-dialoger #}
-{% set dlg_id = "add-genre-dlg" %}
 {% include "admin/components/add-genre.html.twig" %}
         {% for item in genres %}
 {% include "admin/components/edit-genre.html.twig" %}
