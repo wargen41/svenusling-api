@@ -1,29 +1,53 @@
 {% extends "admin/components/add-base.html.twig" %}
 {% block content %}
-                <form method="POST" action="/admin/persons/add">
+                <form method="POST" action="/admin/movies/add">
+                    <input type="hidden" name="form_redirect" value="{{ this_page }}">
+                    <input type="hidden" name="movie_id" value="{{ item.id }}">
                     <fieldset>
-                        <legend>Ny person</legend>
-                        <div class="form-row">
-                            <label for="add-name-{{ dlg_id }}">Namn</label>
-                            <input autofocus type="text" id="add-name-{{ dlg_id }}" name="name" required>
-                        </div>
-                        <div class="form-row">
-                            <label for="add-category-{{ dlg_id }}">Kategori
-                                <select type="text" id="add-category-{{ dlg_id }}" name="category" required>
-                                    {% for value, label in categories %}
-                                    <option value="{{ value }}"{% if params.category == value %}selected{% endif %}>{{ label }}</option>
-                                    {% endfor %}
-                                </select>
-                            </label>
-                        </div>
-                        <div class="form-row">
-                            <label for="add-birth-{{ dlg_id }}">Födelsedag</label>
-                            <input type="date" id="add-birth-{{ dlg_id }}" name="birth_date" min="1800-01-01" max="2099-12-31">
-                        </div>
-                        <div class="form-row">
-                            <label for="add-death-{{ dlg_id }}">Dödsdag</label>
-                            <input type="date" id="add-death-{{ dlg_id }}" name="death_date" min="1800-01-01" max="2099-12-31">
-                        </div>
+                        <legend>Redigera</legend>
+                        <details open>
+                            <summary>Grunduppgifter</summary>
+                            <div class="form-row">
+                                <label for="add-title-{{ item.id }}">Titel</label>
+                                <input type="text" id="add-title-{{ item.id }}" name="title" required>
+                                <label for="add-original_title-{{ item.id }}">Originaltitel</label>
+                                <input type="text" id="add-original_title-{{ item.id }}" name="original_title">
+                            </div>
+                            <div class="form-row">
+                                <label for="add-year-{{ item.id }}">År
+                                    <input type="number" min="1888" max="2099" size="4" name="year" id="add-year-{{ item.id }}">
+                                </label>
+                            </div>
+                            <div class="form-row">
+                                <label for="add-type-{{ item.id }}">Typ
+                                    <select type="text" id="add-type-{{ item.id }}" name="type" required>
+                                        {% for value, label in types %}
+                                        <option value="{{ value }}" {% if params.type == value %}selected{% endif %}>{{ label }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="form-row">
+                                <label for="add-description-{{ item.id }}">Kort beskrivning
+                                    <textarea id="add-description-{{ item.id }}" name="description">{{ item.description }}</textarea>
+                                </label>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>Publicering</summary>
+                            <div class="form-row">
+                                <label for="add-sorting_title-{{ item.id }}">Sorteringstitel</label>
+                                <input type="text" id="add-sorting_title-{{ item.id }}" name="sorting_title">
+                            </div>
+                            <div class="form-row">
+                                <label for="add-added_date-{{ item.id }}">Datum
+                                    <input type="date" id="add-birth-{{ item.id }}" name="added_date">
+                                </label>
+                                <label for="add-hidden-{{ item.id }}">Dold
+                                    <input type="checkbox" id="add-hidden-{{ item.id }}" name="hidden" value="1">
+                                </label>
+                            </div>
+                        </details>
                         <div class="actions">
                             <button type="submit">Spara</button>
                         </div>
