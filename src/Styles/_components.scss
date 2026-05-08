@@ -3,6 +3,8 @@
 @use 'sass:math';
 @use 'vars' as var;
 
+$mobile: map.get(var.$breakpoints, 'mobile');
+
 $xxs: map.get(var.$spacing, 'xxs');
 $xs: map.get(var.$spacing, 'xs');
 $s: map.get(var.$spacing, 's');
@@ -330,7 +332,7 @@ main.login button[type=submit]
     }
 }
 
-@media (width <= 32rem) {
+@media (width <= $mobile) {
     :root
     {
         --mobile-modal-margin-top: 10rem;

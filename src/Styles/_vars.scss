@@ -52,6 +52,10 @@ $spacing: (
     xxl: 4rem
 );
 
+$breakpoints: (
+    "mobile": 32rem
+);
+
 $margin: (
     "default": map.get($spacing, 'm')
 );

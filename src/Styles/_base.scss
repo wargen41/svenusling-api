@@ -1,11 +1,16 @@
 @use "sass:map";
 @use 'vars' as var;
 
+$mobile: map.get(var.$breakpoints, 'mobile');
 $border-width: map.get(var.$border, 'width');
 
 html
 {
     border-inline: 10px dashed black;
+
+    @media (width <= $mobile) {
+        border: none;
+    }
 }
 
 a

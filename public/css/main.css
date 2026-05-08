@@ -676,6 +676,11 @@ main article > hgroup:first-of-type {
 html {
   border-inline: 10px dashed black;
 }
+@media (width <= 32rem) {
+  html {
+    border: none;
+  }
+}
 
 a {
   text-decoration: 1px underline solid;
