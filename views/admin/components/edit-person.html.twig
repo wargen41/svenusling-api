@@ -4,30 +4,33 @@
                     <input type="hidden" name="person_id" value="{{ item.id }}">
                     <fieldset>
                         <legend>Grunduppgifter</legend>
-                        <div class="form-row">
-                            <label for="edit-name-{{ item.id }}">Namn</label>
-                            <input type="text" id="edit-name-{{ item.id }}" name="name" value="{{ item.name }}" required>
-                        </div>
-                        <div class="form-row">
-                            <label for="edit-category-{{ item.id }}">Kategori
-                                <select type="text" id="edit-category-{{ item.id }}" name="category" required>
-                                    {% for value, label in categories %}
-                                    <option value="{{ value }}" {% if item.category == value %}selected{% endif %}>{{ label }}</option>
-                                    {% endfor %}
-                                </select>
-                            </label>
-                        </div>
-                        <div class="form-row">
-                            <label for="edit-birth-{{ item.id }}">Födelsedag</label>
-                            <input type="date" id="edit-birth-{{ item.id }}" name="birth_date" value="{{ item.birth_date }}" min="1800-01-01" max="2099-12-31">
-                        </div>
-                        <div class="form-row">
-                            <label for="edit-death-{{ item.id }}">Dödsdag</label>
-                            <input type="date" id="edit-death-{{ item.id }}" name="death_date" value="{{ item.death_date }}" min="1800-01-01" max="2099-12-31">
-                        </div>
-                        <div class="actions">
-                            <button type="submit">Spara</button>
-                        </div>
+                        <details open>
+                            <summary>Grunduppgifter</summary>
+                            <div class="form-row">
+                                <label for="edit-name-{{ item.id }}">Namn</label>
+                                <input type="text" id="edit-name-{{ item.id }}" name="name" value="{{ item.name }}" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="edit-category-{{ item.id }}">Kategori
+                                    <select type="text" id="edit-category-{{ item.id }}" name="category" required>
+                                        {% for value, label in categories %}
+                                        <option value="{{ value }}" {% if item.category == value %}selected{% endif %}>{{ label }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="form-row">
+                                <label for="edit-birth-{{ item.id }}">Födelsedag</label>
+                                <input type="date" id="edit-birth-{{ item.id }}" name="birth_date" value="{{ item.birth_date }}" min="1800-01-01" max="2099-12-31">
+                            </div>
+                            <div class="form-row">
+                                <label for="edit-death-{{ item.id }}">Dödsdag</label>
+                                <input type="date" id="edit-death-{{ item.id }}" name="death_date" value="{{ item.death_date }}" min="1800-01-01" max="2099-12-31">
+                            </div>
+                            <div class="actions">
+                                <button type="submit">Spara</button>
+                            </div>
+                        </details>
                     </fieldset>
                 </form>
                 <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.name }}?');">
