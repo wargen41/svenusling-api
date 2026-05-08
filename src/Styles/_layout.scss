@@ -42,6 +42,7 @@ main
     max-width: 36em;
     margin: 0 auto;
     padding: 0 $margin-default;
+    min-height: 100vh;
 
     > * + *
     {
