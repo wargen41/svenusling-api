@@ -5,41 +5,6 @@
     <article>
         <h1>Genrer</h1>
 
-        {#
-        <form method="POST" action="/admin/genres/add">
-            <fieldset>
-                <legend><h2>Ny genre</h2></legend>
-                <div class="form-row">
-                    <label for="sv">Svenska
-                        <input type="text" id="sv" name="sv" size="15" required>
-                    </label>
-                    <label for="en">Engelska
-                        <input type="text" id="en" name="en" size="15" required>
-                    </label>
-                    <label for="common">
-                        <input type="checkbox" id="common" name="common" value="1">
-                    Vanlig</label>
-                </div>
-                <button type="submit">Lägg till genre</button>
-            </fieldset>
-        </form>
-
-        {% if genres|length > 0 %}
-        <fieldset>
-            <legend><h2>Redigera genrelista</h2></legend>
-            <details open>
-                <summary>{{ genres|length }} genrer</summary>
-                <div class="button-list">
-                {% for genre in genres %}
-                    <button popovertarget="edit-form-{{ genre.id }}"
-                    {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
-                {% endfor %}
-                </div>
-            </details>
-        </fieldset>
-        {% endif %}
-        #}
-
 {% set dlg_id = "add-genre-dlg" %}
         <div class="button-list">
             <button class="add" id="add-genre-button" popovertarget="{{ dlg_id }}">+</button><label for="add-genre-button">Lägg till ny</label>
