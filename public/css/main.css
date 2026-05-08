@@ -874,16 +874,12 @@ main button.add {
   position: sticky;
   top: 0.5em;
   z-index: 42;
-}
-@media (width <= 32rem) {
-  main button.add {
-    margin-left: 2rem;
-  }
+  margin-left: 2rem;
 }
 main .counter {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 2rem;
   height: 2.2rem;
   display: flex;
   align-items: center;
