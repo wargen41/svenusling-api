@@ -11,7 +11,7 @@
                             <label for="add-category-{{ dlg_id }}">Kategori
                                 <select type="text" id="add-category-{{ dlg_id }}" name="category" required>
                                     {% for value, label in categories %}
-                                    <option value="{{ value }}">{{ label }}</option>
+                                    <option value="{{ value }}"{% if params.category == value %}selected{% endif %}>{{ label }}</option>
                                     {% endfor %}
                                 </select>
                             </label>
