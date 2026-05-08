@@ -77,7 +77,7 @@ fieldset + fieldset,
 fieldset + form,
 fieldset + input,
 fieldset + button,
-fieldset + .form-actions
+fieldset + .actions
 {
     margin-top: .8em;
 }
@@ -143,12 +143,25 @@ button
     border-style: map.get(var.$border, 'style');
 }
 
-.button-list
+.button-list,
+.button-list .items
 {
     display: flex;
     gap: .5em;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+.button-list:has(.actions)
+{
+    flex-direction: column-reverse;
+}
+
+.actions
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .form-row + .form-row {
@@ -203,9 +216,3 @@ button
     flex: auto;
 }
 
-.form-actions
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}

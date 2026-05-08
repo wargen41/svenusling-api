@@ -5,6 +5,7 @@
     <article>
         <h1>Genrer</h1>
 
+        {#
         <form method="POST" action="/admin/genres/add">
             <fieldset>
                 <legend><h2>Ny genre</h2></legend>
@@ -28,16 +29,32 @@
             <legend><h2>Redigera genrelista</h2></legend>
             <details open>
                 <summary>{{ genres|length }} genrer</summary>
-            <div class="button-list">
-            {% for genre in genres %}
-                <button popovertarget="edit-form-{{ genre.id }}"
-                {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
-            {% endfor %}
-            </div>
+                <div class="button-list">
+                {% for genre in genres %}
+                    <button popovertarget="edit-form-{{ genre.id }}"
+                    {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
+                {% endfor %}
+                </div>
             </details>
         </fieldset>
         {% endif %}
+        #}
 
+        <div class="button-list">
+            <div class="actions">
+                <button popovertarget="test">Lägg till…</button>
+            </div>
+
+            <div class="items">
+            {% for genre in genres %}
+            <button popovertarget="edit-form-{{ genre.id }}"
+            {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
+            {% endfor %}
+            </div>
+        </div>
+
+        {# Popover-dialoger #}
+{% include "admin/components/add-genre.html.twig" %}
         {% for item in genres %}
 {% include "admin/components/edit-genre.html.twig" %}
         {% endfor %}

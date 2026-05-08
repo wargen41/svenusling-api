@@ -17,7 +17,7 @@
                                     <input type="checkbox" id="edit-common-{{ item.id }}" name="common" value="1" {% if item.common %}checked{% endif %}>
                                 </label>
                             </div>
-                            <div class="form-actions">
+                            <div class="actions">
                                 <button type="submit">Spara</button>
                             </div>
                         </fieldset>
@@ -26,7 +26,7 @@
                         <input type="hidden" name="genre_id" value="{{ item.id }}">
                         <fieldset>
                             <legend>Radera genre?</legend>
-                            <div class="form-actions">
+                            <div class="actions">
                                 <button type="submit" class="delete">Ta bort</button>
                             </div>
                         </fieldset>
