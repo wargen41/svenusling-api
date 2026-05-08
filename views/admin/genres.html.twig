@@ -5,49 +5,34 @@
     <article>
         <h1>Genrer</h1>
 
-        <details>
-            <summary><h2>Lägg till ny</h2></summary>
-            <form method="POST" action="/admin/genres/add">
-                <fieldset>
-                    <legend>Ny genre</legend>
-                    <div class="form-row">
-                        <label for="sv">Svenska
-                            <input type="text" id="sv" name="sv" size="15" required>
-                        </label>
-                        <label for="en">Engelska
-                            <input type="text" id="en" name="en" size="15" required>
-                        </label>
-                        <label for="common">
-                            <input type="checkbox" id="common" name="common" value="1">
-                        Vanlig</label>
-                    </div>
-                    <button type="submit">Lägg till genre</button>
-                </fieldset>
-            </form>
-        </details>
+        <form method="POST" action="/admin/genres/add">
+            <fieldset>
+                <legend><h2>Ny genre</h2></legend>
+                <div class="form-row">
+                    <label for="sv">Svenska
+                        <input type="text" id="sv" name="sv" size="15" required>
+                    </label>
+                    <label for="en">Engelska
+                        <input type="text" id="en" name="en" size="15" required>
+                    </label>
+                    <label for="common">
+                        <input type="checkbox" id="common" name="common" value="1">
+                    Vanlig</label>
+                </div>
+                <button type="submit">Lägg till genre</button>
+            </fieldset>
+        </form>
 
         {% if genres|length > 0 %}
-        <details open>
-            <summary><h2>Redigera genrer</h2></summary>
-            <fieldset>
-                <legend><h3>{{ genres|length }} genrer</h3></legend>
-                <div class="button-list">
-                {% for genre in genres %}
-                    <button popovertarget="edit-form-{{ genre.id }}"
-                    {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
-                {% endfor %}
-                </div>
-            </fieldset>
-        </details>
-        {# <details open>
-            <summary><h2>Redigera genrer</h2></summary>
+        <fieldset>
+            <legend><h2>Redigera genrer ({{ genres|length }})</h2></legend>
             <div class="button-list">
             {% for genre in genres %}
                 <button popovertarget="edit-form-{{ genre.id }}"
                 {% if genre.common %}class="common"{% endif %}>{{ genre.sv }}</button>
             {% endfor %}
             </div>
-        </details> #}
+        </fieldset>
         {% endif %}
 
         {% for item in genres %}
