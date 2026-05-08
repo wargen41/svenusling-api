@@ -47,10 +47,11 @@
 {% set dlg_id = "add-film-dlg" %}
         <div class="button-list">
             <button class="add" id="add-film-button" popovertarget="{{ dlg_id }}">+</button><label for="add-film-button">Lägg till ny</label>
+            <div class="counter">{{ movies|length }}</div>
 
             <div class="items">
-            {% for film in movies %}
-            <button class="vip {{ film.type }}" popovertarget="edit-form-{{ film.id }}">{{ film.title }}</button>
+            {% for item in movies %}
+            <button class="vip {{ item.type }}" popovertarget="edit-form-{{ item.id }}">{{ item.title }}</button>
             {% endfor %}
             </div>
         </div>
