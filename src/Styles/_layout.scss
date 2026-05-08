@@ -60,6 +60,10 @@ main
     {
         position: sticky;
         top: 0.5em;
+
+        @media (width <= $mobile) {
+            margin-left: 2rem;
+        }
     }
 }
 
