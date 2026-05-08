@@ -1,6 +1,8 @@
 @use "sass:map";
 @use 'vars' as var;
 
+$mobile: map.get(var.$breakpoints, 'mobile');
+
 $xxs: map.get(var.$spacing, 'xxs');
 $xs: map.get(var.$spacing, 'xs');
 $s: map.get(var.$spacing, 's');

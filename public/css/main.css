@@ -880,6 +880,11 @@ main button.add {
   position: sticky;
   top: 0.5em;
 }
+@media (width <= 32rem) {
+  main button.add {
+    margin-left: 2rem;
+  }
+}
 
 article > *:not(h1) + * {
   margin-top: 1.2em;
