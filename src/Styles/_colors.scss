@@ -75,7 +75,7 @@ $role-colors: (
             "primary": 50,
             "on-primary": (0, 100),
             "primary-container": (70, 30),
-            "on-primary-container": (0, 90)
+            "on-primary-container": (0, 90),
         ),
         "feather": (
             "primary": 70,
@@ -137,6 +137,9 @@ $role-colors: (
     "outline": (
         "default": (
             "outline": (50, 98),
+        ),
+        "secondary": (
+            "outline": (70, 40),
         ),
     ),
     "error": (
@@ -288,17 +291,13 @@ button
 {
     background-color: var(--color-secondary-container-default);
     color: var(--color-on-secondary-container-default);
-
-    &.primary
-    {
-        background-color: var(--color-primary-default);
-        color: var(--color-on-primary-container-default);
-    }
+    border-color: var(--color-outline-secondary);
 
     &.add
     {
         background-color: var(--color-primary-default);
         color: var(--color-on-primary-container-default);
+        border-color: var(--color-outline-primary);
     }
 
     &:hover

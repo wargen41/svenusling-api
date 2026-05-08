@@ -306,6 +306,7 @@ body {
   --color-input-button-default: light-dark(var(--color-input-70), var(--color-input-30));
   --color-on-input-button-default: light-dark(var(--color-input-0), var(--color-input-90));
   --color-outline-default: light-dark(var(--color-outline-50), var(--color-outline-98));
+  --color-outline-secondary: light-dark(var(--color-outline-70), var(--color-outline-40));
   --color-error-default: var(--color-error-50);
   --color-on-error-default: light-dark(var(--color-error-0), var(--color-error-100));
   --color-error-container-default: var(--color-error-70);
@@ -578,14 +579,12 @@ body > .message.error {
 button {
   background-color: var(--color-secondary-container-default);
   color: var(--color-on-secondary-container-default);
-}
-button.primary {
-  background-color: var(--color-primary-default);
-  color: var(--color-on-primary-container-default);
+  border-color: var(--color-outline-secondary);
 }
 button.add {
   background-color: var(--color-primary-default);
   color: var(--color-on-primary-container-default);
+  border-color: var(--color-outline-primary);
 }
 button:hover {
   filter: brightness(1.2) contrast(1.3);
