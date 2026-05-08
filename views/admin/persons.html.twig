@@ -1,14 +1,5 @@
 {% extends "admin/base.html.twig" %}
 
-{#{% set pagination = {
-    'skip': 0,
-    'limit': 200
-} %} #}
-
-{#{% set filter = {
-    'category': 'actor'
-} %}#}
-
 {% set categories = {
     'actor': 'Skådespelare',
     'director': 'Regissör',
@@ -20,49 +11,9 @@
     <article>
         <h1>VIP-lista</h1>
 
-        {#<details>
-            <summary><h2>Lägg till ny</h2></summary>
-            <form method="POST" action="/admin/persons/add">
-                <fieldset>
-                    <legend>Ny VIP</legend>
-                    <div class="form-row">
-                        <label for="name">Namn
-                            <input type="text" id="name" name="name" size="24" required>
-                        </label>
-                        <label for="category">Kategori
-                            <select type="text" id="category" name="category" required>
-                                {% for value, label in categories %}
-                                <option value="{{ value }}">{{ label }}</option>
-                                {% endfor %}
-                            </select>
-                        </label>
-                    </div>
-                    <div class="form-row">
-                        <label for="birth_date">Födelsedag
-                            <input type="date" id="birth_date" name="birth_date" min="1800-01-01" max="2099-12-31">
-                        </label>
-                        <label for="death_date">Dödsdag
-                            <input type="date" id="death_date" name="death_date" min="1800-01-01" max="2099-12-31">
-                        </label>
-                    </div>
-                    <button type="submit">Lägg till person</button>
-                </fieldset>
-            </form>
-        </details>#}
-
-            {#<fieldset>
-                <legend>Redigera VIP-lista</legend>#}
-                {#<form class="pagination" method="GET" action="/admin/persons">
-                    <label for="limit">
-                        <input type="number" id="limit" name="limit" size="4" value="{{ pagination.limit }}">
-                    per sida</label>
-                    <label for="page">Börja på
-                        <input type="number" id="page" name="skip" size="2" value="{{ pagination.skip }}">
-                    </label>
-                </form>#}
                 <form class="filter" method="GET" action="/admin/persons">
-                    <fieldset>
-                        <legend>Filter</legend>
+                    <details>
+                        <summary>Filter</summary>
                         <div class="form-row">
                             <label for="search">Sök
                                 <input type="search" id="search" name="search" {% if params.search %}value="{{ params.search }}"{% endif %}>
@@ -78,7 +29,7 @@
                         </div>
 
                         <button type="submit">Visa lista</button>
-                    </fieldset>
+                    </details>
                 </form>
                 {#{% if params.category != '' %}
                 <fieldset>
