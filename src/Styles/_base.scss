@@ -61,6 +61,14 @@ fieldset
             margin-top: 0.6em;
         }
     }
+
+    // Tempfix för details inuti fieldset, så jag kommer ihåg att jag vill göra något ordentligt med det
+    > details
+    {
+        border: inherit;
+        border-radius: inherit;
+        background-color: var(--color-secondary-container-default);
+    }
 }
 
 form + form,

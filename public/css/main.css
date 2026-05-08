@@ -717,6 +717,11 @@ fieldset ul {
 fieldset ul > li + li {
   margin-top: 0.6em;
 }
+fieldset > details {
+  border: inherit;
+  border-radius: inherit;
+  background-color: var(--color-secondary-container-default);
+}
 
 form + form,
 form + fieldset,
@@ -860,11 +865,6 @@ article > *:not(h1) + * {
   margin-top: 1.2em;
 }
 
-details {
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
-  padding-inline: 1rem;
-}
 details > summary {
   margin-top: -0.5rem;
   margin-right: -1rem;
