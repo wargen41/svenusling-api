@@ -785,14 +785,10 @@ button {
   justify-content: space-evenly;
 }
 
-.button-list:has(.actions) {
-  flex-direction: column-reverse;
-}
-
 .actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .form-row + .form-row {
