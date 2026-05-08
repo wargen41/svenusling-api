@@ -11,32 +11,8 @@
     <article>
         <h1>Filmer</h1>
 
-        {#<details>
-            <summary><h2>Lägg till ny</h2></summary>
-            <form method="POST" action="/admin/movies/add">
-                <input type="hidden" name="form_redirect" value="{{ this_page }}">
-                <fieldset>
-                    <legend>Grunduppgifter</legend>
-                    <div class="form-row">
-                        <label for="type">Typ
-                            <select type="text" id="type" name="type" required>
-                                {% for value, label in types %}
-                                <option value="{{ value }}">{{ label }}</option>
-                                {% endfor %}
-                            </select>
-                        </label>
-                        <label for="title">Titel
-                            <input type="text" id="title" name="title" size="24" required>
-                        </label>
-                    </div>
-
-                    <button type="submit">Lägg till film</button>
-                </fieldset>
-            </form>
-        </details>#}
-
                 <form class="filter" method="GET" action="{{ this_page }}">
-                    <details>
+                    <details open>
                         <summary>Filter</summary>
                         <div class="form-row">
                             <label for="search">Sökord
