@@ -43,18 +43,17 @@ $base-theme: (
 // Ange två värden om det ska vara olika färger för ljust/mörkt tema
 $themes: (
     "blank-slate": (
-        primary: ("darkslategray", "lightslategray"),
-        secondary: "slategray",
-        tertiary: ("lightslategray", "darkslategray"),
-        surface: "slategray",
-        error: "red"
+        primary: "slategray",
+        secondary: ("lightslategray", "darkslategray"),
+        tertiary: ("darkslategray", "lightslategray"),
+        surface: "slategray"
     ),
     "test-theme": (
         primary: "pink",
         secondary: ("orange", "green"),
         tertiary: ("green", "orange"),
         surface: "slategray",
-        error: "red"
+        error: "blue"
     )
 );
 
