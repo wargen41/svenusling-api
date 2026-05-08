@@ -276,6 +276,12 @@ body
     {
         background-color: var(--color-primary-container-default);
         color: var(--color-on-primary-container-default);
+
+        &.error
+        {
+            background-color: var(--color-error-container-default);
+            color: var(--color-on-error-default);
+        }
     }
 }
 
