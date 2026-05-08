@@ -866,7 +866,7 @@ main article > hgroup:first-of-type {
   text-align: center;
   position: sticky;
   top: 0;
-  padding: 0.5rem 4rem;
+  padding: 0.5rem 4rem 0rem;
   margin-left: -1.5rem;
   margin-right: -1.5rem;
 }
