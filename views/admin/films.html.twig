@@ -11,7 +11,7 @@
     <article>
         <h1>Filmer</h1>
 
-        <details>
+        {#<details>
             <summary><h2>Lägg till ny</h2></summary>
             <form method="POST" action="/admin/movies/add">
                 <input type="hidden" name="form_redirect" value="{{ this_page }}">
@@ -33,14 +33,11 @@
                     <button type="submit">Lägg till film</button>
                 </fieldset>
             </form>
-        </details>
-
-        <details open>
-            <summary><h2>Redigera filmer</h2></summary>
+        </details>#}
 
                 <form class="filter" method="GET" action="{{ this_page }}">
-                    <fieldset>
-                        <legend>Filter</legend>
+                    <details>
+                        <summary>Filter</summary>
                         <div class="form-row">
                             <label for="search">Sökord
                                 <input type="search" id="search" name="search" {% if params.search %}value="{{ params.search }}"{% endif %}>
@@ -68,21 +65,23 @@
                             <button type="submit">Visa lista</button>
                             <a href="{{ this_page }}" class="form-reset">Rensa filter</a>
                         </div>
-                    </fieldset>
+                    </details>
                 </form>
 
-                {% if params.type != '' %}
-                <fieldset>
-                    <legend><h3>{{ movies|length }} filmer</h3></legend>
-                    <div class="button-list">
-                    {% for movie in movies %}
-                        <button class="movie {{ movie.type }}" popovertarget="edit-form-{{ movie.id }}">{{ movie.title }}</button>
-                    {% endfor %}
-                    </div>
-                </fieldset>
-                {% endif %}
-        </details>
+{% set dlg_id = "add-film-dlg" %}
+        <div class="button-list">
+            <button class="add" id="add-film-button" popovertarget="{{ dlg_id }}">+</button><label for="add-film-button">Lägg till ny</label>
 
+            <div class="items">
+            {% for film in films %}
+            <button class="vip {{ film.type }}" popovertarget="edit-form-{{ film.id }}">{{ film.title }}</button>
+            {% endfor %}
+            </div>
+        </div>
+
+
+        {# Popover-dialoger #}
+{% include "admin/components/add-film.html.twig" %}
         {% for item in movies %}
 {% include "admin/components/edit-film.html.twig" %}
         {% endfor %}

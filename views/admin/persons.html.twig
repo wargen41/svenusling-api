@@ -34,17 +34,6 @@
                         </div>
                     </details>
                 </form>
-                {#{% if params.category != '' %}
-                <fieldset>
-                    <legend><h3>{{ persons|length }} personer</h3></legend>
-                    <div class="button-list">
-                    {% for person in persons %}
-                        <button class="vip {{ person.category }}" popovertarget="edit-form-{{ person.id }}">{{ person.name }}</button>
-                    {% endfor %}
-                    </div>
-                </fieldset>
-                {% endif %}#}
-            {#</fieldset>#}
 
 {% set dlg_id = "add-person-dlg" %}
         <div class="button-list">
