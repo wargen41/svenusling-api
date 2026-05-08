@@ -49,7 +49,7 @@
             <button class="add" id="add-film-button" popovertarget="{{ dlg_id }}">+</button><label for="add-film-button">Lägg till ny</label>
 
             <div class="items">
-            {% for film in films %}
+            {% for film in movies %}
             <button class="vip {{ film.type }}" popovertarget="edit-form-{{ film.id }}">{{ film.title }}</button>
             {% endfor %}
             </div>
