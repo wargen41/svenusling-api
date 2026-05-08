@@ -42,9 +42,7 @@
 
 {% set dlg_id = "add-genre-dlg" %}
         <div class="button-list">
-            <div class="actions">
-                <button id="add-genre-button" popovertarget="{{ dlg_id }}">+</button><label for="add-genre-button">Lägg till…</label>
-            </div>
+            <button class="add" id="add-genre-button" popovertarget="{{ dlg_id }}">+</button><label for="add-genre-button">Lägg till…</label>
 
             <div class="items">
             {% for genre in genres %}

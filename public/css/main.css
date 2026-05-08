@@ -784,8 +784,8 @@ button {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
-.actions {
+.button-list:has(.items),
+.button-list .items:has(.items) {
   display: flex;
   align-items: center;
   justify-content: flex-start;

@@ -150,19 +150,19 @@ button
     gap: .5em;
     flex-wrap: wrap;
     justify-content: space-evenly;
+
+    &:has(.items)
+    {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
 }
 
 // .button-list:has(.actions)
 // {
 //     flex-direction: column-reverse;
 // }
-
-.actions
-{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
 
 .form-row + .form-row {
     margin-top: .5em;
