@@ -38,10 +38,11 @@
 {% set dlg_id = "add-person-dlg" %}
         <div class="button-list">
             <button class="add" id="add-person-button" popovertarget="{{ dlg_id }}">+</button><label for="add-person-button">Lägg till ny</label>
+            {% if persons|length > 0 %}<div class="counter">{{ persons|length }}</div>{% endif %}
 
             <div class="items">
-            {% for person in persons %}
-            <button class="vip {{ person.category }}" popovertarget="edit-form-{{ person.id }}">{{ person.name }}</button>
+            {% for item in persons %}
+            <button class="vip {{ item.category }}" popovertarget="edit-form-{{ item.id }}">{{ item.name }}</button>
             {% endfor %}
             </div>
         </div>
