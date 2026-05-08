@@ -26,11 +26,11 @@
                                     {% endfor %}
                                 </select>
                             </label>
-                            <label for="edit-hidden-{{ item.id }}">Dold
-                                <input type="checkbox" id="edit-hidden-{{ item.id }}" name="hidden" value="1" {% if item.hidden %}checked{% endif %}>
-                            </label>
                             <label for="edit-added_date-{{ item.id }}">Publiceringsdatum
                                 <input type="date" id="edit-birth-{{ item.id }}" name="added_date" value="{{ item.added_date }}">
+                            </label>
+                            <label for="edit-hidden-{{ item.id }}">Dold
+                                <input type="checkbox" id="edit-hidden-{{ item.id }}" name="hidden" value="1" {% if item.hidden %}checked{% endif %}>
                             </label>
                         </div>
                         <div class="form-row">
