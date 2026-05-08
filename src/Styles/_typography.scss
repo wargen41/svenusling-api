@@ -1,9 +1,6 @@
 @use "sass:map";
 @use 'vars' as var;
 
-$margin-default: map.get(var.$margin, 'default');
-$negative-margin-default: map.get(var.$negative-margin, 'default');
-
 body
 {
     font-size: var(--font-base-size);
@@ -19,18 +16,6 @@ h1, h2, h3, h4, h5, h6
 
 main
 {
-    > h1,
-    article > h1,
-    article > hgroup:first-of-type
-    {
-        text-align: center;
-        position: sticky;
-        top: 0;
-        padding: .5rem 4rem;
-        margin-left: $negative-margin-default;
-        margin-right: $negative-margin-default;
-    }
-
     > p
     {
         text-align: left;

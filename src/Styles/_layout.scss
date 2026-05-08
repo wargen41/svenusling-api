@@ -10,6 +10,7 @@ $xl: map.get(var.$spacing, 'xl');
 $xxl: map.get(var.$spacing, 'xxl');
 
 $margin-default: map.get(var.$margin, 'default');
+$negative-margin-default: map.get(var.$negative-margin, 'default');
 
 body
 {
@@ -41,6 +42,18 @@ main
     > * + *
     {
         margin-top: 2em;
+    }
+
+    > h1,
+    article > h1,
+    article > hgroup:first-of-type
+    {
+        text-align: center;
+        position: sticky;
+        top: 0;
+        padding: .5rem 4rem;
+        margin-left: $negative-margin-default;
+        margin-right: $negative-margin-default;
     }
 }
 
