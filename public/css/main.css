@@ -873,6 +873,7 @@ main article > hgroup:first-of-type {
 main button.add {
   position: sticky;
   top: 0.5em;
+  z-index: 42;
 }
 @media (width <= 32rem) {
   main button.add {

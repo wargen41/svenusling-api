@@ -63,6 +63,7 @@ main
     {
         position: sticky;
         top: 0.5em;
+        z-index: 42;
 
         @media (width <= $mobile) {
             margin-left: 2rem;
