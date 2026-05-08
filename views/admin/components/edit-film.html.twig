@@ -4,8 +4,9 @@
                     <input type="hidden" name="form_redirect" value="{{ this_page }}">
                     <input type="hidden" name="movie_id" value="{{ item.id }}">
                     <fieldset>
+                        <legend>Redigera</legend>
                         <details>
-                            <summary><legend>Grunduppgifter</legend></summary>
+                            <summary>Grunduppgifter</summary>
                             <div class="form-row">
                                 <label for="edit-title-{{ item.id }}">Titel</label>
                                 <input type="text" id="edit-title-{{ item.id }}" name="title" value="{{ item.title }}" required>
@@ -32,21 +33,21 @@
                                 </label>
                             </div>
                         </details>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Publicering</legend>
-                        <div class="form-row">
-                            <label for="edit-sorting_title-{{ item.id }}">Sorteringstitel</label>
-                            <input type="text" id="edit-sorting_title-{{ item.id }}" name="sorting_title" value="{{ item.sorting_title }}">
-                        </div>
-                        <div class="form-row">
-                            <label for="edit-added_date-{{ item.id }}">Datum
-                                <input type="date" id="edit-birth-{{ item.id }}" name="added_date" value="{{ item.added_date }}">
-                            </label>
-                            <label for="edit-hidden-{{ item.id }}">Dold
-                                <input type="checkbox" id="edit-hidden-{{ item.id }}" name="hidden" value="1" {% if item.hidden %}checked{% endif %}>
-                            </label>
-                        </div>
+                        <details>
+                            <summary>Publicering</summary>
+                            <div class="form-row">
+                                <label for="edit-sorting_title-{{ item.id }}">Sorteringstitel</label>
+                                <input type="text" id="edit-sorting_title-{{ item.id }}" name="sorting_title" value="{{ item.sorting_title }}">
+                            </div>
+                            <div class="form-row">
+                                <label for="edit-added_date-{{ item.id }}">Datum
+                                    <input type="date" id="edit-birth-{{ item.id }}" name="added_date" value="{{ item.added_date }}">
+                                </label>
+                                <label for="edit-hidden-{{ item.id }}">Dold
+                                    <input type="checkbox" id="edit-hidden-{{ item.id }}" name="hidden" value="1" {% if item.hidden %}checked{% endif %}>
+                                </label>
+                            </div>
+                        </details>
                     </fieldset>
                     <div class="form-actions">
                         <button type="submit">Spara</button>
