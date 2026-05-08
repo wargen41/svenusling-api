@@ -28,6 +28,11 @@
                             </label>
                         </div>
                         <div class="form-row">
+                            <label for="edit-hidden-{{ item.id }}">Dold
+                                <input type="checkbox" id="edit-hidden-{{ item.id }}" name="hidden" value="1" {% if item.hidden %}checked{% endif %}>
+                            </label>
+                        </div>
+                        <div class="form-row">
                             <label for="edit-description-{{ item.id }}">Kort beskrivning
                                 <textarea id="edit-description-{{ item.id }}" name="description">{{ item.description }}</textarea>
                             </label>
