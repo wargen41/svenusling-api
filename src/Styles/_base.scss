@@ -4,6 +4,12 @@
 $mobile: map.get(var.$breakpoints, 'mobile');
 $border-width: map.get(var.$border, 'width');
 
+*
+{
+    border-color: var(--color-outline-default);
+    border-width: 0;
+}
+
 html
 {
     border-inline: 10px dashed black;

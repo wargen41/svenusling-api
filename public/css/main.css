@@ -663,6 +663,11 @@ main article > hgroup:first-of-type {
   border-color: var(--color-outline-default);
 }
 
+* {
+  border-color: var(--color-outline-default);
+  border-width: 0;
+}
+
 html {
   border-inline: 10px dashed black;
 }
