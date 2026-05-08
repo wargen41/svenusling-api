@@ -782,6 +782,7 @@ button {
   gap: 0.5em;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  position: relative;
 }
 .button-list:has(.items),
 .button-list .items:has(.items) {
@@ -863,6 +864,7 @@ main article > h1,
 main article > hgroup:first-of-type {
   text-align: center;
   position: sticky;
+  z-index: 41;
   top: 0;
   padding: 0.5rem 4rem 0rem;
   margin-left: -1.5rem;

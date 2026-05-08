@@ -161,6 +161,7 @@ button
     gap: .5em;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    position: relative;
 
     &:has(.items)
     {
