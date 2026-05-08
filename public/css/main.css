@@ -785,9 +785,7 @@ button {
 }
 .button-list:has(.items),
 .button-list .items:has(.items) {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  display: block;
 }
 
 .form-row + .form-row {
