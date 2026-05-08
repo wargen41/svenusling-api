@@ -1,5 +1,6 @@
 {% extends "admin/base.html.twig" %}
 
+{% set this_page = '/admin/persons' %}
 {% set categories = {
     'actor': 'Skådespelare',
     'director': 'Regissör',
@@ -12,7 +13,7 @@
         <h1>VIP-lista</h1>
 
                 <form class="filter" method="GET" action="/admin/persons">
-                    <details>
+                    <details open>
                         <summary>Filter</summary>
                         <div class="form-row">
                             <label for="search">Sök
@@ -27,8 +28,10 @@
                                 </select>
                             </label>
                         </div>
-
-                        <button type="submit">Visa lista</button>
+                        <div class="actions">
+                            <button type="submit">Hämta lista</button>
+                            <a href="{{ this_page }}" class="form-reset">Rensa filter</a>
+                        </div>
                     </details>
                 </form>
                 {#{% if params.category != '' %}
