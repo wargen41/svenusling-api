@@ -55,6 +55,12 @@ main
         margin-left: $negative-margin-default;
         margin-right: $negative-margin-default;
     }
+
+    button.add
+    {
+        position: sticky;
+        top: 0.5em;
+    }
 }
 
 article
