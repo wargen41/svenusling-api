@@ -880,6 +880,14 @@ main button.add {
     margin-left: 2rem;
   }
 }
+main .counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+}
 
 article > *:not(h1) + * {
   margin-top: 1.2em;
