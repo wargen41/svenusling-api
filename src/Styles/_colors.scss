@@ -46,7 +46,7 @@ $themes: (
         primary: "slategray",
         secondary: ("lightslategray", "darkslategray"),
         tertiary: ("darkslategray", "lightslategray"),
-        surface: "slategray"
+        surface: ("lightslategray", "darkslategray")
     ),
     "test-theme": (
         primary: "pink",

@@ -360,20 +360,20 @@ body {
   --color-tertiary-98: light-dark(var(--color-darkslategray-98), var(--color-lightslategray-98));
   --color-tertiary-99: light-dark(var(--color-darkslategray-99), var(--color-lightslategray-99));
   --color-tertiary-100: light-dark(var(--color-darkslategray-100), var(--color-lightslategray-100));
-  --color-surface-0: var(--color-slategray-0);
-  --color-surface-10: var(--color-slategray-10);
-  --color-surface-20: var(--color-slategray-20);
-  --color-surface-30: var(--color-slategray-30);
-  --color-surface-40: var(--color-slategray-40);
-  --color-surface-50: var(--color-slategray-50);
-  --color-surface-60: var(--color-slategray-60);
-  --color-surface-70: var(--color-slategray-70);
-  --color-surface-80: var(--color-slategray-80);
-  --color-surface-90: var(--color-slategray-90);
-  --color-surface-95: var(--color-slategray-95);
-  --color-surface-98: var(--color-slategray-98);
-  --color-surface-99: var(--color-slategray-99);
-  --color-surface-100: var(--color-slategray-100);
+  --color-surface-0: light-dark(var(--color-lightslategray-0), var(--color-darkslategray-0));
+  --color-surface-10: light-dark(var(--color-lightslategray-10), var(--color-darkslategray-10));
+  --color-surface-20: light-dark(var(--color-lightslategray-20), var(--color-darkslategray-20));
+  --color-surface-30: light-dark(var(--color-lightslategray-30), var(--color-darkslategray-30));
+  --color-surface-40: light-dark(var(--color-lightslategray-40), var(--color-darkslategray-40));
+  --color-surface-50: light-dark(var(--color-lightslategray-50), var(--color-darkslategray-50));
+  --color-surface-60: light-dark(var(--color-lightslategray-60), var(--color-darkslategray-60));
+  --color-surface-70: light-dark(var(--color-lightslategray-70), var(--color-darkslategray-70));
+  --color-surface-80: light-dark(var(--color-lightslategray-80), var(--color-darkslategray-80));
+  --color-surface-90: light-dark(var(--color-lightslategray-90), var(--color-darkslategray-90));
+  --color-surface-95: light-dark(var(--color-lightslategray-95), var(--color-darkslategray-95));
+  --color-surface-98: light-dark(var(--color-lightslategray-98), var(--color-darkslategray-98));
+  --color-surface-99: light-dark(var(--color-lightslategray-99), var(--color-darkslategray-99));
+  --color-surface-100: light-dark(var(--color-lightslategray-100), var(--color-darkslategray-100));
 }
 
 .test-theme {
