@@ -279,7 +279,7 @@ body {
   --color-on-primary-container-feather: light-dark(var(--color-primary-30), var(--color-primary-70));
   --color-secondary-default: light-dark(var(--color-secondary-80), var(--color-secondary-30));
   --color-on-secondary-default: light-dark(var(--color-secondary-0), var(--color-secondary-100));
-  --color-secondary-container-default: light-dark(var(--color-secondary-60), var(--color-secondary-20));
+  --color-secondary-container-default: light-dark(var(--color-secondary-90), var(--color-secondary-20));
   --color-on-secondary-container-default: light-dark(var(--color-secondary-0), var(--color-secondary-100));
   --color-secondary-feather: var(--color-secondary-70);
   --color-on-secondary-feather: light-dark(var(--color-secondary-0), var(--color-secondary-100));
