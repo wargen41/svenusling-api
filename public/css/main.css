@@ -793,9 +793,12 @@ button {
   justify-content: space-evenly;
   position: relative;
 }
-.button-list:has(.items),
-.button-list .items:has(.items) {
+
+.button-list:has(.items) {
   display: block;
+}
+.button-list.compact {
+  justify-content: flex-start;
 }
 
 .form-row + .form-row {

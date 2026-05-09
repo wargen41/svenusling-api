@@ -155,10 +155,18 @@ button
     flex-wrap: wrap;
     justify-content: space-evenly;
     position: relative;
+}
 
+.button-list
+{
     &:has(.items)
     {
         display: block;
+    }
+
+    &.compact
+    {
+        justify-content: flex-start;
     }
 }
 
