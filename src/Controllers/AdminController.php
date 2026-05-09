@@ -765,7 +765,7 @@ class AdminController
                     'movie' => $movie,
                     'message' => $message,
                     'message_type' => $messageType,
-                    'pageTitle' => $movie['title']
+                    'pageTitle' => $movie['data']['title']
                 ]
             );
         } catch (\Exception $e) {
