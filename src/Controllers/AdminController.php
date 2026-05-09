@@ -163,7 +163,7 @@ class AdminController
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json'
             ],
-            CURLOPT_TIMEOUT => 10,
+            CURLOPT_TIMEOUT => 20,
             CURLOPT_FOLLOWLOCATION => true
         ]);
 
@@ -799,7 +799,7 @@ class AdminController
                 'Content-Type: application/json',
                 $token ? 'Authorization: Bearer ' . $token : ''
             ],
-            CURLOPT_TIMEOUT => 10
+            CURLOPT_TIMEOUT => 20
         ]);
 
         $result = curl_exec($ch);
@@ -834,11 +834,11 @@ class AdminController
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => json_encode($data),
-                          CURLOPT_HTTPHEADER => [
-                              'Content-Type: application/json',
-                          $token ? 'Authorization: Bearer ' . $token : ''
-                          ],
-                          CURLOPT_TIMEOUT => 10
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+                $token ? 'Authorization: Bearer ' . $token : ''
+            ],
+            CURLOPT_TIMEOUT => 20
         ]);
 
         $result = curl_exec($ch);
@@ -873,11 +873,11 @@ class AdminController
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => 'PUT',
             CURLOPT_POSTFIELDS => json_encode($data),
-                          CURLOPT_HTTPHEADER => [
-                              'Content-Type: application/json',
-                          $token ? 'Authorization: Bearer ' . $token : ''
-                          ],
-                          CURLOPT_TIMEOUT => 10
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+                $token ? 'Authorization: Bearer ' . $token : ''
+            ],
+            CURLOPT_TIMEOUT => 20
         ]);
 
         $result = curl_exec($ch);
@@ -915,7 +915,7 @@ class AdminController
                 'Content-Type: application/json',
                 $token ? 'Authorization: Bearer ' . $token : ''
             ],
-            CURLOPT_TIMEOUT => 10
+            CURLOPT_TIMEOUT => 20
         ]);
 
         $result = curl_exec($ch);
