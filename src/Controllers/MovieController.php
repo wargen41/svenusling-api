@@ -473,9 +473,16 @@ class MovieController
             $data = $request->getParsedBody();
 
             // Verify movie exists
-            $stmt = $this->db->prepare('SELECT id FROM movies WHERE id = ?');
+            // $stmt = $this->db->prepare('SELECT id FROM movies WHERE id = ?');
+            // $stmt->execute([$movieId]);
+            // if (!$stmt->fetch()) {
+            //     return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
+            // }
+            // Verify movie exists (and fetch existing data for when comparisons are needed)
+            $stmt = $this->db->prepare('SELECT * FROM movies WHERE id = ?');
             $stmt->execute([$movieId]);
-            if (!$stmt->fetch()) {
+            $movie = $stmt->fetch();
+            if (!$movie) {
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
 
@@ -491,9 +498,16 @@ class MovieController
             ];
 
             foreach ($fields as $field) {
-                if (isset($data[$field])) {
-                    $updates[] = "$field = ?";
-                    $bindings[] = $data[$field];
+                if ( isset($data[$field]) ) {
+                    $new = $data[$field];
+                    $previous = $movie[$field];
+                    $newIsSet = $new !== '';
+                    $oldIsRemoved = ($previous !== null) && (!$newIsSet);
+
+                    if ($newIsSet || $oldIsRemoved) {
+                        $updates[] = "$field = ?";
+                        $bindings[] = $data[$field];
+                    }
                 }
             }
 
