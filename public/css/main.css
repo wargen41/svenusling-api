@@ -596,7 +596,7 @@ button.director {
   color: var(--color-on-primary-container-default);
   border-color: var(--color-outline-primary);
 }
-button.director {
+button.voice_actor {
   background-color: var(--color-tertiary-default);
   color: var(--color-on-tertiary-container-default);
   border-color: var(--color-outline-tertiary);
