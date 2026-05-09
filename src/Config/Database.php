@@ -5,7 +5,7 @@ define('OPT', array(
     'PERSON_CATEGORIES' => array(
         'actor' => 'Skådespelare',
         'director' => 'Regissör',
-        'voice_actor' => 'Rötskådespelare',
+        'voice_actor' => 'Röstskådespelare',
     ),
     'MOVIE_TYPES' => array(
         'FILMS' =>  array(
