@@ -751,22 +751,23 @@ class AdminController
         unset($_SESSION['message']);
         unset($_SESSION['message_type']);
 
-        $movieId = $args['id'] ?? null;
+        try {
+            $movieId = $args['id'] ?? null;
 
-        // Fetch movie from API
-        $movie = $this->callApiGet("/movie/$movieId");
+            // Fetch movie from API
+            $movie = $this->callApiGet("/movie/$movieId");
 
-        return Twig::fromRequest($request)->render(
-            $response,
-            'admin/film-details.html.twig',
-            [
-                'user' => $user,
-                'movie' => $movie,
-                'message' => $message,
-                'message_type' => $messageType,
-                'pageTitle' => $movie['title']
-            ]
-        );
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/film-details.html.twig',
+                [
+                    'user' => $user,
+                    'movie' => $movie,
+                    'message' => $message,
+                    'message_type' => $messageType,
+                    'pageTitle' => $movie['title']
+                ]
+            );
         } catch (\Exception $e) {
             error_log('Error in filmDetails: ' . $e->getMessage());
             return Twig::fromRequest($request)->render(
