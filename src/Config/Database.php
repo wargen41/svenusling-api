@@ -1,7 +1,7 @@
 <?php
 namespace App\Config;
 
-define('OPT', array(
+define('OPT', {
     'PERSON_CATEGORIES' => {
         'actor' => 'Skådespelare',
         'director' => 'Regissör',
@@ -23,7 +23,7 @@ define('OPT', array(
         'director' => 'Regissör',
         'actor' => 'Skådespelare',
     },
-));
+});
 
 use PDO;
 use PDOException;
