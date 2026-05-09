@@ -737,16 +737,6 @@ fieldset > details {
   background-color: var(--color-secondary-container-default);
 }
 
-form + form,
-form + fieldset,
-fieldset + fieldset,
-fieldset + form,
-fieldset + input,
-fieldset + button,
-fieldset + .actions {
-  margin-top: 0.8em;
-}
-
 img.circle {
   border-radius: 50%;
   object-fit: cover;
