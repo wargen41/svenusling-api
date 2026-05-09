@@ -309,8 +309,8 @@ body {
   --color-outline-secondary: light-dark(var(--color-outline-70), var(--color-outline-40));
   --color-error-default: var(--color-error-50);
   --color-on-error-default: light-dark(var(--color-error-0), var(--color-error-100));
-  --color-error-container-default: var(--color-error-70);
-  --color-on-error-container-default: light-dark(var(--color-error-30), var(--color-error-70));
+  --color-error-container-default: var(--color-error-60);
+  --color-on-error-container-default: light-dark(var(--color-error-0), var(--color-error-100));
   --color-error-feather: var(--color-error-70);
   --color-on-error-feather: light-dark(var(--color-error-0), var(--color-error-100));
   --color-error-container-feather: var(--color-error-95);
