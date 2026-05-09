@@ -1,4 +1,4 @@
-{% extends "admin/components/edit-base.html.twig" %}
+{% extends "admin/forms/edit-base.html.twig" %}
 {% block content %}
                 <form method="POST" action="/admin/persons/update">
                     <input type="hidden" name="person_id" value="{{ item.id }}">
