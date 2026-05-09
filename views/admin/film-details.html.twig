@@ -1,9 +1,15 @@
 {% extends "admin/base.html.twig" %}
 
 {% block mainContent %}
+{% if item == null %}
+        <pre>ERROR item is null</pre>
+{% else %}
 
     <article>
-        <h1>{{ movie.title }}</h1>
+        <h1>{{ item.title }}</h1>
+
+{%include "admin/forms/details-film-core.html.twig" %}
     </article>
 
+{% endif %}
 {% endblock %}

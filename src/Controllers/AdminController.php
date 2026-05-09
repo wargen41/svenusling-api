@@ -762,7 +762,7 @@ class AdminController
                 'admin/film-details.html.twig',
                 [
                     'user' => $user,
-                    'movie' => $movie['data'],
+                    'item' => $movie['data'],
                     'message' => $message,
                     'message_type' => $messageType,
                     'pageTitle' => $movie['data']['title']
