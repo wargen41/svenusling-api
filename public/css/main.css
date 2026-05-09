@@ -586,6 +586,11 @@ button.add {
   color: var(--color-on-primary-container-default);
   border-color: var(--color-outline-primary);
 }
+button.common {
+  background-color: var(--color-tertiary-default);
+  color: var(--color-on-tertiary-container-default);
+  border-color: var(--color-outline-tertiary);
+}
 button:hover {
   filter: brightness(1.2) contrast(1.3);
 }

@@ -300,6 +300,13 @@ button
         border-color: var(--color-outline-primary);
     }
 
+    &.common
+    {
+        background-color: var(--color-tertiary-default);
+        color: var(--color-on-tertiary-container-default);
+        border-color: var(--color-outline-tertiary);
+    }
+
     &:hover
     {
         filter: brightness(1.2) contrast(1.3);
