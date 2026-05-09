@@ -483,6 +483,7 @@ class MovieController
             $stmt->execute([$movieId]);
             $movie = $stmt->fetchAll();
             if (!$movie) {
+                error_log($movie);
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
 
