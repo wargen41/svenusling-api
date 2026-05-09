@@ -254,7 +254,7 @@ class AdminController
                     'common' => isset($data['common']) ? 1 : 0
                 ], $token);
 
-                $_SESSION['message'] = 'Genre "' . $data['sv'] . '" uppdaterad';
+                $_SESSION['message'] = 'Genre "' . $data['sv'] . '" uppdaterades';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error updating genre: ' . $e->getMessage();
@@ -406,7 +406,7 @@ class AdminController
                     'death_date' => $data['death_date'] ?? null,
                 ], $token);
 
-                $_SESSION['message'] = '"' . $data['name'] . '" uppdaterad';
+                $_SESSION['message'] = '"' . $data['name'] . '" uppdaterades';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error updating person: ' . $e->getMessage();
@@ -609,7 +609,7 @@ class AdminController
                     'description' => $data['description'] ?? $movie['description'] ?? null,
                 ], $token);
 
-                $_SESSION['message'] = '"' . $movie['title'] . '" uppdaterad';
+                $_SESSION['message'] = '"' . $movie['title'] . '" uppdaterades';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error updating movie: ' . $e->getMessage();
