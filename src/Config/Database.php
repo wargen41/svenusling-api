@@ -37,9 +37,9 @@ class Database
             );
             
             if (file_exists(DB_PATH)) {
-                error_log('✓ Database file confirmed to exist: ' . DB_PATH);
-                $size = filesize(DB_PATH);
-                error_log('  File size: ' . $size . ' bytes');
+                //error_log('✓ Database file confirmed to exist: ' . DB_PATH);
+                //$size = filesize(DB_PATH);
+                //error_log('  File size: ' . $size . ' bytes');
             } else {
                 error_log('✗ Database file NOT found after PDO creation');
             }
