@@ -481,7 +481,7 @@ class MovieController
             // Verify movie exists (and fetch existing data for when comparisons are needed)
             $stmt = $this->db->prepare('SELECT * FROM movies WHERE id = ?');
             $stmt->execute([$movieId]);
-            $movie = $stmt->fetch();
+            $movie = $stmt->fetchAll();
             if (!$movie) {
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
