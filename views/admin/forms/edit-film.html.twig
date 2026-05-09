@@ -4,7 +4,7 @@
     <input type="hidden" name="form_redirect" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <fieldset>
-        <legend>Redigera "{{ item.title }}"</legend>
+        <legend>{{ item.title }}</legend>
         <details open>
             <summary>Recension</summary>
             {# OBS!! Detta ska sedan hämta användarens personliga betyg, då man inte ska kunna redigera filmens betyg direkt #}
@@ -74,7 +74,7 @@
     <input type="hidden" name="form_redirect" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <fieldset>
-        <legend>Radera</legend>
+        <legend>Radera?</legend>
         <div class="actions">
             <button type="submit" class="delete">Ta bort film</button>
         </div>

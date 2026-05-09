@@ -3,7 +3,7 @@
 <form method="POST" action="/admin/persons/update">
     <input type="hidden" name="person_id" value="{{ item.id }}">
     <fieldset>
-        <legend>Redigera</legend>
+        <legend>{{ item.name }}</legend>
         <details open>
             <summary>Grunduppgifter</summary>
             <div class="form-row">
@@ -36,7 +36,7 @@
 <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.name }}?');">
     <input type="hidden" name="person_id" value="{{ item.id }}">
     <fieldset>
-        <legend>Radera</legend>
+        <legend>Radera?</legend>
         <div class="actions">
             <button type="submit" class="delete">Ta bort VIP</button>
         </div>
