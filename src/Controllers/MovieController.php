@@ -499,16 +499,17 @@ class MovieController
 
             foreach ($fields as $field) {
                 if ( isset($data[$field]) ) {
-                    $new = $data[$field];
+                    $incoming = $data[$field];
+                    $incomingIsSet = $incoming !== '';
                     $previous = $movie[$field];
-                    $newIsSet = $new !== '';
-                    $oldIsRemoved = ($previous !== null) && (!$newIsSet);
+                    $oldIsRemoved = ($previous !== null) && ($incoming === '');
 
-                    if ($newIsSet || $oldIsRemoved) {
+                    if ($incomingIsSet || $oldIsRemoved) {
+                        $new = $incomingIsSet ? $incoming : null;
                         $updates[] = "$field = ?";
                         $bindings[] = $new;
                     }else{
-                        error_log("$field NOT updated (incoming value: '$new')");
+                        error_log("$field NOT updated (incoming value: '$incoming')");
                     }
                 }
             }
