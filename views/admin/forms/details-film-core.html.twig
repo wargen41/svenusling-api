@@ -30,6 +30,9 @@
             <textarea id="edit-description-{{ item.id }}" name="description">{{ item.description }}</textarea>
         </label>
     </div>
+    <div class="actions">
+        <button type="submit">Uppdatera {{ legend|lower }}</button>
+    </div>
 </form>
 
 {% endblock %}
