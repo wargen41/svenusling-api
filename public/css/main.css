@@ -591,6 +591,16 @@ button.common {
   color: var(--color-on-tertiary-container-default);
   border-color: var(--color-outline-tertiary);
 }
+button.director {
+  background-color: var(--color-primary-default);
+  color: var(--color-on-primary-container-default);
+  border-color: var(--color-outline-primary);
+}
+button.director {
+  background-color: var(--color-tertiary-default);
+  color: var(--color-on-tertiary-container-default);
+  border-color: var(--color-outline-tertiary);
+}
 button:hover {
   filter: brightness(1.2) contrast(1.3);
 }
