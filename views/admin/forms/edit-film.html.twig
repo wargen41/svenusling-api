@@ -1,66 +1,66 @@
 {% extends "admin/forms/edit-base.html.twig" %}
 {% block content %}
-                <form method="POST" action="/admin/movies/update">
-                    <input type="hidden" name="form_redirect" value="{{ this_page }}">
-                    <input type="hidden" name="movie_id" value="{{ item.id }}">
-                    <fieldset>
-                        <legend>Redigera</legend>
-                        <details open>
-                            <summary>Grunduppgifter</summary>
-                            <div class="form-row">
-                                <label for="edit-title-{{ item.id }}">Titel</label>
-                                <input type="text" id="edit-title-{{ item.id }}" name="title" value="{{ item.title }}" required>
-                                <label for="edit-original_title-{{ item.id }}">Originaltitel</label>
-                                <input type="text" id="edit-original_title-{{ item.id }}" name="original_title" value="{{ item.original_title }}">
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-year-{{ item.id }}">År
-                                    <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year-{{ item.id }}" value="{{ item.year }}">
-                                </label>
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-type-{{ item.id }}">Typ
-                                    <select type="text" id="edit-type-{{ item.id }}" name="type" required>
-                                        {% for value, label in types %}
-                                        <option value="{{ value }}" {% if item.type == value %}selected{% endif %}>{{ label }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </label>
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-description-{{ item.id }}">Kort beskrivning
-                                    <textarea id="edit-description-{{ item.id }}" name="description">{{ item.description }}</textarea>
-                                </label>
-                            </div>
-                        </details>
-                        <details>
-                            <summary>Publicering</summary>
-                            <div class="form-row">
-                                <label for="edit-sorting_title-{{ item.id }}">Sorteringstitel</label>
-                                <input type="text" id="edit-sorting_title-{{ item.id }}" name="sorting_title" value="{{ item.sorting_title }}">
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-added_date-{{ item.id }}">Datum
-                                    <input type="date" id="edit-birth-{{ item.id }}" name="added_date" value="{{ item.added_date }}">
-                                </label>
-                                <label for="edit-hidden-{{ item.id }}">Dold
-                                    <input type="checkbox" id="edit-hidden-{{ item.id }}" name="hidden" value="1" {% if item.hidden %}checked{% endif %}>
-                                </label>
-                            </div>
-                        </details>
-                        <div class="actions">
-                            <button type="submit">Spara</button>
-                        </div>
-                    </fieldset>
-                </form>
-                <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.title }}? ({{ item.id }})');">
-                    <input type="hidden" name="form_redirect" value="{{ this_page }}">
-                    <input type="hidden" name="movie_id" value="{{ item.id }}">
-                    <fieldset>
-                        <legend>Radera</legend>
-                        <div class="actions">
-                            <button type="submit" class="delete">Ta bort film</button>
-                        </div>
-                    </fieldset>
-                </form>
+<form method="POST" action="/admin/movies/update">
+    <input type="hidden" name="form_redirect" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ item.id }}">
+    <fieldset>
+        <legend>Redigera</legend>
+        <details open>
+            <summary>Grunduppgifter</summary>
+            <div class="form-row">
+                <label for="edit-title-{{ item.id }}">Titel</label>
+                <input type="text" id="edit-title-{{ item.id }}" name="title" value="{{ item.title }}" required>
+                <label for="edit-original_title-{{ item.id }}">Originaltitel</label>
+                <input type="text" id="edit-original_title-{{ item.id }}" name="original_title" value="{{ item.original_title }}">
+            </div>
+            <div class="form-row">
+                <label for="edit-year-{{ item.id }}">År
+                    <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year-{{ item.id }}" value="{{ item.year }}">
+                </label>
+            </div>
+            <div class="form-row">
+                <label for="edit-type-{{ item.id }}">Typ
+                    <select type="text" id="edit-type-{{ item.id }}" name="type" required>
+                        {% for value, label in types %}
+                        <option value="{{ value }}" {% if item.type == value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+            </div>
+            <div class="form-row">
+                <label for="edit-description-{{ item.id }}">Kort beskrivning
+                    <textarea id="edit-description-{{ item.id }}" name="description">{{ item.description }}</textarea>
+                </label>
+            </div>
+        </details>
+        <details>
+            <summary>Publicering</summary>
+            <div class="form-row">
+                <label for="edit-sorting_title-{{ item.id }}">Sorteringstitel</label>
+                <input type="text" id="edit-sorting_title-{{ item.id }}" name="sorting_title" value="{{ item.sorting_title }}">
+            </div>
+            <div class="form-row">
+                <label for="edit-added_date-{{ item.id }}">Datum
+                    <input type="date" id="edit-birth-{{ item.id }}" name="added_date" value="{{ item.added_date }}">
+                </label>
+                <label for="edit-hidden-{{ item.id }}">Dold
+                    <input type="checkbox" id="edit-hidden-{{ item.id }}" name="hidden" value="1" {% if item.hidden %}checked{% endif %}>
+                </label>
+            </div>
+        </details>
+        <div class="actions">
+            <button type="submit">Spara</button>
+        </div>
+    </fieldset>
+</form>
+<form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.title }}? ({{ item.id }})');">
+    <input type="hidden" name="form_redirect" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ item.id }}">
+    <fieldset>
+        <legend>Radera</legend>
+        <div class="actions">
+            <button type="submit" class="delete">Ta bort film</button>
+        </div>
+    </fieldset>
+</form>
 {% endblock %}

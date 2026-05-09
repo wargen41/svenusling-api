@@ -1,32 +1,32 @@
 {% extends "admin/forms/add-base.html.twig" %}
 {% block content %}
-                <form method="POST" action="/admin/persons/add">
-                    <fieldset>
-                        <legend>Ny person</legend>
-                        <div class="form-row">
-                            <label for="add-name-{{ dlg_id }}">Namn</label>
-                            <input autofocus type="text" id="add-name-{{ dlg_id }}" name="name" required>
-                        </div>
-                        <div class="form-row">
-                            <label for="add-category-{{ dlg_id }}">Kategori
-                                <select type="text" id="add-category-{{ dlg_id }}" name="category" required>
-                                    {% for value, label in categories %}
-                                    <option value="{{ value }}"{% if params.category == value %}selected{% endif %}>{{ label }}</option>
-                                    {% endfor %}
-                                </select>
-                            </label>
-                        </div>
-                        <div class="form-row">
-                            <label for="add-birth-{{ dlg_id }}">Födelsedag</label>
-                            <input type="date" id="add-birth-{{ dlg_id }}" name="birth_date" min="1800-01-01" max="2099-12-31">
-                        </div>
-                        <div class="form-row">
-                            <label for="add-death-{{ dlg_id }}">Dödsdag</label>
-                            <input type="date" id="add-death-{{ dlg_id }}" name="death_date" min="1800-01-01" max="2099-12-31">
-                        </div>
-                        <div class="actions">
-                            <button type="submit">Spara</button>
-                        </div>
-                    </fieldset>
-                </form>
+<form method="POST" action="/admin/persons/add">
+    <fieldset>
+        <legend>Ny person</legend>
+        <div class="form-row">
+            <label for="add-name-{{ dlg_id }}">Namn</label>
+            <input autofocus type="text" id="add-name-{{ dlg_id }}" name="name" required>
+        </div>
+        <div class="form-row">
+            <label for="add-category-{{ dlg_id }}">Kategori
+                <select type="text" id="add-category-{{ dlg_id }}" name="category" required>
+                    {% for value, label in categories %}
+                    <option value="{{ value }}"{% if params.category == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div class="form-row">
+            <label for="add-birth-{{ dlg_id }}">Födelsedag</label>
+            <input type="date" id="add-birth-{{ dlg_id }}" name="birth_date" min="1800-01-01" max="2099-12-31">
+        </div>
+        <div class="form-row">
+            <label for="add-death-{{ dlg_id }}">Dödsdag</label>
+            <input type="date" id="add-death-{{ dlg_id }}" name="death_date" min="1800-01-01" max="2099-12-31">
+        </div>
+        <div class="actions">
+            <button type="submit">Spara</button>
+        </div>
+    </fieldset>
+</form>
 {% endblock %}

@@ -1,24 +1,24 @@
 {% extends "admin/forms/add-base.html.twig" %}
 {% block content %}
-                    <form method="POST" action="/admin/genres/add">
-                        <fieldset>
-                            <legend>Ny genre</legend>
-                            <div class="form-row">
-                                <label for="add-sv-{{ dlg_id }}">Svenska</label>
-                                <input autofocus type="text" id="add-sv-{{ dlg_id }}" name="sv" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="add-en-{{ dlg_id }}">Engelska</label>
-                                <input type="text" id="add-en-{{ dlg_id }}" name="en" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="add-common-{{ dlg_id }}">Markera som vanlig
-                                    <input type="checkbox" id="add-common-{{ dlg_id }}" name="common" value="1">
-                                </label>
-                            </div>
-                            <div class="actions">
-                                <button type="submit">Lägg till</button>
-                            </div>
-                        </fieldset>
-                    </form>
+<form method="POST" action="/admin/genres/add">
+    <fieldset>
+        <legend>Ny genre</legend>
+        <div class="form-row">
+            <label for="add-sv-{{ dlg_id }}">Svenska</label>
+            <input autofocus type="text" id="add-sv-{{ dlg_id }}" name="sv" required>
+        </div>
+        <div class="form-row">
+            <label for="add-en-{{ dlg_id }}">Engelska</label>
+            <input type="text" id="add-en-{{ dlg_id }}" name="en" required>
+        </div>
+        <div class="form-row">
+            <label for="add-common-{{ dlg_id }}">Markera som vanlig
+                <input type="checkbox" id="add-common-{{ dlg_id }}" name="common" value="1">
+            </label>
+        </div>
+        <div class="actions">
+            <button type="submit">Lägg till</button>
+        </div>
+    </fieldset>
+</form>
 {% endblock %}

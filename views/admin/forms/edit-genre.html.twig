@@ -1,34 +1,34 @@
 {% extends "admin/forms/edit-base.html.twig" %}
 {% block content %}
-                    <form method="POST" action="/admin/genres/update">
-                        <input type="hidden" name="genre_id" value="{{ item.id }}">
-                        <fieldset>
-                            <legend>Redigera genre</legend>
-                            <div class="form-row">
-                                <label for="edit-sv-{{ item.id }}">Svenska</label>
-                                <input type="text" id="edit-sv-{{ item.id }}" name="sv" value="{{ item.sv }}" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-en-{{ item.id }}">Engelska</label>
-                                <input type="text" id="edit-en-{{ item.id }}" name="en" value="{{ item.en }}" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="edit-common-{{ item.id }}">Markera som vanlig
-                                    <input type="checkbox" id="edit-common-{{ item.id }}" name="common" value="1" {% if item.common %}checked{% endif %}>
-                                </label>
-                            </div>
-                            <div class="actions">
-                                <button type="submit">Spara</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ item.sv }}?');">
-                        <input type="hidden" name="genre_id" value="{{ item.id }}">
-                        <fieldset>
-                            <legend>Radera genre?</legend>
-                            <div class="actions">
-                                <button type="submit" class="delete">Ta bort</button>
-                            </div>
-                        </fieldset>
-                    </form>
+<form method="POST" action="/admin/genres/update">
+    <input type="hidden" name="genre_id" value="{{ item.id }}">
+    <fieldset>
+        <legend>Redigera genre</legend>
+        <div class="form-row">
+            <label for="edit-sv-{{ item.id }}">Svenska</label>
+            <input type="text" id="edit-sv-{{ item.id }}" name="sv" value="{{ item.sv }}" required>
+        </div>
+        <div class="form-row">
+            <label for="edit-en-{{ item.id }}">Engelska</label>
+            <input type="text" id="edit-en-{{ item.id }}" name="en" value="{{ item.en }}" required>
+        </div>
+        <div class="form-row">
+            <label for="edit-common-{{ item.id }}">Markera som vanlig
+                <input type="checkbox" id="edit-common-{{ item.id }}" name="common" value="1" {% if item.common %}checked{% endif %}>
+            </label>
+        </div>
+        <div class="actions">
+            <button type="submit">Spara</button>
+        </div>
+    </fieldset>
+</form>
+<form method="POST" action="/admin/genres/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ item.sv }}?');">
+    <input type="hidden" name="genre_id" value="{{ item.id }}">
+    <fieldset>
+        <legend>Radera genre?</legend>
+        <div class="actions">
+            <button type="submit" class="delete">Ta bort</button>
+        </div>
+    </fieldset>
+</form>
 {% endblock %}
