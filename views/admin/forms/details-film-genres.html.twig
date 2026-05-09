@@ -1,0 +1,13 @@
+{% extends "admin/forms/details-base.html.twig" %}
+
+{% block content %}
+
+<form method="POST" action="/admin/movies/{{ item.id }}/genres"> {# Vet inte riktigt hur vi ska göra detta #}
+    <input type="hidden" name="form_redirect" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ item.id }}">
+
+    {{ movie.genres }}
+
+</form>
+
+{% endblock %}
