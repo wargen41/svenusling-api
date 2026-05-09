@@ -19,7 +19,7 @@ class AdminAuthMiddleware implements MiddlewareInterface
             session_start();
         }
 
-        error_log('AdminAuthMiddleware processing request');
+        //error_log('AdminAuthMiddleware processing request');
 
         // Check if user has JWT token in session
         if (!isset($_SESSION['jwt_token']) || empty($_SESSION['jwt_token'])) {
@@ -29,15 +29,15 @@ class AdminAuthMiddleware implements MiddlewareInterface
         $token = $_SESSION['jwt_token'];
 
         try {
-            error_log('Decoding token with secret length: ' . strlen(JWT_SECRET));
+            //error_log('Decoding token with secret length: ' . strlen(JWT_SECRET));
             
             $decoded = JWT::decode(
                 $token,
                 new Key(JWT_SECRET, JWT_ALGORITHM)
             );
             
-            error_log('✓ Token decoded successfully');
-            error_log('Decoded payload: ' . json_encode($decoded));
+            //error_log('✓ Token decoded successfully');
+            //error_log('Decoded payload: ' . json_encode($decoded));
 
             // Confirm that user is admin
             if($decoded->role !== 'admin'){
@@ -51,7 +51,7 @@ class AdminAuthMiddleware implements MiddlewareInterface
                 ->withAttribute('user_role', $decoded->role)
                 ->withAttribute('user', $decoded);
             
-            error_log('User ID: ' . $decoded->sub . ', Role: ' . $decoded->role);
+            //error_log('User ID: ' . $decoded->sub . ', Role: ' . $decoded->role);
                 
         } catch (ExpiredException $e) {
             error_log('✗ Token expired');
