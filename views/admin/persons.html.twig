@@ -1,11 +1,7 @@
 {% extends "admin/base.html.twig" %}
 
 {% set this_page = '/admin/persons' %}
-{% set categories = {
-    'actor': 'Skådespelare',
-    'director': 'Regissör',
-    'voice_actor': 'Röstskådespelare'
-} %}
+{% set categories = constant('OPT').PERSON_CATEGORIES %}
 
 {% block mainContent %}
 
