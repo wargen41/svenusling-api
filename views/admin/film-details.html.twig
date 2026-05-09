@@ -1,5 +1,10 @@
 {% extends "admin/base.html.twig" %}
 
+{% set types = {
+    'film': 'Film',
+    'short': 'Kortfilm',
+} %}
+
 {% block mainContent %}
 {% if item == null %}
         <pre>ERROR item is null</pre>
