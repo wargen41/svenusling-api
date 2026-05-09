@@ -12,7 +12,7 @@
             <input type="hidden" name="form_redirect" value="{{ this_page }}">
             <input type="hidden" name="movie_id" value="{{ item.id }}">
             <input type="hidden" name="genre_id" value="{{ genre.id }}">
-            <button type="submit" class="genre {% if genre.common == 1 %}common{% endif %}">{{ genre.sv }}</button>
+            <button type="submit">{{ genre.sv }}</button>
         </form>
         {% endfor %}
         <button id="add-genres-button" popovertarget="{{ dlg_id }}">+</button>
