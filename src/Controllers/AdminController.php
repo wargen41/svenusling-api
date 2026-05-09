@@ -716,7 +716,7 @@ class AdminController
                 ]
             );
         } catch (\Exception $e) {
-            error_log('Error in moviesPage: ' . $e->getMessage());
+            error_log('Error in filmsPage: ' . $e->getMessage());
             return Twig::fromRequest($request)->render(
                 $response,
                 'admin/films.html.twig',
@@ -728,6 +728,55 @@ class AdminController
                     'pagination' => $movies['pagination'] ?? [],
                     'params' => $params,
                     'pageTitle' => 'Filmer'
+                ]
+            );
+        }
+    }
+
+    /**
+     * Film details (protected)
+     */
+    public function filmDetails(Request $request, Response $response, array $args): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $user = $_SESSION['user'] ?? null;
+        $token = $_SESSION['jwt_token'] ?? null;
+
+        // Get message from session if exists
+        $message = $_SESSION['message'] ?? null;
+        $messageType = $_SESSION['message_type'] ?? null;
+        unset($_SESSION['message']);
+        unset($_SESSION['message_type']);
+
+        $movieId = $args['id'] ?? null;
+
+        // Fetch movie from API
+        $movie = $this->callApiGet("/movie/$movieId");
+
+        return Twig::fromRequest($request)->render(
+            $response,
+            'admin/film-details.html.twig',
+            [
+                'user' => $user,
+                'movie' => $movie,
+                'message' => $message,
+                'message_type' => $messageType,
+                'pageTitle' => $movie['title']
+            ]
+        );
+        } catch (\Exception $e) {
+            error_log('Error in filmDetails: ' . $e->getMessage());
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/film-details.html.twig',
+                [
+                    'user' => $user,
+                    'message' => 'Failed to load movie: ' . $e->getMessage(),
+                    'message_type' => 'error',
+                    'pageTitle' => 'Ett fel uppstod'
                 ]
             );
         }
