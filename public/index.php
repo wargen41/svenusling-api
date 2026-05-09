@@ -15,8 +15,8 @@ use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
 // Log startup
-error_log('Environment: ' . ENVIRONMENT);
-error_log('Database path: ' . DB_PATH);
+// error_log('Environment: ' . ENVIRONMENT);
+// error_log('Database path: ' . DB_PATH);
 
 try {
     $database = Database::getInstance();
@@ -24,7 +24,7 @@ try {
     $database->initializeTables();
     
     if (file_exists(DB_PATH)) {
-        error_log('✓ Database file exists: ' . DB_PATH);
+        //error_log('✓ Database file exists: ' . DB_PATH);
     } else {
         error_log('✗ Database file NOT found: ' . DB_PATH);
     }
@@ -113,7 +113,7 @@ $app->options('/{routes:.*}', function ($request, $response) {
 // Register routes
 try {
     Routes::register($app);
-    error_log('✓ Routes registered successfully');
+    //error_log('✓ Routes registered successfully');
 } catch (\Exception $e) {
     error_log('✗ Route registration failed: ' . $e->getMessage());
     error_log('Trace: ' . $e->getTraceAsString());

@@ -29,11 +29,11 @@ define('JWT_ALGORITHM', 'HS256');
 define('JWT_EXPIRATION', 18000); // 5 hours
 
 // Log config on startup
-error_log('Config loaded:');
-error_log('  JWT_SECRET type: ' . gettype(JWT_SECRET));
-error_log('  JWT_SECRET length: ' . strlen(JWT_SECRET));
-error_log('  JWT_ALGORITHM: ' . JWT_ALGORITHM);
-error_log('  JWT_EXPIRATION: ' . JWT_EXPIRATION);
+// error_log('Config loaded:');
+// error_log('  JWT_SECRET type: ' . gettype(JWT_SECRET));
+// error_log('  JWT_SECRET length: ' . strlen(JWT_SECRET));
+// error_log('  JWT_ALGORITHM: ' . JWT_ALGORITHM);
+// error_log('  JWT_EXPIRATION: ' . JWT_EXPIRATION);
 
 // API configuration
 define('API_VERSION', '1.0.0');
