@@ -482,8 +482,8 @@ class MovieController
             $stmt = $this->db->prepare('SELECT * FROM movies WHERE id = ?');
             $stmt->execute([$movieId]);
             $movie = $stmt->fetchAll();
+            error_log("movie: $movie");
             if (!$movie) {
-                error_log("movie: $movie");
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
 
