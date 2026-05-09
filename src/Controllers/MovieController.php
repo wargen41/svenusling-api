@@ -106,7 +106,7 @@ class MovieController
             $countResult = $countStmt->fetch();
             $total = $countResult['count'];
 
-            error_log('Fetched ' . count($movies) . ' movies');
+            //error_log('Fetched ' . count($movies) . ' movies');
 
             return $this->jsonResponse($response, [
                 'success' => true,
@@ -216,7 +216,7 @@ class MovieController
             $countResult = $countStmt->fetch();
             $total = $countResult['count'];
 
-            error_log('Fetched ' . count($movies) . ' movies');
+            //error_log('Fetched ' . count($movies) . ' movies');
 
             return $this->jsonResponse($response, [
                 'success' => true,
