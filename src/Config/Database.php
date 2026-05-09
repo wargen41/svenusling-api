@@ -1,29 +1,29 @@
 <?php
 namespace App\Config;
 
-define('OPT', {
-    'PERSON_CATEGORIES' => {
+define('OPT', array(
+    'PERSON_CATEGORIES' => array(
         'actor' => 'Skådespelare',
         'director' => 'Regissör',
         'voice_actor' => 'Rötskådespelare',
-    },
-    'MOVIE_TYPES' => {
-        'FILMS' => {
+    ),
+    'MOVIE_TYPES' => array(
+        'FILMS' =>  array(
             'film' => 'Långfilm',
             'short' => 'Kortfilm',
-        },
-        'SERIES' => {
+        ),
+        'SERIES' => array(
             'episode' => 'Avsnitt',
             'season' => 'Säsong',
             'series' => 'Serie',
             'miniseries' => 'Miniserie',
-        },
-    },
-    'CREW_CATEGORIES' => {
+        ),
+    ),
+    'CREW_CATEGORIES' => array(
         'director' => 'Regissör',
         'actor' => 'Skådespelare',
-    },
-});
+    ),
+));
 
 use PDO;
 use PDOException;
