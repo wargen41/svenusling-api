@@ -72,7 +72,9 @@
     </fieldset>
 </form>
 
-<a href="./{{ item.id }}">Redigera detaljer</a>
+<ul class="actions">
+    <a href="./{{ item.id }}">Redigera detaljer</a>
+</ul>
 
 <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.title }}? ({{ item.id }})');">
     <input type="hidden" name="form_redirect" value="{{ this_page }}">
