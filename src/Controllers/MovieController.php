@@ -530,6 +530,7 @@ class MovieController
 
         } catch (\Exception $e) {
             error_log('Error in updateMovie: ' . $e->getMessage());
+            error_log('Request body was: ' . $request->getBody()->write());
             return $this->jsonResponse($response, ['error' => 'Failed to update movie'], 500);
         }
     }
