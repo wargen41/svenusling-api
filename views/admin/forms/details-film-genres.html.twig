@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<form method="POST" action="/admin/movies/{{ item.id }}/genres"> {# Vet inte riktigt hur vi ska göra detta #}
+{#<form method="POST" action="/admin/movies/{{ item.id }}/genres">
     <input type="hidden" name="form_redirect" value="{{ this_page }}">
-    <input type="hidden" name="movie_id" value="{{ item.id }}">
+    <input type="hidden" name="movie_id" value="{{ item.id }}">#}
 
     <div class="button-list">
         {% for genre in item.genres %}
@@ -17,6 +17,6 @@
         <button id="add-genres-button" popovertarget="{{ dlg_id }}">+</button>
     </div>
 
-</form>
+{#</form>#}
 
 {% endblock %}

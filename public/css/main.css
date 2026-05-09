@@ -798,10 +798,6 @@ button {
   display: block;
 }
 
-.button-list > form {
-  display: content;
-}
-
 .form-row + .form-row {
   margin-top: 0.5em;
 }
