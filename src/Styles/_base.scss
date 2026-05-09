@@ -132,8 +132,8 @@ dd:before
     }
 }
 
-main button[type=submit],
-main input[type=submit]
+main fieldset button[type=submit],
+main fieldset input[type=submit]
 {
     text-align: center;
     min-width: 47%;
