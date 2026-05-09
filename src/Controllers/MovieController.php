@@ -506,7 +506,9 @@ class MovieController
 
                     if ($newIsSet || $oldIsRemoved) {
                         $updates[] = "$field = ?";
-                        $bindings[] = $data[$field];
+                        $bindings[] = $new;
+                    }else{
+                        error_log("$field NOT updated (incoming value: '$new')");
                     }
                 }
             }
@@ -530,7 +532,7 @@ class MovieController
 
         } catch (\Exception $e) {
             error_log('Error in updateMovie: ' . $e->getMessage());
-            error_log('Request body was: ' . $request->getBody()->getContents());
+            error_log('updateMovie request body was: ' . $request->getBody()->getContents());
             return $this->jsonResponse($response, ['error' => 'Failed to update movie'], 500);
         }
     }
