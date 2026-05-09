@@ -7,6 +7,9 @@
     <input type="hidden" name="movie_id" value="{{ item.id }}">
 
     {{ item.genres|length }}
+    {% for genre in item.genres %}
+    {{ genre|string }}
+    {% endfor %}
 
 </form>
 
