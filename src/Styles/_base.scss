@@ -169,6 +169,11 @@ button
     }
 }
 
+.button-list > form
+{
+    display: content;
+}
+
 // .button-list:has(.actions)
 // {
 //     flex-direction: column-reverse;
