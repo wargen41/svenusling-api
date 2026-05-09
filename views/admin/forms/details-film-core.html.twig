@@ -13,23 +13,21 @@
             {% endfor %}
             </select>
         </label>
+        <label for="display-id">Databas-ID</label>
+        <input disabled type="text" id="display-id" value="{{ item.id }}">
+        <label for="edit-imdb_id">IMDb-ID</label>
+        <input type="text" id="edit-imdb_id" name="imdb_id" value="{{ item.imdb_id }}">
+    </div>
+    <div class="form-row">
+        <label for="edit-title">Titel</label>
+        <input type="text" id="edit-title" name="title" value="{{ item.title }}" required>
         <label for="edit-year">År
             <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year" value="{{ item.year }}">
         </label>
     </div>
     <div class="form-row">
-        <label for="edit-title">Titel</label>
-        <input type="text" id="edit-title" name="title" value="{{ item.title }}" required>
-    </div>
-    <div class="form-row">
         <label for="edit-original_title">Originaltitel</label>
         <input type="text" id="edit-original_title" name="original_title" value="{{ item.original_title }}">
-    </div>
-    <div class="form-row">
-        <label for="display-id">Databas-ID</label>
-        <input disabled type="text" id="display-id" value="{{ item.id }}">
-        <label for="edit-imdb_id">IMDb-ID</label>
-        <input type="text" id="edit-imdb_id" name="imdb_id" value="{{ item.imdb_id }}">
     </div>
     <div class="form-row">
         <label for="edit-description">Kort beskrivning
