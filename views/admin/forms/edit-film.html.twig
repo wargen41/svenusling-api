@@ -1,5 +1,6 @@
 {% extends "admin/forms/edit-base.html.twig" %}
 {% block content %}
+{#<form method="POST" action="/admin/movies/update">#}
 <form method="POST" action="/admin/movies/update">
     <input type="hidden" name="form_redirect" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
@@ -22,7 +23,7 @@
                 </label>
             </div>
         </details>
-        <details>
+        {#<details>
             <summary>Grunduppgifter</summary>
             <div class="form-row">
                 <label for="edit-title-{{ item.id }}">Titel</label>
@@ -49,7 +50,7 @@
                     <textarea id="edit-description-{{ item.id }}" name="description">{{ item.description }}</textarea>
                 </label>
             </div>
-        </details>
+        </details>#}
         <details>
             <summary>Publicering</summary>
             <div class="form-row">
@@ -70,6 +71,9 @@
         </div>
     </fieldset>
 </form>
+
+<a href="./{{ item.id }}">Redigera detaljer</a>
+
 <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.title }}? ({{ item.id }})');">
     <input type="hidden" name="form_redirect" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
