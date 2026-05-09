@@ -1,10 +1,6 @@
 {% extends "admin/base.html.twig" %}
 
 {% set this_page = '/admin/films' %}
-{% set types = {
-    'film': 'Film',
-    'short': 'Kortfilm',
-} %}
 {% set types = constant('OPT').MOVIE_TYPES.FILMS %}
 
 {% block mainContent %}
