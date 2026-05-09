@@ -7,7 +7,7 @@
     <input type="hidden" name="movie_id" value="{{ item.id }}">
 
     <div class="button-list">
-        <button class="add" id="add-genres-button" popovertarget="{{ dlg_id }}">+</button><label for="add-genres-button">Lägg till</label>
+        <button id="add-genres-button" popovertarget="{{ dlg_id }}">+</button><label for="add-genres-button">Lägg till</label>
     {% for genre in item.genres %}
         <button class="genre {% if genre.common == 1 %}common{% endif %}">{{ genre.sv }}</button>
     {% endfor %}
