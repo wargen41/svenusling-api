@@ -169,7 +169,7 @@ class Database
             $this->connection->exec('
                 CREATE TABLE IF NOT EXISTS movies_persons (
                     movie_id INTEGER NOT NULL,
-                    person_id INTEGER NOT NULL,
+                    person_id INTEGER,
                     person_name TEXT NOT NULL,
                     category TEXT NOT NULL,
                     role_name TEXT,
