@@ -8,7 +8,7 @@
 {% block content %}
 
 {% for category, label in categories %}
-{% set list_style = styles.category %}
+{% set list_style = styles[category] %}
 <details open>
     <summary>{{ label }}</summary>
     <div class="{% if list_style %}{{ list_style }} {% endif %}button-list">
