@@ -8,7 +8,7 @@
 
 <div class="compact button-list">
     {% for person in item.persons.director %}
-    <p>{{ person }}</p>
+    <p>{{ person.name }}</p>
     <form method="POST" action="/admin/movies/{{ item.id }}/genre/delete">
         <input type="hidden" name="form_redirect" value="{{ this_page }}">
         <input type="hidden" name="movie_id" value="{{ item.id }}">
