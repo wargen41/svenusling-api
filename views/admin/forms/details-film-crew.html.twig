@@ -7,20 +7,11 @@
 {% else %}
 
 <div class="compact button-list">
-    {% for person in item.persons.director %}
-    <p>{{ person.name }}</p>
-    <form method="POST" action="/admin/movies/{{ item.id }}/genre/delete">
-        <input type="hidden" name="form_redirect" value="{{ this_page }}">
-        <input type="hidden" name="movie_id" value="{{ item.id }}">
-        <input type="hidden" name="person_id" value="{{ person.id }}">
-        <button type="submit">Ta bort</button>
-    </form>
-    {% endfor %}
+{% for entry in item.persons[category] %}
+    <button popovertarget="edit-form-{{ category }}-{{ entry.sequence_number }}">{{ entry.name }}</button>
+{% endfor %}
     <button id="add-{{ category }}-button" popovertarget="{{ dlg_id }}">+</button>
 </div>
-
-<h3>{{ legend }}</h3>
-<p>{{ category }}</p>
 
 {#
 <form method="POST" action="/admin/movies/update">
