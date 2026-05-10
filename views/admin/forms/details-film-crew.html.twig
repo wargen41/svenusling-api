@@ -1,18 +1,22 @@
 {% extends "admin/forms/details-base.html.twig" %}
 
 {% set legend = 'Medverkande' %}
+{% set styles = {
+    'director': 'compact'
+} %}
 
 {% block content %}
 
 {% for category, label in categories %}
+{% set list_style = styles.category %}
 <details open>
     <summary>{{ label }}</summary>
-<div class="compact button-list">
-{% for entry in item.persons[category] %}
-    <button popovertarget="edit-form-{{ category }}-{{ entry.sequence_number }}">{{ entry.name }}</button>
-{% endfor %}
-    <button id="add-{{ category }}-button" popovertarget="{{ dlg_id }}">+</button>
-</div>
+    <div class="{% if list_style %}{{ list_style }} {% endif %}button-list">
+    {% for entry in item.persons[category] %}
+        <button popovertarget="edit-form-{{ category }}-{{ entry.sequence_number }}">{{ entry.name }}</button>
+    {% endfor %}
+        <button id="add-{{ category }}-button" popovertarget="{{ dlg_id }}">+</button>
+    </div>
 </details>
 {% endfor %}
 
