@@ -4,22 +4,16 @@
 
 {% block content %}
 
-{#<form method="POST" action="/admin/movies/{{ item.id }}/genres">
-    <input type="hidden" name="form_redirect" value="{{ this_page }}">
-    <input type="hidden" name="movie_id" value="{{ item.id }}">#}
-
-    <div class="compact button-list">
-        {% for genre in item.genres %}
-        <form method="POST" action="/admin/movies/{{ item.id }}/genre/delete">
-            <input type="hidden" name="form_redirect" value="{{ this_page }}">
-            <input type="hidden" name="movie_id" value="{{ item.id }}">
-            <input type="hidden" name="genre_id" value="{{ genre.id }}">
-            <button type="submit">{{ genre.sv }}</button>
-        </form>
-        {% endfor %}
-        <button id="add-genres-button" popovertarget="{{ dlg_id }}">+</button>
-    </div>
-
-{#</form>#}
+<div class="compact button-list">
+    {% for genre in item.genres %}
+    <form method="POST" action="/admin/movies/{{ item.id }}/genre/delete">
+        <input type="hidden" name="form_redirect" value="{{ this_page }}">
+        <input type="hidden" name="movie_id" value="{{ item.id }}">
+        <input type="hidden" name="genre_id" value="{{ genre.id }}">
+        <button type="submit">{{ genre.sv }}</button>
+    </form>
+    {% endfor %}
+    <button id="add-genres-button" popovertarget="{{ dlg_id }}">+</button>
+</div>
 
 {% endblock %}
