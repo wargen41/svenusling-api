@@ -1,0 +1,53 @@
+{% extends "admin/forms/details-base.html.twig" %}
+
+{% if legend == null %}
+        <pre>ERROR legend is null</pre>
+{% else %}
+
+{% block content %}
+
+<h3>{{ legend }}</h3>
+<p>{{ category }}</p>
+
+{#
+<form method="POST" action="/admin/movies/update">
+    <input type="hidden" name="form_redirect" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ item.id }}">
+    <div class="form-row">
+        <label for="edit-type">Typ
+            <select type="text" id="edit-type" name="type" required>
+            {% for value, label in types %}
+                <option value="{{ value }}" {% if item.type == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+            </select>
+        </label>
+        <label for="display-id">SU-ID</label>
+        <input disabled type="text" id="display-id" value="{{ item.id }}">
+        <label for="edit-imdb_id">IMDb-ID</label>
+        <input type="text" id="edit-imdb_id" name="imdb_id" value="{{ item.imdb_id }}">
+    </div>
+    <div class="form-row">
+        <label for="edit-title">Titel</label>
+        <input type="text" id="edit-title" name="title" value="{{ item.title }}" required>
+        <label for="edit-year">År
+            <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year" value="{{ item.year }}">
+        </label>
+    </div>
+    <div class="form-row">
+        <label for="edit-original_title">Originaltitel</label>
+        <input type="text" id="edit-original_title" name="original_title" value="{{ item.original_title }}">
+    </div>
+    <div class="form-row">
+        <label for="edit-description">Kort beskrivning
+            <textarea id="edit-description" name="description">{{ item.description }}</textarea>
+        </label>
+    </div>
+    <div class="actions">
+        <button type="submit">Uppdatera</button>
+    </div>
+</form>
+#}
+
+{% endblock %}
+
+{% endif %}
