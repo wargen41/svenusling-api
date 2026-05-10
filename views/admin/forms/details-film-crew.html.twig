@@ -1,17 +1,20 @@
 {% extends "admin/forms/details-base.html.twig" %}
 
+{% set legend = 'Medverkande' %}
+
 {% block content %}
 
-{% if legend == null %}
-        <pre>ERROR legend is null</pre>
-{% else %}
-
+{% for category, label in categories %}
+<details open>
+    <summary>{{ label }}</summary>
 <div class="compact button-list">
 {% for entry in item.persons[category] %}
     <button popovertarget="edit-form-{{ category }}-{{ entry.sequence_number }}">{{ entry.name }}</button>
 {% endfor %}
     <button id="add-{{ category }}-button" popovertarget="{{ dlg_id }}">+</button>
 </div>
+</details>
+{% endfor %}
 
 {#
 <form method="POST" action="/admin/movies/update">
@@ -51,7 +54,5 @@
     </div>
 </form>
 #}
-
-{% endif %}
 
 {% endblock %}
