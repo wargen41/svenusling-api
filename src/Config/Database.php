@@ -1,6 +1,7 @@
 <?php
 namespace App\Config;
 
+// Alternativ och texter att använda i admingränssnittet
 define('OPT', array(
     'PERSON_CATEGORIES' => array(
         'actor' => 'Skådespelare',
@@ -20,8 +21,13 @@ define('OPT', array(
         ),
     ),
     'CREW_CATEGORIES' => array(
-        'director' => 'Regissör',
+        'director' => 'Regi',
         'actor' => 'Skådespelare',
+    ),
+    'MEDIA_TYPES' => array(
+        'image' => 'Bild',
+        'audio' => 'Ljud',
+        'video' => 'Video',
     ),
 ));
 
