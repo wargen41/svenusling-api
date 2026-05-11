@@ -14,7 +14,10 @@
     <div class="{% if list_style %}{{ list_style }} {% endif %}button-list">
     {% for entry in item.persons[category] %}
 {% include "admin/forms/edit-crew_member.html.twig" %}
+        <span>{{ entry.sequence_number }}.</span>
         <button popovertarget="edit-form-{{ category }}-{{ entry.sequence_number }}">{{ entry.name }}</button>
+        <span>{{ entry.role_name }}</span>
+        <span>{{ entry.note }}</span>
     {% endfor %}
 {% include "admin/forms/add-crew_member.html.twig" %}
         <button id="add-{{ category }}-button" popovertarget="{{ dlg_id }}">+</button>
