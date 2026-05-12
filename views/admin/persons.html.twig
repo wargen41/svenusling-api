@@ -31,23 +31,26 @@
                     </details>
                 </form>
 
-{% set pop_id = "add-person-dlg" %}
+        {% set pop_id = "add-person-dlg" %}
+        {% include "admin/forms/add-person.html.twig" %}
+
         <div class="button-list">
+
             <button class="add" id="add-person-button" popovertarget="{{ pop_id }}">+</button><label for="add-person-button">Lägg till ny</label>
+
             {% if persons|length > 0 %}<div class="counter">{{ persons|length }}</div>{% endif %}
 
             <div class="items">
             {% for item in persons %}
-            <button class="vip {{ item.category }}" popovertarget="edit-form-{{ item.id }}">{{ item.name }}</button>
+            {% set pop_id = "edit-form-" ~ item.id %}
+            <button class="vip {{ item.category }}" popovertarget="{{ pop_id }}">{{ item.name }}</button>
             {% endfor %}
             </div>
         </div>
 
-
-        {# Popover-dialoger #}
-{% include "admin/forms/add-person.html.twig" %}
         {% for item in persons %}
-{% include "admin/forms/edit-person.html.twig" %}
+        {% set pop_id = "edit-form-" ~ item.id %}
+        {% include "admin/forms/edit-person.html.twig" %}
         {% endfor %}
 
     </article>
