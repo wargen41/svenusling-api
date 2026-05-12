@@ -31,12 +31,12 @@
                     </details>
                 </form>
 
-        {% set pop_id = "add-person-dlg" %}
-        {% include "admin/forms/add-person.html.twig" %}
+        {% set pop_id = "new-person-dlg" %}
+        {% include "admin/forms/new-person.html.twig" %}
 
         <div class="button-list">
 
-            <button class="add" id="add-person-button" popovertarget="{{ pop_id }}">+</button><label for="add-person-button">Lägg till ny</label>
+            <button class="add" id="new-person-button" popovertarget="{{ pop_id }}">+</button><label for="new-person-button">Lägg till ny</label>
 
             {% if persons|length > 0 %}<div class="counter">{{ persons|length }}</div>{% endif %}
 

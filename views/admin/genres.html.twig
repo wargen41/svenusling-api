@@ -5,12 +5,12 @@
     <article>
         <h1>Genrer</h1>
 
-        {% set pop_id = "add-genre-dlg" %}
-        {% include "admin/forms/add-genre.html.twig" %}
+        {% set pop_id = "new-genre-dlg" %}
+        {% include "admin/forms/new-genre.html.twig" %}
 
         <div class="button-list">
 
-            <button class="add" id="add-genre-button" popovertarget="{{ pop_id }}">+</button><label for="add-genre-button">Lägg till ny</label>
+            <button class="add" id="new-genre-button" popovertarget="{{ pop_id }}">+</button><label for="new-genre-button">Lägg till ny</label>
 
             <div class="counter">{{ genres|length }}</div>
 
