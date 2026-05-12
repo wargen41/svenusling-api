@@ -6,11 +6,11 @@
 
 <div class="compact button-list">
     {% for genre in item.genres %}
-    <form method="POST" action="/admin/movies/{{ item.id }}/genre/delete">
+    <form method="POST" action="/admin/movies/{{ item.id }}/genre/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ genre.sv }} från filmen?');">
         <input type="hidden" name="form_redirect" value="{{ this_page }}">
         <input type="hidden" name="movie_id" value="{{ item.id }}">
         <input type="hidden" name="genre_id" value="{{ genre.id }}">
-        <button type="submit" onsubmit="return confirm('Säkert att du vill ta bort genren {{ genre.sv }} från filmen?');">{{ genre.sv }}</button>
+        <button type="submit">{{ genre.sv }}</button>
     </form>
     {% endfor %}
     {% set pop_id = "add-genres-dlg" %}
