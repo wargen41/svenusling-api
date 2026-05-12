@@ -1,36 +1,27 @@
 {% extends "admin/forms/edit-base.html.twig" %}
 {% block content %}
 <form method="POST" action="/admin/movies/crew">
-    <input type="hidden" name="person_id" value="{{ item.id }}">
+    <input type="hidden" name="movie_id" value="{{ item.movie_id }}">
+    <input type="hidden" name="person_id" value="{{ item.person_id }}">
+    <input type="hidden" name="sequence_number" value="{{ item.sequence_number }}">
+    <input type="hidden" name="category" value="{{ category }}">
     <fieldset>
-        <legend>{{ item.name }}</legend>
-        <details open>
-            <summary>Grunduppgifter</summary>
+        <legend>{{ categories[category] ~ "" ~ item.sequence_number }}</legend>
             <div class="form-row">
-                <label for="edit-name-{{ item.id }}">Namn</label>
-                <input type="text" id="edit-name-{{ item.id }}" name="name" value="{{ item.name }}" required>
+                <label for="edit-person_name-{{ category }}-{{ item.sequence_number }}">Namn</label>
+                <input type="text" id="edit-person_name-{{ category }}-{{ item.sequence_number }}" name="person_name" value="{{ item.person_name }}" required>
             </div>
             <div class="form-row">
-                <label for="edit-category-{{ item.id }}">Kategori
-                    <select type="text" id="edit-category-{{ item.id }}" name="category" required>
-                        {% for value, label in categories %}
-                        <option value="{{ value }}" {% if item.category == value %}selected{% endif %}>{{ label }}</option>
-                        {% endfor %}
-                    </select>
-                </label>
+                <label for="edit-role_name-{{ category }}-{{ item.sequence_number }}">Roll</label>
+                <input type="text" id="edit-role_name-{{ category }}-{{ item.sequence_number }}" name="role_name" value="{{ item.role_name }}" required>
             </div>
             <div class="form-row">
-                <label for="edit-birth-{{ item.id }}">Födelsedag</label>
-                <input type="date" id="edit-birth-{{ item.id }}" name="birth_date" value="{{ item.birth_date }}" min="1800-01-01" max="2099-12-31">
-            </div>
-            <div class="form-row">
-                <label for="edit-death-{{ item.id }}">Dödsdag</label>
-                <input type="date" id="edit-death-{{ item.id }}" name="death_date" value="{{ item.death_date }}" min="1800-01-01" max="2099-12-31">
+                <label for="edit-note-{{ category }}-{{ item.sequence_number }}">Notering</label>
+                <input type="text" id="edit-note-{{ category }}-{{ item.sequence_number }}" name="note" value="{{ item.note }}" required>
             </div>
             <div class="actions">
                 <button type="submit">Spara</button>
             </div>
-        </details>
     </fieldset>
 </form>
 {% endblock %}
