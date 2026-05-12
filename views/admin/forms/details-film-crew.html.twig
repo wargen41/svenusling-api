@@ -12,13 +12,14 @@
 <details open>
     <summary>{{ label }}</summary>
     <div class="{% if list_style %}{{ list_style }} {% endif %}button-list">
-    {% for entry in item.persons[category] %}
+    {% for item in item.persons[category] %}
 {% include "admin/forms/edit-crew_member.html.twig" %}
-        <span>{{ entry.sequence_number }}.</span>
-        <button popovertarget="edit-form-{{ category }}-{{ entry.sequence_number }}">{{ entry.name }}</button>
-        <span>{{ entry.role_name }}</span>
-        <span>{{ entry.note }}</span>
+        <span>{{ item.sequence_number }}.</span>
+        <button popovertarget="edit-form-{{ category }}-{{ item.sequence_number }}">{{ item.name }}</button>
+        <span>{{ item.role_name }}</span>
+        <span>{{ item.note }}</span>
     {% endfor %}
+{% set dlg_id = "add-" ~ category ~ "-dlg" %}
 {% include "admin/forms/add-crew_member.html.twig" %}
         <button id="add-{{ category }}-button" popovertarget="{{ dlg_id }}">+</button>
     </div>
