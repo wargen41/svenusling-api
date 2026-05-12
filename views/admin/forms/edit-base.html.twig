@@ -3,7 +3,6 @@
 {% elseif pop_id == null %}
         <pre>ERROR pop_id is null</pre>
 {% else %}
-    {% set pop_id = 'edit-form-' ~ pop_id %}
         <dialog id="{{ pop_id }}" popover class="pseudo-modal">
             <div class="top">
                 <button popovertarget="{{ pop_id }}" popovertargetaction="hide">×</button>

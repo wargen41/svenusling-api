@@ -51,7 +51,8 @@
 
             <div class="items">
             {% for item in movies %}
-            <button class="vip {{ item.type }}" popovertarget="edit-form-{{ item.id }}">{{ item.title }}</button>
+            {% set pop_id = "edit-form-" ~ item.id %}
+            <button class="vip {{ item.type }}" popovertarget="{{ pop_id }}">{{ item.title }}</button>
             {% include "admin/forms/edit-film.html.twig" %}
             {% endfor %}
             </div>
