@@ -1,9 +1,9 @@
-{% if dlg_id == null %}
-        <pre>ERROR dlg_id is null</pre>
+{% if pop_id == null %}
+        <pre>ERROR pop_id is null</pre>
 {% else %}
-        <dialog id="{{ dlg_id }}" popover class="pseudo-modal">
+        <dialog id="{{ pop_id }}" popover class="pseudo-modal">
             <div class="top">
-                <button popovertarget="{{ dlg_id }}" popovertargetaction="hide">×</button>
+                <button popovertarget="{{ pop_id }}" popovertargetaction="hide">×</button>
             </div>
             <div class="content">
 {% block content %}{% endblock %}

@@ -41,24 +41,21 @@
                     </details>
                 </form>
 
-{% set dlg_id = "add-film-dlg" %}
         <div class="button-list">
-            <button class="add" id="add-film-button" popovertarget="{{ dlg_id }}">+</button><label for="add-film-button">Lägg till ny</label>
+
+            {% set pop_id = "add-film-dlg" %}
+            <button class="add" id="add-film-button" popovertarget="{{ pop_id }}">+</button><label for="add-film-button">Lägg till ny</label>
+            {% include "admin/forms/add-film.html.twig" %}
+
             {% if movies|length > 0 %}<div class="counter">{{ movies|length }}</div>{% endif %}
 
             <div class="items">
             {% for item in movies %}
             <button class="vip {{ item.type }}" popovertarget="edit-form-{{ item.id }}">{{ item.title }}</button>
+            {% include "admin/forms/edit-film.html.twig" %}
             {% endfor %}
             </div>
         </div>
-
-
-        {# Popover-dialoger #}
-{% include "admin/forms/add-film.html.twig" %}
-        {% for item in movies %}
-{% include "admin/forms/edit-film.html.twig" %}
-        {% endfor %}
 
     </article>
 
