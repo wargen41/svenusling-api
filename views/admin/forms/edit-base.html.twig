@@ -1,9 +1,9 @@
 {% if item == null %}
         <pre>ERROR item is null</pre>
-{% elseif edit_id == null %}
-        <pre>ERROR edit_id is null</pre>
+{% elseif dlg_id == null %}
+        <pre>ERROR dlg_id is null</pre>
 {% else %}
-    {% set dlg_id = 'edit-form-' ~ edit_id %}
+    {% set dlg_id = 'edit-form-' ~ dlg_id %}
         <dialog id="{{ dlg_id }}" popover class="pseudo-modal">
             <div class="top">
                 <button popovertarget="{{ dlg_id }}" popovertargetaction="hide">×</button>

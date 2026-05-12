@@ -8,20 +8,20 @@
     <fieldset>
         <legend>{{ categories[category] ~ " " ~ item.sequence_number }}</legend>
             <div class="form-row">
-                <label for="edit-person_name-{{ edit_id }}">Namn</label>
-                <input type="text" id="edit-person_name-{{ edit_id }}" name="person_name" value="{{ item.person_name }}" required>
+                <label for="edit-person_name-{{ dlg_id }}">Namn</label>
+                <input type="text" id="edit-person_name-{{ dlg_id }}" name="person_name" value="{{ item.person_name }}" required>
             </div>
             <div class="form-row">
-                <label for="edit-person_id-{{ edit_id }}">ID</label>
-                <input type="text" id="edit-person_id-{{ edit_id }}" name="person_id" required>
+                <label for="edit-person_id-{{ dlg_id }}">ID</label>
+                <input type="text" id="edit-person_id-{{ dlg_id }}" name="person_id" required>
             </div>
             <div class="form-row">
-                <label for="edit-role_name-{{ edit_id }}">Roll</label>
-                <input type="text" id="edit-role_name-{{ edit_id }}" name="role_name" value="{{ item.role_name }}" required>
+                <label for="edit-role_name-{{ dlg_id }}">Roll</label>
+                <input type="text" id="edit-role_name-{{ dlg_id }}" name="role_name" value="{{ item.role_name }}" required>
             </div>
             <div class="form-row">
-                <label for="edit-note-{{ edit_id }}">Notering</label>
-                <input type="text" id="edit-note-{{ edit_id }}" name="note" value="{{ item.note }}" required>
+                <label for="edit-note-{{ dlg_id }}">Notering</label>
+                <input type="text" id="edit-note-{{ dlg_id }}" name="note" value="{{ item.note }}" required>
             </div>
             <div class="actions">
                 <button type="submit">Spara</button>
