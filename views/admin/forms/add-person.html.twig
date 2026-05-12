@@ -4,12 +4,12 @@
     <fieldset>
         <legend>Ny person</legend>
         <div class="form-row">
-            <label for="add-name-{{ pop_id }}">Namn</label>
-            <input autofocus type="text" id="add-name-{{ pop_id }}" name="name" required>
+            <label for="add-name-{{ item.id }}">Namn</label>
+            <input autofocus type="text" id="add-name-{{ item.id }}" name="name" required>
         </div>
         <div class="form-row">
-            <label for="add-category-{{ pop_id }}">Kategori
-                <select type="text" id="add-category-{{ pop_id }}" name="category" required>
+            <label for="add-category-{{ item.id }}">Kategori
+                <select type="text" id="add-category-{{ item.id }}" name="category" required>
                     {% for value, label in categories %}
                     <option value="{{ value }}"{% if params.category == value %}selected{% endif %}>{{ label }}</option>
                     {% endfor %}
@@ -17,12 +17,12 @@
             </label>
         </div>
         <div class="form-row">
-            <label for="add-birth-{{ pop_id }}">Födelsedag</label>
-            <input type="date" id="add-birth-{{ pop_id }}" name="birth_date" min="1800-01-01" max="2099-12-31">
+            <label for="add-birth-{{ item.id }}">Födelsedag</label>
+            <input type="date" id="add-birth-{{ item.id }}" name="birth_date" min="1800-01-01" max="2099-12-31">
         </div>
         <div class="form-row">
-            <label for="add-death-{{ pop_id }}">Dödsdag</label>
-            <input type="date" id="add-death-{{ pop_id }}" name="death_date" min="1800-01-01" max="2099-12-31">
+            <label for="add-death-{{ item.id }}">Dödsdag</label>
+            <input type="date" id="add-death-{{ item.id }}" name="death_date" min="1800-01-01" max="2099-12-31">
         </div>
         <div class="actions">
             <button type="submit">Spara</button>
