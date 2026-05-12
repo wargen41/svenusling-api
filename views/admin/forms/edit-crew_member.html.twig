@@ -6,10 +6,14 @@
     <input type="hidden" name="sequence_number" value="{{ item.sequence_number }}">
     <input type="hidden" name="category" value="{{ category }}">
     <fieldset>
-        <legend>{{ categories[category] ~ "" ~ item.sequence_number }}</legend>
+        <legend>{{ categories[category] ~ " " ~ item.sequence_number }}</legend>
             <div class="form-row">
                 <label for="edit-person_name-{{ edit_id }}">Namn</label>
                 <input type="text" id="edit-person_name-{{ edit_id }}" name="person_name" value="{{ item.person_name }}" required>
+            </div>
+            <div class="form-row">
+                <label for="edit-person_id-{{ edit_id }}">ID</label>
+                <input type="text" id="edit-person_id-{{ edit_id }}" name="person_id" required>
             </div>
             <div class="form-row">
                 <label for="edit-role_name-{{ edit_id }}">Roll</label>

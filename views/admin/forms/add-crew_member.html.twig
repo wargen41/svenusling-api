@@ -1,32 +1,30 @@
 {% extends "admin/forms/add-base.html.twig" %}
 {% block content %}
 <form method="POST" action="/admin/movies/crew">
+    <input type="hidden" name="movie_id" value="{{ item.movie_id }}">
+    <input type="hidden" name="sequence_number" value="{{ item.sequence_number }}">
+    <input type="hidden" name="category" value="{{ category }}">
     <fieldset>
-        <legend>Ny person</legend>
-        <div class="form-row">
-            <label for="add-name-{{ dlg_id }}">Namn</label>
-            <input autofocus type="text" id="add-name-{{ dlg_id }}" name="name" required>
-        </div>
-        <div class="form-row">
-            <label for="add-category-{{ dlg_id }}">Kategori
-                <select type="text" id="add-category-{{ dlg_id }}" name="category" required>
-                    {% for value, label in categories %}
-                    <option value="{{ value }}"{% if params.category == value %}selected{% endif %}>{{ label }}</option>
-                    {% endfor %}
-                </select>
-            </label>
-        </div>
-        <div class="form-row">
-            <label for="add-birth-{{ dlg_id }}">Födelsedag</label>
-            <input type="date" id="add-birth-{{ dlg_id }}" name="birth_date" min="1800-01-01" max="2099-12-31">
-        </div>
-        <div class="form-row">
-            <label for="add-death-{{ dlg_id }}">Dödsdag</label>
-            <input type="date" id="add-death-{{ dlg_id }}" name="death_date" min="1800-01-01" max="2099-12-31">
-        </div>
-        <div class="actions">
-            <button type="submit">Spara</button>
-        </div>
+        <legend>{{ categories[category] ~ " ny" }}</legend>
+            <div class="form-row">
+                <label for="add-person_name-{{ dlg_id }}">Namn</label>
+                <input type="text" id="add-person_name-{{ dlg_id }}" name="person_name" required>
+            </div>
+            <div class="form-row">
+                <label for="add-person_id-{{ dlg_id }}">ID</label>
+                <input type="text" id="add-person_id-{{ dlg_id }}" name="person_id" required>
+            </div>
+            <div class="form-row">
+                <label for="add-role_name-{{ dlg_id }}">Roll</label>
+                <input type="text" id="add-role_name-{{ dlg_id }}" name="role_name" required>
+            </div>
+            <div class="form-row">
+                <label for="add-note-{{ dlg_id }}">Notering</label>
+                <input type="text" id="add-note-{{ dlg_id }}" name="note" required>
+            </div>
+            <div class="actions">
+                <button type="submit">Spara</button>
+            </div>
     </fieldset>
 </form>
 {% endblock %}
