@@ -5,11 +5,12 @@
     <article>
         <h1>Genrer</h1>
 
+        {% set pop_id = "add-genre-dlg" %}
+        {% include "admin/forms/add-genre.html.twig" %}
+
         <div class="button-list">
 
-            {% set pop_id = "add-genre-dlg" %}
             <button class="add" id="add-genre-button" popovertarget="{{ pop_id }}">+</button><label for="add-genre-button">Lägg till ny</label>
-            {% include "admin/forms/add-genre.html.twig" %}
 
             <div class="counter">{{ genres|length }}</div>
 
@@ -19,11 +20,14 @@
             {% set pop_id = "edit-form-" ~ item.id %}
             <button popovertarget="{{ pop_id }}"
             {% if item.common %}class="common"{% endif %}>{{ item.sv }}</button>
-            {% include "admin/forms/edit-genre.html.twig" %}
             {% endfor %}
             </div>
         </div>
 
+        {% for item in genres %}
+        {% set pop_id = "edit-form-" ~ item.id %}
+        {% include "admin/forms/edit-genre.html.twig" %}
+        {% endfor %}
 
     </article>
 
