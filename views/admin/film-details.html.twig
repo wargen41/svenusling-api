@@ -8,6 +8,8 @@
         <pre>ERROR item is null</pre>
 {% else %}
 
+{% set this_page = '/admin/films/' ~ item.id %}
+
     <article>
         <h1>{{ item.title }}</h1>
 
