@@ -678,7 +678,7 @@ class AdminController
             $_SESSION['message_type'] = 'error';
         } else {
             try {
-                $this->callApiDelete('/movies/' . $movieId . 'genres/' . $genreId, $token);
+                $this->callApiDelete('/movies/' . $movieId . '/genres/' . $genreId, $token);
 
                 $_SESSION['message'] = 'Genre togs bort';
                 $_SESSION['message_type'] = 'success';
