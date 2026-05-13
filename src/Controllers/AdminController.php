@@ -685,6 +685,11 @@ class AdminController
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error removing genre: ' . $e->getMessage();
                 $_SESSION['message_type'] = 'error';
+                if(ENVIRONMENT == "production"){
+                    // Redirect in production environment
+                    $response = $response->withStatus(302)->withHeader('Location', $form_redirect);
+                    return $response;
+                }
             }
         }
 
