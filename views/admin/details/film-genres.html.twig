@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="compact button-list">
-    {% for genre in item.genres %}
+    {% for sub_item in item.genres %}
     {% include "admin/forms/remove-genre.html.twig" %}
     {% endfor %}
     {% set pop_id = "add-genres-dlg" %}
