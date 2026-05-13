@@ -6,12 +6,7 @@
 
 <div class="compact button-list">
     {% for genre in item.genres %}
-    <form method="POST" action="/admin/movies/{{ item.id }}/genre/delete" onsubmit="return confirm('Säkert att du vill ta bort genren {{ genre.sv }} från filmen?');">
-        <input type="hidden" name="form_redirect" value="{{ this_page }}">
-        <input type="hidden" name="movie_id" value="{{ item.id }}">
-        <input type="hidden" name="genre_id" value="{{ genre.id }}">
-        <button type="submit">{{ genre.sv }}</button>
-    </form>
+    {% include "admin/forms/remove-genre.html.twig" %}
     {% endfor %}
     {% set pop_id = "add-genres-dlg" %}
     <button id="add-genres-button" popovertarget="{{ pop_id }}">+</button>

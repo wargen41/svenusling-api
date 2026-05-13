@@ -159,5 +159,7 @@ class Routes
         $app->post('/admin/movies/add', [AdminController::class, 'handleAddMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/update', [AdminController::class, 'handleUpdateMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/delete', [AdminController::class, 'handleDeleteMovie'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/movies/genres/add', [AdminController::class, 'handleAddMovieGenre'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/movies/genres/remove', [AdminController::class, 'handleRemoveMovieGenre'])->add(new AdminAuthMiddleware());
     }
 }

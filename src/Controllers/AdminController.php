@@ -659,6 +659,41 @@ class AdminController
     }
 
     /**
+     * Handle remove genre from movie form submission
+     */
+    public function handleRemoveMovieGenre(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $form_redirect = $data['form_redirect'] ?? '/admin';
+        $movieId = $data['movie_id'] ?? null;
+        $genreId = $data['genre_id'] ?? null;
+
+        if (!$movieId) {
+            $_SESSION['message'] = 'Error: Movie ID missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiDelete('/movies/' . $movieId . 'genres/' . $genreId, $token);
+
+                $_SESSION['message'] = 'Genre togs bort';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error removing genre: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+            }
+        }
+
+        // Redirect
+        $response = $response->withStatus(302)->withHeader('Location', $form_redirect);
+        return $response;
+    }
+
+    /**
      * Films page (protected)
      */
     public function filmsPage(Request $request, Response $response): Response

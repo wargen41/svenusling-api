@@ -1,0 +1,14 @@
+{% if item == null %}
+        <pre>ERROR item is null</pre>
+{% elseif sub_item == null %}
+        <pre>ERROR sub_item is null</pre>
+{% else %}
+
+<form method="POST" action="/admin/movies/genres/remove" onsubmit="return confirm('Säkert att du vill ta bort genren {{ sub_item.sv }} från filmen?');">
+    <input type="hidden" name="form_redirect" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ item.id }}">
+    <input type="hidden" name="genre_id" value="{{ sub_item.id }}">
+    <button type="submit">{{ sub_item.sv }}</button>
+</form>
+
+{% endif %}
