@@ -1,34 +1,9 @@
-{% extends "admin/forms/details-base.html.twig" %}
+{% extends "admin/details/base.html.twig" %}
 
-{% set legend = 'Medverkande' %}
-{% set styles = {
-    'director': 'compact'
-} %}
+{% set legend = 'Grundläggande uppgifter' %}
 
 {% block content %}
 
-{% for category, label in categories %}
-{% set list_style = styles[category] %}
-<details open>
-    <summary>{{ label }}</summary>
-    <div class="{% if list_style %}{{ list_style }} {% endif %}button-list">
-    {% for item in item.persons[category] %}
-{% set pop_id = category ~ "-" ~ item.sequence_number %}
-{% include "admin/forms/edit-crew_member.html.twig" %}
-        <span>{{ item.sequence_number }}.</span>
-        <button popovertarget="edit-form-{{ pop_id }}">{{ item.name }}</button>
-        <span>{{ item.role_name }}</span>
-        <span>{{ item.note }}</span>
-    {% endfor %}
-{% set pop_id = "add-" ~ category ~ "-dlg" %}
-{% include "admin/forms/add-crew_member.html.twig" %}
-        <button id="add-{{ category }}-button" popovertarget="{{ pop_id }}">+</button>
-    </div>
-</details>
-
-{% endfor %}
-
-{#
 <form method="POST" action="/admin/movies/update">
     <input type="hidden" name="form_redirect" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
@@ -65,6 +40,5 @@
         <button type="submit">Uppdatera</button>
     </div>
 </form>
-#}
 
 {% endblock %}
