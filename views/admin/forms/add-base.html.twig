@@ -1,0 +1,12 @@
+{% if pop_id == null %}
+        <pre>ERROR pop_id is null</pre>
+{% else %}
+        <dialog id="{{ pop_id }}" popover class="pseudo-modal">
+            <div class="top">
+                <button popovertarget="{{ pop_id }}" popovertargetaction="hide">×</button>
+            </div>
+            <div class="content">
+{% block content %}{% endblock %}
+            </div>
+        </dialog>
+{% endif %}

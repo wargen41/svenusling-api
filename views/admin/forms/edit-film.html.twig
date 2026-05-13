@@ -2,7 +2,7 @@
 {% block content %}
 {#<form method="POST" action="/admin/movies/update">#}
 <form method="POST" action="/admin/movies/update">
-    <input type="hidden" name="form_redirect" value="{{ this_page }}">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <fieldset>
         <legend>{{ item.title }}</legend>
@@ -77,7 +77,7 @@
 </ul>
 
 <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.title }}? ({{ item.id }})');">
-    <input type="hidden" name="form_redirect" value="{{ this_page }}">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <fieldset class="danger">
         <div class="actions">

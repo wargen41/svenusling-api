@@ -1,7 +1,7 @@
 {% extends "admin/forms/new-base.html.twig" %}
 {% block content %}
 <form method="POST" action="/admin/movies/add">
-    <input type="hidden" name="form_redirect" value="{{ this_page }}">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <fieldset>
         <legend>Ny film</legend>

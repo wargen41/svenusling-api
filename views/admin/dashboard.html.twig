@@ -16,7 +16,7 @@
                 <summary><h3>Snabbinmatning</h3></summary>
                 <p>Filmer inmatade här är dolda tills du aktivt valt att publicera dem.</p>
                 <form method="post" action="/admin/movies/add">
-                    <input type="hidden" name="form_redirect" value="{{ this_page }}?quick=1">
+                    <input type="hidden" name="redirect_url" value="{{ this_page }}?quick=1">
                     <fieldset>
                         <legend>Ny film</legend>
                         <div class="form-row">
