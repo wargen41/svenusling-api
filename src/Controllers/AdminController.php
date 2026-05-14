@@ -779,10 +779,16 @@ class AdminController
         $redirect_url = $data['redirect_url'] ?? '/admin';
         $movieId = $data['movie_id'] ?: null;
         $category = $data['category'] ?: null;
-        $sequenceNo = $data['sequence_number'] ?: null;
+        $sequenceNo = $data['sequence_number'] ?? null;
 
         if (!$movieId) {
             $_SESSION['message'] = 'Error: Movie ID missing';
+            $_SESSION['message_type'] = 'error';
+        }else if (!$category) {
+            $_SESSION['message'] = 'Error: Category missing';
+            $_SESSION['message_type'] = 'error';
+        }else if (!$sequenceNo) {
+            $_SESSION['message'] = 'Error: Sequence number missing';
             $_SESSION['message_type'] = 'error';
         } else {
             try {
