@@ -5,7 +5,7 @@
     <input type="hidden" name="sequence_number" value="{{ item.sequence_number }}">
     <input type="hidden" name="category" value="{{ category }}">
     <fieldset>
-        <legend>{{ categories[category] ~ " ny" }}</legend>
+        <legend>{{ categories[category] }}</legend>
             <div class="form-row">
                 <label for="add-person_name-{{ pop_id }}">Namn</label>
                 <input type="text" id="add-person_name-{{ pop_id }}" name="person_name" required>
