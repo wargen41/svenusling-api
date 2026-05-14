@@ -8,17 +8,17 @@
 <details open>
     <summary>{{ label }}</summary>
 
-{% set pop_id = "add-" ~ category ~ "-dlg" %}
-{% include "admin/forms/add-crew_member.html.twig" %}
+    {% set pop_id = "add-" ~ category ~ "-dlg" %}
+    {% include "admin/forms/add-crew_member.html.twig" %}
         <button class="add" id="add-{{ category }}-button" popovertarget="{{ pop_id }}">+</button><label for="add-{{ category }}-button">Lägg till</label>
 
         <div class="counter">{{ item.persons[category]|length }}</div>
 
     <div class="{{ category }} grid-table">
-{% set new_sequence_number = item.persons[category]|last.sequence_number + 1 %}
-{% for sub_item in item.persons[category] %}
-{% set pop_id = "edit-" ~ category ~ "-" ~ sub_item.sequence_number %}
-{% include "admin/forms/edit-crew_member.html.twig" %}
+    {% set new_sequence_number = item.persons[category]|last.sequence_number + 1 %}
+    {% for sub_item in item.persons[category] %}
+        {% set pop_id = "edit-" ~ category ~ "-" ~ sub_item.sequence_number %}
+        {% include "admin/forms/edit-crew_member.html.twig" %}
         <button popovertarget="{{ pop_id }}">{{ sub_item.sequence_number }}</button>
         <span class="name">{{ sub_item.person_name }}</span>
         {% if category == 'actor' %}
@@ -30,44 +30,5 @@
 </details>
 
 {% endfor %}
-
-{#
-<form method="POST" action="/admin/movies/update">
-    <input type="hidden" name="redirect_url" value="{{ this_page }}">
-    <input type="hidden" name="movie_id" value="{{ item.id }}">
-    <div class="form-row">
-        <label for="edit-type">Typ
-            <select type="text" id="edit-type" name="type" required>
-            {% for value, label in types %}
-                <option value="{{ value }}" {% if item.type == value %}selected{% endif %}>{{ label }}</option>
-            {% endfor %}
-            </select>
-        </label>
-        <label for="display-id">SU-ID</label>
-        <input disabled type="text" id="display-id" value="{{ item.id }}">
-        <label for="edit-imdb_id">IMDb-ID</label>
-        <input type="text" id="edit-imdb_id" name="imdb_id" value="{{ item.imdb_id }}">
-    </div>
-    <div class="form-row">
-        <label for="edit-title">Titel</label>
-        <input type="text" id="edit-title" name="title" value="{{ item.title }}" required>
-        <label for="edit-year">År
-            <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year" value="{{ item.year }}">
-        </label>
-    </div>
-    <div class="form-row">
-        <label for="edit-original_title">Originaltitel</label>
-        <input type="text" id="edit-original_title" name="original_title" value="{{ item.original_title }}">
-    </div>
-    <div class="form-row">
-        <label for="edit-description">Kort beskrivning
-            <textarea id="edit-description" name="description">{{ item.description }}</textarea>
-        </label>
-    </div>
-    <div class="actions">
-        <button type="submit">Uppdatera</button>
-    </div>
-</form>
-#}
 
 {% endblock %}
