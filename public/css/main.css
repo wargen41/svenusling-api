@@ -798,6 +798,9 @@ button {
   align-items: center;
   align-content: center;
 }
+.grid-table.director {
+  grid-template-columns: 2.5em 1fr auto;
+}
 
 .form-row + .form-row {
   margin-top: 0.5em;
