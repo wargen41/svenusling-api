@@ -294,7 +294,8 @@ class MoviePersonsController
     {
         try {
             $movieId = $args['movie_id'] ?? null;
-            $personId = $args['person_id'] ?? null;
+            $category = $args['category'] ?? null;
+            $sequenceNo = $args['sequence_number'] ?? null;
             $userRole = $request->getAttribute('user_role');
 
             if ($userRole !== 'admin') {
@@ -303,19 +304,19 @@ class MoviePersonsController
 
             $stmt = $this->db->prepare('
                 DELETE FROM movies_persons 
-                WHERE movie_id = ? AND person_id = ?
+                WHERE movie_id = ? AND category = ? AND sequence_number = ?
             ');
-            $stmt->execute([$movieId, $personId]);
+            $stmt->execute([$movieId, $category, $sequenceNo]);
 
             if ($stmt->rowCount() === 0) {
-                return $this->jsonResponse($response, ['error' => 'Person not found in movie'], 404);
+                return $this->jsonResponse($response, ['error' => 'Person not found in list'], 404);
             }
 
-            return $this->jsonResponse($response, ['success' => true, 'message' => 'Person removed from movie']);
+            return $this->jsonResponse($response, ['success' => true, 'message' => 'Person removed from list']);
 
         } catch (\Exception $e) {
             error_log('Error in removePersonFromMovie: ' . $e->getMessage());
-            return $this->jsonResponse($response, ['error' => 'Failed to remove person from movie'], 500);
+            return $this->jsonResponse($response, ['error' => 'Failed to remove person from list'], 500);
         }
     }
 

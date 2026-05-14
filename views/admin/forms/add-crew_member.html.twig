@@ -8,22 +8,22 @@
     <fieldset>
         <legend>Lägg till {{ categories[category]|lower }}</legend>
             <div class="form-row">
-                <label for="add-person_name-{{ pop_id }}">Namn</label>
-                <input type="text" id="add-person_name-{{ pop_id }}" name="person_name" autofocus required>
+                <label for="{{ pop_id }}-person_name">Namn</label>
+                <input type="text" id="{{ pop_id }}-person_name" name="person_name" autofocus required>
             </div>
             <div class="form-row">
-                <label for="add-person_id-{{ pop_id }}">ID</label>
-                <input type="text" id="add-person_id-{{ pop_id }}" name="person_id">
+                <label for="{{ pop_id }}-person_id">ID</label>
+                <input type="text" id="{{ pop_id }}-person_id" name="person_id">
             </div>
             {% if category == 'actor' %}
             <div class="form-row">
-                <label for="add-role_name-{{ pop_id }}">Roll</label>
-                <input type="text" id="add-role_name-{{ pop_id }}" name="role_name">
+                <label for="{{ pop_id }}-role_name">Roll</label>
+                <input type="text" id="{{ pop_id }}-role_name" name="role_name">
             </div>
             {% endif %}
             <div class="form-row">
-                <label for="add-note-{{ pop_id }}">Notering</label>
-                <input type="text" id="add-note-{{ pop_id }}" name="note">
+                <label for="{{ pop_id }}-note">Notering</label>
+                <input type="text" id="{{ pop_id }}-note" name="note">
             </div>
             <div class="actions">
                 <button type="submit">Lägg till</button>

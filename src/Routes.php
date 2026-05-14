@@ -49,7 +49,7 @@ class Routes
         $app->get('/movies/{id}/persons/{category}', [MoviePersonsController::class, 'getMoviePersonsByCategory']);
         $app->post('/movies/persons', [MoviePersonsController::class, 'addPersonToMovie'])->add(AuthMiddleware::class);
         $app->put('/movies/{movie_id}/persons/{person_id}', [MoviePersonsController::class, 'updatePersonInMovie'])->add(AuthMiddleware::class);
-        $app->delete('/movies/{movie_id}/persons/{person_id}', [MoviePersonsController::class, 'removePersonFromMovie'])->add(AuthMiddleware::class);
+        $app->delete('/movies/{movie_id}/persons/{category}/{sequence_number}', [MoviePersonsController::class, 'removePersonFromMovie'])->add(AuthMiddleware::class);
 
         // Movie genres endpoints
         $app->get('/movies/{id}/genres', [MovieGenresController::class, 'getMovieGenres']);

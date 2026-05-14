@@ -1,31 +1,45 @@
 {% extends "admin/forms/edit-base.html.twig" %}
 {% block content %}
-<form method="POST" action="/admin/movies/crew">
-    <input type="hidden" name="movie_id" value="{{ item.movie_id }}">
-    <input type="hidden" name="person_id" value="{{ item.person_id }}">
-    <input type="hidden" name="sequence_number" value="{{ item.sequence_number }}">
-    <input type="hidden" name="category" value="{{ category }}">
+<form method="POST" action="/admin/movies/crew/add">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ sub_item.movie_id }}">
+    <input type="hidden" name="sequence_number" value="{{ sub_item.sequence_number }}">
+    <input type="hidden" name="category" value="{{ sub_item.category }}">
     <fieldset>
-        <legend>{{ categories[category] ~ " " ~ item.sequence_number }}</legend>
+        <legend>{{ categories[category]|lower ~ " " ~ item.sequence_number }}</legend>
             <div class="form-row">
-                <label for="edit-person_name-{{ pop_id }}">Namn</label>
-                <input type="text" id="edit-person_name-{{ pop_id }}" name="person_name" value="{{ item.person_name }}" required>
+                <label for="{{ pop_id }}-person_name">Namn</label>
+                <input type="text" id="{{ pop_id }}-person_name" name="person_name" value="{{ sub_item.person_name }} required>
             </div>
             <div class="form-row">
-                <label for="edit-person_id-{{ pop_id }}">ID</label>
-                <input type="text" id="edit-person_id-{{ pop_id }}" name="person_id" required>
+                <label for="{{ pop_id }}-person_id">ID</label>
+                <input type="text" id="{{ pop_id }}-person_id" name="person_id" value="{{ sub_item.person_id }}">
             </div>
+            {% if category == 'actor' %}
             <div class="form-row">
-                <label for="edit-role_name-{{ pop_id }}">Roll</label>
-                <input type="text" id="edit-role_name-{{ pop_id }}" name="role_name" value="{{ item.role_name }}" required>
+                <label for="{{ pop_id }}-role_name">Roll</label>
+                <input type="text" id="{{ pop_id }}-role_name" name="role_name" value="{{ sub_item.role_name }}>
             </div>
+            {% endif %}
             <div class="form-row">
-                <label for="edit-note-{{ pop_id }}">Notering</label>
-                <input type="text" id="edit-note-{{ pop_id }}" name="note" value="{{ item.note }}" required>
+                <label for="{{ pop_id }}-note">Notering</label>
+                <input type="text" id="{{ pop_id }}-note" name="note" value="{{ sub_item.note }}>
             </div>
             <div class="actions">
                 <button type="submit">Spara</button>
             </div>
+    </fieldset>
+</form>
+<form method="POST" action="/admin/movies/crew/delete" onsubmit="return confirm('Säkert att du vill ta bort medverkande {{ sub_item.person_name }} från filmen?');">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ sub_item.movie_id }}">
+    <input type="hidden" name="sequence_number" value="{{ sub_item.sequence_number }}">
+    <input type="hidden" name="category" value="{{ sub_item.category }}">
+    <fieldset>
+        <legend>Radera?</legend>
+        <div class="actions">
+            <button type="submit" class="delete">Ta bort genre</button>
+        </div>
     </fieldset>
 </form>
 {% endblock %}

@@ -730,7 +730,7 @@ class AdminController
     }
 
     /**
-     * Handle add crew from movie form submission
+     * Handle add crew member from movie form submission
      */
     public function handleAddMovieCrew(Request $request, Response $response): Response
     {
@@ -758,6 +758,48 @@ class AdminController
         } catch (\Exception $e) {
             $_SESSION['message'] = 'Error adding crew member: ' . $e->getMessage();
             $_SESSION['message_type'] = 'error';
+        }
+
+        // Redirect
+        $response = $response->withStatus(302)->withHeader('Location', $redirect_url);
+        return $response;
+    }
+
+    /**
+     * Handle remove crew member from movie form submission
+     */
+    public function handleRemoveMovieCrew(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $redirect_url = $data['redirect_url'] ?? '/admin';
+        $movieId = $data['movie_id'] ?: null;
+        $category = $data['category'] ?: null;
+        $sequenceNo = $data['sequence_number'] ?: null;
+
+        if (!$movieId) {
+            $_SESSION['message'] = 'Error: Movie ID missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiDelete('/movies/' . $movieId . '/persons/' . $category . '/' . $sequenceNo, $token);
+                // movies/{movie_id}/persons/{category}/{sequence_number}
+
+                $_SESSION['message'] = 'Medverkan togs bort';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error removing crew member: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+                if(ENVIRONMENT == "production"){
+                    // Redirect in production environment
+                    $response = $response->withStatus(302)->withHeader('Location', $redirect_url);
+                    return $response;
+                }
+            }
         }
 
         // Redirect
