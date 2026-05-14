@@ -12,8 +12,8 @@
 <details open>
     <summary>{{ label }}</summary>
 
-{% include "admin/forms/add-crew_member.html.twig" %}
 {% set pop_id = "add-" ~ category ~ "-dlg" %}
+{% include "admin/forms/add-crew_member.html.twig" %}
         {#<button id="add-{{ category }}-button" popovertarget="{{ pop_id }}">+</button>#}
         <button class="add" id="add-{{ category }}-button" popovertarget="{{ pop_id }}">+</button><label for="add-{{ category }}-button">Lägg till</label>
 
