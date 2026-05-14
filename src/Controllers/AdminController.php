@@ -659,6 +659,37 @@ class AdminController
     }
 
     /**
+     * Handle add genre from movie form submission
+     */
+    public function handleAddMovieGenre(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $redirect_url = $data['redirect_url'] ?? '/admin';
+
+        try {
+            $this->callApiPost('/movies/genres', [
+                'movie_id' => $data['movie_id'] ?? null,
+                'genre_id' => $data['genre_id'] ?? null,
+            ], $token);
+
+            $_SESSION['message'] = 'Genre tillagd';
+            $_SESSION['message_type'] = 'success';
+        } catch (\Exception $e) {
+            $_SESSION['message'] = 'Error adding movie: ' . $e->getMessage();
+            $_SESSION['message_type'] = 'error';
+        }
+
+        // Redirect
+        $response = $response->withStatus(302)->withHeader('Location', $redirect_url);
+        return $response;
+    }
+
+    /**
      * Handle remove genre from movie form submission
      */
     public function handleRemoveMovieGenre(Request $request, Response $response): Response
