@@ -14,10 +14,12 @@
                 <label for="add-person_id-{{ pop_id }}">ID</label>
                 <input type="text" id="add-person_id-{{ pop_id }}" name="person_id">
             </div>
+            {% if category != 'director' %}
             <div class="form-row">
                 <label for="add-role_name-{{ pop_id }}">Roll</label>
                 <input type="text" id="add-role_name-{{ pop_id }}" name="role_name">
             </div>
+            {% endif %}
             <div class="form-row">
                 <label for="add-note-{{ pop_id }}">Notering</label>
                 <input type="text" id="add-note-{{ pop_id }}" name="note">
