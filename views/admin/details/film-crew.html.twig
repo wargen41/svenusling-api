@@ -15,15 +15,15 @@
         <div class="counter">{{ item.persons[category]|length }}</div>
 
     <div class="{{ category }} grid-table">
-    {% for item in item.persons[category] %}
-{% set pop_id = category ~ "-" ~ item.sequence_number %}
+    {% for sub_item in item.persons[category] %}
+{% set pop_id = category ~ "-" ~ sub_item.sequence_number %}
 {% include "admin/forms/edit-crew_member.html.twig" %}
-        <span class="number">{{ item.sequence_number }}.</span>
-        <button popovertarget="edit-form-{{ pop_id }}">{{ item.name }}</button>
+        <span class="number">{{ sub_item.sequence_number }}.</span>
+        <button popovertarget="edit-form-{{ pop_id }}">{{ sub_item.name }}</button>
         {% if category == 'actor' %}
-        <span class="role">{{ item.role_name }}</span>
+        <span class="role">{{ sub_item.role_name }}</span>
         {% endif %}
-        <span class="note">{{ item.note }}</span>
+        <span class="note">{{ sub_item.note }}</span>
     {% endfor %}
     </div>
 </details>
