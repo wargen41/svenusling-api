@@ -766,6 +766,42 @@ class AdminController
     }
 
     /**
+     * Handle update crew member from movie form submission
+     */
+    public function handleAddMovieCrew(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $redirect_url = $data['redirect_url'] ?? '/admin';
+
+        try {
+            $this->callApiPut('/movies/persons', [
+                'sequence_number' => $data['sequence_number'] ?: null,
+                'movie_id' => $data['movie_id'] ?: null,
+                'person_name' => $data['person_name'] ?: null,
+                'person_id' => $data['person_id'] ?: null,
+                'category' => $data['category'] ?: null,
+                'role_name' => $data['role_name'] ?: null,
+                'note' => $data['note'] ?: null,
+            ], $token);
+
+            $_SESSION['message'] = '"' . $data['person_name'] . '" uppdaterad';
+            $_SESSION['message_type'] = 'success';
+        } catch (\Exception $e) {
+            $_SESSION['message'] = 'Error adding crew member: ' . $e->getMessage();
+            $_SESSION['message_type'] = 'error';
+        }
+
+        // Redirect
+        $response = $response->withStatus(302)->withHeader('Location', $redirect_url);
+        return $response;
+    }
+
+    /**
      * Handle delete crew member from movie form submission
      */
     public function handleDeleteMovieCrew(Request $request, Response $response): Response
