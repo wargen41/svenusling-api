@@ -744,6 +744,7 @@ class AdminController
 
         try {
             $this->callApiPost('/movies/persons', [
+                'sequence_number' => $data['sequence_number'] ?: null,
                 'movie_id' => $data['movie_id'] ?: null,
                 'person_name' => $data['person_name'] ?: null,
                 'person_id' => $data['person_id'] ?: null,
