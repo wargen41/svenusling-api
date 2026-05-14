@@ -19,7 +19,7 @@
 {% set pop_id = category ~ "-" ~ sub_item.sequence_number %}
 {% include "admin/forms/edit-crew_member.html.twig" %}
         <span class="number">{{ sub_item.sequence_number }}.</span>
-        <button popovertarget="edit-form-{{ pop_id }}">{{ sub_item.name }}</button>
+        <button popovertarget="edit-form-{{ pop_id }}">{{ sub_item.person_name }}</button>
         {% if category == 'actor' %}
         <span class="role">{{ sub_item.role_name }}</span>
         {% endif %}
