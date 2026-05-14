@@ -16,9 +16,9 @@
 
     <div class="{{ category }} grid-table">
 {% for sub_item in item.persons[category] %}
-{% set pop_id = category ~ "-" ~ sub_item.sequence_number %}
+{% set pop_id = "edit-" ~ category ~ "-" ~ sub_item.sequence_number %}
 {% include "admin/forms/edit-crew_member.html.twig" %}
-        <button popovertarget="edit-form-{{ pop_id }}">{{ sub_item.sequence_number }}</button>
+        <button popovertarget="{{ pop_id }}">{{ sub_item.sequence_number }}</button>
         <span class="name">{{ sub_item.person_name }}</span>
         {% if category == 'actor' %}
         <span class="role">{{ sub_item.role_name }}</span>
