@@ -20,7 +20,9 @@
 {% include "admin/forms/edit-crew_member.html.twig" %}
         <span class="number">{{ item.sequence_number }}.</span>
         <button popovertarget="edit-form-{{ pop_id }}">{{ item.name }}</button>
+        {% if category != 'director' %}
         <span class="role">{{ item.role_name }}</span>
+        {% endif %}
         <span class="note">{{ item.note }}</span>
     {% endfor %}
     </div>
