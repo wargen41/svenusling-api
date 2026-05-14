@@ -11,14 +11,14 @@
 {% set list_style = styles[category] %}
 <details open>
     <summary>{{ label }}</summary>
-    <div class="{% if list_style %}{{ list_style }} {% endif %}button-list">
+    <div class="{% if list_style %}{{ list_style }} {% endif %}grid-table">
     {% for item in item.persons[category] %}
 {% set pop_id = category ~ "-" ~ item.sequence_number %}
 {% include "admin/forms/edit-crew_member.html.twig" %}
-        <span>{{ item.sequence_number }}.</span>
+        <span class="number">{{ item.sequence_number }}.</span>
         <button popovertarget="edit-form-{{ pop_id }}">{{ item.name }}</button>
-        <span>{{ item.role_name }}</span>
-        <span>{{ item.note }}</span>
+        <span class="role">{{ item.role_name }}</span>
+        <span class="note">{{ item.note }}</span>
     {% endfor %}
 {% set pop_id = "add-" ~ category ~ "-dlg" %}
 {% include "admin/forms/add-crew_member.html.twig" %}

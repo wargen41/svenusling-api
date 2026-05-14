@@ -170,10 +170,10 @@ button
     }
 }
 
-// .button-list:has(.actions)
-// {
-//     flex-direction: column-reverse;
-// }
+.grid-table
+{
+    display: grid;
+}
 
 .form-row + .form-row {
     margin-top: .5em;

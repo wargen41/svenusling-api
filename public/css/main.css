@@ -791,6 +791,10 @@ button {
   justify-content: flex-start;
 }
 
+.grid-table {
+  display: grid;
+}
+
 .form-row + .form-row {
   margin-top: 0.5em;
 }
