@@ -747,6 +747,7 @@ class AdminController
                 'movie_id' => $data['movie_id'] ?? null,
                 'person_name' => $data['person_name'] ?? null,
                 'person_id' => $data['person_id'] ?? null,
+                'category' => $data['category'] ?? null,
                 'role_name' => $data['role_name'] ?? null,
                 'note' => $data['note'] ?? null,
             ], $token);
