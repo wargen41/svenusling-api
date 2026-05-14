@@ -777,14 +777,17 @@ class AdminController
         $token = $_SESSION['jwt_token'] ?? null;
         $data = $request->getParsedBody();
         $redirect_url = $data['redirect_url'] ?? '/admin';
+        $movieId = $data['movie_id'] ?: null;
+        $category = $data['category'] ?: null;
+        $sequenceNo = $data['sequence_number'] ?? null;
 
         try {
             $this->callApiPut('/movies/' . $movieId . '/persons/' . $category . '/' . $sequenceNo, [
-                'sequence_number' => $data['sequence_number'] ?: null,
-                'movie_id' => $data['movie_id'] ?: null,
+                'sequence_number' => $sequenceNo,
+                'movie_id' => $movieId,
                 'person_name' => $data['person_name'] ?: null,
                 'person_id' => $data['person_id'] ?: null,
-                'category' => $data['category'] ?: null,
+                'category' => $category,
                 'role_name' => $data['role_name'] ?: null,
                 'note' => $data['note'] ?: null,
             ], $token);
