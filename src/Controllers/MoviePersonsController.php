@@ -171,7 +171,7 @@ class MoviePersonsController
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
 
-            if(isset($data['person_id'])) {
+            if(!empty($data['person_id'])) {
                 // Verify person ID exists
                 $stmt = $this->db->prepare('SELECT id FROM persons WHERE id = ?');
                 $stmt->execute([$data['person_id']]);
