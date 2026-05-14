@@ -156,10 +156,10 @@ class MoviePersonsController
 
             $data = $request->getParsedBody();
 
-            if (empty($data['movie_id']) || empty($data['person_id']) || empty($data['category'])) {
+            if (empty($data['movie_id']) || empty($data['person_name']) || empty($data['category'])) {
                 return $this->jsonResponse(
                     $response,
-                    ['error' => 'movie_id, person_id, and category are required'],
+                    ['error' => 'movie_id, person_name and category are required'],
                     422
                 );
             }
@@ -171,20 +171,22 @@ class MoviePersonsController
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
 
-            // Verify person exists
-            $stmt = $this->db->prepare('SELECT id, name FROM persons WHERE id = ?');
-            $stmt->execute([$data['person_id']]);
-            $person = $stmt->fetch();
-            if (!$person) {
-                return $this->jsonResponse($response, ['error' => 'Person not found'], 404);
+            if(isset($data['person_id'])) {
+                // Verify person ID exists
+                $stmt = $this->db->prepare('SELECT id FROM persons WHERE id = ?');
+                $stmt->execute([$data['person_id']]);
+                $person = $stmt->fetch();
+                if (!$person) {
+                    return $this->jsonResponse($response, ['error' => 'No person found with ID ' . $data['person_id']], 404);
+                }
             }
 
             // Check if relation already exists
             $stmt = $this->db->prepare('
                 SELECT * FROM movies_persons 
-                WHERE movie_id = ? AND person_id = ? AND category = ?
+                WHERE movie_id = ? AND person_name = ? AND category = ?
             ');
-            $stmt->execute([$data['movie_id'], $data['person_id'], $data['category']]);
+            $stmt->execute([$data['movie_id'], $data['person_name'], $data['category']]);
             if ($stmt->fetch()) {
                 return $this->jsonResponse(
                     $response,
@@ -199,10 +201,10 @@ class MoviePersonsController
             ');
 
             $stmt->execute([
-                $data['movie_id'],
-                $data['person_id'],
-                $person['name'],
-                $data['category'],
+                $data['movie_id'] ?? null,
+                $data['person_id'] ?? null,
+                $data['person_name'] ?? null,
+                $data['category'] ?? null,
                 $data['role_name'] ?? null,
                 $data['note'] ?? null,
                 $data['sequence_number'] ?? 0
