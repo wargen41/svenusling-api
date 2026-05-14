@@ -680,7 +680,7 @@ class AdminController
             $_SESSION['message'] = 'Genre tillagd';
             $_SESSION['message_type'] = 'success';
         } catch (\Exception $e) {
-            $_SESSION['message'] = 'Error adding movie: ' . $e->getMessage();
+            $_SESSION['message'] = 'Error adding genre: ' . $e->getMessage();
             $_SESSION['message_type'] = 'error';
         }
 
