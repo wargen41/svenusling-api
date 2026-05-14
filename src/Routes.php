@@ -44,11 +44,12 @@ class Routes
         $app->put('/movies/{id}', [MovieController::class, 'updateMovie'])->add(new AuthMiddleware());
         $app->delete('/movies/{id}', [MovieController::class, 'deleteMovie'])->add(new AuthMiddleware());
 
+        //movies/1314/persons/director/
         // Movie persons endpoints
         $app->get('/movies/{id}/persons', [MoviePersonsController::class, 'getMoviePersons']);
         $app->get('/movies/{id}/persons/{category}', [MoviePersonsController::class, 'getMoviePersonsByCategory']);
         $app->post('/movies/persons', [MoviePersonsController::class, 'addPersonToMovie'])->add(AuthMiddleware::class);
-        $app->put('/movies/{movie_id}/persons/{person_id}', [MoviePersonsController::class, 'updatePersonInMovie'])->add(AuthMiddleware::class);
+        $app->put('/movies/{movie_id}/persons/{category}/{sequence_number}', [MoviePersonsController::class, 'updatePersonInMovie'])->add(AuthMiddleware::class);
         $app->delete('/movies/{movie_id}/persons/{category}/{sequence_number}', [MoviePersonsController::class, 'removePersonFromMovie'])->add(AuthMiddleware::class);
 
         // Movie genres endpoints
