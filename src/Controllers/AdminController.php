@@ -730,6 +730,40 @@ class AdminController
     }
 
     /**
+     * Handle add crew from movie form submission
+     */
+    public function handleAddMovieCrew(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $redirect_url = $data['redirect_url'] ?? '/admin';
+
+        try {
+            $this->callApiPost('/movies/persons', [
+                'movie_id' => $data['movie_id'] ?? null,
+                'person_name' => $data['person_name'] ?? null,
+                'person_id' => $data['person_id'] ?? null,
+                'role_name' => $data['role_name'] ?? null,
+                'note' => $data['note'] ?? null,
+            ], $token);
+
+            $_SESSION['message'] = 'Medverkande tillagd';
+            $_SESSION['message_type'] = 'success';
+        } catch (\Exception $e) {
+            $_SESSION['message'] = 'Error adding crew member: ' . $e->getMessage();
+            $_SESSION['message_type'] = 'error';
+        }
+
+        // Redirect
+        $response = $response->withStatus(302)->withHeader('Location', $redirect_url);
+        return $response;
+    }
+
+    /**
      * Films page (protected)
      */
     public function filmsPage(Request $request, Response $response): Response

@@ -1,6 +1,6 @@
 {% extends "admin/forms/add-base.html.twig" %}
 {% block content %}
-<form method="POST" action="/admin/movies/crew">
+<form method="POST" action="/admin/movies/crew/add">
     <input type="hidden" name="movie_id" value="{{ item.movie_id }}">
     <input type="hidden" name="sequence_number" value="{{ item.sequence_number }}">
     <input type="hidden" name="category" value="{{ category }}">

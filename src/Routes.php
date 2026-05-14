@@ -156,10 +156,14 @@ class Routes
         $app->get('/admin/films', [AdminController::class, 'filmsPage'])->add(new AdminAuthMiddleware());
         $app->get('/admin/films/{id}', [AdminController::class, 'filmDetails'])->add(new AdminAuthMiddleware());
         $app->get('/admin/series', [AdminController::class, 'seriesPage'])->add(new AdminAuthMiddleware());
+        $app->get('/admin/series/{id}', [AdminController::class, 'seriesDetails'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/add', [AdminController::class, 'handleAddMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/update', [AdminController::class, 'handleUpdateMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/delete', [AdminController::class, 'handleDeleteMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/genres/add', [AdminController::class, 'handleAddMovieGenre'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/genres/remove', [AdminController::class, 'handleRemoveMovieGenre'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/movies/crew/add', [AdminController::class, 'handleAddMovieCrew'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/movies/crew/update', [AdminController::class, 'handleUpdateMovieCrew'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/movies/crew/remove', [AdminController::class, 'handleRemoveMovieCrew'])->add(new AdminAuthMiddleware());
     }
 }
