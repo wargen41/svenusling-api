@@ -766,9 +766,9 @@ class AdminController
     }
 
     /**
-     * Handle remove crew member from movie form submission
+     * Handle delete crew member from movie form submission
      */
-    public function handleRemoveMovieCrew(Request $request, Response $response): Response
+    public function handleDeleteMovieCrew(Request $request, Response $response): Response
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
