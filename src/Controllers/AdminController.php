@@ -787,7 +787,6 @@ class AdminController
         } else {
             try {
                 $this->callApiDelete('/movies/' . $movieId . '/persons/' . $category . '/' . $sequenceNo, $token);
-                // movies/{movie_id}/persons/{category}/{sequence_number}
 
                 $_SESSION['message'] = 'Medverkan togs bort';
                 $_SESSION['message_type'] = 'success';
