@@ -24,7 +24,7 @@ class Routes
     public static function register(App $app)
     {
         // Authentication routes (public)
-        //$app->post('/auth/register', [AuthController::class, 'register']);
+        $app->post('/auth/register', [AuthController::class, 'register']);
         $app->post('/auth/login', [AuthController::class, 'login']);
 
         // Genre routes
