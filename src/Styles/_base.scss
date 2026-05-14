@@ -173,7 +173,6 @@ button
 .grid-table
 {
     display: grid;
-    grid-template-columns: 2.5em 1fr auto auto;
     justify-items: start;
     align-items: center;
     align-content: center;
@@ -181,6 +180,11 @@ button
     &.director
     {
         grid-template-columns: 2.5em 1fr auto;
+    }
+
+    &.actor
+    {
+        grid-template-columns: 2.5em 1fr auto auto;
     }
 }
 
