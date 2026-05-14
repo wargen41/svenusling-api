@@ -6,7 +6,7 @@
     <input type="hidden" name="sequence_number" value="{{ sub_item.sequence_number }}">
     <input type="hidden" name="category" value="{{ sub_item.category }}">
     <fieldset>
-        <legend>{{ categories[category]|lower ~ " – " ~ item.sequence_number }}</legend>
+        <legend>{{ categories[category] ~ " – " ~ item.sequence_number }}</legend>
             <div class="form-row">
                 <label for="{{ pop_id }}-person_name">Namn</label>
                 <input type="text" id="{{ pop_id }}-person_name" name="person_name" value="{{ sub_item.person_name }}" required>
