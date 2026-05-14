@@ -156,6 +156,8 @@ class MoviePersonsController
 
             $data = $request->getParsedBody();
 
+            error_log("Data: ".$data['movie_id'].$data['person_name'].$data['category']);
+
             if (empty($data['movie_id']) || empty($data['person_name']) || empty($data['category'])) {
                 return $this->jsonResponse(
                     $response,
