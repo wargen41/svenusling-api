@@ -768,7 +768,7 @@ class AdminController
     /**
      * Handle update crew member from movie form submission
      */
-    public function handleAddMovieCrew(Request $request, Response $response): Response
+    public function handleUpdateMovieCrew(Request $request, Response $response): Response
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -792,7 +792,7 @@ class AdminController
             $_SESSION['message'] = '"' . $data['person_name'] . '" uppdaterad';
             $_SESSION['message_type'] = 'success';
         } catch (\Exception $e) {
-            $_SESSION['message'] = 'Error adding crew member: ' . $e->getMessage();
+            $_SESSION['message'] = 'Error updating crew member: ' . $e->getMessage();
             $_SESSION['message_type'] = 'error';
         }
 
