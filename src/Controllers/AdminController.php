@@ -787,7 +787,7 @@ class AdminController
         }else if (!$category) {
             $_SESSION['message'] = 'Error: Category missing';
             $_SESSION['message_type'] = 'error';
-        }else if (!$sequenceNo) {
+        }else if (empty($sequenceNo) && $sequenceNo != 0) {
             $_SESSION['message'] = 'Error: Sequence number missing';
             $_SESSION['message_type'] = 'error';
         } else {
