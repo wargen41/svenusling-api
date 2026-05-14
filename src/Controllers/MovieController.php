@@ -280,13 +280,6 @@ class MovieController
             WHERE movie_id = ?
             ORDER BY category ASC, sequence_number ASC
             ');
-            // $stmt = $this->db->prepare('
-            //     SELECT p.*, mp.category, mp.sequence_number, mp.role_name, mp.note
-            //     FROM persons p
-            //     JOIN movies_persons mp ON mp.person_id = p.id
-            //     WHERE mp.movie_id = ?
-            //     ORDER BY mp.category ASC, mp.sequence_number ASC
-            // ');
             $stmt->execute([$movieId]);
             $persons = $stmt->fetchAll();
 
