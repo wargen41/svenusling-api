@@ -779,7 +779,7 @@ class AdminController
         $redirect_url = $data['redirect_url'] ?? '/admin';
 
         try {
-            $this->callApiPut('/movies/persons', [
+            $this->callApiPut('/movies/' . $movieId . '/persons/' . $category . '/' . $sequenceNo, [
                 'sequence_number' => $data['sequence_number'] ?: null,
                 'movie_id' => $data['movie_id'] ?: null,
                 'person_name' => $data['person_name'] ?: null,

@@ -227,7 +227,9 @@ class MoviePersonsController
     {
         try {
             $movieId = $args['movie_id'] ?? null;
-            $personId = $args['person_id'] ?? null;
+            $personName = $args['person_name'] ?? null;
+            $category = $args['category'] ?? null;
+            $sequenceNo = $args['sequence_number'] ?? null;
             $userRole = $request->getAttribute('user_role');
 
             if ($userRole !== 'admin') {
@@ -237,10 +239,10 @@ class MoviePersonsController
             $data = $request->getParsedBody();
 
             $stmt = $this->db->prepare('
-                SELECT * FROM movies_persons 
-                WHERE movie_id = ? AND person_id = ?
+                SELECT * FROM movies_persons
+                WHERE movie_id = ? AND person_name = ? AND category = ?
             ');
-            $stmt->execute([$movieId, $personId]);
+            $stmt->execute([$movieId, $personName, $category]);
             if (!$stmt->fetch()) {
                 return $this->jsonResponse($response, ['error' => 'Person not found in movie'], 404);
             }
@@ -248,14 +250,6 @@ class MoviePersonsController
             $updates = [];
             $bindings = [];
 
-            if (isset($data['category'])) {
-                $updates[] = 'category = ?';
-                $bindings[] = $data['category'];
-            }
-            if (isset($data['sequence_number'])) {
-                $updates[] = 'sequence_number = ?';
-                $bindings[] = $data['sequence_number'];
-            }
             if (isset($data['role_name'])) {
                 $updates[] = 'role_name = ?';
                 $bindings[] = $data['role_name'];
@@ -264,18 +258,21 @@ class MoviePersonsController
                 $updates[] = 'note = ?';
                 $bindings[] = $data['note'];
             }
-            if (isset($data['person_name'])) {
-                $updates[] = 'person_name = ?';
-                $bindings[] = $data['person_name'];
+            if (isset($data['person_id'])) {
+                $updates[] = 'person_id = ?';
+                $bindings[] = $data['person_id'];
             }
+            $updates[] = 'person_name = ?';
+            $bindings[] = $personName;
 
             if (empty($updates)) {
                 return $this->jsonResponse($response, ['error' => 'No fields to update'], 400);
             }
 
             $bindings[] = $movieId;
-            $bindings[] = $personId;
-            $sql = 'UPDATE movies_persons SET ' . implode(', ', $updates) . ' WHERE movie_id = ? AND person_id = ?';
+            $bindings[] = $category;
+            $bindings[] = $sequenceNo;
+            $sql = 'UPDATE movies_persons SET ' . implode(', ', $updates) . ' WHERE movie_id = ? AND category = ? AND sequence_number = ?';
             $stmt = $this->db->prepare($sql);
             $stmt->execute($bindings);
 
