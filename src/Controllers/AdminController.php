@@ -744,12 +744,12 @@ class AdminController
 
         try {
             $this->callApiPost('/movies/persons', [
-                'movie_id' => $data['movie_id'] ?? null,
-                'person_name' => $data['person_name'] ?? null,
-                'person_id' => $data['person_id'] ?? null,
-                'category' => $data['category'] ?? null,
-                'role_name' => $data['role_name'] ?? null,
-                'note' => $data['note'] ?? null,
+                'movie_id' => $data['movie_id'] ?: null,
+                'person_name' => $data['person_name'] ?: null,
+                'person_id' => $data['person_id'] ?: null,
+                'category' => $data['category'] ?: null,
+                'role_name' => $data['role_name'] ?: null,
+                'note' => $data['note'] ?: null,
             ], $token);
 
             $_SESSION['message'] = 'Medverkande tillagd';
