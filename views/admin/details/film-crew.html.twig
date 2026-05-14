@@ -11,7 +11,6 @@
 {% set list_style = styles[category] %}
 <details open>
     <summary>{{ label }}</summary>
-    <div class="{% if list_style %}{{ list_style }} {% endif %}grid-table">
 
 {% include "admin/forms/add-crew_member.html.twig" %}
         {#<button id="add-{{ category }}-button" popovertarget="{{ pop_id }}">+</button>#}
@@ -19,6 +18,7 @@
 
         <div class="counter">{{ item.persons[category]|length }}</div>
 
+    <div class="{% if list_style %}{{ list_style }} {% endif %}grid-table">
     {% for item in item.persons[category] %}
 {% set pop_id = category ~ "-" ~ item.sequence_number %}
 {% include "admin/forms/edit-crew_member.html.twig" %}
