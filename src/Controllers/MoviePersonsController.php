@@ -240,7 +240,7 @@ class MoviePersonsController
 
             error_log("
             SELECT * FROM movies_persons
-            WHERE movie_id = $movieId AND person_name = $personName AND category = $category
+            WHERE movie_id = $movieId AND person_name = '$personName' AND category = $category
             ");
 
             $stmt = $this->db->prepare('
