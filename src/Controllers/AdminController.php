@@ -780,23 +780,38 @@ class AdminController
         $movieId = $data['movie_id'] ?: null;
         $category = $data['category'] ?: null;
         $sequenceNo = $data['sequence_number'] ?? null;
+        $personName = $data['person_name'] ?? null;
 
-        try {
-            $this->callApiPut('/movies/' . $movieId . '/persons/' . $category . '/' . $sequenceNo, [
-                'sequence_number' => $sequenceNo,
-                'movie_id' => $movieId,
-                'person_name' => $data['person_name'] ?: null,
-                'person_id' => $data['person_id'] ?: null,
-                'category' => $category,
-                'role_name' => $data['role_name'] ?: null,
-                'note' => $data['note'] ?: null,
-            ], $token);
-
-            $_SESSION['message'] = '"' . $data['person_name'] . '" uppdaterad';
-            $_SESSION['message_type'] = 'success';
-        } catch (\Exception $e) {
-            $_SESSION['message'] = 'Error updating crew member: ' . $e->getMessage();
+        if (!$movieId) {
+            $_SESSION['message'] = 'Error: Movie ID missing';
             $_SESSION['message_type'] = 'error';
+        }else if (!$category) {
+            $_SESSION['message'] = 'Error: Category missing';
+            $_SESSION['message_type'] = 'error';
+        }else if (!$personName) {
+            $_SESSION['message'] = 'Error: Person name missing';
+            $_SESSION['message_type'] = 'error';
+        }else if (empty($sequenceNo) && $sequenceNo != 0) {
+            $_SESSION['message'] = 'Error: Sequence number missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiPut('/movies/' . $movieId . '/persons/' . $category . '/' . $sequenceNo, [
+                    'sequence_number' => $sequenceNo,
+                    'movie_id' => $movieId,
+                    'person_name' => $personName ?: null,
+                    'person_id' => $data['person_id'] ?: null,
+                    'category' => $category,
+                    'role_name' => $data['role_name'] ?: null,
+                    'note' => $data['note'] ?: null,
+                ], $token);
+
+                $_SESSION['message'] = '"' . $data['person_name'] . '" uppdaterad';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error updating crew member: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+            }
         }
 
         // Redirect
