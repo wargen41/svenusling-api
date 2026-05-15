@@ -238,6 +238,11 @@ class MoviePersonsController
 
             $data = $request->getParsedBody();
 
+            error_log("
+            SELECT * FROM movies_persons
+            WHERE movie_id = $movieId AND person_name = $personName AND category = $category
+            ");
+
             $stmt = $this->db->prepare('
                 SELECT * FROM movies_persons
                 WHERE movie_id = ? AND person_name = ? AND category = ?
