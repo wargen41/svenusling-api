@@ -53,7 +53,7 @@
             <div class="items">
             {% for item in movies %}
             {% set pop_id = "edit-form-" ~ item.id %}
-            <button class="vip {{ item.type }}" popovertarget="{{ pop_id }}">{{ item.title }}</button>
+            <button class="vip {{ item.type }}{% if item.hidden == 1 %} hidden{% endif %}" popovertarget="{{ pop_id }}">{{ item.title }}</button>
             {% endfor %}
             </div>
         </div>
