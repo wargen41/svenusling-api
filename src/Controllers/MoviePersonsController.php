@@ -234,27 +234,18 @@ class MoviePersonsController
 
             $data = $request->getParsedBody();
 
-            // $movieId = $args['movie_id'] ?? null;
-            // $personName = $args['person_name'] ?? null;
-            // $category = $args['category'] ?? null;
-            // $sequenceNo = $args['sequence_number'] ?? null;
             $movieId = $data['movie_id'] ?? null;
             $personName = $data['person_name'] ?? null;
             $category = $data['category'] ?? null;
             $sequenceNo = $data['sequence_number'] ?? null;
 
-            error_log("
-            SELECT * FROM movies_persons
-            WHERE movie_id = $movieId AND person_name = '$personName' AND category = $category
-            ");
-
             $stmt = $this->db->prepare('
                 SELECT * FROM movies_persons
-                WHERE movie_id = ? AND person_name = "?" AND category = ?
+                WHERE movie_id = ? AND person_name = \'?\' AND category = ? AND sequence_number = ?
             ');
-            $stmt->execute([$movieId, $personName, $category]);
+            $stmt->execute([$movieId, $personName, $category, $sequenceNo]);
             if (!$stmt->fetch()) {
-                return $this->jsonResponse($response, ['error' => 'Person not found in movie'], 404);
+                return $this->jsonResponse($response, ['error' => 'Crew member not found'], 404);
             }
 
             $updates = [];
@@ -280,17 +271,18 @@ class MoviePersonsController
             }
 
             $bindings[] = $movieId;
+            $bindings[] = $personName;
             $bindings[] = $category;
             $bindings[] = $sequenceNo;
-            $sql = 'UPDATE movies_persons SET ' . implode(', ', $updates) . ' WHERE movie_id = ? AND category = ? AND sequence_number = ?';
+            $sql = 'UPDATE movies_persons SET ' . implode(', ', $updates) . ' WHERE movie_id = ? AND person_name = \'?\' AND category = ? AND sequence_number = ?';
             $stmt = $this->db->prepare($sql);
             $stmt->execute($bindings);
 
-            return $this->jsonResponse($response, ['success' => true, 'message' => 'Person updated in movie']);
+            return $this->jsonResponse($response, ['success' => true, 'message' => 'Crew member updated']);
 
         } catch (\Exception $e) {
             error_log('Error in updatePersonInMovie: ' . $e->getMessage());
-            return $this->jsonResponse($response, ['error' => 'Failed to update person in movie'], 500);
+            return $this->jsonResponse($response, ['error' => 'Failed to update crew member'], 500);
         }
     }
 

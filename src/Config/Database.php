@@ -206,7 +206,8 @@ class Database
                     note TEXT,
                     sequence_number INTEGER NOT NULL,
                     FOREIGN KEY(movie_id) REFERENCES movies(id),
-                    FOREIGN KEY(person_id) REFERENCES persons(id)
+                    FOREIGN KEY(person_id) REFERENCES persons(id),
+                    UNIQUE (movie_id, person_name, category, sequence_number)
             )
             ');
             error_log('✓ Movies persons table created');
