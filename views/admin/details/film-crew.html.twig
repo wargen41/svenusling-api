@@ -8,6 +8,8 @@
 <details open>
     <summary>{{ label }}</summary>
 
+    {% set new_sequence_number = item.persons[category]|last.sequence_number + 1 %}
+
     {% set pop_id = "add-" ~ category ~ "-dlg" %}
     {% include "admin/forms/add-crew_member.html.twig" %}
         <button class="add" id="add-{{ category }}-button" popovertarget="{{ pop_id }}">+</button><label for="add-{{ category }}-button">Lägg till</label>
@@ -15,8 +17,6 @@
         <div class="counter">{{ item.persons[category]|length }}</div>
 
     <div class="{{ category }} grid-table">
-    {% set new_sequence_number = item.persons[category]|last.sequence_number + 1 %}
-    <p>Test: {{ new_sequence_number }}</p>
     {% for sub_item in item.persons[category] %}
         {% set pop_id = "edit-" ~ category ~ "-" ~ sub_item.sequence_number %}
         {% include "admin/forms/edit-crew_member.html.twig" %}
