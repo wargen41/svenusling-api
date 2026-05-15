@@ -475,7 +475,9 @@ class MovieController
             $stmt->execute([$movieId]);
             $movie = $stmt->fetchAll();
             foreach ($movie as $info) {
-                error_log($info);
+                foreach ($info as $str) {
+                    error_log($str);
+                }
             }
             if (!$movie) {
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
