@@ -3,7 +3,7 @@
 <form method="POST" action="/admin/movies/crew/add">
     <input type="hidden" name="redirect_url" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
-    <input type="hidden" name="sequence_number" value="{{ item.persons[category]|length + 1 }}">
+    <input type="hidden" name="sequence_number" value="{{ new_sequence_number }}">
     <input type="hidden" name="category" value="{{ category }}">
     <fieldset>
         <legend>Lägg till {{ categories[category]|lower }}</legend>
