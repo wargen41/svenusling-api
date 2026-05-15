@@ -790,16 +790,21 @@ button {
 .button-list.compact {
   justify-content: flex-start;
 }
+.button-list .hidden {
+  border-style: dotted;
+}
 
 .grid-table {
   display: grid;
-  grid-template-columns: 2.5em 1fr auto auto;
   justify-items: start;
   align-items: center;
   align-content: center;
 }
 .grid-table.director {
   grid-template-columns: 2.5em 1fr auto;
+}
+.grid-table.actor {
+  grid-template-columns: 2.5em 1fr auto auto;
 }
 
 .form-row + .form-row {
