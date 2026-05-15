@@ -273,7 +273,6 @@ class MoviePersonsController
             $bindings[] = $category;
             $bindings[] = $sequenceNo;
             $sql = 'UPDATE movies_persons SET ' . implode(', ', $updates) . ' WHERE movie_id = ? AND category = ? AND sequence_number = ?';
-            error_log("SQL: ".$sql);
             $stmt = $this->db->prepare($sql);
             $stmt->execute($bindings);
 
