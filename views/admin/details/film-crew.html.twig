@@ -15,6 +15,7 @@
         <div class="counter">{{ item.persons[category]|length }}</div>
 
     <div class="{{ category }} grid-table">
+    <p>Test: {{ item.persons[category]|last.sequence_number }}</p>
     {% set new_sequence_number = item.persons[category]|last.sequence_number + 1 %}
     {% for sub_item in item.persons[category] %}
         {% set pop_id = "edit-" ~ category ~ "-" ~ sub_item.sequence_number %}
