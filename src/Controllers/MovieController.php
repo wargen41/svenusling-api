@@ -473,8 +473,8 @@ class MovieController
             // Verify movie exists (and fetch existing data for when comparisons are needed)
             $stmt = $this->db->prepare('SELECT * FROM movies WHERE id = ?');
             $stmt->execute([$movieId]);
-            $movie = $stmt->fetchAll();
-            foreach ($movie['data'] as $info) {
+            $movie = $stmt->fetch();
+            foreach ($movie as $info) {
                 error_log($info);
             }
             if (!$movie) {
