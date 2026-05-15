@@ -712,7 +712,7 @@ class AdminController
             try {
                 $this->callApiDelete('/movies/' . $movieId . '/genres/' . $genreId, $token);
 
-                $_SESSION['message'] = 'Genre togs bort';
+                $_SESSION['message'] = 'Genren togs bort';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error removing genre: ' . $e->getMessage();
