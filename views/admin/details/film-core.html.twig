@@ -30,6 +30,8 @@
         <input type="text" id="edit-title" name="title" value="{{ item.title }}" required>
         <label for="edit-original_title">Originaltitel</label>
         <input type="text" id="edit-original_title" name="original_title" value="{{ item.original_title }}">
+        <label for="edit-sorting_title">Sorteringstitel</label>
+        <input type="text" id="edit-sorting_title" name="sorting_title" value="{{ item.sorting_title }}">
     </div>
     <div class="form-row">
         <label for="edit-description">Kort beskrivning
@@ -37,7 +39,7 @@
         </label>
     </div>
     <div class="actions">
-        <button type="submit">Uppdatera</button>
+        <button type="submit">Spara</button>
     </div>
 </form>
 
