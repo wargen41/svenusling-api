@@ -239,6 +239,10 @@ class MoviePersonsController
             $category = $data['category'] ?? null;
             $sequenceNo = $data['sequence_number'] ?? null;
 
+            error_log("SQL: ".'
+            SELECT * FROM movies_persons
+            WHERE movie_id = ? AND person_name = \'?\' AND category = ? AND sequence_number = ?
+            ');
             $stmt = $this->db->prepare('
                 SELECT * FROM movies_persons
                 WHERE movie_id = ? AND person_name = \'?\' AND category = ? AND sequence_number = ?
