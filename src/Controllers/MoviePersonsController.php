@@ -226,10 +226,6 @@ class MoviePersonsController
     public function updatePersonInMovie(Request $request, Response $response, array $args): Response
     {
         try {
-            $movieId = $args['movie_id'] ?? null;
-            $personName = $args['person_name'] ?? null;
-            $category = $args['category'] ?? null;
-            $sequenceNo = $args['sequence_number'] ?? null;
             $userRole = $request->getAttribute('user_role');
 
             if ($userRole !== 'admin') {
@@ -238,6 +234,15 @@ class MoviePersonsController
 
             $data = $request->getParsedBody();
 
+            // $movieId = $args['movie_id'] ?? null;
+            // $personName = $args['person_name'] ?? null;
+            // $category = $args['category'] ?? null;
+            // $sequenceNo = $args['sequence_number'] ?? null;
+            $movieId = $data['movie_id'] ?? null;
+            $personName = $data['person_name'] ?? null;
+            $category = $data['category'] ?? null;
+            $sequenceNo = $data['sequence_number'] ?? null;
+
             error_log("
             SELECT * FROM movies_persons
             WHERE movie_id = $movieId AND person_name = '$personName' AND category = $category
@@ -245,7 +250,7 @@ class MoviePersonsController
 
             $stmt = $this->db->prepare('
                 SELECT * FROM movies_persons
-                WHERE movie_id = ? AND person_name = ? AND category = ?
+                WHERE movie_id = ? AND person_name = "?" AND category = ?
             ');
             $stmt->execute([$movieId, $personName, $category]);
             if (!$stmt->fetch()) {
