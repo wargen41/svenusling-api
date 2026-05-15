@@ -5,6 +5,7 @@
     <input type="hidden" name="movie_id" value="{{ sub_item.movie_id }}">
     <input type="hidden" name="sequence_number" value="{{ sub_item.sequence_number }}">
     <input type="hidden" name="category" value="{{ sub_item.category }}">
+    {% if category != 'actor' %}<input type="hidden" name="role_name" value="">{% endif %}
     <fieldset>
         <legend>{{ categories[category] ~ " – " ~ sub_item.sequence_number }}</legend>
             <div class="form-row">
