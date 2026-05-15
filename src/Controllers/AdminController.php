@@ -589,6 +589,9 @@ class AdminController
                 $movie = $this->callApiGet('/movies/' . $movieId, $token)['data'];
                 $title = $data['title'] ?? $movie['title'] ?? null;
 
+                $test = $data['added_date'] ?? $movie['added_date'] ?? null;
+                error_log('test: '.$test);
+
                 $this->callApiPut('/movies/' . $movieId, [
                     'hidden' => $data['hidden'] ?? '0',
                     'added_date' => $data['added_date'] ?? $movie['added_date'] ?? null,
