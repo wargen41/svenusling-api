@@ -235,15 +235,14 @@ class MoviePersonsController
             $data = $request->getParsedBody();
 
             $movieId = $data['movie_id'] ?? null;
-            $personName = $data['person_name'] ?? null;
             $category = $data['category'] ?? null;
             $sequenceNo = $data['sequence_number'] ?? null;
 
             $stmt = $this->db->prepare('
                 SELECT * FROM movies_persons
-                WHERE movie_id = ? AND person_name = ? AND category = ? AND sequence_number = ?
+                WHERE movie_id = ? AND category = ? AND sequence_number = ?
             ');
-            $stmt->execute([$movieId, $personName, $category, $sequenceNo]);
+            $stmt->execute([$movieId, $category, $sequenceNo]);
             if (!$stmt->fetch()) {
                 return $this->jsonResponse($response, ['error' => 'Crew member not found'], 404);
             }
@@ -264,17 +263,16 @@ class MoviePersonsController
                 $bindings[] = $data['person_id'];
             }
             $updates[] = 'person_name = ?';
-            $bindings[] = $personName;
+            $bindings[] = $data['person_name'];
 
             if (empty($updates)) {
                 return $this->jsonResponse($response, ['error' => 'No fields to update'], 400);
             }
 
             $bindings[] = $movieId;
-            $bindings[] = $personName;
             $bindings[] = $category;
             $bindings[] = $sequenceNo;
-            $sql = 'UPDATE movies_persons SET ' . implode(', ', $updates) . ' WHERE movie_id = ? AND person_name = ? AND category = ? AND sequence_number = ?';
+            $sql = 'UPDATE movies_persons SET ' . implode(', ', $updates) . ' WHERE movie_id = ? AND category = ? AND sequence_number = ?';
             error_log("SQL: ".$sql);
             $stmt = $this->db->prepare($sql);
             $stmt->execute($bindings);
