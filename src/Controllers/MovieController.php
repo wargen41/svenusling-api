@@ -483,7 +483,7 @@ class MovieController
             $bindings = [];
 
             $fields = [
-                'hidden', 'type', 'series_id', 'season_id', 'sequence_number',
+                'hidden', 'added_date', 'type', 'series_id', 'season_id', 'sequence_number',
                 'sequence_number_2', 'title', 'original_title', 'sorting_title',
                 'year', 'year_2', 'rating', 'poster_image_id',
                 'large_image_id', 'imdb_id', 'description'
