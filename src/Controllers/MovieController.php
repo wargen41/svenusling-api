@@ -470,17 +470,10 @@ class MovieController
 
             $data = $request->getParsedBody();
 
-            // Verify movie exists
-            // $stmt = $this->db->prepare('SELECT id FROM movies WHERE id = ?');
-            // $stmt->execute([$movieId]);
-            // if (!$stmt->fetch()) {
-            //     return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
-            // }
             // Verify movie exists (and fetch existing data for when comparisons are needed)
             $stmt = $this->db->prepare('SELECT * FROM movies WHERE id = ?');
             $stmt->execute([$movieId]);
             $movie = $stmt->fetchAll();
-            error_log("movie: $movie");
             if (!$movie) {
                 return $this->jsonResponse($response, ['error' => 'Movie not found'], 404);
             }
