@@ -587,6 +587,7 @@ class AdminController
         } else {
             try {
                 $movie = $this->callApiGet('/movies/' . $movieId)['data'];
+                $title = $data['title'] ?? $movie['title'] ?? null;
 
                 $this->callApiPut('/movies/' . $movieId, [
                     'hidden' => $data['hidden'] ?? $movie['hidden'] ?? '1',
@@ -597,7 +598,7 @@ class AdminController
                     'season_id' => $data['season_id'] ?? $movie['season_id'] ?? null,
                     'sequence_number' => $data['sequence_number'] ?? $movie['sequence_number'] ?? null,
                     'sequence_number_2' => $data['sequence_number_2'] ?? $movie['sequence_number_2'] ?? null,
-                    'title' => $data['title'] ?? $movie['title'] ?? null,
+                    'title' => $title,
                     'original_title' => $data['original_title'] ?? $movie['original_title'] ?? null,
                     'sorting_title' => $data['sorting_title'] ?? $movie['sorting_title'] ?? $data['title'],
                     'year' => $data['year'] ?? $movie['year'] ?? null,
@@ -609,7 +610,7 @@ class AdminController
                     'description' => $data['description'] ?? $movie['description'] ?? null,
                 ], $token);
 
-                $_SESSION['message'] = '"' . $movie['title'] . '" uppdaterades';
+                $_SESSION['message'] = '"' . $title . '" uppdaterades';
                 $_SESSION['message_type'] = 'success';
             } catch (\Exception $e) {
                 $_SESSION['message'] = 'Error updating movie: ' . $e->getMessage();
