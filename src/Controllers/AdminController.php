@@ -782,8 +782,6 @@ class AdminController
         $sequenceNo = $data['sequence_number'] ?? null;
         $personName = $data['person_name'] ?? null;
 
-        error_log("person_name: $personName");
-
         if (!$movieId) {
             $_SESSION['message'] = 'Error: Movie ID missing';
             $_SESSION['message_type'] = 'error';
