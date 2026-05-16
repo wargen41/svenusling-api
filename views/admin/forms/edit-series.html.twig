@@ -1,0 +1,60 @@
+{% extends "admin/forms/edit-base.html.twig" %}
+{% block content %}
+{#<form method="POST" action="/admin/movies/update">#}
+<form method="POST" action="/admin/movies/update">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ item.id }}">
+    <fieldset>
+        <legend>{{ item.title }}</legend>
+        <details open>
+            <summary>Recension</summary>
+            {# OBS!! Detta ska sedan hämta användarens personliga betyg, då man inte ska kunna redigera filmens betyg direkt #}
+            {# Detta ifall man senare kommer fram till att fler personer ska kunna lägga in betyg och filmens rating blir ett genomsnitt #}
+            {# Lägger in filmens rating här så länge bara för att jobba med designen #}
+            {% set review = item %} {# Tillfällig mappning; sedan ska ju användarens riktiga recension hämtas #}
+            <div class="form-row">
+                <label for="edit-rating-{{ review.id }}">Betyg
+                    <input type="number" size="3" min="0" max="100" id="edit-rating-{{ review.id }}" name="rating" {% if review.rating %}value="{{ review.rating }}"{% endif %}>
+                </label>
+            </div>
+            <div class="form-row">
+                <label for="edit-comment-{{ item.id }}">Kommentar
+                    <textarea id="edit-comment-{{ item.id }}" name="comment">{{ item.description }}</textarea>
+                </label>
+            </div>
+        </details>
+        <details open>
+            <summary>Publicering</summary>
+            <div class="form-row">
+                <label for="edit-sorting_title-{{ item.id }}">Sorteringstitel</label>
+                <input type="text" id="edit-sorting_title-{{ item.id }}" name="sorting_title" value="{{ item.sorting_title }}">
+            </div>
+            <div class="form-row">
+                <label for="edit-added_date-{{ item.id }}">Datum
+                    <input type="date" id="edit-birth-{{ item.id }}" name="added_date" value="{{ item.added_date }}">
+                </label>
+                <label for="edit-hidden-{{ item.id }}">Dold
+                    <input type="checkbox" id="edit-hidden-{{ item.id }}" name="hidden" value="1" {% if item.hidden %}checked{% endif %}>
+                </label>
+            </div>
+        </details>
+        <div class="actions">
+            <button type="submit">Spara</button>
+        </div>
+    </fieldset>
+</form>
+
+<ul class="actions">
+    <li><a href="{{ this_page ~ '/' ~ item.id }}">Redigera detaljer</a></ul>
+</ul>
+
+<form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.title }}? ({{ item.id }})');">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ item.id }}">
+    <fieldset class="danger">
+        <div class="actions">
+            <button type="submit" class="delete">Ta bort film?</button>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}
