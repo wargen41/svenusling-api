@@ -708,6 +708,7 @@ label {
 }
 
 fieldset {
+  position: relative;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
   padding-inline: 1rem;
