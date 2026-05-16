@@ -733,6 +733,7 @@ fieldset ul > li + li {
   margin-top: 0.6em;
 }
 fieldset > details {
+  position: inherit;
   border: inherit;
   border-radius: inherit;
   border-color: var(--color-outline-secondary);
