@@ -897,10 +897,7 @@ class AdminController
             $type = $params['type'] ?? null;
             $year = $params['year'] ?? null;
             $rating = $params['rating'] ?? null;
-            /* Att kunna välja Alla funkar inte när jag har sidor uppdelade mellan filmer och serier
-            if($type == 'all'){
-                $type = null;
-            }else */if($type == null){
+            if($type == null){
                 $limit = 0; // Visa inget genom att ange limit 0
             }
 
@@ -982,6 +979,128 @@ class AdminController
             return Twig::fromRequest($request)->render(
                 $response,
                 'admin/film-details.html.twig',
+                [
+                    'user' => $user,
+                    'message' => 'Failed to load movie: ' . $e->getMessage(),
+                    'message_type' => 'error',
+                    'pageTitle' => 'Ett fel uppstod'
+                ]
+            );
+        }
+    }
+
+    /**
+     * Series page (protected)
+     */
+    public function seriesPage(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $user = $_SESSION['user'] ?? null;
+        $token = $_SESSION['jwt_token'] ?? null;
+
+        // Spara query
+        $_SESSION['movies_query'] = $_SERVER['QUERY_STRING'] ?: null;
+
+        // Get message from session if exists
+        $message = $_SESSION['message'] ?? null;
+        $messageType = $_SESSION['message_type'] ?? null;
+        unset($_SESSION['message']);
+        unset($_SESSION['message_type']);
+
+        try {
+            $params = $request->getQueryParams();
+            $hidden = $params['hidden'] ?? null;
+
+            $limit = $params['limit'] ?? '-1';
+            $search = $params['search'] ?? null;
+            $type = $params['type'] ?? null;
+            $year = $params['year'] ?? null;
+            $rating = $params['rating'] ?? null;
+            if($type == null){
+                $limit = 0; // Visa inget genom att ange limit 0
+            }
+
+            // Fetch movies from API
+            if(isset($hidden)){
+                $movies = $this->callApiGet("/movies/hidden?limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
+            }else{
+                $movies = $this->callApiGet("/movies?limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
+            }
+
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/series.html.twig',
+                [
+                    'user' => $user,
+                    'movies' => $movies['data'] ?? [],
+                    'pagination' => $movies['pagination'] ?? [],
+                    'params' => $params,
+                    'message' => $message,
+                    'message_type' => $messageType,
+                    'pageTitle' => 'Filmer'
+                ]
+            );
+        } catch (\Exception $e) {
+            error_log('Error in seriesPage: ' . $e->getMessage());
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/series.html.twig',
+                [
+                    'user' => $user,
+                    'message' => 'Failed to load movies: ' . $e->getMessage(),
+                    'message_type' => 'error',
+                    'movies' => [],
+                    'pagination' => $movies['pagination'] ?? [],
+                    'params' => $params,
+                    'pageTitle' => 'Filmer'
+                ]
+            );
+        }
+    }
+
+    /**
+     * Series details (protected)
+     */
+    public function seriesDetails(Request $request, Response $response, array $args): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $user = $_SESSION['user'] ?? null;
+        $token = $_SESSION['jwt_token'] ?? null;
+
+        // Get message from session if exists
+        $message = $_SESSION['message'] ?? null;
+        $messageType = $_SESSION['message_type'] ?? null;
+        unset($_SESSION['message']);
+        unset($_SESSION['message_type']);
+
+        try {
+            $movieId = $args['id'] ?? null;
+
+            // Fetch movie from API
+            $movie = $this->callApiGet("/movies/$movieId");
+
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/series-details.html.twig',
+                [
+                    'user' => $user,
+                    'item' => $movie['data'],
+                    'message' => $message,
+                    'message_type' => $messageType,
+                    'pageTitle' => $movie['data']['title']
+                ]
+            );
+        } catch (\Exception $e) {
+            error_log('Error in seriesDetails: ' . $e->getMessage());
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/series-details.html.twig',
                 [
                     'user' => $user,
                     'message' => 'Failed to load movie: ' . $e->getMessage(),
