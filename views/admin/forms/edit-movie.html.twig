@@ -44,7 +44,7 @@
     <li><a href="{{ '/admin/movies/' ~ item.id }}">Redigera detaljer</a></li>
     {% if item.hidden == 1 %}
     {% set pop_id = "publish-form-" ~ item.id %}
-    {% set pop_title = item.title %}
+    {% set pop_title = null %}
     {% include "admin/forms/publish-movie.html.twig" %}
     <button popovertarget="{{ pop_id }}">Publicera</button>
     {% endif %}
