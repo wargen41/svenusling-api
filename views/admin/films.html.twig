@@ -29,6 +29,7 @@
 
         {% for item in movies %}
         {% set pop_id = "edit-form-" ~ item.id %}
+        {% set pop_title = item.title %}
         {% include "admin/forms/edit-film.html.twig" %}
         {% endfor %}
 
