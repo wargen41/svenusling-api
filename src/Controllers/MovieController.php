@@ -56,7 +56,7 @@ class MovieController
             }
 
             // Filter by rating
-            if ($rating !== null) {
+            if ($rating !== null && $rating !== '') {
                 $where[] = 'rating = ?';
                 $bindings[] = (int)$rating;
             }
