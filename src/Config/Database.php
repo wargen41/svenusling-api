@@ -14,10 +14,10 @@ define('OPT', array(
             'short' => 'Kortfilm',
         ),
         'SERIES' => array(
-            'episode' => 'Avsnitt',
-            'season' => 'Säsong',
             'series' => 'Serie',
             'miniseries' => 'Miniserie',
+            'season' => 'Säsong',
+            'episode' => 'Avsnitt',
         ),
     ),
     'CREW_CATEGORIES' => array(
