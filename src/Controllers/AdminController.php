@@ -961,7 +961,7 @@ class AdminController
             $movieId = $args['id'] ?? null;
 
             // Fetch movie from API
-            $movie = $this->callApiGet("/movies/$movieId");
+            $movie = $this->callApiGet("/movies/$movieId", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
