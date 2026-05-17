@@ -31,9 +31,16 @@
     {% set pop_id = "publish-form-" ~ item.id %}
     {% set pop_title = null %}
     {% include "admin/forms/publish-movie.html.twig" %}
-    <button popovertarget="{{ pop_id }}">Publicera</button>
+    <li><button popovertarget="{{ pop_id }}">Publicera</button></li>
+    {% else %}
+    <li><button type="submit" form="unpublish-form">Dölj</button></li>
     {% endif %}
 </ul>
+<form id="unpublish-form" method="POST" action="/admin/movies/update">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
+    <input type="hidden" name="movie_id" value="{{ item.id }}">
+    <input type="hidden" name="hidden" value="">
+</form>
 
 <details class="danger">
     <summary>Farozon</summary>
