@@ -1,0 +1,25 @@
+{% extends "admin/base.html.twig" %}
+
+{% set types = constant('OPT').MOVIE_TYPES.FILMS %}
+{% set categories = constant('OPT').CREW_CATEGORIES %}
+
+{% block mainContent %}
+{% if item == null %}
+        <pre>ERROR item is null</pre>
+{% else %}
+
+{% set this_page = '/admin/films/' ~ item.id %}
+
+    <article>
+        <h1>{{ item.title }}</h1>
+
+{% include "admin/details/movie-core.html.twig" %}
+
+{% include "admin/details/movie-genres.html.twig" %}
+
+{% include "admin/details/movie-crew.html.twig" %}
+
+    </article>
+
+{% endif %}
+{% endblock %}
