@@ -499,7 +499,7 @@ class AdminController
                     'params' => $params,
                     'message' => $message,
                     'message_type' => $messageType,
-                    'pageTitle' => 'Personer'
+                    'pageTitle' => 'VIP'
                 ]
             );
         } catch (\Exception $e) {
