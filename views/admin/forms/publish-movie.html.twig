@@ -11,8 +11,10 @@
                 <input type="text" id="edit-sorting_title-{{ item.id }}" name="sorting_title" value="{{ item.sorting_title }}" required>
             </div>
             <div class="form-row">
+                {% set added_date_value = "now"|date("Y-m-d") %}
+                {% if item.added_date %}{% set added_date_value = item.added_date %}{% endif %}
                 <label for="edit-added_date-{{ item.id }}">Datum
-                    <input type="date" id="edit-birth-{{ item.id }}" name="added_date" value="{{ item.added_date }}" required>
+                    <input type="date" id="edit-added_date-{{ item.id }}" name="added_date" value="{{ added_date_value }}" required>
                 </label>
             </div>
         <div class="actions">
