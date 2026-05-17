@@ -41,7 +41,7 @@
 </form>
 
 <ul class="actions">
-    <li><a href="{{ this_page ~ '/' ~ item.id }}">Redigera detaljer</a></li>
+    <li><a href="{{ '/admin/movies/' ~ item.id }}">Redigera detaljer</a></li>
     {% set pop_id = "publish-form-" ~ item.id %}
     <button popovertarget="{{ pop_id }}">Publicering</button>
 </ul>

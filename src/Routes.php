@@ -154,9 +154,10 @@ class Routes
 
         // Admin movie routes
         $app->get('/admin/films', [AdminController::class, 'filmsPage'])->add(new AdminAuthMiddleware());
-        $app->get('/admin/films/{id}', [AdminController::class, 'filmDetails'])->add(new AdminAuthMiddleware());
+        //$app->get('/admin/films/{id}', [AdminController::class, 'filmDetails'])->add(new AdminAuthMiddleware());
         $app->get('/admin/series', [AdminController::class, 'seriesPage'])->add(new AdminAuthMiddleware());
-        $app->get('/admin/series/{id}', [AdminController::class, 'seriesDetails'])->add(new AdminAuthMiddleware());
+        //$app->get('/admin/series/{id}', [AdminController::class, 'seriesDetails'])->add(new AdminAuthMiddleware());
+        $app->get('/admin/movies/{id}', [AdminController::class, 'movieDetails'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/add', [AdminController::class, 'handleAddMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/update', [AdminController::class, 'handleUpdateMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/delete', [AdminController::class, 'handleDeleteMovie'])->add(new AdminAuthMiddleware());
