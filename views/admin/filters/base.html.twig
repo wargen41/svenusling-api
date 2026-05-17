@@ -1,0 +1,16 @@
+{% extends "admin/filters/base.html.twig" %}
+
+<form class="filter" method="GET" action="{{ this_page }}">
+    <details open>
+        <summary>Filter</summary>
+{% block content %}
+{% endblock %}
+
+{% block actions %}
+        <div class="actions">
+            <button type="submit">Visa filtrerad lista</button>
+            <a href="{{ this_page }}" class="form-reset">Rensa filter</a>
+        </div>
+{% endblock %}
+    </details>
+</form>
