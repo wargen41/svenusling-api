@@ -5,24 +5,21 @@
     <input type="hidden" name="redirect_url" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <fieldset>
-        <legend>{{ item.title }}</legend>
-        <details open>
-            <summary>Recension</summary>
-            {# OBS!! Detta ska sedan hämta användarens personliga betyg, då man inte ska kunna redigera filmens betyg direkt #}
-            {# Detta ifall man senare kommer fram till att fler personer ska kunna lägga in betyg och filmens rating blir ett genomsnitt #}
-            {# Lägger in filmens rating här så länge bara för att jobba med designen #}
-            {% set review = item %} {# Tillfällig mappning; sedan ska ju användarens riktiga recension hämtas #}
-            <div class="form-row">
-                <label for="edit-rating-{{ review.id }}">Betyg
-                    <input type="number" size="3" min="0" max="100" id="edit-rating-{{ review.id }}" name="rating" {% if review.rating %}value="{{ review.rating }}"{% endif %}>
-                </label>
-            </div>
-            <div class="form-row">
-                <label for="edit-comment-{{ item.id }}">Kommentar
-                    <textarea id="edit-comment-{{ item.id }}" name="comment">{{ item.description }}</textarea>
-                </label>
-            </div>
-        </details>
+        <legend>Recension</legend>
+        {# OBS!! Detta ska sedan hämta användarens personliga betyg, då man inte ska kunna redigera filmens betyg direkt #}
+        {# Detta ifall man senare kommer fram till att fler personer ska kunna lägga in betyg och filmens rating blir ett genomsnitt #}
+        {# Lägger in filmens rating här så länge bara för att jobba med designen #}
+        {% set review = item %} {# Tillfällig mappning; sedan ska ju användarens riktiga recension hämtas #}
+        <div class="form-row">
+            <label for="edit-rating-{{ review.id }}">Betyg
+                <input type="number" size="3" min="0" max="100" id="edit-rating-{{ review.id }}" name="rating" {% if review.rating %}value="{{ review.rating }}"{% endif %}>
+            </label>
+        </div>
+        <div class="form-row">
+            <label for="edit-comment-{{ item.id }}">Kommentar
+                <textarea id="edit-comment-{{ item.id }}" name="comment">{{ item.description }}</textarea>
+            </label>
+        </div>
         <details open>
             <summary>Publicering</summary>
             <div class="form-row">
