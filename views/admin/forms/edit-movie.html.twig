@@ -36,7 +36,7 @@
     <li><button type="submit" form="unpublish-form">Dölj</button></li>
     {% endif %}
 </ul>
-<form id="unpublish-form" method="POST" action="/admin/movies/update">
+<form id="unpublish-form" method="POST" action="/admin/movies/update" onsubmit="return confirm('Säkert att du vill dölja {{ item.title }}? ({{ item.id }})');">
     <input type="hidden" name="redirect_url" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <input type="hidden" name="hidden" value="1">
