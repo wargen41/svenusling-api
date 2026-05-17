@@ -1040,7 +1040,7 @@ class AdminController
                     'params' => $params,
                     'message' => $message,
                     'message_type' => $messageType,
-                    'pageTitle' => 'Filmer'
+                    'pageTitle' => 'Serier'
                 ]
             );
         } catch (\Exception $e) {
@@ -1055,7 +1055,7 @@ class AdminController
                     'movies' => [],
                     'pagination' => $movies['pagination'] ?? [],
                     'params' => $params,
-                    'pageTitle' => 'Filmer'
+                    'pageTitle' => 'Serier'
                 ]
             );
         }
