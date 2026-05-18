@@ -36,12 +36,12 @@
 {% endif %}
 
 <ul class="actions">
-    <li><a href="{{ '/admin/movies/' ~ item.id }}">Redigera detaljer</a></li>
 {% if item.hidden == 1 %}
     <li><button popovertarget="{{ pop_id }}">Publicera</button></li>
 {% else %}
     <li><button type="submit" form="{{ unpublish_form_id }}">Avpublicera</button></li>
 {% endif %}
+    <li><a href="{{ '/admin/movies/' ~ item.id }}">Redigera detaljer</a></li>
 </ul>
 
 <details class="danger">
