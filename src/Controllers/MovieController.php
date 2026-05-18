@@ -256,7 +256,7 @@ class MovieController
             if($details === 'minimal'){
                 $limit = (int)($params['limit'] ?? -1);
             }else{
-                $limit = min((int)($params['limit'] ?? 10), 1000);
+                $limit = min((int)($params['limit'] ?? 20), 1000);
             }
 
             $where = [];
