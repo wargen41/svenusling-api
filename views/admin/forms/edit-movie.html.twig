@@ -25,22 +25,24 @@
     </fieldset>
 </form>
 
-<ul class="actions">
-    <li><a href="{{ '/admin/movies/' ~ item.id }}">Redigera detaljer</a></li>
-    {% if item.hidden == 1 %}
+{% set unpublish_form_id = "unpublish-form" ~ item.id %}
+{% if item.hidden == 1 %}
     {% set pop_id = "publish-form-" ~ item.id %}
     {% set pop_title = null %}
     {% include "admin/forms/publish-movie.html.twig" %}
+{% else %}
+    {% set form_id = unpublish_form_id %}
+    {% include "admin/forms/unpublish-movie.html.twig" %}
+{% endif %}
+
+<ul class="actions">
+    <li><a href="{{ '/admin/movies/' ~ item.id }}">Redigera detaljer</a></li>
+{% if item.hidden == 1 %}
     <li><button popovertarget="{{ pop_id }}">Publicera</button></li>
-    {% else %}
-    <li><button type="submit" form="unpublish-form">Dölj</button></li>
-    {% endif %}
+{% else %}
+    <li><button type="submit" form="{{ unpublish_form_id }}">Dölj</button></li>
+{% endif %}
 </ul>
-<form id="unpublish-form" method="POST" action="/admin/movies/update" onsubmit="return confirm('Säkert att du vill dölja {{ item.title }}? ({{ item.id }})');">
-    <input type="hidden" name="redirect_url" value="{{ this_page }}">
-    <input type="hidden" name="movie_id" value="{{ item.id }}">
-    <input type="hidden" name="hidden" value="1">
-</form>
 
 <details class="danger">
     <summary>Farozon</summary>
