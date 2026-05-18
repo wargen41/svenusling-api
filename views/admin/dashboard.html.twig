@@ -53,6 +53,7 @@
                 </form>
         </details>
 
+        {% if hidden_movies|length > 0 %}
         <h2>Dolda filmer</h2>
         <p>Det finns {{ hidden_movies|length }} som ännu inte publicerats.</p>
         <div class="button-list">
@@ -63,6 +64,7 @@
             <button class="movie {{ item.type }} hidden" popovertarget="{{ pop_id }}">{{ item.title }}</button>
         {% endfor %}
         </div>
+        {% endif %}
 
         <details>
         <summary><h2>Senast publicerade</h2></summary>
