@@ -64,6 +64,18 @@
         {% endfor %}
         </div>
 
+        <details>
+        <summary><h2>Senast publicerade</h2></summary>
+        <div class="button-list">
+        {% for item in latest_movies %}
+            {% set pop_id = "edit-form-" ~ item.id %}
+            {% set pop_title = item.title %}
+            {% include "admin/forms/edit-movie.html.twig" %}
+            <button class="movie {{ item.type }}" popovertarget="{{ pop_id }}">{{ item.title }}</button>
+        {% endfor %}
+        </div>
+        </details>
+
         <nav>
             <h2>Innehåll</h2>
             <ul>
