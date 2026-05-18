@@ -239,6 +239,116 @@ class MovieController
     }
 
     /**
+     * Public: Get latest published movies with filtering
+     */
+    public function listLatestMovies(Request $request, Response $response): Response
+    {
+        try {
+            $userRole = $request->getAttribute('user_role');
+
+            $params = $request->getQueryParams();
+            $type = $params['type'] ?? null;
+            $year = $params['year'] ?? null;
+            $rating = $params['rating'] ?? null;
+            $search = $params['search'] ?? null;
+            $skip = (int)($params['skip'] ?? 0);
+            $details = $params['details'] ?? null;
+            if($details === 'minimal'){
+                $limit = (int)($params['limit'] ?? -1);
+            }else{
+                $limit = min((int)($params['limit'] ?? 10), 1000);
+            }
+
+            $where = [];
+            $bindings = [];
+
+            // Filter by type (film, series, season, episode, miniseries)
+            if ($type) {
+                $where[] = 'type = ?';
+                $bindings[] = $type;
+            }
+
+            // Filter by year
+            if ($year) {
+                $where[] = 'year = ?';
+                $bindings[] = $year;
+            }
+
+            // Filter by rating
+            if ($rating !== null) {
+                $where[] = 'rating = ?';
+                $bindings[] = (int)$rating;
+            }
+
+            // Search by title
+            if ($search) {
+                $where[] = '(title LIKE ? OR original_title LIKE ?)';
+                $searchTerm = '%' . $search . '%';
+                $bindings[] = $searchTerm;
+                $bindings[] = $searchTerm;
+            }
+
+            // Add hidden filter (show only published)
+            $where[] = 'hidden = ?';
+            $bindings[] = 0;
+
+            $whereClause = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
+
+            // Select columns, based on requested detail level and user role
+            $cols = ['id', 'title', 'year', 'type', 'rating']; // Minimal
+            if($details !== 'minimal'){
+                array_push($cols, 'sequence_number', 'sequence_number_2', 'year_2', 'original_title', 'description', 'added_date');
+
+                if($userRole === 'admin'){
+                    array_push($cols, 'hidden', 'sorting_title', 'imdb_id');
+                }
+            }
+            $columns = implode(', ', $cols);
+
+            $sql = "
+            SELECT $columns
+            FROM movies
+            $whereClause
+            ORDER BY added_date DESC
+            LIMIT ? OFFSET ?
+            ";
+
+            $stmt = $this->db->prepare($sql);
+            $bindings[] = $limit;
+            $bindings[] = $skip;
+            $stmt->execute($bindings);
+            $movies = $stmt->fetchAll();
+
+            // Get total count
+            $countSql = "SELECT COUNT(*) as count FROM movies $whereClause";
+            $countStmt = $this->db->prepare($countSql);
+            $countStmt->execute(array_slice($bindings, 0, -2));
+            $countResult = $countStmt->fetch();
+            $total = $countResult['count'];
+
+            //error_log('Fetched ' . count($movies) . ' movies');
+
+            return $this->jsonResponse($response, [
+                'success' => true,
+                'data' => $movies,
+                'pagination' => [
+                    'count' => count($movies),
+                                       'total' => $total,
+                                       'skip' => $skip,
+                                       'limit' => $limit
+                ]
+            ]);
+        } catch (\Exception $e) {
+            error_log('Error in listMovies: ' . $e->getMessage());
+            return $this->jsonResponse(
+                $response,
+                ['error' => 'Failed to fetch movies', 'message' => $e->getMessage()],
+                                       500
+            );
+        }
+    }
+
+    /**
      * Public: Get single movie with all related data
      */
     public function getMovie(Request $request, Response $response, array $args): Response

@@ -93,6 +93,7 @@ class AdminController
         $params = $request->getQueryParams();
 
         $hiddenMovies = $this->callApiGet("/movies/hidden?limit=-1", $token);
+        $latestPublished = $this->callApiGet("/movies/latest", $token);
 
         return Twig::fromRequest($request)->render(
             $response,
@@ -101,6 +102,7 @@ class AdminController
                 'user' => $user,
                 'params' => $params,
                 'hidden_movies' => $hiddenMovies['data'] ?? [],
+                'latest_movies' => $latestPublished['data'] ?? [],
                 'message' => 'Inloggad som ' . $user['username'],
                 'message_type' => 'success',
                 'pageTitle' => 'Start',
