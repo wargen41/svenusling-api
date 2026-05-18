@@ -513,7 +513,7 @@ class MovieController
 
             $stmt->execute([
                 $data['hidden'] ?? 0,
-                $data['added_date'] ?? date('Y-m-d'),
+                $data['added_date'] ?: date('Y-m-d'),
                 $data['type'] ?? null,
                 $data['series_id'] ?? null,
                 $data['season_id'] ?? null,
