@@ -71,7 +71,7 @@
             {% set pop_id = "edit-form-" ~ item.id %}
             {% set pop_title = item.title %}
             {% include "admin/forms/edit-movie.html.twig" %}
-            <button class="movie {{ item.type }}" popovertarget="{{ pop_id }}">{{ item.title }}</button>
+            <button class="movie {{ item.type }}" popovertarget="{{ pop_id }}" title="{{ item.added_date }}">{{ item.title }}</button>
         {% endfor %}
         </div>
         </details>
