@@ -100,7 +100,7 @@ class AdminController
             [
                 'user' => $user,
                 'params' => $params,
-                'hiddenMovies' => $hiddenMovies['data'] ?? [],
+                'hidden_movies' => $hiddenMovies['data'] ?? [],
                 'message' => 'Inloggad som ' . $user['username'],
                 'message_type' => 'success',
                 'pageTitle' => 'Start',

@@ -5,12 +5,10 @@
 
 {% block mainContent %}
     <article>
-        <h1>Sven Admin</h1>
+        <h1>{{ constant('API').ADMIN_SITE_NAME }}</h1>
 
-        <details open>
-            <summary><h2>Snabbstart</h2></summary>
-            <details open>
-                <summary><h3>Snabbinmatning</h3></summary>
+        <details{% if params.quick == 1 %} open{% endif %}>
+            <summary><h2>Snabbinmatning</h2></summary>
                 <p>Filmer inmatade här är dolda tills du aktivt valt att publicera dem.</p>
                 <form method="post" action="/admin/movies/add">
                     <input type="hidden" name="redirect_url" value="{{ this_page }}?quick=1">
@@ -50,30 +48,38 @@
                         <button type="submit">Mata in</button>
                     </fieldset>
                 </form>
-            </details>
-            <details open>
-                <summary><h3>Dolda filmer ({{ hiddenMovies|length }})</h3></summary>
-                <p>Det finns {{ hiddenMovies|length }} som ännu inte publicerats.</p>
-                <div class="button-list">
-                {% for movie in hiddenMovies %}
-                    <button class="movie {{ movie.type }}" popovertarget="edit-form-{{ movie.id }}">{{ movie.title }}</button>
-                {% endfor %}
-                </div>
-            </details>
         </details>
 
+        <h2>Dolda filmer ({{ hidden_movies|length }})</h2>
+        <p>Det finns {{ hidden_movies|length }} som ännu inte publicerats.</p>
+        <div class="button-list">
+        {% for item in hidden_movies %}
+            {% set pop_id = "edit-form-" ~ item.id %}
+            {% set pop_title = item.title %}
+            {% include "admin/forms/edit-movie.html.twig" %}
+            <button class="movie {{ item.type }}" popovertarget="{{ pop_id }}">{{ item.title }}</button>
+        {% endfor %}
+        </div>
+
         <nav>
-            <details open>
-                <summary><h2>Databas</h2></summary>
-                <ul>
-                    <li><a href="/admin/genres">Genrer</a></li>
-                    <li><a href="/admin/films">Filmer</a></li>
-                    <li><a href="/admin/series">Serier</a></li>
-                    <li><a href="/admin/persons">VIP</a></li>
-                    <li><a href="/admin/quotes">Citat</a></li>
-                    <li><a href="/admin/awards">Utmärkelser</a></li>
-                </ul>
-            </details>
+            <h2>Listor</h2>
+            <ul>
+                <li><a href="/admin/films">Filmer</a></li>
+                <li><a href="/admin/series">Serier</a></li>
+                <li><a href="/admin/persons">VIP</a></li>
+            </ul>
+            <h2>Kategorier</h2>
+            <ul>
+                <li><a href="/admin/genres">Genrer</a></li>
+                <li><a href="/admin/relations">Relationer</a></li>
+                <li><a href="/admin/awards">Utmärkelser</a></li>
+            </ul>
+            <h2>Innehåll</h2>
+            <ul>
+                <li><a href="/admin/feed">Feed (startsida)</a></li>
+                <li><a href="/admin/videos">Videorecensioner</a></li>
+                <li><a href="/admin/articles">Artiklar/texter</a></li>
+            </ul>
         </nav>
 
     </article>
