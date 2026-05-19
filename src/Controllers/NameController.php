@@ -29,10 +29,10 @@ class NameController
 
             // Work in progress
             $stmt = $this->db->prepare('
-            SELECT movie_id, person_id, category, role_name
-            FROM movies_persons
+            SELECT mp.*, m.title
+            FROM movies_persons mp
+            JOIN movies m ON mp.movie_id = m.id
             WHERE person_name = ?
-            GROUP BY category
             ');
             $stmt->execute([$name]);
             $crew = $stmt->fetchAll();
