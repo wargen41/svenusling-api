@@ -55,7 +55,7 @@
 
         {% if hidden_movies|length > 0 %}
         <details>
-            <summary><h2>Dolda filmer</h2><p>Det finns {{ hidden_movies|length }} som ännu inte publicerats.</p></summary>
+            <summary><h2>Dolda filmer ({{ hidden_movies|length }})</h2></summary>
             <div class="button-list">
             {% for item in hidden_movies %}
                 {% set pop_id = "edit-form-" ~ item.id %}
