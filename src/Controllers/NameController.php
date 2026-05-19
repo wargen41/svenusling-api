@@ -32,7 +32,7 @@ class NameController
             SELECT movie_id, person_id, category, role_name
             FROM movies_persons
             WHERE person_name = ?
-            GROUP BY movie_id
+            GROUP BY (movie_id, category)
             ');
             $stmt->execute([$name]);
             $crew = $stmt->fetchAll();
