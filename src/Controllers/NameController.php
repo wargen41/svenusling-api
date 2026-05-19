@@ -40,6 +40,7 @@ class NameController
             return $this->jsonResponse($response, [
                 'success' => true,
                 'data' => [
+                    'name' => $name,
                     'crew' => $crew,
                 ]
             ]);
