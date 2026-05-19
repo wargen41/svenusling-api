@@ -42,7 +42,8 @@ class NameController
             JOIN movies m ON mt.movie_id = m.id
             WHERE (mt.sv LIKE ? OR mt.en LIKE ?)
             ');
-            $stmt->execute([$name, $name]);
+            $searchTerm = '%' . $name . '%';
+            $stmt->execute([$searchTerm, $searchTerm]);
             $trivia = $stmt->fetchAll();
 
             return $this->jsonResponse($response, [
