@@ -12,6 +12,7 @@ use App\Controllers\RelationsController;
 use App\Controllers\AwardsController;
 use App\Controllers\ReviewController;
 use App\Controllers\MediaController;
+use App\Controllers\NameController;
 use App\Controllers\AuthController;
 use App\Controllers\AdminController;
 use App\Middleware\AuthMiddleware;
@@ -141,6 +142,9 @@ class Routes
         $app->post('/admin/login', [AdminController::class, 'handleLogin']);
         $app->get('/admin/logout', [AdminController::class, 'logout']);
 
+        // Admin tools routes
+        $app->get('/names/{name}', [NameController::class, 'getName'])->add(new AdminAuthMiddleware());
+
         // Admin genre routes
         $app->get('/admin/genres', [AdminController::class, 'genresPage'])->add(new AdminAuthMiddleware());
         $app->post('/admin/genres/add', [AdminController::class, 'handleAddGenre'])->add(new AdminAuthMiddleware());
@@ -155,9 +159,7 @@ class Routes
 
         // Admin movie routes
         $app->get('/admin/films', [AdminController::class, 'filmsPage'])->add(new AdminAuthMiddleware());
-        //$app->get('/admin/films/{id}', [AdminController::class, 'filmDetails'])->add(new AdminAuthMiddleware());
         $app->get('/admin/series', [AdminController::class, 'seriesPage'])->add(new AdminAuthMiddleware());
-        //$app->get('/admin/series/{id}', [AdminController::class, 'seriesDetails'])->add(new AdminAuthMiddleware());
         $app->get('/admin/movies/{id}', [AdminController::class, 'movieDetails'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/add', [AdminController::class, 'handleAddMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/update', [AdminController::class, 'handleUpdateMovie'])->add(new AdminAuthMiddleware());
