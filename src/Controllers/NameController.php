@@ -29,7 +29,7 @@ class NameController
 
             // Work in progress
             $stmt = $this->db->prepare('
-            SELECT mp.*, m.title
+            SELECT mp.person_id, mp.category, mp.role_name, mp.note, mp.movie_id, m.title AS movie_title
             FROM movies_persons mp
             JOIN movies m ON mp.movie_id = m.id
             WHERE person_name = ?
