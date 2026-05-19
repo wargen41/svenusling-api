@@ -143,7 +143,7 @@ class Routes
         $app->get('/admin/logout', [AdminController::class, 'logout']);
 
         // Admin tools routes
-        $app->get('/names/{name}', [NameController::class, 'getName'])->add(new AdminAuthMiddleware());
+        $app->get('/names/{name}', [NameController::class, 'getName']); // OBS! Ska vara skyddad sen, men gör den oskyddad för preview
 
         // Admin genre routes
         $app->get('/admin/genres', [AdminController::class, 'genresPage'])->add(new AdminAuthMiddleware());
