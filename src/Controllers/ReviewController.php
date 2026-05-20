@@ -217,8 +217,8 @@ class ReviewController
             $errors['movie_id'] = 'Movie ID is required';
         }
 
-        if (empty($data['rating']) || !is_numeric($data['rating']) || $data['rating'] < 1 || $data['rating'] > 10) {
-            $errors['rating'] = 'Rating must be between 1 and 10';
+        if (empty($data['rating']) || !is_numeric($data['rating']) || $data['rating'] < 0 || $data['rating'] > 100) {
+            $errors['rating'] = 'Rating must be between 0 and 100';
         }
 
         if (!empty($data['comment']) && strlen($data['comment']) > 1000) {
