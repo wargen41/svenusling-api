@@ -1,6 +1,14 @@
 {% extends "admin/forms/edit-base.html.twig" %}
+
+{% set su_id = constant('API').SUPER_USER_ID %}
+{% for review in item.reviews %}
+    {% if reviev.user_id == su_id %}
+        {% set su_review = review %}
+    {% endif %}
+{% endfor %}
+
 {% block content %}
-<form method="POST" action="/admin/movies/update">
+<form method="POST" action="/admin/reviews">
     <input type="hidden" name="redirect_url" value="{{ this_page }}">
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <fieldset>
@@ -8,15 +16,14 @@
         {# OBS!! Detta ska sedan hämta användarens personliga betyg, då man inte ska kunna redigera filmens betyg direkt #}
         {# Detta ifall man senare kommer fram till att fler personer ska kunna lägga in betyg och filmens rating blir ett genomsnitt #}
         {# Lägger in filmens rating här så länge bara för att jobba med designen #}
-        {% set review = item %} {# Tillfällig mappning; sedan ska ju användarens riktiga recension hämtas #}
         <div class="form-row">
-            <label for="edit-rating-{{ review.id }}">Betyg
-                <input type="number" size="3" min="0" max="100" id="edit-rating-{{ review.id }}" name="rating" {% if review.rating %}value="{{ review.rating }}"{% endif %}>
+            <label for="edit-rating-{{ su_review.id }}">Betyg
+                <input type="number" size="3" min="0" max="100" id="edit-rating-{{ su_review.id }}" name="rating" {% if su_review.rating %}value="{{ su_review.rating }}"{% endif %}>
             </label>
         </div>
         <div class="form-row">
-            <label for="edit-comment-{{ item.id }}">Kommentar
-                <textarea id="edit-comment-{{ item.id }}" name="comment">{{ item.description }}</textarea>
+            <label for="edit-comment-{{ su_review.id }}">Kommentar
+                <textarea id="edit-comment-{{ su_review.id }}" name="comment">{{ su_review.comment }}</textarea>
             </label>
         </div>
         <div class="actions">
