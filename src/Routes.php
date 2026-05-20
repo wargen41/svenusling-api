@@ -136,14 +136,14 @@ class Routes
         $app->put('/media/{id}', [MediaController::class, 'updateMedia'])->add(new AuthMiddleware());
         $app->delete('/media/{id}', [MediaController::class, 'deleteMedia'])->add(new AuthMiddleware());
 
+        // Search routes
+        $app->get('/names/{name}', [NameController::class, 'getName']);
+
         // Admin pages
         $app->get('/admin', [AdminController::class, 'dashboard'])->add(new AdminAuthMiddleware());
         $app->get('/admin/login', [AdminController::class, 'loginPage']);
         $app->post('/admin/login', [AdminController::class, 'handleLogin']);
         $app->get('/admin/logout', [AdminController::class, 'logout']);
-
-        // Admin tools routes
-        $app->get('/names/{name}', [NameController::class, 'getName']); // OBS! Ska vara skyddad sen, men gör den oskyddad för preview
 
         // Admin genre routes
         $app->get('/admin/genres', [AdminController::class, 'genresPage'])->add(new AdminAuthMiddleware());
