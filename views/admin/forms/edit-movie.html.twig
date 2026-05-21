@@ -13,9 +13,6 @@
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <fieldset>
         <legend>Recension</legend>
-        {# OBS!! Detta ska sedan hämta användarens personliga betyg, då man inte ska kunna redigera filmens betyg direkt #}
-        {# Detta ifall man senare kommer fram till att fler personer ska kunna lägga in betyg och filmens rating blir ett genomsnitt #}
-        {# Lägger in filmens rating här så länge bara för att jobba med designen #}
         <div class="form-row">
             <label for="edit-rating-{{ su_review.id }}">Betyg
                 <input type="number" size="3" min="0" max="100" id="edit-rating-{{ su_review.id }}" name="rating" {% if su_review.rating %}value="{{ su_review.rating }}"{% endif %}>
