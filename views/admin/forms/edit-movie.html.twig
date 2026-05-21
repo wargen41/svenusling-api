@@ -2,7 +2,7 @@
 
 {% set su_id = constant('API').SUPER_USER_ID %}
 {% for review in item.reviews %}
-    {% if reviev.user_id == su_id %}
+    {% if review.user_id == su_id %}
         {% set su_review = review %}
     {% endif %}
 {% endfor %}
