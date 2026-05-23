@@ -232,15 +232,29 @@ class MovieController
             $total = $countResult['count'];
 
             //error_log('Fetched ' . count($movies) . ' movies');
+            if($details === 'userreviews'){
+                // Get logged in user review for each movie
+                $userId = $request->getAttribute('user_id');
+                foreach($movies as $key => $movie){
+                    $movieId = $movie['id'];
+                    $stmt = $this->db->prepare('
+                    SELECT *
+                    FROM reviews
+                    WHERE movie_id = ? AND user_id = ?
+                    ');
+                    $stmt->execute([$movieId, $userId]);
+                    $movies[$key]['reviews'] = $stmt->fetchAll();
+                }
+            }
 
             return $this->jsonResponse($response, [
                 'success' => true,
                 'data' => $movies,
                 'pagination' => [
                     'count' => count($movies),
-                                       'total' => $total,
-                                       'skip' => $skip,
-                                       'limit' => $limit
+                    'total' => $total,
+                    'skip' => $skip,
+                    'limit' => $limit
                 ]
             ]);
         } catch (\Exception $e) {
@@ -248,7 +262,7 @@ class MovieController
             return $this->jsonResponse(
                 $response,
                 ['error' => 'Failed to fetch movies', 'message' => $e->getMessage()],
-                                       500
+                500
             );
         }
     }
@@ -342,15 +356,29 @@ class MovieController
             $total = $countResult['count'];
 
             //error_log('Fetched ' . count($movies) . ' movies');
+            if($details === 'userreviews'){
+                // Get logged in user review for each movie
+                $userId = $request->getAttribute('user_id');
+                foreach($movies as $key => $movie){
+                    $movieId = $movie['id'];
+                    $stmt = $this->db->prepare('
+                    SELECT *
+                    FROM reviews
+                    WHERE movie_id = ? AND user_id = ?
+                    ');
+                    $stmt->execute([$movieId, $userId]);
+                    $movies[$key]['reviews'] = $stmt->fetchAll();
+                }
+            }
 
             return $this->jsonResponse($response, [
                 'success' => true,
                 'data' => $movies,
                 'pagination' => [
                     'count' => count($movies),
-                                       'total' => $total,
-                                       'skip' => $skip,
-                                       'limit' => $limit
+                    'total' => $total,
+                    'skip' => $skip,
+                    'limit' => $limit
                 ]
             ]);
         } catch (\Exception $e) {
@@ -358,7 +386,7 @@ class MovieController
             return $this->jsonResponse(
                 $response,
                 ['error' => 'Failed to fetch movies', 'message' => $e->getMessage()],
-                                       500
+                500
             );
         }
     }
