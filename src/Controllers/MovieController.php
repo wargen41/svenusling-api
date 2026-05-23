@@ -116,7 +116,6 @@ class MovieController
                 error_log('DEBUG: fetching userreviews. user_id: '.$userId.' movies lenght: '.count($movies));
                 foreach($movies as $movie){
                     $movieId = $movie['id'];
-                    $
                     $stmt = $this->db->prepare('
                     SELECT *
                     FROM reviews
