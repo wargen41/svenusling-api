@@ -114,7 +114,7 @@ class MovieController
                 // TEST
                 $userId = '1';
                 error_log('DEBUG: fetching userreviews. user_id: '.$userId.' movies lenght: '.count($movies));
-                foreach($movies as $movie){
+                foreach($movies as $key => $movie){
                     $movieId = $movie['id'];
                     $stmt = $this->db->prepare('
                     SELECT *
@@ -122,9 +122,7 @@ class MovieController
                     WHERE movie_id = ? AND user_id = ?
                     ');
                     $stmt->execute([$movieId, $userId]);
-                    $reviews = $stmt->fetchAll();
-                    error_log('count reviews: '.count($reviews));
-                    error_log('review: '.$reviews[0]['rating']);
+                    $movies[$key]['reviews'] = $stmt->fetchAll();
                 }
             }
 
