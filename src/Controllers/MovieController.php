@@ -122,7 +122,8 @@ class MovieController
                     WHERE movie_id = ? AND user_id = ?
                     ');
                     $stmt->execute([$movieId, $userId]);
-                    $movie['reviews'] = $stmt->fetchAll();
+                    $reviews = $stmt->fetchAll();
+                    error_log('count reviews: '.count($reviews));
                 }
             }
 
