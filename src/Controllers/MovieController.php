@@ -108,6 +108,21 @@ class MovieController
 
             //error_log('Fetched ' . count($movies) . ' movies');
 
+            if($details === 'userreviews'){
+                // Get user review for each movie
+                $userId = $request->getAttribute('user_id');
+                foreach($movies as $movie){
+                    $movieId = $movie['id'];
+                    $stmt = $this->db->prepare('
+                    SELECT *
+                    FROM reviews
+                    WHERE movie_id = ? AND user_id = ?
+                    ');
+                    $stmt->execute([$movieId, $userId]);
+                    $movie['reviews'] = $stmt->fetchAll();
+                }
+            }
+
             return $this->jsonResponse($response, [
                 'success' => true,
                 'data' => $movies,
