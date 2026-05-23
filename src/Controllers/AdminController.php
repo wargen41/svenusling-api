@@ -905,9 +905,9 @@ class AdminController
 
             // Fetch movies from API
             if(isset($hidden)){
-                $movies = $this->callApiGet("/movies/hidden?limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
+                $movies = $this->callApiGet("/movies/hidden?details=userreviews&limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
             }else{
-                $movies = $this->callApiGet("/movies?limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
+                $movies = $this->callApiGet("/movies?details=userreviews&limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
             }
 
             return Twig::fromRequest($request)->render(
