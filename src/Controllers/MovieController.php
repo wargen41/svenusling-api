@@ -109,6 +109,7 @@ class MovieController
             //error_log('Fetched ' . count($movies) . ' movies');
 
             if($details === 'userreviews'){
+                error_log('DEBUG: fetching userreviews');
                 // Get user review for each movie
                 $userId = $request->getAttribute('user_id');
                 foreach($movies as $movie){
