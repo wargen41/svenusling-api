@@ -111,9 +111,12 @@ class MovieController
             if($details === 'userreviews'){
                 // Get user review for each movie
                 $userId = $request->getAttribute('user_id');
+                // TEST
+                $userId = '1';
                 error_log('DEBUG: fetching userreviews. user_id: '.$userId.' movies lenght: '.count($movies));
                 foreach($movies as $movie){
                     $movieId = $movie['id'];
+                    $
                     $stmt = $this->db->prepare('
                     SELECT *
                     FROM reviews
