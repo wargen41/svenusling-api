@@ -124,6 +124,7 @@ class MovieController
                     $stmt->execute([$movieId, $userId]);
                     $reviews = $stmt->fetchAll();
                     error_log('count reviews: '.count($reviews));
+                    error_log('review: '.$reviews[0]['rating']);
                 }
             }
 
