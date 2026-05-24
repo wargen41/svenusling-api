@@ -1164,6 +1164,44 @@ class AdminController
     }
 
     /**
+     * Handle update review form submission
+     */
+    public function handleUpdateReview(Request $request, Response $response): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $token = $_SESSION['jwt_token'] ?? null;
+        $data = $request->getParsedBody();
+        $redirect_url = $data['redirect_url'] ?? '/admin';
+        $reviewId = $data['review_id'] ?? null;
+
+        if (!$reviewId) {
+            $_SESSION['message'] = 'Error: Review ID missing';
+            $_SESSION['message_type'] = 'error';
+        } else {
+            try {
+                $this->callApiPut('/reviews/' . $reviewId, [
+                    'rating' => $data['rating'] ?? null,
+                    'comment' => $data['comment'] ?? null,
+                ], $token);
+
+                $_SESSION['message'] = 'Recensionen uppdaterades';
+                $_SESSION['message_type'] = 'success';
+            } catch (\Exception $e) {
+                $_SESSION['message'] = 'Error updating review: ' . $e->getMessage();
+                $_SESSION['message_type'] = 'error';
+            }
+        }
+
+        // Redirect
+        $query = isset($_SESSION['movies_query']) ? '?' . $_SESSION['movies_query'] : '';
+        $response = $response->withStatus(302)->withHeader('Location', $redirect_url . $query);
+        return $response;
+    }
+
+    /**
      * Helper: Call API GET
      */
     private function callApiGet($endpoint, $token = null)
