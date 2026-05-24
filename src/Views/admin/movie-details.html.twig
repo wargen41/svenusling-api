@@ -8,10 +8,12 @@
 {% else %}
 
 {% set types = null %}
+{% set type_cat = null %}
 {% set type_lists = constant('OPT').MOVIE_TYPES %}
-{% for type_items in type_lists %}
+{% for type_category, type_items in type_lists %}
     {% if type_items[item.type] is defined %}
         {% set types = type_items %}
+        {% set type_cat = type_category %}
     {% endif %}
 {% endfor %}
 
