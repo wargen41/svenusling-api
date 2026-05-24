@@ -1,6 +1,7 @@
 {% extends "admin/forms/edit-base.html.twig" %}
 
 {% set su_id = constant('API').SUPER_USER_ID %}
+{% set su_review = null %}
 {% for review in item.reviews %}
     {% if review.user_id == su_id %}
         {% set su_review = review %}
