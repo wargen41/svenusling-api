@@ -146,7 +146,7 @@ class Routes
         $app->get('/admin/logout', [AdminController::class, 'logout']);
 
         // Admin review routes
-        $app->get('/admin/reviews/update', [AdminController::class, 'handleUpdateReview'])->add(new AdminAuthMiddleware());
+        $app->post('/admin/reviews/update', [AdminController::class, 'handleUpdateReview'])->add(new AdminAuthMiddleware());
 
         // Admin genre routes
         $app->get('/admin/genres', [AdminController::class, 'genresPage'])->add(new AdminAuthMiddleware());
