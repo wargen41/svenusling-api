@@ -9,6 +9,7 @@
 
 {% set types = constant('OPT').MOVIE_TYPES %}
 {% for type_items in types %}
+<p>item.type {{ item.type }}</p>
     {% if item.type in type_items %}
         {% set types = type_items %}
     {% endif %}
