@@ -1,12 +1,18 @@
 {% extends "admin/base.html.twig" %}
 
-{% set types = constant('OPT').MOVIE_TYPES.FILMS %}
 {% set categories = constant('OPT').CREW_CATEGORIES %}
 
 {% block mainContent %}
 {% if item == null %}
         <pre>ERROR item is null</pre>
 {% else %}
+
+{% set types = constant('OPT').MOVIE_TYPES %}
+{% for type_items in types %}
+    {% if item.type in type_items %}
+        {% set types = type_items %}
+    {% endif %}
+{% endfor %}
 
 {% set this_page = '/admin/movies/' ~ item.id %}
 
