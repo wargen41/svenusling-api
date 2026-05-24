@@ -9,7 +9,7 @@
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <div class="form-row">
         <label for="edit-type">Typ
-            <select type="text" id="edit-type" name="type" required>
+            <select type="text" id="edit-type" name="type" required{% if type_cat == 'SERIES' %} disabled{% endif %}>
             {% for value, label in types %}
                 <option value="{{ value }}" {% if item.type == value %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
