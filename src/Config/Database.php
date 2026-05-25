@@ -19,6 +19,10 @@ define('OPT', array(
             'season' => 'Säsong',
             'episode' => 'Avsnitt',
         ),
+        'SERIES_MAIN' => array(
+            'series' => 'Serie',
+            'miniseries' => 'Miniserie',
+        ),
     ),
     'CREW_CATEGORIES' => array(
         'director' => 'Regi',
