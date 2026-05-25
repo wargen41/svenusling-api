@@ -1164,6 +1164,56 @@ class AdminController
     }
 
     /**
+     * Series details (protected)
+     */
+    public function seriesDetails(Request $request, Response $response, array $args): Response
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $user = $_SESSION['user'] ?? null;
+        $token = $_SESSION['jwt_token'] ?? null;
+
+        // Get message from session if exists
+        $message = $_SESSION['message'] ?? null;
+        $messageType = $_SESSION['message_type'] ?? null;
+        unset($_SESSION['message']);
+        unset($_SESSION['message_type']);
+
+        try {
+            $movieId = $args['id'] ?? null;
+
+            // Fetch movie from API
+            $movie = $this->callApiGet("/series/$movieId", $token);
+
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/series-details.html.twig',
+                [
+                    'user' => $user,
+                    'item' => $movie['data'],
+                    'message' => $message,
+                    'message_type' => $messageType,
+                    'pageTitle' => $movie['data']['title']
+                ]
+            );
+        } catch (\Exception $e) {
+            error_log('Error in seriesDetails: ' . $e->getMessage());
+            return Twig::fromRequest($request)->render(
+                $response,
+                'admin/series-details.html.twig',
+                [
+                    'user' => $user,
+                    'message' => 'Failed to load series: ' . $e->getMessage(),
+                    'message_type' => 'error',
+                    'pageTitle' => 'Ett fel uppstod'
+                ]
+            );
+        }
+    }
+
+    /**
      * Handle update review form submission
      */
     public function handleUpdateReview(Request $request, Response $response): Response
