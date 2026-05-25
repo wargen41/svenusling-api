@@ -7,7 +7,7 @@
 
 {% set pop_id = "add-series-sub-dlg" %}
 <div class="actions">
-    <button id="add-genres-button" popovertarget="{{ pop_id }}">+</button>
+    <button class="add" id="add-to-season-button" popovertarget="{{ pop_id }}">+</button>
 </div>
 
 {% if item.type == 'series' %}{% include "admin/forms/new-season.html.twig" %}{% endif %}
