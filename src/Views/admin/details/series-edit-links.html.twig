@@ -1,0 +1,12 @@
+{% extends "admin/details/base.html.twig" %}
+
+{% set legend = 'Avsnitt' %}
+{% if item.type == 'series' %}{% set legend = 'Säsonger och avsnitt' %}{% endif %}
+
+{% block content %}
+
+{% if item.type == 'series' %}{% include "admin/forms/add-season.html.twig" %}{% endif %}
+
+{% if item.type != 'series' %}{% include "admin/forms/add-episode.html.twig" %}{% endif %}
+
+{% endblock %}

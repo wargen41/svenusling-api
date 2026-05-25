@@ -1,0 +1,55 @@
+{% extends "admin/forms/new-base.html.twig" %}
+{% block content %}
+<form method="POST" action="/admin/movies/add">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
+    <fieldset>
+        <legend>{% block legend %}Ny film{% endblock %}</legend>
+        <details open>
+            <summary>Grunduppgifter</summary>
+            <div class="form-row">
+                <label for="add-title">Titel</label>
+                <input autofocus type="text" id="add-title" name="title" required>
+                <label for="add-original_title">Originaltitel</label>
+                <input type="text" id="add-original_title" name="original_title">
+            </div>
+            <div class="form-row">
+                <label for="add-year">År
+                    <input type="number" min="1888" max="2099" size="4" name="year" id="add-year">
+                </label>
+            </div>
+            <div class="form-row">
+                <label for="add-type">Typ
+                    <select type="text" id="add-type" name="type" required>
+                        {% for value, label in types %}
+                        <option value="{{ value }}" {% if params.type == value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+            </div>
+            <div class="form-row">
+                <label for="add-description">Kort beskrivning
+                    <textarea id="add-description" name="description"></textarea>
+                </label>
+            </div>
+        </details>
+        <details>
+            <summary>Publicering</summary>
+            <div class="form-row">
+                <label for="add-sorting_title">Sorteringstitel</label>
+                <input type="text" id="add-sorting_title" name="sorting_title">
+            </div>
+            <div class="form-row">
+                <label for="add-added_date">Datum
+                    <input type="date" id="add-birth" name="added_date">
+                </label>
+                <label for="add-hidden-">Dold
+                    <input type="checkbox" id="add-hidden" name="hidden" value="1" checked>
+                </label>
+            </div>
+        </details>
+        <div class="actions">
+            <button type="submit">Spara</button>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}
