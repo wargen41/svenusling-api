@@ -28,9 +28,7 @@
 
 {% include "admin/details/movie-crew.html.twig" %}
 
-{% if type_cat == 'SERIES' and item.type != 'episode' %}
-    {% include "admin/details/series-edit-links.html.twig" %}
-{% endif %}
+{% block series %}{% endblock %}
 
     </article>
 

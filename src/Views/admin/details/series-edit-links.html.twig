@@ -5,8 +5,8 @@
 
 {% block content %}
 
-{% if item.type == 'series' %}{% include "admin/forms/add-season.html.twig" %}{% endif %}
-
-{% if item.type != 'series' %}{% include "admin/forms/add-episode.html.twig" %}{% endif %}
+{% set pop_id = "add-series-sub-dlg" %}
+{% if item.type == 'series' %}{% include "admin/forms/new-season.html.twig" %}{% endif %}
+{% if item.type != 'series' %}{% include "admin/forms/new-episode.html.twig" %}{% endif %}
 
 {% endblock %}

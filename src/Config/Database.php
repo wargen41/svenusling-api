@@ -13,15 +13,13 @@ define('OPT', array(
             'film' => 'Långfilm',
             'short' => 'Kortfilm',
         ),
-        'SERIES' => array(
-            'series' => 'Serie',
-            'miniseries' => 'Miniserie',
-            'season' => 'Säsong',
-            'episode' => 'Avsnitt',
-        ),
         'SERIES_MAIN' => array(
             'series' => 'Serie',
             'miniseries' => 'Miniserie',
+        ),
+        'SERIES_SUB' => array(
+            'season' => 'Säsong',
+            'episode' => 'Avsnitt',
         ),
     ),
     'CREW_CATEGORIES' => array(
