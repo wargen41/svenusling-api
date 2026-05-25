@@ -1,0 +1,3 @@
+{% extends "admin/forms/edit-movie.html.twig" %}
+{% block details_href %}{{ '/admin/series/' ~ item.id }}{% endblock %}
+{% block delete_text %}Ta bort serie?{% endblock %}
