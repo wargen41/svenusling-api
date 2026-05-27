@@ -21,7 +21,7 @@
     </div>
     {% if type_cat == 'SERIES_SUB' %}
     <details>
-        <summary>{{ type_items[item.type] }}</summary>
+        <summary>{{ types[item.type] }}</summary>
         <label for="display-sequence">#
             <input disabled type="number" size="3" id="display-sequence" value="{{ item.sequence_number }}">
         </label>
