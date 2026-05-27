@@ -12,7 +12,7 @@
 
 <ol class="episodes">
     {% for episode in item.episodes %}
-    <li data-numbering="{{ episode.sequence_number }}{% if episode.sequence_number_2 %}–{{ episode.sequence_number_2 }}{% endif %}">{{ episode.title }}</li>
+    <li data-numbering="{{ episode.sequence_number }}{% if episode.sequence_number_2 %}–{{ episode.sequence_number_2 }}{% endif %}"><a href="/admin/movie/{{ episode.id }}">{{ episode.title }}</li>
     {% endfor %}
 </ol>
 
