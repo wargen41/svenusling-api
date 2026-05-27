@@ -19,6 +19,16 @@
             <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year" value="{{ item.year }}">
         </label>
     </div>
+    {% if type_cat == 'SERIES' %}
+    <div class="form-row">
+        <label for="display-sequence">#
+            <input disabled type="number" id="display-sequence" value="{{ item.sequence_number }}">
+        </label>
+        <label for="display-sequence_2">–
+            <input disabled type="number" id="display-sequence_2" value="{{ item.sequence_number_2 }}">
+        </label>
+    </div>
+    {% endif %}
     <div class="form-row">
         <label for="display-id">SU-ID
             <input disabled type="text" id="display-id" value="{{ item.id }}">
