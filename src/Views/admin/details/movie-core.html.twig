@@ -28,14 +28,6 @@
         {% endif %}
     </div>
     <div class="form-row">
-        <label for="display-id">SU-ID
-            <input disabled type="text" id="display-id" value="{{ item.id }}">
-        </label>
-        <label for="edit-imdb_id">IMDb-ID
-            <input type="text" id="edit-imdb_id" name="imdb_id" value="{{ item.imdb_id }}">
-        </label>
-    </div>
-    <div class="form-row">
         <label for="edit-title">Titel
             <input type="text" id="edit-title" name="title" value="{{ item.title }}" required>
         </label>
@@ -54,6 +46,14 @@
     <div class="form-row">
         <label for="edit-description">Kort beskrivning
             <textarea id="edit-description" name="description">{{ item.description }}</textarea>
+        </label>
+    </div>
+    <div class="form-row">
+        <label for="display-id">SU-ID
+            <input disabled type="text" id="display-id" value="{{ item.id }}">
+        </label>
+        <label for="edit-imdb_id">IMDb-ID
+            <input type="text" id="edit-imdb_id" name="imdb_id" value="{{ item.imdb_id }}">
         </label>
     </div>
     <div class="actions">
