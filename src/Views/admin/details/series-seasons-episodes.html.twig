@@ -1,0 +1,25 @@
+{% extends "admin/details/base.html.twig" %}
+
+{% set legend = 'Säsonger och avsnitt' %}
+
+{% block content %}
+
+{% set pop_id = "add-season-dlg" %}
+<div class="actions">
+    <button class="add" id="add-to-series-button" popovertarget="{{ pop_id }}">+</button>
+</div>
+{% include "admin/forms/new-season.html.twig" %}
+
+<ol class="seasons">
+    {% for season in item.seasons %}
+    <li>{{ season.sorting_title }}
+        <ol class="episodes">
+            {% for episode in season.episodes %}
+            <li>{{ episode.sorting_title }}</li>
+            {% endfor %}
+        </ol>
+    </li>
+    {% endfor %}
+</ol>
+
+{% endblock %}
