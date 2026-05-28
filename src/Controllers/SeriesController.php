@@ -35,7 +35,6 @@ class SeriesController
             if (!$series) {
                 return $this->jsonResponse($response, ['error' => 'Series not found'], 404);
             }
-
             // Check if series is hidden and user is not admin
             if ($series['hidden'] == 1 && $userRole !== 'admin') {
                 return $this->jsonResponse($response, ['error' => 'Series not found'], 404);
@@ -99,17 +98,21 @@ class SeriesController
             if (!$season) {
                 return $this->jsonResponse($response, ['error' => 'Season not found'], 404);
             }
+            // Check if season is hidden and user is not admin
+            if ($season['hidden'] == 1 && $userRole !== 'admin') {
+                return $this->jsonResponse($response, ['error' => 'Season not found'], 404);
+            }
 
             // Get series info
             if ($season['series_id']) {
                 $stmt = $this->db->prepare('SELECT id, title, type FROM movies WHERE id = ?');
                 $stmt->execute([$season['series_id']]);
                 $season['series'] = $stmt->fetch();
-            }
 
-            // Check if season is hidden and user is not admin
-            if ($season['hidden'] == 1 && $userRole !== 'admin') {
-                return $this->jsonResponse($response, ['error' => 'Season not found'], 404);
+                // If the parent series is hidden and user is not admin, we cannot show the season either
+                if ($season['series']['hidden'] == 1 && $userRole !== 'admin') {
+                    return $this->jsonResponse($response, ['error' => 'Season not found'], 404);
+                }
             }
 
             // Get episodes with hidden filter
@@ -126,6 +129,63 @@ class SeriesController
             return $this->jsonResponse($response, [
                 'success' => true,
                 'data' => $season
+            ]);
+
+        } catch (\Exception $e) {
+            error_log('Error in getSeason: ' . $e->getMessage());
+            return $this->jsonResponse($response, ['error' => 'Failed to fetch season'], 500);
+        }
+    }
+
+    /**
+     * Public: Get episode with season and series info
+     */
+    public function getEpisode(Request $request, Response $response, array $args): Response
+    {
+        try {
+            $episodeId = $args['id'] ?? null;
+            $userRole = $request->getAttribute('user_role');
+
+            if (!$episodeId || !is_numeric($episodeId)) {
+                return $this->jsonResponse($response, ['error' => 'Invalid episode ID'], 400);
+            }
+
+            // Get episode
+            $stmt = $this->db->prepare('SELECT * FROM movies WHERE id = ? AND type = "episode"');
+            $stmt->execute([$episodeId]);
+            $episode = $stmt->fetch();
+
+            if (!$episode) {
+                return $this->jsonResponse($response, ['error' => 'Episode not found'], 404);
+            }
+
+            // Get season
+            if ($episode['season_id']) {
+                $stmt = $this->db->prepare('SELECT id, title FROM movies WHERE id = ? AND type = "season"');
+                $stmt->execute([$episode['season_id']]);
+                $episode['season'] = $stmt->fetch();
+
+                // If the parent season is hidden and user is not admin, we cannot show the episode either
+                if ($episode['season']['hidden'] == 1 && $userRole !== 'admin') {
+                    return $this->jsonResponse($response, ['error' => 'Episode not found'], 404);
+                }
+            }
+
+            // Get series info
+            if ($episode['series_id']) {
+                $stmt = $this->db->prepare('SELECT id, title, type FROM movies WHERE id = ? AND type IN ("series", "miniseries")');
+                $stmt->execute([$episode['series_id']]);
+                $episode['series'] = $stmt->fetch();
+
+                // If the parent series is hidden and user is not admin, we cannot show the episode either
+                if ($episode['series']['hidden'] == 1 && $userRole !== 'admin') {
+                    return $this->jsonResponse($response, ['error' => 'Episode not found'], 404);
+                }
+            }
+
+            return $this->jsonResponse($response, [
+                'success' => true,
+                'data' => $episode
             ]);
 
         } catch (\Exception $e) {
