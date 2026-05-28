@@ -173,7 +173,7 @@ class SeriesController
 
             // Get series info
             if ($episode['series_id']) {
-                $stmt = $this->db->prepare('SELECT id, title, type FROM movies WHERE id = ? AND type IN ("series", "miniseries")');
+                $stmt = $this->db->prepare('SELECT id, title, type, hidden FROM movies WHERE id = ? AND type IN ("series", "miniseries")');
                 $stmt->execute([$episode['series_id']]);
                 $episode['series'] = $stmt->fetch();
 
