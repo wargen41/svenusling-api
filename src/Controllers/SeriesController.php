@@ -105,7 +105,7 @@ class SeriesController
 
             // Get series info
             if ($season['series_id']) {
-                $stmt = $this->db->prepare('SELECT id, title, type, hidden FROM movies WHERE id = ?');
+                $stmt = $this->db->prepare('SELECT * FROM movies WHERE id = ?');
                 $stmt->execute([$season['series_id']]);
                 $season['series'] = $stmt->fetch();
 
@@ -161,7 +161,7 @@ class SeriesController
 
             // Get season
             if ($episode['season_id']) {
-                $stmt = $this->db->prepare('SELECT id, title, hidden FROM movies WHERE id = ? AND type = "season"');
+                $stmt = $this->db->prepare('SELECT * FROM movies WHERE id = ? AND type = "season"');
                 $stmt->execute([$episode['season_id']]);
                 $episode['season'] = $stmt->fetch();
 
@@ -173,7 +173,7 @@ class SeriesController
 
             // Get series info
             if ($episode['series_id']) {
-                $stmt = $this->db->prepare('SELECT id, title, type, hidden FROM movies WHERE id = ? AND type IN ("series", "miniseries")');
+                $stmt = $this->db->prepare('SELECT * FROM movies WHERE id = ? AND type IN ("series", "miniseries")');
                 $stmt->execute([$episode['series_id']]);
                 $episode['series'] = $stmt->fetch();
 
