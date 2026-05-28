@@ -167,6 +167,7 @@ class Routes
         $app->get('/admin/movies/{id}', [AdminController::class, 'movieDetails'])->add(new AdminAuthMiddleware());
         $app->get('/admin/series/{id}', [AdminController::class, 'seriesDetails'])->add(new AdminAuthMiddleware());
         $app->get('/admin/season/{id}', [AdminController::class, 'seasonDetails'])->add(new AdminAuthMiddleware());
+        $app->get('/admin/series/{id}', [AdminController::class, 'episodeDetails'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/add', [AdminController::class, 'handleAddMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/update', [AdminController::class, 'handleUpdateMovie'])->add(new AdminAuthMiddleware());
         $app->post('/admin/movies/delete', [AdminController::class, 'handleDeleteMovie'])->add(new AdminAuthMiddleware());
