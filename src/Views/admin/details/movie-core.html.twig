@@ -38,17 +38,19 @@
             <input type="text" id="edit-original_title" name="original_title" value="{{ item.original_title }}">
         </label>
     </div>
+    {#<div class="form-row">
+        <label for="edit-description">Kort beskrivning
+            <textarea id="edit-description" name="description">{{ item.description }}</textarea>
+        </label>
+    </div>#}
+    <details>
+    <summary>Publicering (uppgifter här syns inte för besökare)
     <div class="form-row">
         <label for="edit-sorting_title">Sorteringstitel
             <input type="text" id="edit-sorting_title" name="sorting_title" value="{{ item.sorting_title }}">
         </label>
         <label for="edit-added_date">Publiceringsdatum
             <input type="date" id="edit-added_date" name="added_date" value="{{ item.added_date }}">
-        </label>
-    </div>
-    <div class="form-row">
-        <label for="edit-description">Kort beskrivning
-            <textarea id="edit-description" name="description">{{ item.description }}</textarea>
         </label>
     </div>
     <div class="form-row">
@@ -59,6 +61,7 @@
             <input type="text" id="edit-imdb_id" name="imdb_id" value="{{ item.imdb_id }}">
         </label>
     </div>
+    </details>
     <div class="actions">
         <button type="submit">Spara</button>
     </div>
