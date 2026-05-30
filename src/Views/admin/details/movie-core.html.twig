@@ -19,9 +19,11 @@
         <label for="display-sequence">#
             <input type="number" size="3" id="display-sequence" value="{{ item.sequence_number }}">
         </label>
+        {% if item.type != 'season' %}
         <label for="display-sequence_2">–
             <input type="number" size="3" id="display-sequence_2" value="{{ item.sequence_number_2 }}">
         </label>
+        {% endif %}
         <span>av {{ item.series.title }}</span>
         {% endif %}
         <label for="edit-year">från
