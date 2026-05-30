@@ -1,7 +1,7 @@
 @use "sass:map";
 @use 'vars' as var;
 
-$mobile: map.get(var.$breakpoints, 'mobile');
+$BM: map.get(var.$margin, 'base'); // Base Margin
 $border-width: map.get(var.$border, 'width');
 
 *
@@ -14,14 +14,14 @@ html
 {
     border-inline: 10px dashed black;
 
-    @media (width <= $mobile) {
+    @media (width <= map.get(var.$breakpoints, 'mobile')) {
         border: none;
     }
 }
 
 a
 {
-    text-decoration: 1px underline solid;
+    text-decoration: map.get(var.$text-decoration, 'links');
 }
 
 nav ul
@@ -31,7 +31,7 @@ nav ul
 
 li
 {
-    padding-block: .3em;
+    padding-block: map.get(var.$padding, 'block-relative');
 }
 
 label
@@ -43,7 +43,7 @@ fieldset
 {
     position: relative;
 
-    padding-top: .5rem;
+    padding-top: .3rem;
     padding-bottom: 1rem;
     padding-inline: 1rem;
 
@@ -54,7 +54,7 @@ fieldset
     {
         border-radius: 10em;
         padding-inline: 1em;
-        padding-block: .3em;
+        padding-block: map.get(var.$padding, 'block-relative');
         border-top-width: $border-width;
         border-top-style: groove;
     }

@@ -709,7 +709,7 @@ label {
 
 fieldset {
   position: relative;
-  padding-top: 0.5rem;
+  padding-top: 0.3rem;
   padding-bottom: 1rem;
   padding-inline: 1rem;
   border-radius: 0.4rem;
@@ -891,8 +891,8 @@ main article > hgroup:first-of-type {
   z-index: 41;
   top: 0;
   padding: 0.5rem 4rem 0rem;
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 main button.add {
   position: sticky;
@@ -1097,7 +1097,7 @@ main.login button[type=submit] {
   padding: 0.5rem 1rem 1rem 0.7rem;
 }
 .widget:has(:popover-open) {
-  border-top-left-radius: 0rem;
+  border-top-left-radius: 0;
   border-top-right-radius: 0.5rem;
   border-bottom-left-radius: 1.3rem;
   border-bottom-right-radius: 1.3rem;

@@ -48,26 +48,31 @@ $fonts: (
     heading-family: map.get($fonts-export, 'heading-family')
 );
 
-$spacing: (
-    xxs: .25rem,
-    xs: .5rem,
-    s: 1rem,
-    m: 1.5rem,
-    l: 2rem,
-    xl: 3rem,
-    xxl: 4rem
+$text-decoration: (
+    links: 1px underline solid
 );
+
+// $spacing: (
+//     xxs: .25rem,
+//     xs: .5rem,
+//     s: 1rem,
+//     m: 1.5rem,
+//     l: 2rem,
+//     xl: 3rem,
+//     xxl: 4rem
+// );
 
 $breakpoints: (
     "mobile": 32rem
 );
 
 $margin: (
-    "default": map.get($spacing, 'm')
+    "base": 1rem
 );
 
 $padding: (
-    "default": map.get($spacing, 'm')
+    "base": 1rem,
+    "block-relative": .3em
 );
 
 $border: (
@@ -86,10 +91,10 @@ $export-to-css: (
         "map": $fonts-export,
         "prefix": "font-"
     ),
-    (
-        "map": $spacing,
-        "prefix": "space-"
-    ),
+    // (
+    //     "map": $spacing,
+    //     "prefix": "space-"
+    // ),
     (
         "map": $border,
         "prefix": "border-"

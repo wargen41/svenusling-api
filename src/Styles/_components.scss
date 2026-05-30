@@ -5,39 +5,27 @@
 
 $mobile: map.get(var.$breakpoints, 'mobile');
 
-$xxs: map.get(var.$spacing, 'xxs');
-$xs: map.get(var.$spacing, 'xs');
-$s: map.get(var.$spacing, 's');
-$m: map.get(var.$spacing, 'm');
-$l: map.get(var.$spacing, 'l');
-$xl: map.get(var.$spacing, 'xl');
-$xxl: map.get(var.$spacing, 'xxl');
+$BP: map.get(var.$padding, 'base'); // Base Padding
+$BM: map.get(var.$margin, 'base'); // Base Margin
+$BMn: map.get(var.$negative-margin, 'base'); // Negative Base Margin
+$block-padding: map.get(var.$padding, 'block-default');
+$block-margin: map.get(var.$margin, 'block-default');
+$inline-padding: map.get(var.$padding, 'inline-default');
+$inline-margin: map.get(var.$margin, 'inline-default');
 
-$widget: (
-    padding-top: $xs,
-    padding-bottom: $s,
-    padding-outer: $s,
-    padding-inner: .7rem,
-    border-radius-top-inner: 0rem,
-    border-radius-top-outer: $xs,
-    border-radius-bottom-inner: 1.3rem,
-    border-radius-bottom-outer: 1.3rem,
-    img-size: 2.2rem
-);
-$wpt: map.get($widget, 'padding-top');
-$wpb: map.get($widget, 'padding-bottom');
-$wpo: map.get($widget, 'padding-outer');
-$wpi: map.get($widget, 'padding-inner');
-$wbrti: map.get($widget, 'border-radius-top-inner');
-$wbrto: map.get($widget, 'border-radius-top-outer');
-$wbrbi: map.get($widget, 'border-radius-bottom-inner');
-$wbrbo: map.get($widget, 'border-radius-bottom-outer');
-$wiz: map.get($widget, 'img-size');
+$WPT: map.get(var.$widget, 'padding-top');
+$WPB: map.get(var.$widget, 'padding-bottom');
+$WPO: map.get(var.$widget, 'padding-outer');
+$WPI: map.get(var.$widget, 'padding-inner');
+$WBRTI: map.get(var.$widget, 'border-radius-top-inner');
+$WBRTO: map.get(var.$widget, 'border-radius-top-outer');
+$WBRBI: map.get(var.$widget, 'border-radius-bottom-inner');
+$WBRBO: map.get(var.$widget, 'border-radius-bottom-outer');
+$WIZ: map.get(var.$widget, 'img-size');
 
-$widget-calc: (
-    total-width: $wiz + $wpo + $wpi,
-);
-//$widget-total-width: $wiz + $wpo + $wpi;
+// $widget-calc: (
+//     total-width: $WIZ + $WPO + $WPI,
+// );
 
 // Detta är en salig blandning av variabler som gäller endast menyn samt både meny och popover
 // Behöver reda ut det så småningom, men just nu vill jag bara få rätt på utseendet för tillfället
@@ -97,20 +85,20 @@ $popover-calc: (
 );
 
 // CSS-variabler att exportera
-$export-to-css: (
-    (
-        "map": $widget-calc,
-        "prefix": "widget-"
-    ),
-    (
-        "map": $popover,
-        "prefix": "menu-"
-    ),
-    (
-        "map": $popover-calc,
-        "prefix": "menu-"
-    )
-);
+// $export-to-css: (
+//     (
+//         "map": $widget-calc,
+//         "prefix": "widget-"
+//     ),
+//     (
+//         "map": $popover,
+//         "prefix": "menu-"
+//     ),
+//     (
+//         "map": $popover-calc,
+//         "prefix": "menu-"
+//     )
+// );
 
 @position-try --left-down {
     inset: unset;
@@ -195,8 +183,8 @@ main.login button[type=submit]
     padding: 0 0 0 0;
 
     img {
-        width: $wiz;
-        height: $wiz;
+        width: $WIZ;
+        height: $WIZ;
     }
 
     .button
@@ -212,7 +200,7 @@ main.login button[type=submit]
 
         .button
         {
-            padding: $wpt $wpi $wpb $wpo;
+            padding: $WPT $WPI $WPB $WPO;
         }
     }
 
@@ -221,16 +209,16 @@ main.login button[type=submit]
 
         .button
         {
-            padding: $wpt $wpo $wpb $wpi;
+            padding: $WPT $WPO $WPB $WPI;
         }
     }
 
     &:has(:popover-open)
     {
-        border-top-left-radius: $wbrti;
-        border-top-right-radius: $wbrto;
-        border-bottom-left-radius: $wbrbi;
-        border-bottom-right-radius: $wbrbo;
+        border-top-left-radius: $WBRTI;
+        border-top-right-radius: $WBRTO;
+        border-bottom-left-radius: $WBRBI;
+        border-bottom-right-radius: $WBRBO;
     }
 }
 
@@ -671,7 +659,7 @@ main.login button[type=submit]
 {
     inset: unset;
     position-anchor: --menu-widget-button;
-    top: calc(anchor(top) + $wpt);
+    top: calc(anchor(top) + $WPT);
     right: anchor(left);
 }
 

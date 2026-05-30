@@ -1,44 +1,82 @@
 @use "sass:map";
 @use 'config' as cfg;
 
+$BP: map.get(cfg.$padding, 'base'); // Base Padding
+$BM: map.get(cfg.$margin, 'base'); // Base Margin
+
 // Vill sträva mot att alla värden finns i denna och config, utom vissa enstaka som bara används en enda gång
-// Det bör också gå att göra mer automatiserat, men vi gör så här så länge
 
 $fonts: (
     base-size: map.get(cfg.$fonts, 'base-size'),
     body-text-family: map.get(cfg.$fonts, 'body-text-family'),
-    heading-family: map.get(cfg.$fonts, 'heading-family')
+    heading-family: map.get(cfg.$fonts, 'heading-family'),
+);
+
+$text-decoration: (
+    links: map.get(cfg.$text-decoration, 'links'),
 );
 
 $breakpoints: (
-    "mobile": map.get(cfg.$breakpoints, 'mobile')
-);
-
-$spacing: (
-    "xxs": map.get(cfg.$spacing, 'xxs'),
-    "xs": map.get(cfg.$spacing, 'xs'),
-    "s": map.get(cfg.$spacing, 's'),
-    "m": map.get(cfg.$spacing, 'm'),
-    "l": map.get(cfg.$spacing, 'l'),
-    "xl": map.get(cfg.$spacing, 'xl'),
-    "xxl": map.get(cfg.$spacing, 'xxl')
+    "mobile": map.get(cfg.$breakpoints, 'mobile'),
 );
 
 $margin: (
-    "default": map.get(cfg.$margin, 'default')
+    "base": $BM,
+    "block-default": (0.75 * $BM),
+    "inline-default": (1.5 * $BM),
 );
 
 $negative-margin: (
-    "default": -(map.get($margin, 'default'))
+    "base": -(map.get($margin, 'base')),
 );
 
 $padding: (
-    "default": map.get(cfg.$padding, 'default')
+    "base": $BP,
+    "block-default": (0.75 * $BP),
+    "inline-default": (1.5 * $BP),
+    "block-relative": map.get(cfg.$padding, 'block-relative'),
 );
 
 $border: (
     "width": map.get(cfg.$border, 'width'),
     "style": map.get(cfg.$border, 'style'),
     "width-alt": map.get(cfg.$border, 'width-alt'),
-    "style-alt": map.get(cfg.$border, 'style-alt')
+    "style-alt": map.get(cfg.$border, 'style-alt'),
+);
+
+$widget: (
+    padding-top: (0.5 * $BP),
+    padding-bottom: (1 * $BP),
+    padding-outer: (1 * $BP),
+    padding-inner: (0.7 * $BP),
+    border-radius-top-inner: 0,
+    border-radius-top-outer: (0.5 * $BP),
+    border-radius-bottom-inner: (1.3 * $BP),
+    border-radius-bottom-outer: (1.3 * $BP),
+    img-size: (2.2 * $BP),
+);
+
+$WPT: map.get($widget, 'padding-top');
+$WPB: map.get($widget, 'padding-bottom');
+$WPO: map.get($widget, 'padding-outer');
+$WPI: map.get($widget, 'padding-inner');
+$WBRTI: map.get($widget, 'border-radius-top-inner');
+$WBRTO: map.get($widget, 'border-radius-top-outer');
+$WBRBI: map.get($widget, 'border-radius-bottom-inner');
+$WBRBO: map.get($widget, 'border-radius-bottom-outer');
+$WIZ: map.get($widget, 'img-size');
+
+$widget-calc: (
+    total-width: $WIZ + $WPO + $WPI,
+);
+
+// Definiera vilka listor med variabler som ska bli CSS-variabler och med vilket prefix
+// Exportera inte i onödan, eftersom det kan påverka prestanda
+// Övriga är endast interna Sass-variabler och ska bli fasta värden i CSS-koden
+// Exporterar lite extra under utvecklingen för att kunna testa hur det ser ut med olika värden på ett enkelt sätt
+$export-to-css: (
+    (
+        "map": $widget-calc,
+        "prefix": "widget-"
+    ),
 );
