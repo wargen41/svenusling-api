@@ -24,7 +24,7 @@
             <input type="number" size="3" id="display-sequence_2" value="{{ item.sequence_number_2 }}">
         </label>
         {% endif %}
-        <span>av <a href="/admin/series/{{ item.series.id }}">{{ item.series.title }}</a>,</span>
+        <span>av {% if item.season %}<a href="/admin/season/{{ item.season.id }}">säsong {{ item.season.sequence_number }}</a> av {% endif %}<a href="/admin/series/{{ item.series.id }}">{{ item.series.title }}</a>,</span>
         {% endif %}
         <label for="edit-year">från
             <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year" value="{{ item.year }}">
