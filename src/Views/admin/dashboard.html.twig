@@ -101,11 +101,11 @@
             <h2>{{ nav_key }}</h2>
             <ul>
                 {% for nav_item in nav_cat %}
-                <li>{{ nav_item.label }}</li>
+                <li>{% if nav_item.inactive != true %}<a href="{{ nav_item.href }}">{% endif %}{{ nav_item.label }}{% if nav_item.inactive != true %}</a>{% endif %}</li>
                 {% endfor %}
             </ul>
             {% endfor %}
-            <h2>Innehåll (inget funkar här än så länge)</h2>
+            {#<h2>Innehåll (inget funkar här än så länge)</h2>
             <ul>
                 <li><a href="/admin/feed">Feed (startsida)</a></li>
                 <li><a href="/admin/videos">Videorecensioner</a></li>
@@ -122,7 +122,7 @@
                 <li><a href="/admin/genres">Genrer</a></li>
                 <li><a href="/admin/relations">Relationer</a></li>
                 <li><a href="/admin/awards">Utmärkelser</a></li>
-            </ul>
+            </ul>#}
         </nav>
 
     </article>
