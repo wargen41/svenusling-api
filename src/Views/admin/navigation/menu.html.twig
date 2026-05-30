@@ -2,6 +2,18 @@
     <div class="content">
     <form action="search.php" method="get"><input type="search" size="12" id="menu-search-input" required name="query" value=""><input type="submit" value="Sök"></form>
     <ul>
+        {% for nav_key, nav_cat in nav_list %}
+        <li>{{ nav_key }}<ul>
+            {% for nav_item in nav_cat %}
+            <li>{% if nav_item.inactive != true %}<a href="{{ nav_item.href }}">{% endif %}{{ nav_item.label }}{% if nav_item.inactive != true %}</a>{% endif %}</li>
+            {% endfor %}
+        </ul></li>
+        {% endfor %}
+        <li><p>Inloggad som {{ user.username }} <a href="/admin/logout">Logga ut</a></p></li>
+    </ul>
+    </div></nav>
+
+    {#<ul>
         <li>Listor<ul>
             <li><a href="/admin/films">Filmer</a></li>
             <li><a href="/admin/series">Serier</a></li>
@@ -23,4 +35,4 @@
         </ul></li>
         <li><p>Inloggad som {{ user.username }} <a href="/admin/logout">Logga ut</a></p></li>
     </ul>
-    </div></nav>
+    </div></nav>#}
