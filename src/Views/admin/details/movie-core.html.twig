@@ -14,22 +14,20 @@
                 <option value="{{ value }}" {% if item.type == value %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
             </select>
-        {% if type_cat == 'SERIES_SUB' %}av {{ item.series.title }}{% endif %}</label>
-        <label for="edit-year">från
-            <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year" value="{{ item.year }}">
         </label>
-    </div>
-    {% if type_cat == 'SERIES_SUB' %}
-    <details>
-        <summary>Avsnitt från {{ item.series.title }}</summary>
+        {% if type_cat == 'SERIES_SUB' %}
         <label for="display-sequence">#
             <input disabled type="number" size="3" id="display-sequence" value="{{ item.sequence_number }}">
         </label>
         <label for="display-sequence_2">–
             <input disabled type="number" size="3" id="display-sequence_2" value="{{ item.sequence_number_2 }}">
         </label>
-    </details>
-    {% endif %}
+        <span>av {{ item.series.title }}</span>
+        {% endif %}
+        <label for="edit-year">från
+            <input type="number" min="1888" max="2099" size="4" name="year" id="edit-year" value="{{ item.year }}">
+        </label>
+    </div>
     <div class="form-row">
         <label for="edit-title">Titel
             <input type="text" id="edit-title" name="title" value="{{ item.title }}" required>
