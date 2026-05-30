@@ -22,13 +22,7 @@
     }
 }
 
-@each $var-name in get-variables() {
-    .output-var {
-        @debug $var-name;
-    }
-}
-
-@debug $exported-css-vars;
+//@debug utils.$exported-css-vars;
 
 // Theme override example
 .theme-dark {

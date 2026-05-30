@@ -1,13 +1,17 @@
+@use 'sass:map';
+
 $exported-css-vars: ();
 
 // emit map as CSS vars under a selector
 @mixin export-css-vars($map, $prefix: "") {
     @each $key, $value in $map {
-        $var: --#{$prefix}#{$key}: #{$value};
+        $var_name: --#{$prefix}#{$key};
+        $var_value: #{$value};
         // Store the variable name in the global map
-        $exported-css-vars: add-to-map($prefix-$key, $var, $exported-css-vars) !global;
-        //set-variable('custom-var', $prefix + $key);
-        $var;
+        $test: (#{$prefix}#{$key}: $var_name);
+        //@debug $test;
+        $exported-css-vars: map.merge($exported-css-vars, $test);
+        $var_name: $var_value;
     }
 }
 
