@@ -1,7 +1,7 @@
 @use "sass:map";
 @use 'config' as cfg;
 
-// Vill sträva mot att alla värden finns i denna, utom vissa enstaka som bara används en enda gång
+// Vill sträva mot att alla värden finns i denna och config, utom vissa enstaka som bara används en enda gång
 // Det bör också gå att göra mer automatiserat, men vi gör så här så länge
 
 $fonts: (
