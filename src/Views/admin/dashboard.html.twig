@@ -99,6 +99,11 @@
         <nav>
             {% for nav_key, nav_cat in nav_list %}
             <h2>{{ nav_key }}</h2>
+            <ul>
+                {% for nav_item in nav_cat %}
+                <li>{{ nav_item.label }}</li>
+                {% endfor %}
+            </ul>
             {% endfor %}
             <h2>Innehåll (inget funkar här än så länge)</h2>
             <ul>
