@@ -1,0 +1,19 @@
+{% extends "admin/details/base.html.twig" %}
+
+{% set legend = 'Avsnitt' %}
+
+{% block content %}
+
+{% set pop_id = "add-episode-dlg" %}
+<div class="actions">
+    <button class="add" id="add-to-series-button" popovertarget="{{ pop_id }}">+</button>
+</div>
+{% include "admin/forms/new-episode.html.twig" %}
+
+<ol class="episodes">
+    {% for episode in item.episodes %}
+    <li data-numbering="{{ episode.sequence_number }}{% if episode.sequence_number_2 %}–{{ episode.sequence_number_2 }}{% endif %}"><a href="/admin/episode/{{ episode.id }}">{{ episode.title }}</a></li>
+    {% endfor %}
+</ol>
+
+{% endblock %}
