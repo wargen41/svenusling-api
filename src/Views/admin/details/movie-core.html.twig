@@ -9,7 +9,7 @@
     <input type="hidden" name="movie_id" value="{{ item.id }}">
     <div class="form-row">
         <label for="edit-type">
-            <select type="text" id="edit-type" name="type" required{% if type_cat == 'SERIES_MAIN' %} disabled{% endif %}>
+            <select type="text" id="edit-type" name="type" required{% if type_cat == 'SERIES_MAIN' or type_cat == 'SERIES_SUB' %} disabled{% endif %}>
             {% for value, label in types %}
                 <option value="{{ value }}" {% if item.type == value %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
@@ -43,7 +43,7 @@
             <textarea id="edit-description" name="description">{{ item.description }}</textarea>
         </label>
     </div>#}
-    <details open>
+    <details>
     <summary>Publicering (uppgifter här syns inte för besökare)</summary>
     <div class="form-row">
         <label for="edit-sorting_title">Sorteringstitel
