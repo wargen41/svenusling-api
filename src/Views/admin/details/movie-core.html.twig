@@ -17,10 +17,10 @@
         </label>
         {% if type_cat == 'SERIES_SUB' %}
         <label for="display-sequence">#
-            <input disabled type="number" size="3" id="display-sequence" value="{{ item.sequence_number }}">
+            <input type="number" size="3" id="display-sequence" value="{{ item.sequence_number }}">
         </label>
         <label for="display-sequence_2">–
-            <input disabled type="number" size="3" id="display-sequence_2" value="{{ item.sequence_number_2 }}">
+            <input type="number" size="3" id="display-sequence_2" value="{{ item.sequence_number_2 }}">
         </label>
         <span>av {{ item.series.title }}</span>
         {% endif %}
