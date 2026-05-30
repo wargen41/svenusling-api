@@ -6,10 +6,10 @@ $BM: map.get(cfg.$margin, 'base'); // Base Margin
 
 // Vill sträva mot att alla värden finns i denna och config, utom vissa enstaka som bara används en enda gång
 
-$fonts: (
-    base-size: map.get(cfg.$fonts, 'base-size'),
-    body-text-family: map.get(cfg.$fonts, 'body-text-family'),
-    heading-family: map.get(cfg.$fonts, 'heading-family'),
+$font: (
+    base-size: map.get(cfg.$font, 'base-size'),
+    body-text-family: map.get(cfg.$font, 'body-text-family'),
+    heading-family: map.get(cfg.$font, 'heading-family'),
 );
 
 $text-decoration: (
@@ -66,8 +66,12 @@ $WBRBI: map.get($widget, 'border-radius-bottom-inner');
 $WBRBO: map.get($widget, 'border-radius-bottom-outer');
 $WIZ: map.get($widget, 'img-size');
 
-$widget-calc: (
+$widget-calc-export: (
     total-width: $WIZ + $WPO + $WPI,
+);
+
+$widget-calc: (
+    total-width: var(--widget-calc-total-width),
 );
 
 // Definiera vilka listor med variabler som ska bli CSS-variabler och med vilket prefix
@@ -77,6 +81,6 @@ $widget-calc: (
 $export-to-css: (
     (
         "map": $widget-calc,
-        "prefix": "widget-"
+        "prefix": "widget-calc-"
     ),
 );

@@ -13,19 +13,25 @@
 
 // Export a minimal set of tokens to CSS vars (colors, spacing, z-index, radii) to keep runtime surface small.
 // Use consistent prefixes (e.g., --color-, --space-) to avoid name collisions.
+$export-to-css: (cfg.$export-to-css, var.$export-to-css);
 :root {
-    @each $map in cfg.$export-to-css {
-        @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
+    @each $list in $export-to-css {
+        @each $item in $list {
+            $map: map.get($item, 'map');
+            $prefix: map.get($item, 'prefix');
+            @include utils.export-css-vars($map, $prefix);
+        }
     }
-    @each $map in var.$export-to-css {
-        @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
-    }
+    // @each $map in cfg.$export-to-css {
+    //     @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
+    // }
+    // @each $map in var.$export-to-css {
+    //     @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
+    // }
     // @each $map in cpt.$export-to-css {
     //     @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
     // }
 }
-
-//@debug utils.$exported-css-vars;
 
 // Theme override example
 .theme-dark {

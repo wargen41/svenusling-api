@@ -36,16 +36,16 @@ $font-stacks: (
     'handwritten': "'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive"
 );
 
-$fonts-export: (
+$font-export: (
     base-size: 18px,
     body-text-family: map.get($font-stacks, 'humanist'),
     heading-family: map.get($font-stacks, 'geometric-humanist')
 );
 
-$fonts: (
-    base-size: map.get($fonts-export, 'base-size'),
-    body-text-family: map.get($fonts-export, 'body-text-family'),
-    heading-family: map.get($fonts-export, 'heading-family')
+$font: (
+    base-size: var(--font-base-size),
+    body-text-family: var(--font-body-text-family),
+    heading-family: var(--font-heading-family)
 );
 
 $text-decoration: (
@@ -75,11 +75,18 @@ $padding: (
     "block-relative": .3em
 );
 
-$border: (
+$border-export: (
     "width": 2px,
     "style": solid,
     "width-alt": 1px,
     "style-alt": solid
+);
+
+$border: (
+    "width": var(--border-width),
+    "style": var(--border-style),
+    "width-alt": var(--border-width-alt),
+    "style-alt": var(--border-style-alt)
 );
 
 // Definiera vilka listor med variabler som ska bli CSS-variabler och med vilket prefix
@@ -88,7 +95,7 @@ $border: (
 // Exporterar lite extra under utvecklingen för att kunna testa hur det ser ut med olika värden på ett enkelt sätt
 $export-to-css: (
     (
-        "map": $fonts-export,
+        "map": $font-export,
         "prefix": "font-"
     ),
     // (

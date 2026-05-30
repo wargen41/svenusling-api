@@ -713,13 +713,13 @@ fieldset {
   padding-bottom: 1rem;
   padding-inline: 1rem;
   border-radius: 0.4rem;
-  border-width: 2px;
+  border-width: var(--border-width);
 }
 fieldset > legend {
   border-radius: 10em;
   padding-inline: 1em;
   padding-block: 0.3em;
-  border-top-width: 2px;
+  border-top-width: var(--border-width);
   border-top-style: groove;
 }
 fieldset > *:not(legend) + * {
@@ -736,8 +736,8 @@ fieldset > details,
 fieldset > form > details {
   position: inherit;
   border-radius: 0.4rem;
-  border-width: 2px;
-  border-style: solid;
+  border-width: var(--border-width);
+  border-style: var(--border-style);
   border-color: var(--color-outline-secondary);
 }
 
@@ -775,8 +775,8 @@ input.full-width {
 button {
   padding: 0.15em 0.6em;
   border-radius: 10em;
-  border-width: 2px;
-  border-style: solid;
+  border-width: var(--border-width);
+  border-style: var(--border-style);
 }
 
 .button-list,
@@ -1117,8 +1117,8 @@ main.login button[type=submit] {
   margin: auto;
   position: fixed;
   inset: 0;
-  border-width: 2px;
-  border-style: solid;
+  border-width: var(--border-width);
+  border-style: var(--border-style);
   border-radius: 1.1rem;
   padding: 0 0 1.1rem 0;
   max-width: calc(100vw - var(--widget-total-width) * 2 - 1.65rem);
@@ -1161,19 +1161,19 @@ main.login button[type=submit] {
   padding: 0 var(--menu-item-padding);
   display: block;
   align-content: center;
-  border-bottom-width: 2px;
+  border-bottom-width: var(--border-width);
 }
 .pseudo-modal[popover] > .top button:hover,
 .menu[popover] > .top button:hover {
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
+  border-bottom-width: var(--border-width);
+  border-bottom-style: var(--border-style);
 }
 .pseudo-modal[popover] > .top button[popovertarget],
 .menu[popover] > .top button[popovertarget] {
   width: 3em;
   border-radius: 0 0 0 1.1rem;
-  border-bottom-width: 2px;
-  border-left-width: 2px;
+  border-bottom-width: var(--border-width);
+  border-left-width: var(--border-width);
   border-right: none;
 }
 .pseudo-modal[popover]::backdrop,
@@ -1271,6 +1271,23 @@ main.login button[type=submit] {
 
 #menu-persons-relations {
   position-anchor: --menu-persons-relations-button;
+}
+
+:root {
+  --font-base-size: 18px;
+  --font-body-text-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+  --font-heading-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+  --border-width: var(--border-width);
+  --border-style: var(--border-style);
+  --border-width-alt: var(--border-width-alt);
+  --border-style-alt: var(--border-style-alt);
+  --widget-calc-total-width: var(--widget-calc-total-width);
+}
+
+.theme-dark {
+  --color-primary: #66b2ff;
+  --color-bg: #0f1720;
+  --color-text: #e6eef8;
 }
 
 /*# sourceMappingURL=main.css.map */
