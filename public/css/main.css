@@ -735,8 +735,9 @@ fieldset ul > li + li {
 fieldset > details,
 fieldset > form > details {
   position: inherit;
-  border: inherit;
-  border-radius: inherit;
+  border-radius: 0.4rem;
+  border-width: 2px;
+  border-style: solid;
   border-color: var(--color-outline-secondary);
 }
 

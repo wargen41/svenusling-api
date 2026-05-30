@@ -80,8 +80,9 @@ fieldset
     > form > details
     {
         position: inherit;
-        border: inherit;
-        border-radius: inherit;
+        border-radius: 0.4rem;
+        border-width: $border-width;
+        border-style: map.get(var.$border, 'style');
         border-color: var(--color-outline-secondary);
     }
 }
