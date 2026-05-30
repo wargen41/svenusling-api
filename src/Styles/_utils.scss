@@ -1,7 +1,13 @@
+$exported-css-vars: ();
+
 // emit map as CSS vars under a selector
 @mixin export-css-vars($map, $prefix: "") {
     @each $key, $value in $map {
-        --#{$prefix}#{$key}: #{$value};
+        $var: --#{$prefix}#{$key}: #{$value};
+        // Store the variable name in the global map
+        $exported-css-vars: add-to-map($prefix-$key, $var, $exported-css-vars) !global;
+        //set-variable('custom-var', $prefix + $key);
+        $var;
     }
 }
 
@@ -14,4 +20,8 @@
             --#{$prefix}#{$key}: #{$value};
         }
     }
+}
+
+@function add-to-map($key, $value, $map) {
+    @return map-merge($map, ($key: $value));
 }

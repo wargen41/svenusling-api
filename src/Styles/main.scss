@@ -1,8 +1,9 @@
 @use 'sass:map';
 
 @use 'reset';
-@use 'vars' as var;
+@use 'config' as cfg;
 @use 'colors' as clr;
+@use 'vars' as var;
 @use 'utils';
 @use 'mixins';
 @use 'base';
@@ -13,16 +14,21 @@
 // Export a minimal set of tokens to CSS vars (colors, spacing, z-index, radii) to keep runtime surface small.
 // Use consistent prefixes (e.g., --color-, --space-) to avoid name collisions.
 :root {
-    @each $map in var.$export-to-css {
+    @each $map in cfg.$export-to-css {
         @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
     }
     @each $map in cpt.$export-to-css {
         @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
     }
-    //@include utils.export-css-vars(var.$spacing, 'space-');
-    //@include utils.export-css-vars(var.$margins, 'margin-');
-    //@include utils.export-css-vars(var.$negative-margins, 'negative-margin-');
 }
+
+@each $var-name in get-variables() {
+    .output-var {
+        @debug $var-name;
+    }
+}
+
+@debug $exported-css-vars;
 
 // Theme override example
 .theme-dark {
