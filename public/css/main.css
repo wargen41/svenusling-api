@@ -732,7 +732,8 @@ fieldset ul {
 fieldset ul > li + li {
   margin-top: 0.6em;
 }
-fieldset > details {
+fieldset > details,
+fieldset > form > details {
   position: inherit;
   border: inherit;
   border-radius: inherit;

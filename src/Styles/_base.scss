@@ -76,7 +76,8 @@ fieldset
     }
 
     // Tempfix för details inuti fieldset, så jag kommer ihåg att jag vill göra något ordentligt med det
-    > details
+    > details,
+    > form > details
     {
         position: inherit;
         border: inherit;
