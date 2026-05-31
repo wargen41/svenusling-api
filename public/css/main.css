@@ -931,10 +931,8 @@ main button.add {
   height: 2.2rem;
   margin-left: 0;
 }
-@media (width <= 32rem) {
-  main > button.add {
-    margin-left: 2.7rem;
-  }
+main > button.add {
+  margin-left: 2.7rem;
 }
 main button.add.non-sticky {
   position: initial;

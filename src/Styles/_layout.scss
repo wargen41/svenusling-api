@@ -14,9 +14,6 @@ $widget-width: map.get(var.$widget-calc-export, 'total-width');
 $widget-padding-diff: ($widget-width - $main-padding);
 $icon-size: map.get(var.$sticky, 'icon-size');
 $icon-margin: $widget-padding-diff;
-@debug $main-padding;
-@debug $widget-width;
-@debug $widget-padding-diff;
 
 body
 {
@@ -78,9 +75,7 @@ main
 
     > button.add
     {
-        @media (width <= map.get(var.$breakpoints, 'mobile')) {
-            margin-left: $icon-margin;
-        }
+        margin-left: $icon-margin;
     }
 
     button.add.non-sticky
