@@ -931,13 +931,16 @@ main button.add {
   height: 2.2rem;
   margin-left: 2.3rem;
 }
-main fieldset button.add {
-  margin-left: 1.3rem;
-}
 main button.add.non-sticky {
   position: initial;
   z-index: 0;
   margin-left: 0;
+}
+main fieldset button.add {
+  margin-left: calc(1.3rem - var(--border-width));
+}
+main fieldset details button.add {
+  margin-left: calc(1.3rem - var(--border-width) - var(--border-width));
 }
 main .counter {
   position: absolute;
@@ -945,12 +948,7 @@ main .counter {
   display: flex;
   align-items: center;
   top: 0;
-  right: 0;
-}
-@media (width <= 32rem) {
-  main .counter {
-    right: 2.3rem;
-  }
+  right: 2.3rem;
 }
 
 article > *:not(h1) + * {

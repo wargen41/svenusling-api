@@ -10,6 +10,7 @@ $inline-relative-phrasing-padding: map.get(var.$padding, 'inline-relative-phrasi
 $block-relative-box-margin: map.get(var.$margin, 'block-relative-box');
 $inline-relative-phrasing-margin: map.get(var.$margin, 'inline-relative-phrasing');
 $border-width: map.get(var.$border, 'width');
+$fieldset-border-width: map.get(var.$fieldset, 'border-width');
 $border-style: map.get(var.$border, 'style');
 $border-style-alt: map.get(var.$border, 'style-alt');
 $pill-shape: map.get(var.$border, 'pill-shape-radius');
@@ -28,14 +29,14 @@ fieldset
     padding-inline: map.get(var.$fieldset, 'inline-padding');
 
     border-radius: (0.4 * $BP);
-    border-width: $border-width;
+    border-width: $fieldset-border-width;
 
     > legend
     {
         border-radius: $pill-shape;
         padding-inline: $inline-relative-box-padding;
         padding-block: $block-relative-box-padding;
-        border-top-width: $border-width;
+        border-top-width: $fieldset-border-width;
         border-top-style: $border-style-alt;
     }
 
@@ -61,7 +62,7 @@ fieldset
     {
         position: inherit;
         border-radius: (0.4 * $BP);
-        border-width: $border-width;
+        border-width: map.get(var.$fieldset, 'border-width');
         border-style: $border-style;
         border-color: var(--color-outline-secondary);
     }

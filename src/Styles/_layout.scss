@@ -10,12 +10,22 @@ $inline-padding: map.get(var.$padding, 'inline-default');
 $inline-margin: map.get(var.$margin, 'inline-default');
 $sticky-top: map.get(var.$sticky, 'position-top');
 $main-padding: map.get(var.$main, 'inline-padding');
+$fieldset-padding: map.get(var.$fieldset, 'inline-padding');
+$fieldset-border: map.get(var.$fieldset, 'border-width');
+$details-padding: map.get(var.$fieldset, 'details-inline-padding');
+$details-border: map.get(var.$fieldset, 'details-border-width');
 $widget-width: map.get(var.$widget-calc-export, 'total-width');
 $widget-inner-padding: map.get(var.$widget, 'padding-inner');
 $widget-padding-diff: ($widget-width - $main-padding - $widget-inner-padding);
 $icon-size: map.get(var.$sticky, 'icon-size');
 $icon-gap: map.get(var.$sticky, 'icon-gap');
-$icon-margin: $widget-padding-diff + $icon-gap;
+
+$icon-margin: ($widget-padding-diff + $icon-gap);
+//$fieldset-icon-margin: calc(($icon-margin - $fieldset-padding) - $fieldset-border);
+$fieldset-calc: $icon-margin - $fieldset-padding;
+$fieldset-icon-margin: calc(#{$fieldset-calc} - #{$fieldset-border});
+$details-calc: $fieldset-calc - $details-padding;
+$details-icon-margin: calc(#{$details-calc} - #{$details-border} - #{$fieldset-border});
 
 body
 {
@@ -75,16 +85,27 @@ main
         margin-left: $icon-margin;
     }
 
-    fieldset button.add
-    {
-        margin-left: ($icon-margin - map.get(var.$fieldset, 'inline-padding'));
-    }
-
     button.add.non-sticky
     {
         position: initial;
         z-index: 0;
         margin-left: 0;
+    }
+
+    fieldset
+    {
+        button.add
+        {
+            margin-left: $fieldset-icon-margin;
+        }
+
+        details
+        {
+            button.add
+            {
+                margin-left: $details-icon-margin;
+            }
+        }
     }
 
     .counter
@@ -94,11 +115,7 @@ main
         display: flex;
         align-items: center;
         top: 0;
-        right: 0;
-
-        @media (width <= map.get(var.$breakpoints, 'mobile')) {
-            right: $icon-margin;
-        }
+        right: $icon-margin;
     }
 }
 
