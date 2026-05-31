@@ -929,12 +929,12 @@ main button.add {
   top: 0.5rem;
   width: 2.2rem;
   height: 2.2rem;
-  margin-left: 1.98rem;
+  margin-left: 2.2rem;
 }
 main .counter {
   position: absolute;
   top: 0;
-  right: 1.98rem;
+  right: 2.2rem;
   height: 2.2rem;
   display: flex;
   align-items: center;
