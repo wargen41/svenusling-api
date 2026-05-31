@@ -728,10 +728,6 @@ nav ul {
   list-style-type: none;
 }
 
-li {
-  padding-block: 0.3em;
-}
-
 img.circle {
   border-radius: 50%;
   object-fit: cover;
@@ -774,7 +770,7 @@ fieldset > legend {
   padding-inline: 1em;
   padding-block: 0.3em;
   border-top-width: var(--border-width);
-  border-top-style: groove;
+  border-top-style: var(--border-style-alt);
 }
 fieldset > *:not(legend) + * {
   margin-top: 0.65em;

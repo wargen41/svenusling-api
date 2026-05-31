@@ -3,8 +3,16 @@
 
 $BM: map.get(var.$margin, 'base'); // Base Margin
 $BP: map.get(var.$padding, 'base'); // Base Padding
-$block-relative-padding: map.get(var.$padding, 'block-relative');
+$block-relative-box-padding: map.get(var.$padding, 'block-relative-box');
+$inline-relative-box-padding: map.get(var.$padding, 'inline-relative-box');
+$block-relative-phrasing-padding: map.get(var.$padding, 'block-relative-phrasing');
+$inline-relative-phrasing-padding: map.get(var.$padding, 'inline-relative-phrasing');
+$block-relative-box-margin: map.get(var.$margin, 'block-relative-box');
+$inline-relative-phrasing-margin: map.get(var.$margin, 'inline-relative-phrasing');
 $border-width: map.get(var.$border, 'width');
+$border-style: map.get(var.$border, 'style');
+$border-style-alt: map.get(var.$border, 'style-alt');
+$pill-shape: map.get(var.$border, 'pill-shape-radius');
 
 label
 {
@@ -15,20 +23,20 @@ fieldset
 {
     position: relative;
 
-    padding-top: .3rem;
-    padding-bottom: 1rem;
-    padding-inline: 1rem;
+    padding-top: (0.3 * $BP);
+    padding-bottom: (1 * $BP);
+    padding-inline: (1 * $BP);
 
-    border-radius: 0.4rem;
+    border-radius: (0.4 * $BP);
     border-width: $border-width;
 
     > legend
     {
-        border-radius: 10em;
-        padding-inline: 1em;
-        padding-block: $block-relative-padding;
+        border-radius: $pill-shape;
+        padding-inline: $inline-relative-box-padding;
+        padding-block: $block-relative-box-padding;
         border-top-width: $border-width;
-        border-top-style: groove;
+        border-top-style: $border-style-alt;
     }
 
     > *:not(legend) + *
@@ -43,7 +51,7 @@ fieldset
 
         > li + li
         {
-            margin-top: 0.6em;
+            margin-top: $block-relative-phrasing-padding;
         }
     }
 
@@ -52,9 +60,9 @@ fieldset
     > form > details
     {
         position: inherit;
-        border-radius: 0.4rem;
+        border-radius: (0.4 * $BP);
         border-width: $border-width;
-        border-style: map.get(var.$border, 'style');
+        border-style: $border-style;
         border-color: var(--color-outline-secondary);
     }
 }
@@ -68,17 +76,17 @@ input.full-width
 
 button
 {
-    padding: 0.15em 0.6em;
-    border-radius: 10em; // pill shape
+    padding: $inline-relative-phrasing-padding $block-relative-phrasing-padding;
+    border-radius: $pill-shape;
     border-width: $border-width;
-    border-style: map.get(var.$border, 'style');
+    border-style: $border-style;
 }
 
 .button-list,
 .button-list .items
 {
     display: flex;
-    gap: .5em;
+    gap: $inline-relative-phrasing-margin;
     flex-wrap: wrap;
     justify-content: space-evenly;
     position: relative;
@@ -121,13 +129,13 @@ button
 }
 
 .form-row + .form-row {
-    margin-top: .5em;
+    margin-top: $block-relative-box-margin;
 }
 
 .form-row
 {
     display: flex;
-    gap: .5em;
+    gap: $inline-relative-phrasing-margin;
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -138,7 +146,7 @@ button
     flex: auto;
     display: flex;
     align-items: center;
-    gap: 0.3em;
+    gap: (0.6 * $inline-relative-phrasing-margin);
 }
 
 /* But where the input has a [size] attribute, do not use flexible size */

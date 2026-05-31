@@ -5,6 +5,7 @@ $BM: map.get(var.$margin, 'base'); // Base Margin
 $BP: map.get(var.$padding, 'base'); // Base Padding
 $block-relative-padding: map.get(var.$padding, 'block-relative');
 $border-width: map.get(var.$border, 'width');
+$link-decoration: map.get(var.$text-decoration, 'links');
 
 *
 {
@@ -23,7 +24,7 @@ html
 
 a
 {
-    text-decoration: map.get(var.$text-decoration, 'links');
+    text-decoration: $link-decoration;
 }
 
 nav ul
@@ -65,12 +66,12 @@ dd:before
 
         li:hover a, li:active a
         {
-            text-decoration: 1px underline solid;
+            text-decoration: $link-decoration;
         }
 
         li:hover a:hover
         {
-            text-decoration: 1px underline solid;
+            text-decoration: $link-decoration;
         }
     }
 }

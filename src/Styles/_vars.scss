@@ -3,32 +3,41 @@
 
 $BP: map.get(cfg.$padding, 'base'); // Base Padding
 $BM: map.get(cfg.$margin, 'base'); // Base Margin
+$BPr: map.get(cfg.$padding, 'relative'); // Base Padding relative
+$BMr: map.get(cfg.$margin, 'relative'); // Base Margin relative
 
 // Vill sträva mot att alla värden finns i denna och config, utom vissa enstaka som bara används en enda gång
 
-$text-decoration: (
-    links: map.get(cfg.$text-decoration, 'links'),
-);
-
 $breakpoints: (
     "mobile": map.get(cfg.$breakpoints, 'mobile'),
-);
-
-$margin: (
-    "base": $BM,
-    "block-default": (0.75 * $BM),
-    "inline-default": (1.5 * $BM),
-);
-
-$negative-margin: (
-    "base": -(map.get($margin, 'base')),
 );
 
 $padding: (
     "base": $BP,
     "block-default": (0.75 * $BP),
     "inline-default": (1.5 * $BP),
-    "block-relative": map.get(cfg.$padding, 'block-relative'),
+    "block-relative-box": (0.3 * $BPr),
+    "inline-relative-box": (1 * $BPr),
+    "block-relative-phrasing": (0.6 * $BPr),
+    "inline-relative-phrasing": (0.15 * $BPr),
+);
+
+$margin: (
+    "base": $BM,
+    "block-default": (0.75 * $BM),
+    "inline-default": (1.5 * $BM),
+    "block-relative-box": (0.5 * $BMr),
+    "inline-relative-box": (1 * $BMr),
+    "block-relative-phrasing": (1 * $BMr),
+    "inline-relative-phrasing": (0.5 * $BMr),
+);
+
+$negative-margin: (
+    "base": -(map.get($margin, 'base')),
+);
+
+$text-decoration: (
+    "links": map.get(cfg.$text-decoration, 'links'),
 );
 
 $border: (
@@ -36,18 +45,19 @@ $border: (
     "width-alt": map.get(cfg.$border, 'width-alt'),
     "style": map.get(cfg.$border, 'style'),
     "style-alt": map.get(cfg.$border, 'style-alt'),
+    "pill-shape-radius": 10em,
 );
 
 $widget: (
-    padding-top: (0.5 * $BP),
-    padding-bottom: (1 * $BP),
-    padding-outer: (1 * $BP),
-    padding-inner: (0.7 * $BP),
-    border-radius-top-inner: 0,
-    border-radius-top-outer: (0.5 * $BP),
-    border-radius-bottom-inner: (1.3 * $BP),
-    border-radius-bottom-outer: (1.3 * $BP),
-    img-size: (2.2 * $BP),
+    "padding-top": (0.5 * $BP),
+    "padding-bottom": (1 * $BP),
+    "padding-outer": (1 * $BP),
+    "padding-inner": (0.7 * $BP),
+    "border-radius-top-inner": 0,
+    "border-radius-top-outer": (0.5 * $BP),
+    "border-radius-bottom-inner": (1.3 * $BP),
+    "border-radius-bottom-outer": (1.3 * $BP),
+    "img-size": (2.2 * $BP),
 );
 
 $WPT: map.get($widget, 'padding-top');
