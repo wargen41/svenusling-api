@@ -83,6 +83,7 @@ main
         width: $icon-size;
         height: $icon-size;
         margin-left: $icon-margin;
+        padding-block: map.get(var.$padding, 'block-relative-phrasing');
     }
 
     button.add.non-sticky
