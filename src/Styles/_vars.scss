@@ -41,6 +41,7 @@ $sticky: (
     "position-inline": map.get(cfg.$sticky, 'position-inline'),
     "inner-margin": map.get(cfg.$sticky, 'inner-margin'),
     "icon-size": map.get(cfg.$sticky, 'icon-size'),
+    "icon-gap": map.get(cfg.$sticky, 'icon-gap'),
 );
 
 $text-decoration: (
