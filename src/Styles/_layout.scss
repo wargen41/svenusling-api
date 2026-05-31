@@ -73,6 +73,11 @@ main
         margin-left: $icon-margin;
     }
 
+    fieldset button.add
+    {
+        margin-left: ($icon-margin - map.get(var.$fieldset, 'inline-padding'));
+    }
+
     button.add.non-sticky
     {
         position: initial;

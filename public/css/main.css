@@ -931,6 +931,9 @@ main button.add {
   height: 2.2rem;
   margin-left: 2.7rem;
 }
+main fieldset button.add {
+  margin-left: 1.7rem;
+}
 main button.add.non-sticky {
   position: initial;
   z-index: 0;
