@@ -1,7 +1,7 @@
 @use "sass:map";
 
 // https://modernfontstacks.com
-$font-stacks: (
+$font-stack: (
     // System UI fonts are those native to the operating system interface. They are highly legible and easy to read at small sizes, contains many font weights, and is ideal for UI elements.
     'system-ui': "system-ui, sans-serif",
     // Transitional typefaces are a mix between Old Style and Modern typefaces that was developed during The Enlightenment. One of the most famous examples of a Transitional typeface is Times New Roman, which was developed for the Times of London newspaper.
@@ -34,11 +34,17 @@ $font-stacks: (
     'handwritten': "'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive"
 );
 
+$font-stack-export: (
+    "humanist": map.get($font-stack, 'humanist'),
+    "geometric-humanist": map.get($font-stack, 'geometric-humanist'),
+    "slab-serif": map.get($font-stack, 'slab-serif'),
+);
+
 $font-export: (
     base-size: 18px,
-    body-text-family: map.get($font-stacks, 'humanist'),
-    heading-family: map.get($font-stacks, 'geometric-humanist'),
-    footer-family: map.get($font-stacks, 'geometric-humanist'),
+    body-text-family: var(--font-stack-humanist),
+    heading-family: var(--font-stack-geometric-humanist),
+    footer-family: var(--font-stack-slab-serif),
 );
 
 $font: (
@@ -91,6 +97,10 @@ footer
 // Övriga är endast interna Sass-variabler och ska bli fasta värden i CSS-koden
 // Exporterar lite extra under utvecklingen för att kunna testa hur det ser ut med olika värden på ett enkelt sätt
 $export-to-css: (
+    (
+        "map": $font-stack-export,
+        "prefix": "font-stack-"
+    ),
     (
         "map": $font-export,
         "prefix": "font-"

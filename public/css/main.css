@@ -1278,10 +1278,13 @@ main.login button[type=submit] {
   --border-width-alt: 1px;
   --border-style: solid;
   --border-style-alt: groove;
+  --font-stack-humanist: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+  --font-stack-geometric-humanist: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+  --font-stack-slab-serif: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
   --font-base-size: 18px;
-  --font-body-text-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
-  --font-heading-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
-  --font-footer-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+  --font-body-text-family: var(--font-stack-humanist);
+  --font-heading-family: var(--font-stack-geometric-humanist);
+  --font-footer-family: var(--font-stack-slab-serif);
   --widget-calc-total-width: 3.9rem;
 }
 
