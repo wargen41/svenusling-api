@@ -11,9 +11,14 @@ $inline-margin: map.get(var.$margin, 'inline-default');
 $sticky-top: map.get(var.$sticky, 'position-top');
 $main-padding: map.get(var.$main, 'inline-padding');
 $widget-width: map.get(var.$widget-calc-export, 'total-width');
-$widget-padding-diff: ($widget-width - $main-padding);
+$widget-inner-padding: map.get(var.$widget, 'padding-inner');
+$widget-padding-diff: ($widget-width - $main-padding - $widget-inner-padding);
 $icon-size: map.get(var.$sticky, 'icon-size');
-$icon-margin: $widget-padding-diff;
+$icon-gap: map.get(var.$sticky, 'icon-gap');
+$icon-margin: $widget-padding-diff + $icon-gap;
+@debug $widget-width;
+@debug $main-padding;
+@debug $icon-margin;
 
 body
 {
