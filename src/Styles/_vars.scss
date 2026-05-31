@@ -12,6 +12,10 @@ $breakpoints: (
     "mobile": map.get(cfg.$breakpoints, 'mobile'),
 );
 
+$width: (
+    "main-max": map.get(cfg.$width, 'main-max'),
+);
+
 $padding: (
     "base": $BP,
     "block-default": (0.75 * $BP),
@@ -36,6 +40,11 @@ $negative-margin: (
     "base": -(map.get($margin, 'base')),
 );
 
+$sticky: (
+    "position-top": map.get(cfg.$sticky, 'position-top'),
+    "icon-size": map.get(cfg.$sticky, 'icon-size'),
+);
+
 $text-decoration: (
     "links": map.get(cfg.$text-decoration, 'links'),
 );
@@ -49,7 +58,7 @@ $border: (
 );
 
 $widget: (
-    "padding-top": (0.5 * $BP),
+    "padding-top": map.get(cfg.$sticky, 'position-top'),
     "padding-bottom": (1 * $BP),
     "padding-outer": (1 * $BP),
     "padding-inner": (0.7 * $BP),
@@ -57,7 +66,7 @@ $widget: (
     "border-radius-top-outer": (0.5 * $BP),
     "border-radius-bottom-inner": (1.3 * $BP),
     "border-radius-bottom-outer": (1.3 * $BP),
-    "img-size": (2.2 * $BP),
+    "img-size": map.get(cfg.$sticky, 'icon-size'),
 );
 
 $WPT: map.get($widget, 'padding-top');

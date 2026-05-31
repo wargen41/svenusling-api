@@ -3,7 +3,7 @@
 
 $BM: map.get(var.$margin, 'base'); // Base Margin
 $BP: map.get(var.$padding, 'base'); // Base Padding
-$block-relative-padding: map.get(var.$padding, 'block-relative');
+$block-relative-box-padding: map.get(var.$padding, 'block-relative-box');
 $border-width: map.get(var.$border, 'width');
 $link-decoration: map.get(var.$text-decoration, 'links');
 
@@ -34,7 +34,7 @@ nav ul
 
 li
 {
-    padding-block: $block-relative-padding;
+    padding-block: $block-relative-box-padding;
 }
 
 img.circle

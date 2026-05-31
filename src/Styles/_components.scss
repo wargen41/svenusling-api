@@ -35,7 +35,7 @@ $popover: (
     border-style: map.get(var.$border, 'style'),
     border-radius-relative-padding-inline: 0.75,
     border-radius-relative-padding-block: 0.6,
-    padding-inline-relative-list-padding: 0.3,
+    padding-inline-relative-box-list-padding: 0.3,
     list-padding-relative-sub-list-padding: 4,
     sub-offset: 0.5rem,
     // columns
@@ -43,7 +43,7 @@ $popover: (
     column-gap: 1.1em,
     section-gap: 0em,
     // items
-    padding-inline-relative-item-padding: 0.7,
+    padding-inline-relative-box-item-padding: 0.7,
     item-height: 2.6rem,
     item-gap: 2px,
     item-border-width: 0,
@@ -57,10 +57,10 @@ $mbw: map.get($popover, 'border-width');
 $mbs: map.get($popover, 'border-style');
 $mbrrpi: map.get($popover, 'border-radius-relative-padding-inline');
 $mbrrpb: map.get($popover, 'border-radius-relative-padding-block');
-$mpirlp: map.get($popover, 'padding-inline-relative-list-padding');
+$mpirlp: map.get($popover, 'padding-inline-relative-box-list-padding');
 $mlprslp: map.get($popover, 'list-padding-relative-sub-list-padding');
 $mso: map.get($popover, 'sub-offset');
-$mpirip: map.get($popover, 'padding-inline-relative-item-padding');
+$mpirip: map.get($popover, 'padding-inline-relative-box-item-padding');
 $mih: map.get($popover, 'item-height');
 $mig: map.get($popover, 'item-gap');
 $mibw: map.get($popover, 'item-border-width');

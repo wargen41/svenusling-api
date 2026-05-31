@@ -10,6 +10,9 @@ $block-padding: map.get(var.$padding, 'block-default');
 $block-margin: map.get(var.$margin, 'block-default');
 $inline-padding: map.get(var.$padding, 'inline-default');
 $inline-margin: map.get(var.$margin, 'inline-default');
+$sticky-top: map.get(var.$sticky, 'position-top');
+$icon-size: map.get(var.$sticky, 'icon-size');
+$icon-margin: (0.9 * $icon-size);
 
 body
 {
@@ -36,7 +39,7 @@ body *
 
 main
 {
-    max-width: 36em;
+    max-width: map.get(var.$width, 'main-max');
     margin: 0 auto;
     padding: 0 $inline-padding;
     min-height: 100vh;
@@ -62,17 +65,19 @@ main
     button.add
     {
         position: sticky;
-        top: 0.5em;
         z-index: 42;
-        margin-left: 2rem;
+        top: $sticky-top;
+        width: $icon-size;
+        height: $icon-size;
+        margin-left: $icon-margin;
     }
 
     .counter
     {
         position: absolute;
         top: 0;
-        right: 2rem;
-        height: 2.2rem;
+        right: $icon-margin;
+        height: $icon-size;
         display: flex;
         align-items: center;
     }

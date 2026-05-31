@@ -6,6 +6,10 @@ $breakpoints: (
     "mobile": 32rem,
 );
 
+$width: (
+    "main-max": 36em,
+);
+
 $padding: (
     "base": 1rem,
     "relative": 1em,
@@ -14,6 +18,11 @@ $padding: (
 $margin: (
     "base": 1rem,
     "relative": 1em,
+);
+
+$sticky: (
+    "position-top": 0.5rem,
+    "icon-size": 2.2rem,
 );
 
 $text-decoration: (

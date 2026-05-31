@@ -728,6 +728,10 @@ nav ul {
   list-style-type: none;
 }
 
+li {
+  padding-block: 0.3em;
+}
+
 img.circle {
   border-radius: 50%;
   object-fit: cover;
@@ -921,14 +925,16 @@ main article > hgroup:first-of-type {
 }
 main button.add {
   position: sticky;
-  top: 0.5em;
   z-index: 42;
-  margin-left: 2rem;
+  top: 0.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-left: 1.98rem;
 }
 main .counter {
   position: absolute;
   top: 0;
-  right: 2rem;
+  right: 1.98rem;
   height: 2.2rem;
   display: flex;
   align-items: center;
