@@ -920,7 +920,7 @@ main article > hgroup:first-of-type {
   position: sticky;
   z-index: 41;
   top: 0;
-  padding: 0.5rem 4rem 0rem;
+  padding: 0.5rem 4rem 0;
   margin-left: -1rem;
   margin-right: -1rem;
 }
@@ -961,12 +961,6 @@ article > *:not(h1) + * {
 
 details > summary > * {
   display: inline-block;
-}
-details > details + details {
-  margin-top: 1em;
-}
-details > details > * + * {
-  margin-block: 0.5em;
 }
 
 footer {
