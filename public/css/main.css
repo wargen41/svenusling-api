@@ -801,7 +801,8 @@ input.full-width {
   width: 100%;
 }
 
-button {
+button,
+.counter {
   padding: 0.15em 0.6em;
   border-radius: 10em;
   border-width: var(--border-width);
@@ -944,12 +945,14 @@ main fieldset details button.add {
   margin-left: calc(1.3rem - var(--border-width) - var(--border-width));
 }
 main .counter {
-  position: absolute;
+  position: sticky;
+  z-index: 42;
+  float: right;
+  top: 0.5rem;
+  width: 2.2rem;
   height: 2.2rem;
-  display: flex;
-  align-items: center;
-  top: 0;
-  right: 2.3rem;
+  margin-right: 2.3rem;
+  margin-block: 0.5em;
 }
 
 article > *:not(h1) + * {

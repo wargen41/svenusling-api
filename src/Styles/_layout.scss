@@ -111,12 +111,14 @@ main
 
     .counter
     {
-        position: absolute;
+        position: sticky;
+        z-index: 42;
+        float: right;
+        top: $sticky-top;
+        width: $icon-size;
         height: $icon-size;
-        display: flex;
-        align-items: center;
-        top: 0;
-        right: $icon-margin;
+        margin-right: $icon-margin;
+        margin-block: map.get(var.$margin, 'inline-relative-phrasing');
     }
 }
 

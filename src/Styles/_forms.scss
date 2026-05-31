@@ -75,7 +75,8 @@ input.full-width
     width: 100%;
 }
 
-button
+button,
+.counter
 {
     padding: $inline-relative-phrasing-padding $block-relative-phrasing-padding;
     border-radius: $pill-shape;
