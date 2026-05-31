@@ -924,7 +924,8 @@ main article > hgroup:first-of-type {
   margin-left: -1rem;
   margin-right: -1rem;
 }
-main button.add {
+main button.add,
+main .counter {
   position: sticky;
   z-index: 42;
   top: 0.5rem;
@@ -945,14 +946,8 @@ main fieldset details button.add {
   margin-left: calc(1.3rem - var(--border-width) - var(--border-width));
 }
 main .counter {
-  position: sticky;
-  z-index: 42;
   float: right;
-  top: 0.5rem;
-  width: 2.2rem;
-  height: 2.2rem;
-  margin-right: 2.3rem;
-  margin-block: 0.5em;
+  box-sizing: border-box;
 }
 
 article > *:not(h1) + * {

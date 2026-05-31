@@ -77,7 +77,8 @@ main
         margin-right: $BMn;
     }
 
-    button.add
+    button.add,
+    .counter
     {
         position: sticky;
         z-index: 42;
@@ -113,14 +114,8 @@ main
 
     .counter
     {
-        position: sticky;
-        z-index: 42;
         float: right;
-        top: $sticky-top;
-        width: $icon-size;
-        height: $icon-size;
-        margin-right: $icon-margin;
-        margin-block: map.get(var.$margin, 'inline-relative-phrasing');
+        box-sizing: border-box;
     }
 }
 
