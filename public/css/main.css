@@ -969,9 +969,9 @@ details > details > * + * {
 
 footer {
   position: relative;
-  width: 100dvw;
+  width: auto;
   height: 3em;
-  margin-left: -10px;
+  margin-left: auto;
   margin-top: calc(50vh - 0em);
   margin-bottom: calc(50vh - 2em);
   display: flex;
