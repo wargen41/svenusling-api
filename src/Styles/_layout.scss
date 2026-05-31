@@ -68,7 +68,10 @@ main
         width: $icon-size;
         height: $icon-size;
         margin-left: 0;
+    }
 
+    & > button.add
+    {
         @media (width <= map.get(var.$breakpoints, 'mobile')) {
             margin-left: $icon-margin;
         }
