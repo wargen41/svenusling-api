@@ -930,7 +930,7 @@ main button.add {
   width: 2.2rem;
   height: 2.2rem;
   margin-left: 2.3rem;
-  padding-block: 0.6em;
+  margin-block: 0.5em;
 }
 main button.add.non-sticky {
   position: initial;
