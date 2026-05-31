@@ -42,28 +42,31 @@ $font-stack-export: (
 
 $font-export: (
     base-size: 18px,
-    body-text-family: var(--font-stack-humanist),
-    heading-family: var(--font-stack-geometric-humanist),
-    footer-family: var(--font-stack-slab-serif),
+    family-body-text: var(--font-stack-humanist),
+    family-heading: var(--font-stack-geometric-humanist),
+    family-footer: var(--font-stack-slab-serif),
 );
+
+$BS: map.get($font-export, 'base-size');
 
 $font: (
     base-size: var(--font-base-size),
-    body-text-family: var(--font-body-text-family),
-    heading-family: var(--font-heading-family),
-    footer-family: var(--font-footer-family),
+    family-body-text: var(--font-family-body-text),
+    family-heading: var(--font-family-heading),
+    family-footer: var(--font-family-footer),
+    size-footer: (2.25 * $BS),
 );
 
 body
 {
     font-size: var(--font-base-size);
-    font-family: var(--font-body-text-family);
+    font-family: var(--font-family-body-text);
     line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6
 {
-    font-family: var(--font-heading-family);
+    font-family: var(--font-family-heading);
     line-height: 1.3;
 }
 
@@ -88,8 +91,8 @@ h1
 
 footer
 {
-    font-family: map.get($font, 'footer-family');
-    font-size: 40px;
+    font-family: map.get($font, 'family-footer');
+    font-size: map.get($font, 'size-footer');
 }
 
 // Definiera vilka listor med variabler som ska bli CSS-variabler och med vilket prefix
