@@ -678,14 +678,14 @@ main article > hgroup:first-of-type {
 }
 
 body {
-  font-size: var(--font-base-size);
-  font-family: var(--font-body-text-family);
+  font-size: 18px;
+  font-family: var(--font-stack-humanist);
   line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading-family);
-  line-height: 1.3;
+  font-family: var(--font-stack-geometric-humanist);
+  line-height: 1.305;
 }
 
 main > p {
@@ -702,8 +702,8 @@ h1 {
 }
 
 footer {
-  font-family: var(--font-footer-family);
-  font-size: 40px;
+  font-family: var(--font-stack-slab-serif);
+  font-size: 40.5px;
 }
 
 * {
@@ -1281,10 +1281,6 @@ main.login button[type=submit] {
   --font-stack-humanist: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
   --font-stack-geometric-humanist: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
   --font-stack-slab-serif: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
-  --font-base-size: 18px;
-  --font-body-text-family: var(--font-stack-humanist);
-  --font-heading-family: var(--font-stack-geometric-humanist);
-  --font-footer-family: var(--font-stack-slab-serif);
   --widget-calc-total-width: 3.9rem;
 }
 

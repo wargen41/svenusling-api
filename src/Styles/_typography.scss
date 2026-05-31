@@ -40,34 +40,37 @@ $font-stack-export: (
     "slab-serif": map.get($font-stack, 'slab-serif'),
 );
 
-$font-export: (
-    base-size: 18px,
-    family-body-text: var(--font-stack-humanist),
-    family-heading: var(--font-stack-geometric-humanist),
-    family-footer: var(--font-stack-slab-serif),
+$Sz: 18px; // Base font size
+$LH: 1.5; // Base line height
+
+$size: (
+    "base": $Sz,
+    "h1": 200%,
+    "footer": (2.25 * $Sz),
 );
 
-$BS: map.get($font-export, 'base-size');
+$line-height: (
+    "base": $LH,
+    "heading": (0.87 * $LH),
+);
 
-$font: (
-    base-size: var(--font-base-size),
-    family-body-text: var(--font-family-body-text),
-    family-heading: var(--font-family-heading),
-    family-footer: var(--font-family-footer),
-    size-footer: (2.25 * $BS),
+$family: (
+    "body": var(--font-stack-humanist),
+    "heading": var(--font-stack-geometric-humanist),
+    "footer": var(--font-stack-slab-serif),
 );
 
 body
 {
-    font-size: var(--font-base-size);
-    font-family: var(--font-family-body-text);
-    line-height: 1.5;
+    font-size: map.get($size, 'base');
+    font-family: map.get($family, 'body');
+    line-height: map.get($line-height, 'base');
 }
 
 h1, h2, h3, h4, h5, h6
 {
-    font-family: var(--font-family-heading);
-    line-height: 1.3;
+    font-family: map.get($family, 'heading');
+    line-height: map.get($line-height, 'heading');
 }
 
 main
@@ -86,13 +89,13 @@ hgroup *
 
 h1
 {
-    font-size: 200%;
+    font-size: map.get($size, 'h1');
 }
 
 footer
 {
-    font-family: map.get($font, 'family-footer');
-    font-size: map.get($font, 'size-footer');
+    font-family: map.get($family, 'footer');
+    font-size: map.get($size, 'footer');
 }
 
 // Definiera vilka listor med variabler som ska bli CSS-variabler och med vilket prefix
@@ -103,9 +106,5 @@ $export-to-css: (
     (
         "map": $font-stack-export,
         "prefix": "font-stack-"
-    ),
-    (
-        "map": $font-export,
-        "prefix": "font-"
     ),
 );
