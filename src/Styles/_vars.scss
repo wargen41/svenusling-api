@@ -6,12 +6,6 @@ $BM: map.get(cfg.$margin, 'base'); // Base Margin
 
 // Vill sträva mot att alla värden finns i denna och config, utom vissa enstaka som bara används en enda gång
 
-$font: (
-    base-size: map.get(cfg.$font, 'base-size'),
-    body-text-family: map.get(cfg.$font, 'body-text-family'),
-    heading-family: map.get(cfg.$font, 'heading-family'),
-);
-
 $text-decoration: (
     links: map.get(cfg.$text-decoration, 'links'),
 );
@@ -39,8 +33,8 @@ $padding: (
 
 $border: (
     "width": map.get(cfg.$border, 'width'),
-    "style": map.get(cfg.$border, 'style'),
     "width-alt": map.get(cfg.$border, 'width-alt'),
+    "style": map.get(cfg.$border, 'style'),
     "style-alt": map.get(cfg.$border, 'style-alt'),
 );
 
@@ -80,7 +74,7 @@ $widget-calc: (
 // Exporterar lite extra under utvecklingen för att kunna testa hur det ser ut med olika värden på ett enkelt sätt
 $export-to-css: (
     (
-        "map": $widget-calc,
+        "map": $widget-calc-export,
         "prefix": "widget-calc-"
     ),
 );

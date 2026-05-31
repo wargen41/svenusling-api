@@ -3,17 +3,18 @@
 @use 'reset';
 @use 'config' as cfg;
 @use 'colors' as clr;
+@use 'typography' as typ;
 @use 'vars' as var;
 @use 'utils';
 @use 'mixins';
 @use 'base';
+@use 'forms';
 @use 'layout';
-@use 'typography';
 @use 'components' as cpt;
 
 // Export a minimal set of tokens to CSS vars (colors, spacing, z-index, radii) to keep runtime surface small.
 // Use consistent prefixes (e.g., --color-, --space-) to avoid name collisions.
-$export-to-css: (cfg.$export-to-css, var.$export-to-css);
+$export-to-css: (cfg.$export-to-css, typ.$export-to-css, var.$export-to-css);
 :root {
     @each $list in $export-to-css {
         @each $item in $list {
