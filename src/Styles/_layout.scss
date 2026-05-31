@@ -77,6 +77,12 @@ main
         }
     }
 
+    button.add.non-sticky
+    {
+        position: initial;
+        margin-left: 0;
+    }
+
     .counter
     {
         position: absolute;
