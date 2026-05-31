@@ -80,6 +80,7 @@ main
     button.add.non-sticky
     {
         position: initial;
+        z-index: 0;
         margin-left: 0;
     }
 
