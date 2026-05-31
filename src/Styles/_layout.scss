@@ -37,9 +37,9 @@ body *
 
 main
 {
-    max-width: map.get(var.$width, 'main-max');
+    max-width: map.get(var.$main, 'max-width');
     margin: 0 auto;
-    padding: 0 $inline-padding;
+    padding: 0 map.get(var.$main, 'inline-padding');
     min-height: 100vh;
 
     > * + *

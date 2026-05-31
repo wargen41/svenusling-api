@@ -6,20 +6,16 @@ $BM: map.get(cfg.$margin, 'base'); // Base Margin
 $BPr: map.get(cfg.$padding, 'relative'); // Base Padding relative
 $BMr: map.get(cfg.$margin, 'relative'); // Base Margin relative
 
-// Vill sträva mot att alla värden finns i denna och config, utom vissa enstaka som bara används en enda gång
+// Vill sträva mot att alla värden finns i denna (och config), utom vissa enstaka som bara används en enda gång
 
 $breakpoints: (
     "mobile": map.get(cfg.$breakpoints, 'mobile'),
 );
 
-$width: (
-    "main-max": map.get(cfg.$width, 'main-max'),
-);
-
 $padding: (
     "base": $BP,
     "block-default": (0.75 * $BP),
-    "inline-default": (1.5 * $BP),
+    "inline-default": (1.2 * $BP),
     "block-relative-box": (0.3 * $BPr),
     "inline-relative-box": (1 * $BPr),
     "block-relative-phrasing": (0.6 * $BPr),
@@ -42,6 +38,8 @@ $negative-margin: (
 
 $sticky: (
     "position-top": map.get(cfg.$sticky, 'position-top'),
+    "position-inline": map.get(cfg.$sticky, 'position-inline'),
+    "inner-margin": map.get(cfg.$sticky, 'inner-margin'),
     "icon-size": map.get(cfg.$sticky, 'icon-size'),
 );
 
@@ -57,16 +55,21 @@ $border: (
     "pill-shape-radius": 10em,
 );
 
+$main: (
+    "max-width": map.get(cfg.$width, 'main-max'),
+    "inline-padding": map.get($padding, 'inline-default'),
+);
+
 $widget: (
-    "padding-top": map.get(cfg.$sticky, 'position-top'),
+    "padding-top": map.get($sticky, 'position-top'),
     "padding-bottom": (1 * $BP),
-    "padding-outer": (1 * $BP),
-    "padding-inner": (0.7 * $BP),
+    "padding-outer": map.get($sticky, 'position-inline'),
+    "padding-inner": map.get($sticky, 'inner-margin'),
     "border-radius-top-inner": 0,
     "border-radius-top-outer": (0.5 * $BP),
     "border-radius-bottom-inner": (1.3 * $BP),
     "border-radius-bottom-outer": (1.3 * $BP),
-    "img-size": map.get(cfg.$sticky, 'icon-size'),
+    "img-size": map.get($sticky, 'icon-size'),
 );
 
 $WPT: map.get($widget, 'padding-top');

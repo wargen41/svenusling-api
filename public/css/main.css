@@ -894,7 +894,7 @@ body > .message {
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.2rem;
   width: 100dvw;
   z-index: 40;
 }
@@ -906,7 +906,7 @@ body * {
 main {
   max-width: 36em;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.2rem;
   min-height: 100vh;
 }
 main > * + * {
