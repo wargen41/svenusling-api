@@ -928,6 +928,7 @@ main button.add,
 main .counter {
   position: sticky;
   z-index: 42;
+  text-align: center;
   top: 0.5rem;
   width: 2.2rem;
   height: 2.2rem;
@@ -948,6 +949,7 @@ main fieldset details button.add {
 main .counter {
   float: right;
   box-sizing: border-box;
+  width: auto;
 }
 
 article > *:not(h1) + * {
