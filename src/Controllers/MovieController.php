@@ -285,7 +285,7 @@ class MovieController
             if($details === 'minimal'){
                 $limit = (int)($params['limit'] ?? -1);
             }else{
-                $limit = min((int)($params['limit'] ?? 20), 1000);
+                $limit = min((int)($params['limit'] ?? 10), 1000);
             }
 
             $where = [];
@@ -479,20 +479,6 @@ class MovieController
                 $stmt->execute([$movie['large_image_id']]);
                 $movie['large_image'] = $stmt->fetch();
             }
-
-            // Get series info if this is a season or episode
-            // if ($movie['series_id']) {
-            //     $stmt = $this->db->prepare('SELECT id, title, type FROM movies WHERE id = ?');
-            //     $stmt->execute([$movie['series_id']]);
-            //     $movie['series'] = $stmt->fetch();
-            // }
-
-            // Get season info if this is an episode
-            // if ($movie['season_id']) {
-            //     $stmt = $this->db->prepare('SELECT id, title, sequence_number FROM movies WHERE id = ?');
-            //     $stmt->execute([$movie['season_id']]);
-            //     $movie['season'] = $stmt->fetch();
-            // }
 
             // Get reviews
             $stmt = $this->db->prepare('
