@@ -932,7 +932,7 @@ main button.add {
   margin-left: 0;
 }
 @media (width <= 32rem) {
-  main button.add {
+  main > button.add {
     margin-left: 2.2rem;
   }
 }
