@@ -933,7 +933,7 @@ main button.add {
 }
 @media (width <= 32rem) {
   main > button.add {
-    margin-left: 2.2rem;
+    margin-left: 2.7rem;
   }
 }
 main button.add.non-sticky {
@@ -951,7 +951,7 @@ main .counter {
 }
 @media (width <= 32rem) {
   main .counter {
-    right: 2.2rem;
+    right: 2.7rem;
   }
 }
 

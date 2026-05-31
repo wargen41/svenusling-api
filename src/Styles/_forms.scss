@@ -23,9 +23,9 @@ fieldset
 {
     position: relative;
 
-    padding-top: (0.3 * $BP);
-    padding-bottom: (1 * $BP);
-    padding-inline: (1 * $BP);
+    padding-top: map.get(var.$fieldset, 'top-padding');
+    padding-bottom: map.get(var.$fieldset, 'bottom-padding');
+    padding-inline: map.get(var.$fieldset, 'inline-padding');
 
     border-radius: (0.4 * $BP);
     border-width: $border-width;

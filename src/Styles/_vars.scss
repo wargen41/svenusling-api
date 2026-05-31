@@ -60,6 +60,12 @@ $main: (
     "inline-padding": map.get($padding, 'inline-default'),
 );
 
+$fieldset: (
+    "inline-padding": (1 * $BP),
+    "bottom-padding": (1 * $BP),
+    "top-padding": (0.3 * $BP),
+);
+
 $widget: (
     "padding-top": map.get($sticky, 'position-top'),
     "padding-bottom": (1 * $BP),
