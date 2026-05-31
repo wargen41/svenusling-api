@@ -16,9 +16,6 @@ $widget-padding-diff: ($widget-width - $main-padding - $widget-inner-padding);
 $icon-size: map.get(var.$sticky, 'icon-size');
 $icon-gap: map.get(var.$sticky, 'icon-gap');
 $icon-margin: $widget-padding-diff + $icon-gap;
-@debug $widget-width;
-@debug $main-padding;
-@debug $icon-margin;
 
 body
 {
