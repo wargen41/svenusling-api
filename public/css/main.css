@@ -930,9 +930,9 @@ main .counter {
   z-index: 42;
   text-align: center;
   top: 0.5rem;
-  width: 2.2rem;
-  height: 2.2rem;
-  margin-left: 2.3rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  margin-left: 2.4rem;
   margin-block: 0.5em;
 }
 main button.add.non-sticky {
@@ -941,10 +941,10 @@ main button.add.non-sticky {
   margin-left: 0;
 }
 main fieldset button.add {
-  margin-left: calc(1.3rem - var(--border-width));
+  margin-left: calc(1.4rem - var(--border-width));
 }
 main fieldset details button.add {
-  margin-left: calc(1.3rem - var(--border-width) - var(--border-width));
+  margin-left: calc(1.4rem - var(--border-width) - var(--border-width));
 }
 main .counter {
   float: right;
@@ -1087,8 +1087,8 @@ main.login button[type=submit] {
   padding: 0 0 0 0;
 }
 .widget img {
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.3rem;
+  height: 2.3rem;
 }
 .widget .button {
   background: none;
@@ -1289,7 +1289,7 @@ main.login button[type=submit] {
   --font-stack-humanist: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
   --font-stack-geometric-humanist: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
   --font-stack-slab-serif: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
-  --widget-calc-total-width: 3.9rem;
+  --widget-calc-total-width: 4rem;
 }
 
 .theme-dark {
