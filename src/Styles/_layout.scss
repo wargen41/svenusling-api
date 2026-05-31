@@ -1,8 +1,6 @@
 @use "sass:map";
 @use 'vars' as var;
 
-$mobile: map.get(var.$breakpoints, 'mobile');
-
 $BP: map.get(var.$padding, 'base'); // Base Padding
 $BM: map.get(var.$margin, 'base'); // Base Margin
 $BMn: map.get(var.$negative-margin, 'base'); // Negative Base Margin
@@ -69,17 +67,25 @@ main
         top: $sticky-top;
         width: $icon-size;
         height: $icon-size;
-        margin-left: $icon-margin;
+        margin-left: 0;
+
+        @media (width <= map.get(var.$breakpoints, 'mobile')) {
+            margin-left: $icon-margin;
+        }
     }
 
     .counter
     {
         position: absolute;
-        top: 0;
-        right: $icon-margin;
         height: $icon-size;
         display: flex;
         align-items: center;
+        top: 0;
+        right: 0;
+
+        @media (width <= map.get(var.$breakpoints, 'mobile')) {
+            right: $icon-margin;
+        }
     }
 }
 

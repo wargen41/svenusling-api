@@ -929,15 +929,25 @@ main button.add {
   top: 0.5rem;
   width: 2.2rem;
   height: 2.2rem;
-  margin-left: 2.2rem;
+  margin-left: 0;
+}
+@media (width <= 32rem) {
+  main button.add {
+    margin-left: 2.2rem;
+  }
 }
 main .counter {
   position: absolute;
-  top: 0;
-  right: 2.2rem;
   height: 2.2rem;
   display: flex;
   align-items: center;
+  top: 0;
+  right: 0;
+}
+@media (width <= 32rem) {
+  main .counter {
+    right: 2.2rem;
+  }
 }
 
 article > *:not(h1) + * {
