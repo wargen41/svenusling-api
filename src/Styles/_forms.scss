@@ -196,6 +196,8 @@ body
     .actions
     {
         display: flex;
+        align-items: center;
+        gap: (1 * $BM);
 
         > *[type=submit]
         {
