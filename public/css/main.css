@@ -901,6 +901,9 @@ body .actions {
     display: block;
     text-align: center;
   }
+  body .actions > * {
+    margin-block: 0.5em;
+  }
 }
 body .actions > *[type=submit] {
   min-width: 14em;

@@ -206,6 +206,11 @@ body
         {
             display: block;
             text-align: center;
+
+            > *
+            {
+                margin-block: $block-relative-box-margin;
+            }
         }
 
         > *[type=submit]
