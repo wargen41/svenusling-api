@@ -893,6 +893,12 @@ body .actions {
   align-items: center;
   gap: 1rem;
 }
+@media (width <= 32rem) {
+  body .actions {
+    display: block;
+    text-align: center;
+  }
+}
 body .actions > *[type=submit] {
   min-width: 14em;
 }

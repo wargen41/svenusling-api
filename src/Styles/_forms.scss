@@ -199,6 +199,12 @@ body
         align-items: center;
         gap: (1 * $BM);
 
+        @media (width <= map.get(var.$breakpoints, 'mobile'))
+        {
+            display: block;
+            text-align: center;
+        }
+
         > *[type=submit]
         {
             min-width: 14em;
