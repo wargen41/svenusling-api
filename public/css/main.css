@@ -950,6 +950,7 @@ main .counter {
   float: right;
   box-sizing: border-box;
   width: auto;
+  margin-right: calc(1.4rem - var(--border-width) - var(--border-width));
 }
 
 article > *:not(h1) + * {
