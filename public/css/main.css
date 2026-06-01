@@ -934,7 +934,8 @@ main .counter {
   height: 2.3rem;
   margin-left: 2.4rem;
 }
-main :not(.compact) > button.add {
+main :not(.compact) > button.add,
+main :not(.compact) > .counter {
   margin-block: 0.5em;
 }
 main button.add.non-sticky {
