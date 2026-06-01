@@ -16,172 +16,175 @@ $border-style-alt: map.get(var.$border, 'style-alt');
 $pill-shape: map.get(var.$border, 'pill-shape-radius');
 $icon-size: map.get(var.$sticky, 'icon-size');
 
-label
+body
 {
-    white-space: nowrap;
-}
-
-fieldset
-{
-    position: relative;
-
-    padding-top: map.get(var.$fieldset, 'top-padding');
-    padding-bottom: map.get(var.$fieldset, 'bottom-padding');
-    padding-inline: map.get(var.$fieldset, 'inline-padding');
-
-    border-radius: (0.4 * $BP);
-    border-width: $fieldset-border-width;
-
-    > legend
+    label
     {
-        border-radius: $pill-shape;
-        padding-inline: $inline-relative-box-padding;
-        padding-block: $block-relative-box-padding;
-        border-top-width: $fieldset-border-width;
-        border-top-style: $border-style-alt;
+        white-space: nowrap;
     }
 
-    > *:not(legend) + *
+    fieldset
     {
-        margin-top: .65em;
-    }
+        position: relative;
 
-    ul
-    {
-        list-style-type: none;
-        padding-left: 0;
+        padding-top: map.get(var.$fieldset, 'top-padding');
+        padding-bottom: map.get(var.$fieldset, 'bottom-padding');
+        padding-inline: map.get(var.$fieldset, 'inline-padding');
 
-        > li + li
+        border-radius: (0.4 * $BP);
+        border-width: $fieldset-border-width;
+
+        > legend
         {
-            margin-top: $block-relative-phrasing-padding;
+            border-radius: $pill-shape;
+            padding-inline: $inline-relative-box-padding;
+            padding-block: $block-relative-box-padding;
+            border-top-width: $fieldset-border-width;
+            border-top-style: $border-style-alt;
+        }
+
+        > *:not(legend) + *
+        {
+            margin-top: .65em;
+        }
+
+        ul
+        {
+            list-style-type: none;
+            padding-left: 0;
+
+            > li + li
+            {
+                margin-top: $block-relative-phrasing-padding;
+            }
+        }
+
+        // Tempfix för details inuti fieldset, så jag kommer ihåg att jag vill göra något ordentligt med det
+        > details,
+        > form > details
+        {
+            position: inherit;
+            border-radius: (0.4 * $BP);
+            border-width: map.get(var.$fieldset, 'border-width');
+            border-style: $border-style;
+            border-color: var(--color-outline-secondary);
         }
     }
 
-    // Tempfix för details inuti fieldset, så jag kommer ihåg att jag vill göra något ordentligt med det
-    > details,
-    > form > details
+    button.full-width,
+    input.full-width
     {
-        position: inherit;
-        border-radius: (0.4 * $BP);
-        border-width: map.get(var.$fieldset, 'border-width');
+        text-align: center;
+        width: 100%;
+    }
+
+    button,
+    .counter
+    {
+        padding: $inline-relative-phrasing-padding $block-relative-phrasing-padding;
+        border-radius: $pill-shape;
+        border-width: $border-width;
         border-style: $border-style;
-        border-color: var(--color-outline-secondary);
+        min-width: $icon-size;
+        height: $icon-size;
+        text-align: center;
     }
-}
 
-button.full-width,
-input.full-width
-{
-    text-align: center;
-    width: 100%;
-}
-
-button,
-.counter
-{
-    padding: $inline-relative-phrasing-padding $block-relative-phrasing-padding;
-    border-radius: $pill-shape;
-    border-width: $border-width;
-    border-style: $border-style;
-    min-width: $icon-size;
-    height: $icon-size;
-    text-align: center;
-}
-
-.button-list,
-.button-list .items
-{
-    display: flex;
-    gap: $inline-relative-phrasing-margin;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    position: relative;
-}
-
-.button-list
-{
-    &:has(.items)
+    .button-list,
+    .button-list .items
     {
-        display: block;
+        display: flex;
+        gap: $inline-relative-phrasing-margin;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        position: relative;
     }
 
-    &.compact
+    .button-list
     {
-        justify-content: flex-start;
+        &:has(.items)
+        {
+            display: block;
+        }
+
+        &.compact
+        {
+            justify-content: flex-start;
+        }
+
+        .hidden
+        {
+            border-style: dotted;
+        }
     }
 
-    .hidden
+    .grid-table
     {
-        border-style: dotted;
+        display: grid;
+        justify-items: start;
+        align-items: center;
+        align-content: center;
+
+        &.director
+        {
+            grid-template-columns: 2.5em 1fr auto;
+        }
+
+        &.actor
+        {
+            grid-template-columns: 2.5em 1fr auto auto;
+        }
     }
-}
 
-.grid-table
-{
-    display: grid;
-    justify-items: start;
-    align-items: center;
-    align-content: center;
+    .form-row + .form-row {
+        margin-top: $block-relative-box-margin;
+    }
 
-    &.director
+    .form-row
     {
-        grid-template-columns: 2.5em 1fr auto;
+        display: flex;
+        gap: $inline-relative-phrasing-margin;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    &.actor
+    /* Allow the label to grow and shrink */
+    .form-row label
     {
-        grid-template-columns: 2.5em 1fr auto auto;
+        flex: auto;
+        display: flex;
+        align-items: center;
+        gap: (0.6 * $inline-relative-phrasing-margin);
     }
-}
 
-.form-row + .form-row {
-    margin-top: $block-relative-box-margin;
-}
+    /* But where the input has a [size] attribute, do not use flexible size */
+    /* As well as checkboxes */
+    .form-row label:has(input[size]),
+    .form-row label:has(input[type=checkbox])
+    {
+        flex: initial;
+    }
 
-.form-row
-{
-    display: flex;
-    gap: $inline-relative-phrasing-margin;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
+    /* All inputs expand to fill their label */
+    .form-row label input,
+    .form-row label select
+    {
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-/* Allow the label to grow and shrink */
-.form-row label
-{
-    flex: auto;
-    display: flex;
-    align-items: center;
-    gap: (0.6 * $inline-relative-phrasing-margin);
-}
+    /* But inputs with a [size] attribute keep their natural size */
+    /* As well as checkboxes */
+    .form-row input[size],
+    .form-row label input[type=checkbox]
+    {
+        width: auto;
+        min-width: 0;
+        flex: none;
+    }
 
-/* But where the input has a [size] attribute, do not use flexible size */
-/* As well as checkboxes */
-.form-row label:has(input[size]),
-.form-row label:has(input[type=checkbox])
-{
-    flex: initial;
-}
-
-/* All inputs expand to fill their label */
-.form-row label input,
-.form-row label select
-{
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* But inputs with a [size] attribute keep their natural size */
-/* As well as checkboxes */
-.form-row input[size],
-.form-row label input[type=checkbox]
-{
-    width: auto;
-    min-width: 0;
-    flex: none;
-}
-
-.form-row > select:has(+ input[type=submit])
-{
-    flex: auto;
+    .form-row > select:has(+ input[type=submit])
+    {
+        flex: auto;
+    }
 }

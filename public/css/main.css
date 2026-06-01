@@ -757,11 +757,10 @@ dd:before {
   text-decoration: 1px underline solid;
 }
 
-label {
+body label {
   white-space: nowrap;
 }
-
-fieldset {
+body fieldset {
   position: relative;
   padding-top: 0.3rem;
   padding-bottom: 1rem;
@@ -769,40 +768,38 @@ fieldset {
   border-radius: 0.4rem;
   border-width: var(--border-width);
 }
-fieldset > legend {
+body fieldset > legend {
   border-radius: 10em;
   padding-inline: 1em;
   padding-block: 0.3em;
   border-top-width: var(--border-width);
   border-top-style: var(--border-style-alt);
 }
-fieldset > *:not(legend) + * {
+body fieldset > *:not(legend) + * {
   margin-top: 0.65em;
 }
-fieldset ul {
+body fieldset ul {
   list-style-type: none;
   padding-left: 0;
 }
-fieldset ul > li + li {
+body fieldset ul > li + li {
   margin-top: 0.6em;
 }
-fieldset > details,
-fieldset > form > details {
+body fieldset > details,
+body fieldset > form > details {
   position: inherit;
   border-radius: 0.4rem;
   border-width: var(--border-width);
   border-style: var(--border-style);
   border-color: var(--color-outline-secondary);
 }
-
-button.full-width,
-input.full-width {
+body button.full-width,
+body input.full-width {
   text-align: center;
   width: 100%;
 }
-
-button,
-.counter {
+body button,
+body .counter {
   padding: 0.15em 0.6em;
   border-radius: 10em;
   border-width: var(--border-width);
@@ -811,82 +808,80 @@ button,
   height: 2.3rem;
   text-align: center;
 }
-
-.button-list,
-.button-list .items {
+body .button-list,
+body .button-list .items {
   display: flex;
   gap: 0.5em;
   flex-wrap: wrap;
   justify-content: space-evenly;
   position: relative;
 }
-
-.button-list:has(.items) {
+body .button-list:has(.items) {
   display: block;
 }
-.button-list.compact {
+body .button-list.compact {
   justify-content: flex-start;
 }
-.button-list .hidden {
+body .button-list .hidden {
   border-style: dotted;
 }
-
-.grid-table {
+body .grid-table {
   display: grid;
   justify-items: start;
   align-items: center;
   align-content: center;
 }
-.grid-table.director {
+body .grid-table.director {
   grid-template-columns: 2.5em 1fr auto;
 }
-.grid-table.actor {
+body .grid-table.actor {
   grid-template-columns: 2.5em 1fr auto auto;
 }
-
-.form-row + .form-row {
+body .form-row + .form-row {
   margin-top: 0.5em;
 }
-
-.form-row {
+body .form-row {
   display: flex;
   gap: 0.5em;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
-/* Allow the label to grow and shrink */
-.form-row label {
+body {
+  /* Allow the label to grow and shrink */
+}
+body .form-row label {
   flex: auto;
   display: flex;
   align-items: center;
   gap: 0.3em;
 }
-
-/* But where the input has a [size] attribute, do not use flexible size */
-/* As well as checkboxes */
-.form-row label:has(input[size]),
-.form-row label:has(input[type=checkbox]) {
+body {
+  /* But where the input has a [size] attribute, do not use flexible size */
+  /* As well as checkboxes */
+}
+body .form-row label:has(input[size]),
+body .form-row label:has(input[type=checkbox]) {
   flex: initial;
 }
-
-/* All inputs expand to fill their label */
-.form-row label input,
-.form-row label select {
+body {
+  /* All inputs expand to fill their label */
+}
+body .form-row label input,
+body .form-row label select {
   width: 100%;
   box-sizing: border-box;
 }
-
-/* But inputs with a [size] attribute keep their natural size */
-/* As well as checkboxes */
-.form-row input[size],
-.form-row label input[type=checkbox] {
+body {
+  /* But inputs with a [size] attribute keep their natural size */
+  /* As well as checkboxes */
+}
+body .form-row input[size],
+body .form-row label input[type=checkbox] {
   width: auto;
   min-width: 0;
   flex: none;
 }
-
-.form-row > select:has(+ input[type=submit]) {
+body .form-row > select:has(+ input[type=submit]) {
   flex: auto;
 }
 
