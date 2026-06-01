@@ -69,7 +69,7 @@ $fieldset: (
     "top-padding": (0.3 * $BP),
     "border-width": map.get($border, 'width'),
     "details-inline-padding": 0,
-    "details-border-width": map.get($border, 'width'),
+    "details-border-width": map.get($border, 'width-alt'),
 );
 
 $widget: (

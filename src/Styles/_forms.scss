@@ -65,10 +65,14 @@ body
         > form > details
         {
             position: inherit;
-            border-radius: (0.4 * $BP);
-            border-width: map.get(var.$fieldset, 'border-width');
-            border-style: $border-style;
-            border-color: var(--color-outline-secondary);
+
+            &:not([open])
+            {
+                border-radius: (0.4 * $BP);
+                border-width: map.get(var.$fieldset, 'details-border-width');
+                border-style: $border-style;
+                border-color: var(--color-outline-secondary);
+            }
         }
     }
 

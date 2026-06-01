@@ -789,8 +789,11 @@ body fieldset ul > li + li {
 body fieldset > details,
 body fieldset > form > details {
   position: inherit;
+}
+body fieldset > details:not([open]),
+body fieldset > form > details:not([open]) {
   border-radius: 0.4rem;
-  border-width: var(--border-width);
+  border-width: var(--border-width-alt);
   border-style: var(--border-style);
   border-color: var(--color-outline-secondary);
 }
@@ -948,14 +951,14 @@ main fieldset button.add {
   margin-left: calc(1.4rem - var(--border-width));
 }
 main fieldset details button.add {
-  margin-left: calc(1.4rem - var(--border-width) - var(--border-width));
+  margin-left: calc(1.4rem - var(--border-width-alt) - var(--border-width));
 }
 main .counter {
   float: right;
   box-sizing: border-box;
   width: auto;
   min-width: 2.3rem;
-  margin-right: calc(1.4rem - var(--border-width) - var(--border-width));
+  margin-right: calc(1.4rem - var(--border-width-alt) - var(--border-width));
 }
 
 article > *:not(h1) + * {
