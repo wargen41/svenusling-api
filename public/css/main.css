@@ -896,6 +896,11 @@ body .actions {
 body .actions > *[type=submit] {
   min-width: 14em;
 }
+@media (width <= 32rem) {
+  body .actions > *[type=submit] {
+    width: 100%;
+  }
+}
 
 body {
   padding-bottom: 4rem;

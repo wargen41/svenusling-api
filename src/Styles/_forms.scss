@@ -202,6 +202,11 @@ body
         > *[type=submit]
         {
             min-width: 14em;
+
+            @media (width <= map.get(var.$breakpoints, 'mobile'))
+            {
+                width: 100%;
+            }
         }
     }
 }
