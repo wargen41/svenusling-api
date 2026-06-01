@@ -889,7 +889,7 @@ body .form-row > select:has(+ *[type=submit]) {
   flex: auto;
 }
 body .actions {
-  margin-top: 0.5em;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
