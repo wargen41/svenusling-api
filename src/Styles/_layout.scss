@@ -91,6 +91,11 @@ main
     button.add
     {
         width: $icon-size;
+
+        + label
+        {
+            margin-inline: map.get(var.$margin, 'inline-relative-phrasing');
+        }
     }
 
     :not(.compact) > button.add,

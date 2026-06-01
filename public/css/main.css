@@ -946,6 +946,9 @@ main .counter {
 main button.add {
   width: 2.3rem;
 }
+main button.add + label {
+  margin-inline: 0.5em;
+}
 main :not(.compact) > button.add,
 main :not(.compact) > .counter {
   margin-block: 0.5em;
