@@ -793,7 +793,7 @@ body fieldset > form > details {
 body fieldset > details:not([open]),
 body fieldset > form > details:not([open]) {
   border-radius: 0.4rem;
-  border-width: var(--border-width-alt);
+  border-bottom-width: var(--border-width-alt);
   border-style: var(--border-style);
   border-color: var(--color-outline-secondary);
 }
