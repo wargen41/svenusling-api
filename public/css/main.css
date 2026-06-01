@@ -809,6 +809,7 @@ button,
   border-style: var(--border-style);
   min-width: 2.3rem;
   height: 2.3rem;
+  text-align: center;
 }
 
 .button-list,
