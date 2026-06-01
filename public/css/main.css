@@ -885,8 +885,14 @@ body .form-row label input[type=checkbox] {
   min-width: 0;
   flex: none;
 }
-body .form-row > select:has(+ input[type=submit]) {
+body .form-row > select:has(+ *[type=submit]) {
   flex: auto;
+}
+body .actions {
+  display: flex;
+}
+body .actions > *[type=submit] {
+  min-width: 14em;
 }
 
 body {

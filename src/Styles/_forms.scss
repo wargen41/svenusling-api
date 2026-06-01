@@ -188,8 +188,18 @@ body
         flex: none;
     }
 
-    .form-row > select:has(+ input[type=submit])
+    .form-row > select:has(+ *[type=submit])
     {
         flex: auto;
+    }
+
+    .actions
+    {
+        display: flex;
+
+        > *[type=submit]
+        {
+            min-width: 14em;
+        }
     }
 }
