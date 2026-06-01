@@ -1135,6 +1135,9 @@ main.login button[type=submit] {
   background: none;
   border: none;
   display: inline-block;
+  box-sizing: content-box;
+  height: 2.3rem;
+  width: 2.3rem;
 }
 .widget.left {
   float: left;
