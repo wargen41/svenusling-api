@@ -87,6 +87,10 @@ main
         width: $icon-size;
         height: $icon-size;
         margin-left: $icon-margin;
+    }
+
+    :not(.compact) button.add
+    {
         margin-block: map.get(var.$margin, 'inline-relative-phrasing');
     }
 
