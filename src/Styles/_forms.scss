@@ -198,6 +198,8 @@ body
         display: flex;
         align-items: center;
         gap: (1 * $BM);
+        flex-direction: row-reverse;
+        justify-content: space-between;
 
         @media (width <= map.get(var.$breakpoints, 'mobile'))
         {

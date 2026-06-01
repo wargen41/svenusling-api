@@ -892,6 +892,8 @@ body .actions {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 @media (width <= 32rem) {
   body .actions {
