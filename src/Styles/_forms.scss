@@ -91,9 +91,12 @@ body
         border-radius: $pill-shape;
         border-width: $border-width;
         border-style: $border-style;
+        height: $icon-size;
         min-width: $icon-size;
         max-width: 100%;
-        height: $icon-size;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .button-list,
