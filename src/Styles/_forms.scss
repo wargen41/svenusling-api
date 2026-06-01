@@ -43,7 +43,8 @@ body
             border-top-style: $border-style-alt;
         }
 
-        > *:not(legend) + *
+        > *:not(legend) + *,
+        > form > *:not(legend) + *
         {
             margin-top: .65em;
         }

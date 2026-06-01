@@ -775,7 +775,8 @@ body fieldset > legend {
   border-top-width: var(--border-width);
   border-top-style: var(--border-style-alt);
 }
-body fieldset > *:not(legend) + * {
+body fieldset > *:not(legend) + *,
+body fieldset > form > *:not(legend) + * {
   margin-top: 0.65em;
 }
 body fieldset ul {
