@@ -807,6 +807,8 @@ button,
   border-radius: 10em;
   border-width: var(--border-width);
   border-style: var(--border-style);
+  min-width: 2.3rem;
+  height: 2.3rem;
 }
 
 .button-list,
@@ -930,9 +932,11 @@ main .counter {
   z-index: 42;
   text-align: center;
   top: 0.5rem;
-  width: 2.3rem;
   height: 2.3rem;
   margin-left: 2.4rem;
+}
+main button.add {
+  width: 2.3rem;
 }
 main :not(.compact) > button.add,
 main :not(.compact) > .counter {

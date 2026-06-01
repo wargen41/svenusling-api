@@ -14,6 +14,7 @@ $fieldset-border-width: map.get(var.$fieldset, 'border-width');
 $border-style: map.get(var.$border, 'style');
 $border-style-alt: map.get(var.$border, 'style-alt');
 $pill-shape: map.get(var.$border, 'pill-shape-radius');
+$icon-size: map.get(var.$sticky, 'icon-size');
 
 label
 {
@@ -82,6 +83,8 @@ button,
     border-radius: $pill-shape;
     border-width: $border-width;
     border-style: $border-style;
+    min-width: $icon-size;
+    height: $icon-size;
 }
 
 .button-list,

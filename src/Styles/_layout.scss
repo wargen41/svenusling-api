@@ -84,9 +84,13 @@ main
         z-index: 42;
         text-align: center;
         top: $sticky-top;
-        width: $icon-size;
         height: $icon-size;
         margin-left: $icon-margin;
+    }
+
+    button.add
+    {
+        width: $icon-size;
     }
 
     :not(.compact) > button.add,
