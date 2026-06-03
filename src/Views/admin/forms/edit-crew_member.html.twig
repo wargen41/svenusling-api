@@ -26,9 +26,9 @@
                 <label for="{{ pop_id }}-note">Notering</label>
                 <input type="text" id="{{ pop_id }}-note" name="note" value="{{ sub_item.note }}">
             </div>
-            <div class="actions">
-                <button type="submit">Spara</button>
-            </div>
+            <ul class="actions">
+                <li><button type="submit">Spara</button></li>
+            </ul>
     </fieldset>
 </form>
 <form method="POST" action="/admin/movies/crew/delete" onsubmit="return confirm('Säkert att du vill ta bort medverkande {{ sub_item.person_name }} från filmen?');">

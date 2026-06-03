@@ -5,9 +5,9 @@
 {% block content %}
 
 {% set pop_id = "add-season-dlg" %}
-<div class="actions">
-    <button class="add" id="add-to-series-button" popovertarget="{{ pop_id }}">+</button>
-</div>
+<ul class="actions">
+    <li><button class="add" id="add-to-series-button" popovertarget="{{ pop_id }}">+</button></li>
+</ul>
 {% include "admin/forms/new-season.html.twig" %}
 
 <ol class="seasons">

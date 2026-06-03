@@ -27,9 +27,9 @@
                 <label for="edit-death-{{ item.id }}">Dödsdag</label>
                 <input type="date" id="edit-death-{{ item.id }}" name="death_date" value="{{ item.death_date }}" min="1800-01-01" max="2099-12-31">
             </div>
-            <div class="actions">
-                <button type="submit">Spara</button>
-            </div>
+            <ul class="actions">
+                <li><button type="submit">Spara</button></li>
+            </ul>
         </details>
     </fieldset>
 </form>
@@ -37,9 +37,9 @@
     <input type="hidden" name="person_id" value="{{ item.id }}">
     <fieldset>
         <legend>Radera?</legend>
-        <div class="actions">
-            <button type="submit" class="delete">Ta bort VIP</button>
-        </div>
+        <ul class="actions">
+            <li><button type="submit" class="delete">Ta bort VIP</button></li>
+        </ul>
     </fieldset>
 </form>
 {% endblock %}

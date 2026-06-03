@@ -17,10 +17,10 @@
                     <input type="date" id="edit-added_date-{{ item.id }}" name="added_date" value="{{ added_date_value }}" required>
                 </label>
             </div>
-        <div class="actions">
-            <button type="submit">Publicera</button>
-            <button type="button" popovertarget="{{ pop_id }}" popovertargetaction="hide">Avbryt</button>
-        </div>
+        <ul class="actions">
+            <li><button type="submit">Publicera</button></li>
+            <li><button type="button" popovertarget="{{ pop_id }}" popovertargetaction="hide">Avbryt</button></li>
+        </ul>
     </fieldset>
 </form>
 {% endblock %}
