@@ -928,7 +928,7 @@ body > .message {
   left: 0;
   padding: 0.75rem 1.2rem;
   width: 100dvw;
-  z-index: 40;
+  z-index: 67;
 }
 
 body * {
@@ -954,6 +954,7 @@ main article > hgroup:first-of-type {
   padding: 0.5rem 4rem 0;
   margin-left: -1rem;
   margin-right: -1rem;
+  margin-bottom: 0.75rem;
 }
 main button.add,
 main .counter {

@@ -43,7 +43,7 @@ body
 
         width: 100dvw;
 
-        z-index: 40;
+        z-index: 67;
     }
 }
 
@@ -75,6 +75,7 @@ main
         padding: (0.5 * $BP) (4 * $BP) 0;
         margin-left: $BMn;
         margin-right: $BMn;
+        margin-bottom: $block-margin;
     }
 
     button.add,
