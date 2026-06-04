@@ -994,7 +994,8 @@ main .counter {
   margin-right: calc(1.4rem - var(--border-width-alt) - var(--border-width));
 }
 
-article > *:not(h1) + * {
+article > *:not(h1) + *,
+article > nav > * + * {
   margin-top: 2rem;
 }
 

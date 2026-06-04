@@ -140,7 +140,8 @@ main
 
 article
 {
-    > *:not(h1) + *
+    > *:not(h1) + *,
+    > nav > * + *
     {
         margin-top: (2 * $BM);
     }
