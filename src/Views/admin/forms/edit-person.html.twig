@@ -33,13 +33,13 @@
         </details>
     </fieldset>
 </form>
-<form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.name }}?');">
-    <input type="hidden" name="person_id" value="{{ item.id }}">
-    <fieldset>
-        <legend>Radera?</legend>
+<details class="danger">
+    <summary>Farozon</summary>
+    <form method="POST" action="/admin/persons/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.name }}?');">
+        <input type="hidden" name="person_id" value="{{ item.id }}">
         <ul class="actions">
             <li><button type="submit" class="delete">Ta bort VIP</button></li>
         </ul>
-    </fieldset>
-</form>
+    </form>
+</details>
 {% endblock %}
