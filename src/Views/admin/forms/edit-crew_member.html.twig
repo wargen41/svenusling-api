@@ -31,16 +31,17 @@
             </ul>
     </fieldset>
 </form>
-<form method="POST" action="/admin/movies/crew/delete" onsubmit="return confirm('Säkert att du vill ta bort medverkande {{ sub_item.person_name }} från filmen?');">
-    <input type="hidden" name="redirect_url" value="{{ this_page }}">
-    <input type="hidden" name="movie_id" value="{{ sub_item.movie_id }}">
-    <input type="hidden" name="sequence_number" value="{{ sub_item.sequence_number }}">
-    <input type="hidden" name="category" value="{{ sub_item.category }}">
-    <fieldset>
-        <legend>Radera?</legend>
+
+<details class="danger">
+    <summary>Farozon</summary>
+    <form method="POST" action="/admin/movies/crew/delete">
+        <input type="hidden" name="redirect_url" value="{{ this_page }}">
+        <input type="hidden" name="movie_id" value="{{ sub_item.movie_id }}">
+        <input type="hidden" name="sequence_number" value="{{ sub_item.sequence_number }}">
+        <input type="hidden" name="category" value="{{ sub_item.category }}">
         <div class="actions">
             <button type="submit" class="delete">Ta bort medverkande</button>
         </div>
-    </fieldset>
-</form>
+    </form>
+</details>
 {% endblock %}
