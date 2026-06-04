@@ -909,11 +909,11 @@ body .actions {
     margin-block: 0.5em;
   }
 }
-body .actions > *[type=submit] {
+body .actions > li > *[type=submit] {
   min-width: 14em;
 }
 @media (width <= 32rem) {
-  body .actions > *[type=submit] {
+  body .actions > li > *[type=submit] {
     width: 100%;
   }
 }
@@ -1193,6 +1193,10 @@ main.login button[type=submit] {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.pseudo-modal[popover] > .content > * + *,
+.menu[popover] > .content > * + * {
+  margin-top: 2em;
 }
 .pseudo-modal[popover] > .top,
 .menu[popover] > .top {

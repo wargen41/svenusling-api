@@ -7,6 +7,8 @@ $mobile: map.get(var.$breakpoints, 'mobile');
 
 $BP: map.get(var.$padding, 'base'); // Base Padding
 $BM: map.get(var.$margin, 'base'); // Base Margin
+$BPr: map.get(var.$padding, 'relative'); // Relative Base Padding
+$BMr: map.get(var.$margin, 'relative'); // Relative Base Margin
 $BMn: map.get(var.$negative-margin, 'base'); // Negative Base Margin
 $block-padding: map.get(var.$padding, 'block-default');
 $block-margin: map.get(var.$margin, 'block-default');
@@ -271,6 +273,11 @@ main.login button[type=submit]
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        > * + *
+        {
+            margin-top: (2 * $BMr);
+        }
     }
 
     > .top
