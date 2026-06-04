@@ -39,9 +39,9 @@
         <input type="hidden" name="movie_id" value="{{ sub_item.movie_id }}">
         <input type="hidden" name="sequence_number" value="{{ sub_item.sequence_number }}">
         <input type="hidden" name="category" value="{{ sub_item.category }}">
-        <div class="actions">
-            <button type="submit" class="delete">Ta bort medverkande</button>
-        </div>
+        <ul class="actions">
+            <li><button type="submit" class="delete">Ta bort medverkande</button></li>
+        </ul>
     </form>
 </details>
 {% endblock %}
