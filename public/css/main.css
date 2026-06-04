@@ -1196,7 +1196,7 @@ main.login button[type=submit] {
 }
 .pseudo-modal[popover] > .content > * + *,
 .menu[popover] > .content > * + * {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 .pseudo-modal[popover] > .top,
 .menu[popover] > .top {
