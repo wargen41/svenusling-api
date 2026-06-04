@@ -51,12 +51,12 @@
 
 <details class="danger">
     <summary>Farozon</summary>
-<form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.title }}? ({{ item.id }})');">
-    <input type="hidden" name="redirect_url" value="{{ this_page }}">
-    <input type="hidden" name="movie_id" value="{{ item.id }}">
-    <ul class="actions">
-        <li><button type="submit" class="delete">{% block delete_text %}Ta bort film?{% endblock %}</button></li>
-    </ul>
-</form>
+    <form method="POST" action="/admin/movies/delete" onsubmit="return confirm('Säkert att du vill ta bort {{ item.title }}? ({{ item.id }})');">
+        <input type="hidden" name="redirect_url" value="{{ this_page }}">
+        <input type="hidden" name="movie_id" value="{{ item.id }}">
+        <ul class="actions">
+            <li><button type="submit" class="delete">{% block delete_text %}Ta bort film?{% endblock %}</button></li>
+        </ul>
+    </form>
 </details>
 {% endblock %}
