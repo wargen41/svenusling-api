@@ -75,7 +75,7 @@ main
         padding: (0.5 * $BP) (4 * $BP) 0;
         margin-left: $BMn;
         margin-right: $BMn;
-        margin-bottom: $block-margin;
+        margin-bottom: (2 * $BMr);
     }
 
     button.add,
@@ -142,7 +142,7 @@ article
 {
     > *:not(h1) + *
     {
-        margin-top: (1.2 * $BMr);
+        margin-top: (1.2 * $BM);
     }
 }
 
