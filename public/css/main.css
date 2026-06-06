@@ -1210,9 +1210,18 @@ nav[popover]::backdrop {
   backdrop-filter: brightness(0.88) contrast(0.88) grayscale(1);
   background-color: transparent;
 }
+dialog[popover] > header,
+nav[popover] > header {
+  min-height: 1.1rem;
+}
 dialog[popover] > footer,
 nav[popover] > footer {
   min-height: 1.1rem;
+}
+dialog[popover] > .content,
+nav[popover] > .content {
+  margin-block: 1.1rem;
+  padding-block: 1.1rem;
 }
 
 /* .pseudo-modalOLD[popover],

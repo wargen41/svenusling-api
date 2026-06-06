@@ -36,6 +36,8 @@ $PopBorderRadius: map.get(var.$popover, 'border-radius');
 $PopBorderWidth: map.get(var.$popover, 'border-width');
 $PopBorderStyle: map.get(var.$popover, 'border-style');
 $PopColW: map.get(var.$popover, 'column-width');
+$PopBlMarg: map.get(var.$popover, 'content-block-margin');
+$PopBlPad: map.get(var.$popover, 'content-block-padding');
 
 // Detta är en salig blandning av variabler som gäller endast menyn samt både meny och popover
 // Behöver reda ut det så småningom, men just nu vill jag bara få rätt på utseendet för tillfället
@@ -254,9 +256,20 @@ nav[popover]
         background-color: transparent;
     }
 
+    > header
+    {
+        min-height: $PopBorderRadius;
+    }
+
     > footer
     {
         min-height: $PopBorderRadius;
+    }
+
+    > .content
+    {
+        margin-block: $PopBlMarg;
+        padding-block: $PopBlPad;
     }
 }
 
