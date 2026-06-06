@@ -1067,7 +1067,7 @@ $mig: map.get($popover, 'item-gap');
 $mibw: map.get($popover, 'item-border-width');
 $mcw: map.get($popover, 'column-width');
 $mcg: map.get($popover, 'column-gap');
-$cbw: map.get($popover, 'close-button-width');
+$cbw: map.get($popover, 'nav-button-width');
 
 $popover-padding-inline: $mbr * $mbrrpi;
 $popover-padding-block: $mbr * $mbrrpb;
@@ -1213,6 +1213,10 @@ nav[popover]::backdrop {
 dialog[popover] > header,
 nav[popover] > header {
   min-height: 1.1rem;
+}
+dialog[popover] > header h2,
+nav[popover] > header h2 {
+  margin-inline: 3em;
 }
 dialog[popover] > footer,
 nav[popover] > footer {

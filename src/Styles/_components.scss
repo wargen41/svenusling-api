@@ -40,6 +40,7 @@ $PopBlMarg: map.get(var.$popover, 'content-block-margin');
 $PopBlPad: map.get(var.$popover, 'content-block-padding');
 $PopInlMarg: map.get(var.$popover, 'content-inline-margin');
 $PopInlPad: map.get(var.$popover, 'content-inline-padding');
+$PopNavButtW: map.get(var.$popover, 'nav-button-width');
 
 // Detta är en salig blandning av variabler som gäller endast menyn samt både meny och popover
 // Behöver reda ut det så småningom, men just nu vill jag bara få rätt på utseendet för tillfället
@@ -67,7 +68,7 @@ $mig: map.get($popover, 'item-gap');
 $mibw: map.get($popover, 'item-border-width');
 $mcw: map.get($popover, 'column-width');
 $mcg: map.get($popover, 'column-gap');
-$cbw: map.get($popover, 'close-button-width');
+$cbw: map.get($popover, 'nav-button-width');
 
 $popover-padding-inline: $mbr * $mbrrpi;
 $popover-padding-block: $mbr * $mbrrpb;
@@ -261,6 +262,11 @@ nav[popover]
     > header
     {
         min-height: $PopBorderRadius;
+
+        h2
+        {
+            margin-inline: $PopNavButtW;
+        }
     }
 
     > footer
@@ -550,7 +556,7 @@ nav[popover]
 //
 //         &[popovertarget]
 //         {
-//             width: var(--close-button-width);
+//             width: var(--nav-button-width);
 //             border-radius: 0 0 var(--border-radius) 0;
 //             border-bottom: 1px solid var(--border-color-default);
 //             border-right: 1px solid var(--border-color-default);
@@ -563,7 +569,7 @@ nav[popover]
 //
 //         &[popovertarget=menu-main]
 //         {
-//             width: var(--close-button-width);
+//             width: var(--nav-button-width);
 //             border-radius: 0 0 0 var(--border-radius);
 //             border-bottom: 1px solid var(--border-color-default);
 //             border-left: 1px solid var(--border-color-default);
