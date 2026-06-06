@@ -1192,19 +1192,27 @@ main.login button[type=submit] {
   padding: 0.82rem 0 1.25rem 0;
 }
 
-.dialog[popover],
-.menu[popover] {
+dialog[popover],
+nav[popover] {
   margin: auto;
   position: fixed;
+  max-width: unset;
+  min-width: unset;
+  width: auto;
+  height: auto;
+  top: 2.8rem;
+  left: 2.8rem;
+  right: 2.8rem;
+  bottom: 2.8rem;
   inset: 0;
+  padding: 0;
   box-shadow: 2px 2px 4px #101010;
   border-width: var(--border-width);
   border-style: var(--border-style);
   border-radius: 1.1rem;
-  padding: 0;
 }
-.dialog[popover]::backdrop,
-.menu[popover]::backdrop {
+dialog[popover]::backdrop,
+nav[popover]::backdrop {
   backdrop-filter: brightness(0.9) contrast(0.9) grayscale(1);
   background-color: transparent;
 }

@@ -31,6 +31,7 @@ $WIZ: map.get(var.$widget, 'img-size');
 // );
 
 // Popover variables
+$PopMobMargin: map.get(var.$popover, 'mobile-margin');
 $PopBorderRadius: map.get(var.$popover, 'border-radius');
 $PopBorderWidth: map.get(var.$popover, 'border-width');
 $PopBorderStyle: map.get(var.$popover, 'border-style');
@@ -229,17 +230,27 @@ main.login button[type=submit]
 }
 
 // Gemensam grund för dialoger och menyer
-.dialog[popover],
-.menu[popover]
+// Börjar med att definiera mobilutseendet, som ska vara identiskt mellan de två
+dialog[popover],
+nav[popover]
 {
     margin: auto;
     position: fixed;
+    max-width: unset;
+    min-width: unset;
+    width: auto;
+    height: auto;
+    top: $PopMobMargin;
+    left: $PopMobMargin;
+    right: $PopMobMargin;
+    bottom: $PopMobMargin;
     inset: 0;
+    padding: 0;
+
     box-shadow: 2px 2px 4px #101010;
     border-width: $PopBorderWidth;
     border-style: $PopBorderStyle;
     border-radius: $PopBorderRadius;
-    padding: 0;
 
     &::backdrop
     {
