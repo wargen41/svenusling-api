@@ -930,6 +930,41 @@ body > .message {
   width: 100dvw;
   z-index: 67;
 }
+body > header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-direction: row;
+  box-shadow: 0 2px 4px #101010;
+}
+body > header nav ul {
+  margin: 0;
+  padding: 1rem 0;
+  line-height: 0.7;
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+body > header nav ul > li {
+  padding: 0.5rem;
+}
+body > footer {
+  position: relative;
+  width: auto;
+  height: 3em;
+  margin-left: auto;
+  margin-top: calc(50vh - 0em);
+  margin-bottom: calc(50vh - 2em);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-direction: row;
+}
 
 body * {
   text-align: left;
@@ -1001,43 +1036,6 @@ article > nav > * + * {
 
 details > summary > * {
   display: inline-block;
-}
-
-footer {
-  position: relative;
-  width: auto;
-  height: 3em;
-  margin-left: auto;
-  margin-top: calc(50vh - 0em);
-  margin-bottom: calc(50vh - 2em);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  flex-direction: row;
-}
-
-header {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  flex-direction: row;
-  box-shadow: 0 2px 4px #101010;
-}
-header nav ul {
-  margin: 0;
-  padding: 1rem 0;
-  line-height: 0.7;
-  display: flex;
-  gap: 1rem;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-header nav ul > li {
-  padding: 0.5rem;
 }
 
 .skip-link {
@@ -1209,7 +1207,7 @@ nav[popover] {
 }
 dialog[popover]::backdrop,
 nav[popover]::backdrop {
-  backdrop-filter: brightness(0.9) contrast(0.9) grayscale(1);
+  backdrop-filter: brightness(0.88) contrast(0.88) grayscale(1);
   background-color: transparent;
 }
 

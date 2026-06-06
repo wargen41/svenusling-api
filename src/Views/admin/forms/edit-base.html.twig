@@ -4,12 +4,18 @@
         <pre>ERROR pop_id is null</pre>
 {% else %}
         <dialog id="{{ pop_id }}" popover class="pseudo-modal">
-            <div class="top">
-                {% if pop_title != null %}<h2>{{ pop_title }}</h2>{% endif %}
-                <button popovertarget="{{ pop_id }}" popovertargetaction="hide">×</button>
-            </div>
-            <div class="content">
-    {% block content %}{% endblock %}
-            </div>
+            <section>
+                <header>
+                    {% if pop_title != null %}<h2>{{ pop_title }}</h2>{% endif %}
+                    <nav>
+                        <button popovertarget="{{ pop_id }}" popovertargetaction="hide">×</button>
+                    </nav>
+                </header>
+                <div class="content">
+                    {% block content %}{% endblock %}
+                </div>
+                <footer>
+                </footer>
+            </section>
         </dialog>
 {% endif %}
