@@ -1216,7 +1216,7 @@ nav[popover] > header {
 }
 dialog[popover] > header h2,
 nav[popover] > header h2 {
-  margin-inline: 3em;
+  margin-inline: 3rem;
 }
 dialog[popover] > footer,
 nav[popover] > footer {
