@@ -15,6 +15,7 @@ $block-margin: map.get(var.$margin, 'block-default');
 $inline-padding: map.get(var.$padding, 'inline-default');
 $inline-margin: map.get(var.$margin, 'inline-default');
 
+// Widget variables
 $WPT: map.get(var.$widget, 'padding-top');
 $WPB: map.get(var.$widget, 'padding-bottom');
 $WPO: map.get(var.$widget, 'padding-outer');
@@ -29,32 +30,25 @@ $WIZ: map.get(var.$widget, 'img-size');
 //     total-width: $WIZ + $WPO + $WPI,
 // );
 
+// Popover variables
+$PopBorderRadius: map.get(var.$popover, 'border-radius');
+$PopBorderWidth: map.get(var.$popover, 'border-width');
+$PopBorderStyle: map.get(var.$popover, 'border-style');
+$PopColW: map.get(var.$popover, 'column-width');
+
 // Detta är en salig blandning av variabler som gäller endast menyn samt både meny och popover
 // Behöver reda ut det så småningom, men just nu vill jag bara få rätt på utseendet för tillfället
-$popover: (
-    border-radius: 1.1rem,
-    border-width: map.get(var.$border, 'width'),
-    border-style: map.get(var.$border, 'style'),
+$popoverOLD: (
     border-radius-relative-padding-inline: 0.75,
     border-radius-relative-padding-block: 0.6,
     padding-inline-relative-box-list-padding: 0.3,
     list-padding-relative-sub-list-padding: 4,
     sub-offset: 0.5rem,
-    // columns
-    column-width: 10em,
-    column-gap: 1.1em,
-    section-gap: 0em,
     // items
     padding-inline-relative-box-item-padding: 0.7,
-    item-height: 2.6rem,
-    item-gap: 2px,
-    item-border-width: 0,
-    // mobile
-    mobile-margin: 2.8rem,
-    close-button-width: 3em
 );
 
-$mbr: map.get($popover, 'border-radius');
+/* $mbr: map.get($popover, 'border-radius');
 $mbw: map.get($popover, 'border-width');
 $mbs: map.get($popover, 'border-style');
 $mbrrpi: map.get($popover, 'border-radius-relative-padding-inline');
@@ -75,16 +69,16 @@ $popover-padding-block: $mbr * $mbrrpb;
 $popover-list-padding: $popover-padding-inline * $mpirlp;
 $popover-sub-list-padding: $popover-list-padding * $mlprslp;
 $popover-item-padding: $popover-padding-inline * $mpirip;
-
-$popover-calc: (
+ */
+/* $popover-calc: (
     block-total: calc($popover-padding-block + var(--menu-item-gap) + var(--menu-border-width) + var(--menu-item-border-width)),
     max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--menu-padding-inline) * 2)),
-    min-width: calc(var(--menu-column-width) + (var(--menu-padding-inline) * 2)),
+    min-width: calc($column-width + (var(--menu-padding-inline) * 2)),
     padding-inline: $popover-padding-inline,
     list-padding: $popover-list-padding,
     item-padding: $popover-item-padding,
     //max-width: 100vw - ($widget-total-width * 2) - $popover-padding-inline * 2;
-);
+); */
 
 // CSS-variabler att exportera
 // $export-to-css: (
@@ -143,16 +137,11 @@ $popover-calc: (
 
 @keyframes page-message {
     0% {
-        /*opacity: 100;*/
         transform: translateY(0%);
     }
     1% {
         transform: translateY(100%);
     }
-    /*10% {
-     *       opacity: 0;
-     *       transform: translateY(100%);
-}*/
 }
 
 main.login
@@ -239,23 +228,32 @@ main.login button[type=submit]
     }
 }
 
-.pseudo-modal[popover],
+// Gemensam grund för dialoger och menyer
+.dialog[popover],
 .menu[popover]
 {
     margin: auto;
     position: fixed;
     inset: 0;
+    box-shadow: 2px 2px 4px #101010;
+    border-width: $PopBorderWidth;
+    border-style: $PopBorderStyle;
+    border-radius: $PopBorderRadius;
+    padding: 0;
 
-    border-width: $mbw;
-    border-style: $mbs;
-    border-radius: $mbr;
-    padding: 0 0 $mbr 0;
+    &::backdrop
+    {
+        backdrop-filter: brightness(0.9) contrast(0.9) grayscale(1);
+        background-color: transparent;
+    }
+}
 
+/* .pseudo-modalOLD[popover],
+.menuOLD[popover]
+{
     max-width: calc(100vw - (var(--widget-total-width) * 2) - ($popover-padding-inline * 2));
     min-width: calc(var(--menu-column-width) + ($popover-padding-inline * 2));
     max-height: 100%;
-
-    box-shadow: 2px 2px 4px #101010;
 
     .actions button:only-child
     {
@@ -294,8 +292,7 @@ main.login button[type=submit]
 
             font-family: inherit;
             font-size: inherit;
-            -webkit-appearance: none;
-            -moz-appearance: none;
+            appearance: none;
             cursor: pointer;
             text-decoration: none;
             border: none;
@@ -322,15 +319,9 @@ main.login button[type=submit]
             }
         }
     }
+} */
 
-    &::backdrop
-    {
-        backdrop-filter: brightness(0.9) contrast(0.9) grayscale(1);
-        background-color: transparent;
-    }
-}
-
-@media (width <= $mobile) {
+/* @media (width <= $mobile) {
     :root
     {
         --mobile-modal-margin-top: 10rem;
@@ -357,12 +348,7 @@ main.login button[type=submit]
             flex-direction: column;
         }
     }
-
-    // body:has(.pseudo-modal[popover]:popover-open)
-    // {
-    //     margin-bottom: calc(100vh - var(--mobile-modal-margin-top) + 1rem);
-    // }
-}
+} */
 
 // Menyn behöver göras om så att den använder sig av samma grund som .pseudo-modal för mobilutseendet
 
@@ -562,7 +548,7 @@ main.login button[type=submit]
 //     }
 // }
 //
-@media (width <= 44rem) {
+/* @media (width <= 44rem) {
     .menu{
         &:popover-open > ul
         {
@@ -574,7 +560,7 @@ main.login button[type=submit]
             flex: unset;
         }
     }
-}
+} */
 //
 // @media (width <= 32rem) {
 //     #menu-movies,
@@ -660,7 +646,7 @@ main.login button[type=submit]
 // }
 
 // Finns förmodligen något smidigare och bättre sätt att göra detta
-#menu-widget-button
+/* #menu-widget-button
 {
     anchor-name: --menu-widget-button;
 }
@@ -731,7 +717,7 @@ main.login button[type=submit]
 #menu-persons-relations
 {
     position-anchor: --menu-persons-relations-button;
-}
+} */
 
 
 // .button {
@@ -751,31 +737,3 @@ main.login button[type=submit]
 //     }
 // }
 //
-// // Use Sass variables for build-time needs, CSS vars at runtime
-// .button {
-//     background: var(--color-primary);
-//     color: var(--color-text);
-//     padding: var(--space-md);
-//     border-radius: 6px;
-//
-//     // use Sass for calculated values where useful
-//     // e.g., generate shadow using a Sass function
-//     //box-shadow: 0 2px 6px rgba($color: map.get($colors, primary), 0.08);
-// }
-//
-// .card {
-//     background: #fff;
-//     border: 1px solid #eef2f5;
-//     border-radius: 8px;
-//     padding: var(--space-md);
-//     box-shadow: 0 2px 6px rgba(10,10,10,0.04);
-// }
-//
-// .form {
-//     &__group { margin-bottom: var(--space-md); }
-//     label { display: block; margin-bottom: var(--space-sm); font-weight: 600; }
-//     input, textarea, select {
-//         width: 100%; padding: var(--space-sm); border: 1px solid #d8dde3; border-radius: 6px;
-//         //&:focus { outline: none; box-shadow: 0 0 0 3px rgba($color-primary, 0.08); border-color: $color-primary; }
-//     }
-// }

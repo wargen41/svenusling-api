@@ -1055,6 +1055,37 @@ header nav ul > li {
   z-index: 999;
 }
 
+/* $mbr: map.get($popover, 'border-radius');
+$mbw: map.get($popover, 'border-width');
+$mbs: map.get($popover, 'border-style');
+$mbrrpi: map.get($popover, 'border-radius-relative-padding-inline');
+$mbrrpb: map.get($popover, 'border-radius-relative-padding-block');
+$mpirlp: map.get($popover, 'padding-inline-relative-box-list-padding');
+$mlprslp: map.get($popover, 'list-padding-relative-sub-list-padding');
+$mso: map.get($popover, 'sub-offset');
+$mpirip: map.get($popover, 'padding-inline-relative-box-item-padding');
+$mih: map.get($popover, 'item-height');
+$mig: map.get($popover, 'item-gap');
+$mibw: map.get($popover, 'item-border-width');
+$mcw: map.get($popover, 'column-width');
+$mcg: map.get($popover, 'column-gap');
+$cbw: map.get($popover, 'close-button-width');
+
+$popover-padding-inline: $mbr * $mbrrpi;
+$popover-padding-block: $mbr * $mbrrpb;
+$popover-list-padding: $popover-padding-inline * $mpirlp;
+$popover-sub-list-padding: $popover-list-padding * $mlprslp;
+$popover-item-padding: $popover-padding-inline * $mpirip;
+ */
+/* $popover-calc: (
+    block-total: calc($popover-padding-block + var(--menu-item-gap) + var(--menu-border-width) + var(--menu-item-border-width)),
+    max-width: calc(100vw - (var(--widget-total-width) * 2) - (var(--menu-padding-inline) * 2)),
+    min-width: calc($column-width + (var(--menu-padding-inline) * 2)),
+    padding-inline: $popover-padding-inline,
+    list-padding: $popover-list-padding,
+    item-padding: $popover-item-padding,
+    //max-width: 100vw - ($widget-total-width * 2) - $popover-padding-inline * 2;
+); */
 @position-try --left-down {
   inset: unset;
   top: anchor(top);
@@ -1093,16 +1124,11 @@ header nav ul > li {
 }
 @keyframes page-message {
   0% {
-    /*opacity: 100;*/
     transform: translateY(0%);
   }
   1% {
     transform: translateY(100%);
   }
-  /*10% {
-       *       opacity: 0;
-       *       transform: translateY(100%);
-  }*/
 }
 main.login {
   height: 100dvh;
@@ -1166,171 +1192,208 @@ main.login button[type=submit] {
   padding: 0.82rem 0 1.25rem 0;
 }
 
-.pseudo-modal[popover],
+.dialog[popover],
 .menu[popover] {
   margin: auto;
   position: fixed;
   inset: 0;
+  box-shadow: 2px 2px 4px #101010;
   border-width: var(--border-width);
   border-style: var(--border-style);
   border-radius: 1.1rem;
-  padding: 0 0 1.1rem 0;
-  max-width: calc(100vw - var(--widget-total-width) * 2 - 1.65rem);
-  min-width: calc(var(--menu-column-width) + 1.65rem);
-  max-height: 100%;
-  box-shadow: 2px 2px 4px #101010;
-}
-.pseudo-modal[popover] .actions button:only-child,
-.menu[popover] .actions button:only-child {
-  width: 100%;
-}
-.pseudo-modal[popover] > .content,
-.menu[popover] > .content {
-  max-height: calc(100% - 4rem);
-  overflow: auto;
-  margin: 0 1.1rem;
-  flex: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.pseudo-modal[popover] > .content > * + *,
-.menu[popover] > .content > * + * {
-  margin-top: 1em;
-}
-.pseudo-modal[popover] > .top,
-.menu[popover] > .top {
-  margin-bottom: 0.66rem;
-  display: flex;
-  justify-content: flex-end;
-}
-.pseudo-modal[popover] > .top button,
-.menu[popover] > .top button {
-  text-align: center;
   padding: 0;
-  min-height: 2rem;
-  font-family: inherit;
-  font-size: inherit;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  padding: 0 var(--menu-item-padding);
-  display: block;
-  align-content: center;
-  border-bottom-width: var(--border-width);
 }
-.pseudo-modal[popover] > .top button:hover,
-.menu[popover] > .top button:hover {
-  border-bottom-width: var(--border-width);
-  border-bottom-style: var(--border-style);
-}
-.pseudo-modal[popover] > .top button[popovertarget],
-.menu[popover] > .top button[popovertarget] {
-  width: 3em;
-  border-radius: 0 0 0 1.1rem;
-  border-bottom-width: var(--border-width);
-  border-left-width: var(--border-width);
-  border-right: none;
-}
-.pseudo-modal[popover]::backdrop,
+.dialog[popover]::backdrop,
 .menu[popover]::backdrop {
   backdrop-filter: brightness(0.9) contrast(0.9) grayscale(1);
   background-color: transparent;
 }
 
-@media (width <= 32rem) {
-  :root {
-    --mobile-modal-margin-top: 10rem;
-    --mobile-modal-margin-inline: 1rem;
-  }
-  .pseudo-modal[popover],
-  .menu[popover] {
-    position: fixed;
-    max-width: unset;
-    min-width: unset;
-    width: auto;
-    height: auto;
-    top: var(--mobile-modal-margin-top);
-    bottom: 0rem;
-    left: var(--mobile-modal-margin-inline);
-    right: var(--mobile-modal-margin-inline);
-  }
-  .pseudo-modal[popover]:popover-open,
-  .menu[popover]:popover-open {
-    height: calc(100% - var(--mobile-modal-margin-top));
-    display: flex;
-    flex-direction: column;
-  }
-}
-@media (width <= 44rem) {
-  .menu:popover-open > ul {
-    display: block;
-  }
-  .menu > ul > * {
-    flex: unset;
-  }
-}
-#menu-widget-button {
-  anchor-name: --menu-widget-button;
+/* .pseudo-modalOLD[popover],
+.menuOLD[popover]
+{
+    max-width: calc(100vw - (var(--widget-total-width) * 2) - ($popover-padding-inline * 2));
+    min-width: calc(var(--menu-column-width) + ($popover-padding-inline * 2));
+    max-height: 100%;
+
+    .actions button:only-child
+    {
+        width: 100%;
+    }
+
+    > .content
+    {
+        max-height: calc(100% - 4rem);
+        overflow: auto;
+
+        margin: 0 $mbr;
+        flex: auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        > * + *
+        {
+            margin-top: (1 * $BMr);
+        }
+    }
+
+    > .top
+    {
+        margin-bottom: calc($mbr * 0.6);
+        display: flex;
+        justify-content: flex-end;
+
+        button
+        {
+            text-align: center;
+            padding: 0;
+            min-height: 2rem;
+
+            font-family: inherit;
+            font-size: inherit;
+            appearance: none;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            padding: 0 var(--menu-item-padding);
+
+            display: block;
+            align-content: center;
+
+            border-bottom-width: $mbw;
+
+            &:hover
+            {
+                border-bottom-width: $mbw;
+                border-bottom-style: $mbs;
+            }
+
+            &[popovertarget]
+            {
+                width: $cbw;
+                border-radius: 0 0 0 $mbr;
+                border-bottom-width: $mbw;
+                border-left-width: $mbw;
+                border-right: none;
+            }
+        }
+    }
+} */
+/* @media (width <= $mobile) {
+    :root
+    {
+        --mobile-modal-margin-top: 10rem;
+        --mobile-modal-margin-inline: 1rem;
+    }
+
+    .pseudo-modal[popover],
+    .menu[popover]
+    {
+        position: fixed;
+        max-width: unset;
+        min-width: unset;
+        width: auto;
+        height: auto;
+        top: var(--mobile-modal-margin-top);
+        bottom: 0rem;
+        left: var(--mobile-modal-margin-inline);
+        right: var(--mobile-modal-margin-inline);
+
+        &:popover-open
+        {
+            height: calc(100% - var(--mobile-modal-margin-top));
+            display: flex;
+            flex-direction: column;
+        }
+    }
+} */
+/* @media (width <= 44rem) {
+    .menu{
+        &:popover-open > ul
+        {
+            display: block;
+        }
+
+        > ul > *
+        {
+            flex: unset;
+        }
+    }
+} */
+/* #menu-widget-button
+{
+    anchor-name: --menu-widget-button;
 }
 
-#menu-main {
-  inset: unset;
-  position-anchor: --menu-widget-button;
-  top: calc(anchor(top) + 0.5rem);
-  right: anchor(left);
+#menu-main
+{
+    inset: unset;
+    position-anchor: --menu-widget-button;
+    top: calc(anchor(top) + $WPT);
+    right: anchor(left);
 }
 
-#menu-movies-type-button {
-  anchor-name: --menu-movies-type-button;
+#menu-movies-type-button
+{
+    anchor-name: --menu-movies-type-button;
 }
 
-#menu-movies-type {
-  position-anchor: --menu-movies-type-button;
+#menu-movies-type
+{
+    position-anchor: --menu-movies-type-button;
 }
 
-#menu-movies-rating-button {
-  anchor-name: --menu-movies-rating-button;
+#menu-movies-rating-button
+{
+    anchor-name: --menu-movies-rating-button;
 }
 
-#menu-movies-rating {
-  position-anchor: --menu-movies-rating-button;
+#menu-movies-rating
+{
+    position-anchor: --menu-movies-rating-button;
 }
 
-#menu-movies-year-button {
-  anchor-name: --menu-movies-year-button;
+#menu-movies-year-button
+{
+    anchor-name: --menu-movies-year-button;
 }
 
-#menu-movies-year {
-  position-anchor: --menu-movies-year-button;
+#menu-movies-year
+{
+    position-anchor: --menu-movies-year-button;
 }
 
-#menu-movies-genre-button {
-  anchor-name: --menu-movies-genre-button;
+#menu-movies-genre-button
+{
+    anchor-name: --menu-movies-genre-button;
 }
 
-#menu-movies-genre {
-  position-anchor: --menu-movies-genre-button;
+#menu-movies-genre
+{
+    position-anchor: --menu-movies-genre-button;
 }
 
-#menu-persons-type-button {
-  anchor-name: --menu-persons-type-button;
+#menu-persons-type-button
+{
+    anchor-name: --menu-persons-type-button;
 }
 
-#menu-persons-type {
-  position-anchor: --menu-persons-type-button;
+#menu-persons-type
+{
+    position-anchor: --menu-persons-type-button;
 }
 
-#menu-persons-relations-button {
-  anchor-name: --menu-persons-relations-button;
+#menu-persons-relations-button
+{
+    anchor-name: --menu-persons-relations-button;
 }
 
-#menu-persons-relations {
-  position-anchor: --menu-persons-relations-button;
-}
-
+#menu-persons-relations
+{
+    position-anchor: --menu-persons-relations-button;
+} */
 :root {
   --border-width: 2px;
   --border-width-alt: 1px;

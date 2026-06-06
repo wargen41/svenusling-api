@@ -24,14 +24,6 @@ $margin: (
     "relative": 1em,
 );
 
-$sticky: (
-    "position-top": 0.5rem,
-    "position-inline": 1rem,
-    "inner-margin": 0.7rem,
-    "icon-size": map.get($height, 'button'),
-    "icon-gap": 0.3rem,
-);
-
 $text-decoration: (
     "links": 1px underline solid,
 );
@@ -48,6 +40,39 @@ $border: (
     "width-alt": var(--border-width-alt),
     "style": var(--border-style),
     "style-alt": var(--border-style-alt),
+);
+
+$sticky: (
+    "position-top": 0.5rem,
+    "position-inline": 1rem,
+    "inner-margin": 0.7rem,
+    "icon-size": map.get($height, 'button'),
+    "icon-gap": 0.3rem,
+);
+
+// Grundinställningar för alla typer av dialogliknande popover-element (inklusive menyer)
+$popover: (
+    // borders
+    "border-radius": 1.1rem,
+    "border-width": map.get($border, 'width'),
+    "border-style": map.get($border, 'style'),
+    // columns
+    "column-width": 10em,
+    "column-gap": 1.1em,
+    "section-gap": 0em,
+    // mobile
+    "mobile-margin": 2.8rem,
+    "close-button-width": 3em
+);
+
+$dialog: (
+);
+
+$menu: (
+    // items
+    "item-height": 2.6rem,
+    "item-gap": 2px,
+    "item-border-width": 0,
 );
 
 // Definiera vilka listor med variabler som ska bli CSS-variabler och med vilket prefix
