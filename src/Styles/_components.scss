@@ -240,11 +240,7 @@ nav[popover]
     min-width: unset;
     width: auto;
     height: auto;
-    top: $PopMobMargin;
-    left: $PopMobMargin;
-    right: $PopMobMargin;
-    bottom: $PopMobMargin;
-    inset: 0;
+    inset: $PopMobMargin;
     padding: 0;
 
     box-shadow: 2px 2px 4px #101010;
