@@ -6,6 +6,7 @@ $BM: map.get(cfg.$margin, 'base'); // Base Margin
 $BPr: map.get(cfg.$padding, 'relative'); // Base Padding relative
 $BMr: map.get(cfg.$margin, 'relative'); // Base Margin relative
 
+
 // Vill sträva mot att alla värden finns i denna (och config), utom vissa enstaka som bara används en enda gång
 
 $breakpoints: (
@@ -84,9 +85,11 @@ $widget: (
     "img-size": map.get($sticky, 'icon-size'),
 );
 
+$pop-border-radius: map.get(cfg.$popover, 'border-radius');
+
 $popover: (
     // borders
-    "border-radius": map.get(cfg.$popover, 'border-radius'),
+    "border-radius": $pop-border-radius,
     "border-width": map.get(cfg.$popover, 'border-width'),
     "border-style": map.get(cfg.$popover, 'border-style'),
     // columns
@@ -94,10 +97,10 @@ $popover: (
     "column-gap": map.get(cfg.$popover, 'column-gap'),
     "section-gap": map.get(cfg.$popover, 'section-gap'),
     // content section
-    "content-inline-margin": map.get(cfg.$popover, 'border-radius'),
-    "content-inline-padding": map.get(cfg.$popover, 'border-radius'),
+    "content-inline-margin": (0.5 * $pop-border-radius),
+    "content-inline-padding": (0.5 * $pop-border-radius),
     "content-block-margin": 0,
-    "content-block-padding": map.get(cfg.$popover, 'border-radius'),
+    "content-block-padding": (0.5 * $pop-border-radius),
     // mobile
     "mobile-margin": map.get($widget, 'padding-outer'),
     "close-button-width": map.get(cfg.$popover, 'close-button-width')
