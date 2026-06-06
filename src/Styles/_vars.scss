@@ -94,10 +94,10 @@ $popover: (
     "column-gap": map.get(cfg.$popover, 'column-gap'),
     "section-gap": map.get(cfg.$popover, 'section-gap'),
     // content section
-    "content-block-margin": 0,
-    "content-block-padding": 0,
     "content-inline-margin": map.get(cfg.$popover, 'border-radius'),
     "content-inline-padding": map.get(cfg.$popover, 'border-radius'),
+    "content-block-margin": 0,
+    "content-block-padding": map.get(cfg.$popover, 'border-radius'),
     // mobile
     "mobile-margin": map.get($widget, 'padding-outer'),
     "close-button-width": map.get(cfg.$popover, 'close-button-width')
