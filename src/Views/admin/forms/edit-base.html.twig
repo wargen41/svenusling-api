@@ -5,10 +5,10 @@
 {% else %}
         <dialog id="{{ pop_id }}" popover class="pseudo-modal">
             <header>
-                {% if pop_title != null %}<h2>{{ pop_title }}</h2>{% endif %}
                 <nav>
                     <button popovertarget="{{ pop_id }}" popovertargetaction="hide">×</button>
                 </nav>
+                {% if pop_title != null %}<h2>{{ pop_title }}</h2>{% endif %}
             </header>
             <div class="content">
                 {% block content %}{% endblock %}
