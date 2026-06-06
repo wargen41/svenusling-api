@@ -46,20 +46,6 @@ $sticky: (
     "icon-gap": map.get(cfg.$sticky, 'icon-gap'),
 );
 
-$popover: (
-    // borders
-    "border-radius": map.get(cfg.$popover, 'border-radius'),
-    "border-width": map.get(cfg.$popover, 'border-width'),
-    "border-style": map.get(cfg.$popover, 'border-style'),
-    // columns
-    "column-width": map.get(cfg.$popover, 'column-width'),
-    "column-gap": map.get(cfg.$popover, 'column-gap'),
-    "section-gap": map.get(cfg.$popover, 'section-gap'),
-    // mobile
-    "mobile-margin": map.get(cfg.$popover, 'mobile-margin'),
-    "close-button-width": map.get(cfg.$popover, 'close-button-width')
-);
-
 $text-decoration: (
     "links": map.get(cfg.$text-decoration, 'links'),
 );
@@ -96,6 +82,20 @@ $widget: (
     "border-radius-bottom-inner": (1.3 * $BP),
     "border-radius-bottom-outer": (1.3 * $BP),
     "img-size": map.get($sticky, 'icon-size'),
+);
+
+$popover: (
+    // borders
+    "border-radius": map.get(cfg.$popover, 'border-radius'),
+    "border-width": map.get(cfg.$popover, 'border-width'),
+    "border-style": map.get(cfg.$popover, 'border-style'),
+    // columns
+    "column-width": map.get(cfg.$popover, 'column-width'),
+    "column-gap": map.get(cfg.$popover, 'column-gap'),
+    "section-gap": map.get(cfg.$popover, 'section-gap'),
+    // mobile
+    "mobile-margin": map.get($widget, 'padding-outer'),
+    "close-button-width": map.get(cfg.$popover, 'close-button-width')
 );
 
 $WPT: map.get($widget, 'padding-top');
