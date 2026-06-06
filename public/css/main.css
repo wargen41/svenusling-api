@@ -1220,8 +1220,10 @@ nav[popover] > footer {
 }
 dialog[popover] > .content,
 nav[popover] > .content {
-  margin-block: 1.1rem;
-  padding-block: 1.1rem;
+  margin-block: 0;
+  padding-block: 0;
+  margin-inline: 1.1rem;
+  padding-inline: 1.1rem;
 }
 
 /* .pseudo-modalOLD[popover],

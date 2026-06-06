@@ -38,6 +38,8 @@ $PopBorderStyle: map.get(var.$popover, 'border-style');
 $PopColW: map.get(var.$popover, 'column-width');
 $PopBlMarg: map.get(var.$popover, 'content-block-margin');
 $PopBlPad: map.get(var.$popover, 'content-block-padding');
+$PopInlMarg: map.get(var.$popover, 'content-inline-margin');
+$PopInlPad: map.get(var.$popover, 'content-inline-padding');
 
 // Detta är en salig blandning av variabler som gäller endast menyn samt både meny och popover
 // Behöver reda ut det så småningom, men just nu vill jag bara få rätt på utseendet för tillfället
@@ -270,6 +272,8 @@ nav[popover]
     {
         margin-block: $PopBlMarg;
         padding-block: $PopBlPad;
+        margin-inline: $PopInlMarg;
+        padding-inline: $PopInlPad;
     }
 }
 
