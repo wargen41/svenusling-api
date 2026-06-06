@@ -1200,7 +1200,7 @@ nav[popover] {
   min-width: unset;
   width: auto;
   height: auto;
-  inset: 2.8rem;
+  inset: 1.5rem;
   padding: 0;
   box-shadow: 2px 2px 4px #101010;
   border-width: var(--border-width);
