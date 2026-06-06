@@ -253,6 +253,11 @@ nav[popover]
         backdrop-filter: brightness(0.88) contrast(0.88) grayscale(1);
         background-color: transparent;
     }
+
+    > footer
+    {
+        min-height: $PopBorderRadius;
+    }
 }
 
 /* .pseudo-modalOLD[popover],
