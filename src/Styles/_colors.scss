@@ -338,13 +338,13 @@ a
     text-decoration-color: var(--color-on-surface-default);
 }
 
-header
+body > header
 {
     background: var(--color-primary-container-default);
     color: var(--color-on-primary-container-default)
 }
 
-footer
+body > footer
 {
     background: var(--color-surface-0);
     color: var(--color-surface-95);
