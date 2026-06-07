@@ -936,7 +936,7 @@ body .actions > li > *[type=submit] {
 }
 
 html [id] {
-  scroll-margin-top: 8rem;
+  scroll-margin-top: 6rem;
 }
 
 body {
