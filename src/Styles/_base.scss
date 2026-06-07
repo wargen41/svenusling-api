@@ -75,3 +75,23 @@ dd:before
         }
     }
 }
+
+main.login
+{
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+}
+
+main.login > form
+{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+main.login button[type=submit]
+{
+    text-align: center;
+}

@@ -757,6 +757,23 @@ dd:before {
   text-decoration: 1px underline solid;
 }
 
+main.login {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+}
+
+main.login > form {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+main.login button[type=submit] {
+  text-align: center;
+}
+
 body label {
   white-space: nowrap;
 }
@@ -1053,6 +1070,67 @@ details > summary > * {
   z-index: 999;
 }
 
+@supports (animation-timeline: scroll()) {
+  body > .message {
+    animation: page-message linear;
+    animation-timeline: scroll();
+    /*opacity: 0;*/
+    transform: translateY(100%);
+  }
+}
+@keyframes page-message {
+  0% {
+    transform: translateY(0%);
+  }
+  1% {
+    transform: translateY(100%);
+  }
+}
+.widget {
+  position: sticky;
+  z-index: 999;
+  top: 0;
+  display: inline-block;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+.widget img {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+.widget .button {
+  background: none;
+  border: none;
+  display: inline-block;
+  box-sizing: content-box;
+  height: 2.3rem;
+  width: 2.3rem;
+}
+.widget.left {
+  float: left;
+}
+.widget.left .button {
+  padding: 0.5rem 0.7rem 1rem 1rem;
+}
+.widget.right .button {
+  padding: 0.5rem 1rem 1rem 0.7rem;
+}
+.widget:has(:popover-open) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 1.3rem;
+  border-bottom-right-radius: 1.3rem;
+}
+
+.widget-label {
+  background: none;
+  display: inline-block;
+  transform: translateY(-0.7rem);
+}
+.widget-label:has(+ .widget.right) {
+  padding: 0.82rem 0 1.25rem 0;
+}
+
 /* $mbr: map.get($popover, 'border-radius');
 $mbw: map.get($popover, 'border-width');
 $mbs: map.get($popover, 'border-style');
@@ -1112,84 +1190,6 @@ $popover-item-padding: $popover-padding-inline * $mpirip;
   inset: unset;
   position-area: top center;
 }
-@supports (animation-timeline: scroll()) {
-  body > .message {
-    animation: page-message linear;
-    animation-timeline: scroll();
-    /*opacity: 0;*/
-    transform: translateY(100%);
-  }
-}
-@keyframes page-message {
-  0% {
-    transform: translateY(0%);
-  }
-  1% {
-    transform: translateY(100%);
-  }
-}
-main.login {
-  height: 100dvh;
-  display: flex;
-  align-items: center;
-}
-
-main.login > form {
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
-main.login button[type=submit] {
-  text-align: center;
-}
-
-.widget {
-  position: sticky;
-  z-index: 999;
-  top: 0;
-  display: inline-block;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-}
-.widget img {
-  width: 2.3rem;
-  height: 2.3rem;
-}
-.widget .button {
-  background: none;
-  border: none;
-  display: inline-block;
-  box-sizing: content-box;
-  height: 2.3rem;
-  width: 2.3rem;
-}
-.widget.left {
-  float: left;
-}
-.widget.left .button {
-  padding: 0.5rem 0.7rem 1rem 1rem;
-}
-.widget.right .button {
-  padding: 0.5rem 1rem 1rem 0.7rem;
-}
-.widget:has(:popover-open) {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0.5rem;
-  border-bottom-left-radius: 1.3rem;
-  border-bottom-right-radius: 1.3rem;
-}
-
-.widget-label {
-  background: none;
-  display: inline-block;
-  transform: translateY(-0.7rem);
-}
-.widget-label:has(+ .widget.right) {
-  padding: 0.82rem 0 1.25rem 0;
-}
-
 dialog[popover],
 nav[popover] {
   margin: auto;
@@ -1424,12 +1424,6 @@ nav[popover] > .content {
   --font-stack-geometric-humanist: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
   --font-stack-slab-serif: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
   --widget-calc-total-width: 4rem;
-}
-
-.theme-dark {
-  --color-primary: #66b2ff;
-  --color-bg: #0f1720;
-  --color-text: #e6eef8;
 }
 
 /*# sourceMappingURL=main.css.map */

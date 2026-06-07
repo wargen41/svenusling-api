@@ -1,0 +1,90 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'vars' as var;
+
+$mobile: map.get(var.$breakpoints, 'mobile');
+
+$BP: map.get(var.$padding, 'base'); // Base Padding
+$BM: map.get(var.$margin, 'base'); // Base Margin
+$BPr: map.get(var.$padding, 'relative'); // Relative Base Padding
+$BMr: map.get(var.$margin, 'relative'); // Relative Base Margin
+$BMn: map.get(var.$negative-margin, 'base'); // Negative Base Margin
+$block-padding: map.get(var.$padding, 'block-default');
+$block-margin: map.get(var.$margin, 'block-default');
+$inline-padding: map.get(var.$padding, 'inline-default');
+$inline-margin: map.get(var.$margin, 'inline-default');
+
+// Widget variables
+$WPT: map.get(var.$widget, 'padding-top');
+$WPB: map.get(var.$widget, 'padding-bottom');
+$WPO: map.get(var.$widget, 'padding-outer');
+$WPI: map.get(var.$widget, 'padding-inner');
+$WBRTI: map.get(var.$widget, 'border-radius-top-inner');
+$WBRTO: map.get(var.$widget, 'border-radius-top-outer');
+$WBRBI: map.get(var.$widget, 'border-radius-bottom-inner');
+$WBRBO: map.get(var.$widget, 'border-radius-bottom-outer');
+$WIZ: map.get(var.$widget, 'img-size');
+
+.widget
+{
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    display: inline-block;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+
+    img {
+        width: $WIZ;
+        height: $WIZ;
+    }
+
+    .button
+    {
+        background: none;
+        border: none;
+        display: inline-block;
+        box-sizing: content-box;
+        height: $WIZ;
+        width: $WIZ;
+    }
+
+    &.left
+    {
+        float: left;
+
+        .button
+        {
+            padding: $WPT $WPI $WPB $WPO;
+        }
+    }
+
+    &.right
+    {
+
+        .button
+        {
+            padding: $WPT $WPO $WPB $WPI;
+        }
+    }
+
+    &:has(:popover-open)
+    {
+        border-top-left-radius: $WBRTI;
+        border-top-right-radius: $WBRTO;
+        border-bottom-left-radius: $WBRBI;
+        border-bottom-right-radius: $WBRBO;
+    }
+}
+
+.widget-label
+{
+    background: none;
+    display: inline-block;
+    transform: translateY(-.7rem);
+
+    &:has(+.widget.right)
+    {
+        padding: .82rem 0 1.25rem 0;
+    }
+}

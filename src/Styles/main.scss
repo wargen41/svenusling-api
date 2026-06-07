@@ -2,7 +2,7 @@
 
 @use 'reset';
 @use 'config' as cfg;
-@use 'colors' as clr;
+@use 'colors';
 @use 'typography' as typ;
 @use 'vars' as var;
 @use 'utils';
@@ -10,7 +10,9 @@
 @use 'base';
 @use 'forms';
 @use 'layout';
-@use 'components' as cpt;
+@use 'components';
+@use 'widgets';
+@use 'popovers';
 
 // Export a minimal set of tokens to CSS vars (colors, spacing, z-index, radii) to keep runtime surface small.
 // Use consistent prefixes (e.g., --color-, --space-) to avoid name collisions.
@@ -23,22 +25,4 @@ $export-to-css: (cfg.$export-to-css, typ.$export-to-css, var.$export-to-css);
             @include utils.export-css-vars($map, $prefix);
         }
     }
-    // @each $map in cfg.$export-to-css {
-    //     @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
-    // }
-    // @each $map in var.$export-to-css {
-    //     @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
-    // }
-    // @each $map in cpt.$export-to-css {
-    //     @include utils.export-css-vars(map.get($map, 'map'), map.get($map, 'prefix'));
-    // }
-}
-
-// Theme override example
-.theme-dark {
-    @include utils.export-css-vars((
-        primary: #66b2ff,
-        bg: #0f1720,
-        text: #e6eef8
-    ), "color-");
 }
