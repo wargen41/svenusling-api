@@ -145,6 +145,12 @@ nav[popover]
     {
         min-height: $border-radius;
 
+        nav
+        {
+            display: flex;
+
+        }
+
         h2
         {
             margin-inline: $nav-button-width;

@@ -1222,6 +1222,10 @@ dialog[popover] > header,
 nav[popover] > header {
   min-height: 1.1rem;
 }
+dialog[popover] > header nav,
+nav[popover] > header nav {
+  display: flex;
+}
 dialog[popover] > header h2,
 nav[popover] > header h2 {
   margin-inline: 3rem;
