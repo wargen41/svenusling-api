@@ -6,7 +6,7 @@
         <h2>Menyrubrik</h2>
     </header>
     <section class="content">
-        <form action="search.php" method="get"><input type="search" size="12" id="menu-search-input" required name="query" value=""><input type="submit" value="Sök"></form>
+        <form style="display:none;" action="search.php" method="get"><input type="search" size="12" id="menu-search-input" required name="query" value=""><input type="submit" value="Sök"></form>
         <ul>
             {% for nav_key, nav_cat in nav_list %}
             <li>{{ nav_key }}<ul>
