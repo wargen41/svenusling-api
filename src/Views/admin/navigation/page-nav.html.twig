@@ -1,0 +1,18 @@
+<nav popover class="page nav" id="page-nav">
+    <header>
+        <nav>
+            <button popovertarget="page-nav" popovertargetaction="hide"><span aria-hidden="true">×</span></button>
+        </nav>
+        <h2>Sidnavigering</h2>
+    </header>
+    <section class="content">
+        <ul>
+            <li><a href="#snabbinmatning">Snabbinmatning</a></li>
+            {% if hidden_movies|length > 0 %}<li><a href="#dolda">Dolda filmer</a></li>{% endif %}
+            <li><a href="#senaste">Senast publicerade</a></li>
+            <li><a href="#innehall">Innehåll</a></li>
+            <li><a href="#listor">Listor</a></li>
+            <li><a href="#kategorier">Kategorier</a></li>
+        </ul>
+    </section>
+</nav>
