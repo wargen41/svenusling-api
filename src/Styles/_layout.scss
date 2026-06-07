@@ -163,11 +163,21 @@ main
             margin-left: $fieldset-icon-margin;
         }
 
+        .counter
+        {
+            margin-right: $fieldset-icon-margin;
+        }
+
         details
         {
             button.add
             {
                 margin-left: $details-icon-margin;
+            }
+
+            .counter
+            {
+                margin-right: $details-icon-margin;
             }
         }
     }
@@ -178,7 +188,6 @@ main
         box-sizing: border-box;
         width: auto;
         min-width: $icon-size;
-        margin-right: $details-icon-margin;
     }
 }
 

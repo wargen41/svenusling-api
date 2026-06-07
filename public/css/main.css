@@ -1035,15 +1035,20 @@ main button.add.non-sticky {
 main fieldset button.add {
   margin-left: calc(1.4rem - var(--border-width));
 }
+main fieldset .counter {
+  margin-right: calc(1.4rem - var(--border-width));
+}
 main fieldset details button.add {
   margin-left: calc(1.4rem - var(--border-width-alt) - var(--border-width));
+}
+main fieldset details .counter {
+  margin-right: calc(1.4rem - var(--border-width-alt) - var(--border-width));
 }
 main .counter {
   float: right;
   box-sizing: border-box;
   width: auto;
   min-width: 2.3rem;
-  margin-right: calc(1.4rem - var(--border-width-alt) - var(--border-width));
 }
 
 article > *:not(h1) + *,
