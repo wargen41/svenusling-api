@@ -82,7 +82,7 @@
         <nav>
             {% for nav_key, nav_cat in nav_list %}
             <div>
-            <h2 id="nav_cat.id">{{ nav_key }}</h2>
+            <h2 id="{{ nav_cat.id }}">{{ nav_key }}</h2>
             <ul>
                 {% for nav_item in nav_cat.items %}
                 <li>{% if nav_item.inactive != true %}<a href="{{ nav_item.href }}">{% endif %}{{ nav_item.label }}{% if nav_item.inactive != true %}</a>{% endif %}</li>
