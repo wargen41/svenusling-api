@@ -8,7 +8,7 @@
         <h1>{{ constant('API').ADMIN_SITE_NAME }}</h1>
 
         <details{% if params.quick == 1 %} open{% endif %}>
-            <summary><h2>Snabbinmatning</h2></summary>
+            <summary><h2 id="snabbinmatning">Snabbinmatning</h2></summary>
                 <p>Filmer inmatade här är dolda tills du aktivt valt att publicera dem.</p>
                 <form method="post" action="/admin/movies/add">
                     <input type="hidden" name="redirect_url" value="{{ this_page }}?quick=1">
@@ -55,7 +55,7 @@
 
         {% if hidden_movies|length > 0 %}
         <details>
-            <summary><h2>Dolda filmer ({{ hidden_movies|length }})</h2></summary>
+            <summary><h2 id="dolda">Dolda filmer ({{ hidden_movies|length }})</h2></summary>
             <div class="button-list">
             {% for item in hidden_movies %}
                 {% set pop_id = "edit-form-" ~ item.id %}
@@ -68,7 +68,7 @@
         {% endif %}
 
         <details>
-        <summary><h2>Senast publicerade</h2></summary>
+        <summary><h2 id="senaste">Senast publicerade</h2></summary>
         <div class="button-list">
         {% for item in latest_movies %}
             {% set pop_id = "edit-form-" ~ item.id %}
