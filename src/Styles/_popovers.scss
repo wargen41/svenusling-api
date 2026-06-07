@@ -9,22 +9,18 @@ $BM: map.get(var.$margin, 'base'); // Base Margin
 $BPr: map.get(var.$padding, 'relative'); // Relative Base Padding
 $BMr: map.get(var.$margin, 'relative'); // Relative Base Margin
 $BMn: map.get(var.$negative-margin, 'base'); // Negative Base Margin
-$block-padding: map.get(var.$padding, 'block-default');
-$block-margin: map.get(var.$margin, 'block-default');
-$inline-padding: map.get(var.$padding, 'inline-default');
-$inline-margin: map.get(var.$margin, 'inline-default');
 
 // Popover variables
-$PopMobMargin: map.get(var.$popover, 'mobile-margin');
-$PopBorderRadius: map.get(var.$popover, 'border-radius');
-$PopBorderWidth: map.get(var.$popover, 'border-width');
-$PopBorderStyle: map.get(var.$popover, 'border-style');
-$PopColW: map.get(var.$popover, 'column-width');
-$PopBlMarg: map.get(var.$popover, 'content-block-margin');
-$PopBlPad: map.get(var.$popover, 'content-block-padding');
-$PopInlMarg: map.get(var.$popover, 'content-inline-margin');
-$PopInlPad: map.get(var.$popover, 'content-inline-padding');
-$PopNavButtW: map.get(var.$popover, 'nav-button-width');
+$mobile-margin: map.get(var.$popover, 'mobile-margin');
+$border-radius: map.get(var.$popover, 'border-radius');
+$border-width: map.get(var.$popover, 'border-width');
+$border-style: map.get(var.$popover, 'border-style');
+$column-width: map.get(var.$popover, 'column-width');
+$block-margin: map.get(var.$popover, 'content-block-margin');
+$block-padding: map.get(var.$popover, 'content-block-padding');
+$inline-margin: map.get(var.$popover, 'content-inline-margin');
+$inline-padding: map.get(var.$popover, 'content-inline-padding');
+$nav-button-width: map.get(var.$popover, 'nav-button-width');
 
 // Detta är en salig blandning av variabler som gäller endast menyn samt både meny och popover
 // Behöver reda ut det så småningom, men just nu vill jag bara få rätt på utseendet för tillfället
@@ -116,7 +112,6 @@ $popover-item-padding: $popover-padding-inline * $mpirip;
 }
 
 // Gemensam grund för dialoger och menyer
-// Börjar med att definiera mobilutseendet, som ska vara identiskt mellan de två
 dialog[popover],
 nav[popover]
 {
@@ -126,13 +121,19 @@ nav[popover]
     min-width: unset;
     width: auto;
     height: auto;
-    inset: $PopMobMargin;
+    inset: $mobile-margin;
     padding: 0;
 
     box-shadow: 2px 2px 4px #101010;
-    border-width: $PopBorderWidth;
-    border-style: $PopBorderStyle;
-    border-radius: $PopBorderRadius;
+    border-width: $border-width;
+    border-style: $border-style;
+    border-radius: $border-radius;
+
+    @media (width > $mobile) {
+        width: fit-content;
+        height: fit-content;
+        min-width: $column-width;
+    }
 
     &::backdrop
     {
@@ -142,25 +143,25 @@ nav[popover]
 
     > header
     {
-        min-height: $PopBorderRadius;
+        min-height: $border-radius;
 
         h2
         {
-            margin-inline: $PopNavButtW;
+            margin-inline: $nav-button-width;
         }
     }
 
     > footer
     {
-        min-height: $PopBorderRadius;
+        min-height: $border-radius;
     }
 
     > .content
     {
-        margin-block: $PopBlMarg;
-        padding-block: $PopBlPad;
-        margin-inline: $PopInlMarg;
-        padding-inline: $PopInlPad;
+        margin-block: $block-margin;
+        padding-block: $block-padding;
+        margin-inline: $inline-margin;
+        padding-inline: $inline-padding;
     }
 }
 

@@ -1205,6 +1205,14 @@ nav[popover] {
   border-style: var(--border-style);
   border-radius: 1.1rem;
 }
+@media (width > 32rem) {
+  dialog[popover],
+  nav[popover] {
+    width: fit-content;
+    height: fit-content;
+    min-width: 10em;
+  }
+}
 dialog[popover]::backdrop,
 nav[popover]::backdrop {
   backdrop-filter: brightness(0.88) contrast(0.88) grayscale(1);
