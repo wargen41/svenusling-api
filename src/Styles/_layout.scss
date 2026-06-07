@@ -31,7 +31,9 @@ $details-icon-margin: calc(#{$details-calc} - #{$details-border} - #{$fieldset-b
 
 html
 {
-    scroll-margin-top: 8rem;
+    [id] {
+        scroll-margin-top: 8rem;
+    }
 }
 
 body

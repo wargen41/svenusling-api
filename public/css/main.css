@@ -935,7 +935,7 @@ body .actions > li > *[type=submit] {
   }
 }
 
-html {
+html [id] {
   scroll-margin-top: 8rem;
 }
 
