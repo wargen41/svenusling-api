@@ -135,11 +135,21 @@ main
     button.add
     {
         width: $icon-size;
+        margin-left: $icon-margin;
 
         + label
         {
             margin-inline: map.get(var.$margin, 'inline-relative-phrasing');
         }
+    }
+
+    .counter
+    {
+        float: right;
+        box-sizing: border-box;
+        width: auto;
+        min-width: $icon-size;
+        margin-right: $icon-margin;
     }
 
     :not(.compact) > button.add,
@@ -179,14 +189,6 @@ main
                 margin-right: $details-icon-margin;
             }
         }
-    }
-
-    .counter
-    {
-        float: right;
-        box-sizing: border-box;
-        width: auto;
-        min-width: $icon-size;
     }
 }
 

@@ -1018,9 +1018,17 @@ main .counter {
 }
 main button.add {
   width: 2.3rem;
+  margin-left: 2.4rem;
 }
 main button.add + label {
   margin-inline: 0.5em;
+}
+main .counter {
+  float: right;
+  box-sizing: border-box;
+  width: auto;
+  min-width: 2.3rem;
+  margin-right: 2.4rem;
 }
 main :not(.compact) > button.add,
 main :not(.compact) > .counter {
@@ -1042,12 +1050,6 @@ main fieldset details button.add {
 }
 main fieldset details .counter {
   margin-right: calc(1.4rem - var(--border-width-alt) - var(--border-width));
-}
-main .counter {
-  float: right;
-  box-sizing: border-box;
-  width: auto;
-  min-width: 2.3rem;
 }
 
 article > *:not(h1) + *,
