@@ -29,11 +29,15 @@ $fieldset-icon-margin: calc(#{$fieldset-calc} - #{$fieldset-border});
 $details-calc: $fieldset-calc - $details-padding;
 $details-icon-margin: calc(#{$details-calc} - #{$details-border} - #{$fieldset-border});
 
+html
+{
+    scroll-margin-top: 8rem;
+}
+
 body
 {
     padding-bottom: (4 * $BM);
     text-align: right;
-    scroll-margin-block: 8rem;
 
     > .message
     {

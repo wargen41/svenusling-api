@@ -6,11 +6,11 @@
 
 html {
   box-sizing: border-box;
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
 }
 
 body {
-  scrollbar-gutter: stable;
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -935,10 +935,13 @@ body .actions > li > *[type=submit] {
   }
 }
 
+html {
+  scroll-margin-top: 8rem;
+}
+
 body {
   padding-bottom: 4rem;
   text-align: right;
-  scroll-margin-block: 8rem;
 }
 body > .message {
   position: fixed;
