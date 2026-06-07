@@ -6,7 +6,7 @@
         <dialog id="{{ pop_id }}" popover class="pseudo-modal">
             <header>
                 <nav>
-                    <button popovertarget="{{ pop_id }}" popovertargetaction="hide">×</button>
+                    <button popovertarget="{{ pop_id }}" popovertargetaction="hide"><span aria-hidden="true">×</span></button>
                 </nav>
                 {% if pop_title != null %}<h2>{{ pop_title }}</h2>{% endif %}
             </header>
