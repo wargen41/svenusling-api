@@ -1225,6 +1225,11 @@ nav[popover] > header {
 dialog[popover] > header nav,
 nav[popover] > header nav {
   display: flex;
+  justify-content: space-between;
+}
+dialog[popover] > header nav:has(*:only-child),
+nav[popover] > header nav:has(*:only-child) {
+  justify-content: flex-end;
 }
 dialog[popover] > header h2,
 nav[popover] > header h2 {

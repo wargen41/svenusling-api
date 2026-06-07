@@ -148,7 +148,12 @@ nav[popover]
         nav
         {
             display: flex;
+            justify-content: space-between;
 
+            &:has(*:only-child)
+            {
+                justify-content: flex-end;
+            }
         }
 
         h2
