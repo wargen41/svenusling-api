@@ -10,7 +10,7 @@
     <section class="content">
         <ul>
             {% for item in section.items %}
-            {{% if item.hidden != true %}
+            {% if item.hidden != true %}
             <li><a href="#{{ item.id }}"><button popovertarget="page-nav" popovertargetaction="hide">{{ item.label }}</button></a></li>
             {% endif %}
             {% endfor %}
