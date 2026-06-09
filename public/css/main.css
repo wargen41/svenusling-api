@@ -1450,6 +1450,7 @@ nav[popover] > .content {
 }
 #page-nav a:active {
   background: red;
+  display: none;
 }
 
 :root {
