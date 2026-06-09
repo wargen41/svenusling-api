@@ -3,6 +3,24 @@
 {% set this_page = '/admin' %}
 {% set filmTypes = constant('OPT').MOVIE_TYPES.FILMS %}
 
+{% set page_nav = {
+    'Innehåll': { id: 'innehall', items: [
+{ label: 'Feed (startsida)', href: '/admin/feed', inactive: true },
+{ label: 'Videorecensioner', href: '/admin/videos', inactive: true },
+{ label: 'Artiklar/texter', href: '/admin/articles', inactive: true },
+    ] },
+    'Listor': { id: 'listor', items: [
+{ label: 'Filmer', href: '/admin/films' },
+{ label: 'Serier', href: '/admin/series', inactive: true },
+{ label: 'VIP', href: '/admin/persons' },
+    ] },
+    'Kategorier': { id: 'kategorier', items: [
+{ label: 'Genrer', href: '/admin/genres' },
+{ label: 'Relationer', href: '/admin/relations', inactive: true },
+{ label: 'Utmärkelser', href: '/admin/awards', inactive: true },
+    ] },
+} %}
+
 {% block mainContent %}
     <article>
         <h1>{{ constant('API').ADMIN_SITE_NAME }}</h1>
