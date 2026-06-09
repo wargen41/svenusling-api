@@ -3,7 +3,7 @@
 
 body .page.nav
 {
-    &:has(button[popovertarget]:focus)
+    &:has(a:focus>button[popovertarget=page-nav])
     {
         display: none;
     }
