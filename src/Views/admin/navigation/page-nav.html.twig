@@ -4,7 +4,13 @@
             <button popovertarget="page-nav" popovertargetaction="hide"><span aria-hidden="true">×</span></button>
         </nav>
     </header>
-    {% if page_nav is defined %}
+    {% if page_nav is not defined %}{% set page_nav = {} %}{% endif %}
+    {% set static_nav = {
+        'Generell sidnavigering': { items: [
+    { label: 'Upp!', id: 'header' },
+        ] }
+    } %}
+    {% set page_nav = static_nav|merge(page_nav) %}
     {% for section in page_nav %}
     <section class="content">
         <ul>
@@ -16,5 +22,4 @@
         </ul>
     </section>
     {% endfor %}
-    {% endif %}
 </nav>
