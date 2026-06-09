@@ -1442,17 +1442,16 @@ nav[popover] > .content {
 {
     position-anchor: --menu-persons-relations-button;
 } */
-#page-nav:has(a:active > button[popovertarget=page-nav]) {
-  display: none;
-}
-#page-nav a:focus {
-  background: green;
-}
-#page-nav a:active {
-  background: red;
-  display: none;
-}
+/* #page-nav
+{
+    &:has(a:active>button[popovertarget=page-nav])
+    {
+        display: none;
+    }
 
+    a:focus { background: green; }
+    a:active { background: red; display: none; }
+} */
 :root {
   --border-width: 2px;
   --border-width-alt: 1px;

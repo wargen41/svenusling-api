@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'vars' as var;
 
-#page-nav
+/* #page-nav
 {
     &:has(a:active>button[popovertarget=page-nav])
     {
@@ -10,4 +10,4 @@
 
     a:focus { background: green; }
     a:active { background: red; display: none; }
-}
+} */
