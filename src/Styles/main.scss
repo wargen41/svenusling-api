@@ -13,6 +13,7 @@
 @use 'components';
 @use 'widgets';
 @use 'popovers';
+@use 'page_nav';
 
 // Export a minimal set of tokens to CSS vars (colors, spacing, z-index, radii) to keep runtime surface small.
 // Use consistent prefixes (e.g., --color-, --space-) to avoid name collisions.

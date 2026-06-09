@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use 'vars' as var;
+
+body .page.nav
+{
+    &:has(button[popovertarget]:focus)
+    {
+        display: none;
+    }
+}
