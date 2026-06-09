@@ -1442,7 +1442,7 @@ nav[popover] > .content {
 {
     position-anchor: --menu-persons-relations-button;
 } */
-#page-nav:has(a:focus > button[popovertarget=page-nav]) {
+#page-nav:has(a:active > button[popovertarget=page-nav]) {
   display: none;
 }
 #page-nav a:focus {
