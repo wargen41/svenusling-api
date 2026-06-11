@@ -1455,6 +1455,14 @@ nav[popover] > .content {
   backdrop-filter: blur(12px);
   border: none;
 }
+#page-nav li {
+  display: inline-block;
+  width: 100%;
+}
+#page-nav li a {
+  display: inline-block;
+  width: 100%;
+}
 
 /* #page-nav
 {

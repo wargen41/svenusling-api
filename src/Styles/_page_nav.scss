@@ -17,6 +17,18 @@
     backdrop-filter: blur(12px);
 
     border: none;
+
+    li
+    {
+        display: inline-block;
+        width: 100%;
+
+        a
+        {
+            display: inline-block;
+            width: 100%;
+        }
+    }
 }
 
 /* #page-nav
