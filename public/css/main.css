@@ -1456,7 +1456,6 @@ nav[popover] > .content {
   border: none;
 }
 #page-nav li {
-  display: inline-block;
   width: 100%;
 }
 #page-nav li a {
