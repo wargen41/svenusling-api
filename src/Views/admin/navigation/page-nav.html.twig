@@ -1,9 +1,9 @@
 <nav popover class="page nav" id="page-nav">
-    <header>
+    {# <header>
         <nav>
             <button popovertarget="page-nav" popovertargetaction="hide"><span aria-hidden="true">×</span></button>
         </nav>
-    </header>
+    </header> #}
     {% if page_nav is not defined %}{% set page_nav = {} %}{% endif %}
     {% set static_nav = {
         'Generell sidnavigering': { items: [
