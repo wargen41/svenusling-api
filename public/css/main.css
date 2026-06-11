@@ -1452,7 +1452,7 @@ nav[popover] > .content {
   top: anchor(bottom);
   left: anchor(left);
   background-color: transparent;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(12px);
   border: none;
 }
 
