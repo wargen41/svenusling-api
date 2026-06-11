@@ -1442,6 +1442,17 @@ nav[popover] > .content {
 {
     position-anchor: --menu-persons-relations-button;
 } */
+#page-nav-button {
+  anchor-name: --page-nav-button;
+}
+
+#page-nav {
+  inset: unset;
+  position-anchor: --page-nav-button;
+  top: anchor(top);
+  left: anchor(left);
+}
+
 /* #page-nav
 {
     &:has(a:active>button[popovertarget=page-nav])
