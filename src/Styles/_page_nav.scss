@@ -10,8 +10,8 @@
 {
     inset: unset;
     position-anchor: --page-nav-button;
-    top: anchor(top);
-    left: anchor(right);
+    top: anchor(bottom);
+    left: anchor(left);
 }
 
 /* #page-nav
