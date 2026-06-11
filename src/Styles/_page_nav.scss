@@ -12,6 +12,9 @@
     position-anchor: --page-nav-button;
     top: anchor(bottom);
     left: anchor(left);
+
+    background-color: transparent;
+    backdrop-filter: blur(20px);
 }
 
 /* #page-nav
