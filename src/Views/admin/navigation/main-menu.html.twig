@@ -11,8 +11,10 @@
             <button type="submit">Sök</button>
         </form>
 
+        {% set nav_counter = 0 %}
         {% macro node(nav_cat) %}
         {% for nav_item in nav_cat.items %}
+        {% set nav_counter = nav_counter + 1 %}
         <li>
             {% if nav_item.href %}
             {% if nav_item.inactive != true %}
@@ -23,7 +25,8 @@
                     {{ nav_item.label }}
                 </a>
             {% else %}
-                <button type="button">{{ nav_item.label }}</button>
+                <button type="button" style="anchor-name:--menu{{ nav_counter }}">{{ nav_item.label }}</button>
+                <nav popover style="position-anchor:--menu{{ nav_counter }}">Test</nav>
             {% endif %}
         </li>
         {% endfor %}
