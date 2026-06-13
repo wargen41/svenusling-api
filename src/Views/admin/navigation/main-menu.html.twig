@@ -11,7 +11,7 @@
             <button type="submit">Sök</button>
         </form>
 
-        {{% macro node(nav_cat) %}
+        {% macro node(nav_cat) %}
         {% for nav_item in nav_cat.items %}
         <li>
         {% if nav_item.inactive != true %}
