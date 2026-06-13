@@ -1473,24 +1473,24 @@ nav[popover] > .content {
     a:focus { background: green; }
     a:active { background: red; display: none; }
 } */
-#main-menu-button {
-  anchor-name: --main-menu-button;
+@media (width > 32rem) {
+  #main-menu-button {
+    anchor-name: --main-menu-button;
+  }
+  #main-menu {
+    inset: unset;
+    position-anchor: --main-menu-button;
+    top: anchor(top);
+    right: anchor(left);
+  }
+  #main-menu li {
+    width: 100%;
+  }
+  #main-menu li a {
+    display: inline-block;
+    width: 100%;
+  }
 }
-
-#main-menu {
-  inset: unset;
-  position-anchor: --main-menu-button;
-  top: anchor(top);
-  right: anchor(left);
-}
-#main-menu li {
-  width: 100%;
-}
-#main-menu li a {
-  display: inline-block;
-  width: 100%;
-}
-
 :root {
   --border-width: 2px;
   --border-width-alt: 1px;

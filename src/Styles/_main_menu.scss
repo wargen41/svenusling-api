@@ -1,26 +1,30 @@
 @use 'sass:map';
 @use 'vars' as var;
 
-#main-menu-button
-{
-    anchor-name: --main-menu-button;
-}
+$mobile: map.get(var.$breakpoints, 'mobile');
 
-#main-menu
-{
-    inset: unset;
-    position-anchor: --main-menu-button;
-    top: anchor(top);
-    right: anchor(left);
-
-    li
+@media (width > $mobile){
+    #main-menu-button
     {
-        width: 100%;
+        anchor-name: --main-menu-button;
+    }
 
-        a
+    #main-menu
+    {
+        inset: unset;
+        position-anchor: --main-menu-button;
+        top: anchor(top);
+        right: anchor(left);
+
+        li
         {
-            display: inline-block;
             width: 100%;
+
+            a
+            {
+                display: inline-block;
+                width: 100%;
+            }
         }
     }
 }
