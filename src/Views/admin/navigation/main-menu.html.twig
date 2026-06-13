@@ -14,7 +14,15 @@
             {% for nav_key, nav_cat in nav_list %}
             <li>{{ nav_key }}<ul>
                 {% for nav_item in nav_cat.items %}
-                <li>{% if nav_item.inactive != true %}<a href="{{ nav_item.href }}">{% endif %}{{ nav_item.label }}{% if nav_item.inactive != true %}</a>{% endif %}</li>
+                <li>
+                {% if nav_item.inactive != true %}
+                    <a href="{{ nav_item.href }}">
+                {% else %}
+                    <a href="#">
+                {% endif %}
+                        {{ nav_item.label }}
+                    </a>
+                </li>
                 {% endfor %}
             </ul></li>
             {% endfor %}
