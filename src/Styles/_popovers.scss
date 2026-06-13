@@ -460,7 +460,7 @@ nav[popover]
 //             }
 //         }
 //
-//         &[popovertarget=menu-main]
+//         &[popovertarget=main-menu]
 //         {
 //             width: var(--nav-button-width);
 //             border-radius: 0 0 0 var(--border-radius);
@@ -493,12 +493,12 @@ nav[popover]
 // @media (width <= 32rem) {
 //     #menu-movies,
 //     #menu-persons,
-//     #menu-main
+//     #main-menu
 //     {
 //         position-anchor: unset;
 //     }
 //
-//     #menu-main,
+//     #main-menu,
 //     .sub.menu
 //     {
 //         position: fixed;
@@ -579,7 +579,7 @@ nav[popover]
     anchor-name: --menu-widget-button;
 }
 
-#menu-main
+#main-menu
 {
     inset: unset;
     position-anchor: --menu-widget-button;

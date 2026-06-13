@@ -1375,7 +1375,7 @@ nav[popover] > .content {
     anchor-name: --menu-widget-button;
 }
 
-#menu-main
+#main-menu
 {
     inset: unset;
     position-anchor: --menu-widget-button;
