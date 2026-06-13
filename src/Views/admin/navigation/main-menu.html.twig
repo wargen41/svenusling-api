@@ -10,9 +10,29 @@
             <input type="search" id="main-menu-search-input" required name="query" value="">
             <button type="submit">Sök</button>
         </form>
+
+        {{% macro node(nav_cat) %}
+        {% for nav_item in nav_cat.items %}
+        <li>
+        {% if nav_item.inactive != true %}
+            <a href="{{ nav_item.href }}">
+        {% else %}
+            <a href="#">
+        {% endif %}
+                {{ nav_item.label }}
+            </a>
+        </li>
+        {% endfor %}
+        {% endmacro %}
+
         <ul>
             {% for nav_key, nav_cat in nav_list %}
-            <li>{{ nav_key }}<ul>
+            <li>{{ nav_key }}
+                <ul>
+                    {{ _self.node(nav_cat) }}
+                </ul>
+            </li>
+            {# <li>{{ nav_key }}<ul>
                 {% for nav_item in nav_cat.items %}
                 <li>
                 {% if nav_item.inactive != true %}
@@ -24,7 +44,7 @@
                     </a>
                 </li>
                 {% endfor %}
-            </ul></li>
+            </ul></li> #}
             {% endfor %}
             <li><p>Inloggad som {{ user.username }} <a href="/admin/logout">Logga ut</a></p></li>
         </ul>
