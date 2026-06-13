@@ -1,18 +1,18 @@
 // id används på startsidan, inte i menyn, för att page_nav ska ha id att hoppa till
 {% set nav_list = {
-    'Betygsatta test': { href: '{{ constant('API').PUBLIC_SITE_URL }}/movies.php', items: [
+    'Betygsatta': { href: constant('API').PUBLIC_SITE_URL~'/movies.php', items: [
 { label: 'Efter typ', items: [
-    { label: 'Filmer', href: '{{ constant('API').PUBLIC_SITE_URL }}/films.php' },
-    { label: 'Serier', href: '{{ constant('API').PUBLIC_SITE_URL }}/series.php' },
-    { label: 'Miniserier', href: '{{ constant('API').PUBLIC_SITE_URL }}/miniseries.php' },
+    { label: 'Filmer', href: constant('API').PUBLIC_SITE_URL~'/films.php' },
+    { label: 'Serier', href: constant('API').PUBLIC_SITE_URL~'/series.php' },
+    { label: 'Miniserier', href: constant('API').PUBLIC_SITE_URL~'/miniseries.php' },
 ] },
 { label: 'Efter betyg', items: [
-    { label: '+++++', href: '{{ constant('API').PUBLIC_SITE_URL }}/404.php' },
-    { label: '++++', href: '{{ constant('API').PUBLIC_SITE_URL }}/404.php' },
-    { label: '+++', href: '{{ constant('API').PUBLIC_SITE_URL }}/404.php' },
-    { label: '++', href: '{{ constant('API').PUBLIC_SITE_URL }}/404.php' },
-    { label: '+', href: '{{ constant('API').PUBLIC_SITE_URL }}/404.php' },
-    { label: '-', href: '{{ constant('API').PUBLIC_SITE_URL }}/404.php' },
+    { label: '+++++', href: constant('API').PUBLIC_SITE_URL~'/404.php' },
+    { label: '++++', href: constant('API').PUBLIC_SITE_URL~'/404.php' },
+    { label: '+++', href: constant('API').PUBLIC_SITE_URL~'/404.php' },
+    { label: '++', href: constant('API').PUBLIC_SITE_URL~'/404.php' },
+    { label: '+', href: constant('API').PUBLIC_SITE_URL~'/404.php' },
+    { label: '-', href: constant('API').PUBLIC_SITE_URL~'/404.php' },
 ] },
 { label: 'Efter årtal', items: [
     { label: 'Decennier', items: [
@@ -22,7 +22,7 @@
         { label: '1920-tal', href: '/' },
         { label: '1930-tal', href: '/' },
     ] },
-    { label: 'Stumfilm', '/1890-1930', items: [
+    { label: 'Stumfilm', href: '/1890-1930', items: [
         { label: '1890-tal', href: '/' },
         { label: '1900-tal', href: '/' },
         { label: '1910-tal', href: '/' },
