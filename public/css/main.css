@@ -1457,6 +1457,11 @@ nav[popover] > .content {
   display: inline-block;
   width: 100%;
 }
+.menu[popover] .sub.menu {
+  inset: unset;
+  top: anchor(top);
+  right: anchor(left);
+}
 
 @media (width > 32rem) {
   #main-menu-button {

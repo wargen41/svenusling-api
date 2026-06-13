@@ -31,4 +31,11 @@ $mobile: map.get(var.$breakpoints, "mobile");
             width: 100%;
         }
     }
+
+    .sub.menu
+    {
+        inset: unset;
+        top: anchor(top);
+        right: anchor(left);
+    }
 }
