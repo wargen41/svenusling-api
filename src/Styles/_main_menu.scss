@@ -13,7 +13,7 @@ $mobile: map.get(var.$breakpoints, 'mobile');
     {
         inset: unset;
         position-anchor: --main-menu-button;
-        top: anchor(top);
+        top: calc(anchor(top) + map.get(var.$sticky, 'position-top'));
         right: anchor(left);
     }
 }
