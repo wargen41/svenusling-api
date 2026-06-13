@@ -1449,6 +1449,11 @@ nav[popover] > .content {
   .menu[popover] > header nav {
     display: none;
   }
+  .menu[popover] .sub.menu {
+    inset: unset;
+    top: anchor(top);
+    right: anchor(left);
+  }
 }
 .menu[popover] li {
   width: 100%;
@@ -1456,11 +1461,6 @@ nav[popover] > .content {
 .menu[popover] li a {
   display: inline-block;
   width: 100%;
-}
-.menu[popover] .sub.menu {
-  inset: unset;
-  top: anchor(top);
-  right: anchor(left);
 }
 
 @media (width > 32rem) {

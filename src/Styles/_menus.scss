@@ -19,6 +19,13 @@ $mobile: map.get(var.$breakpoints, "mobile");
                 display: none;
             }
         }
+
+        .sub.menu
+        {
+            inset: unset;
+            top: anchor(top);
+            right: anchor(left);
+        }
     }
 
     li
@@ -32,10 +39,4 @@ $mobile: map.get(var.$breakpoints, "mobile");
         }
     }
 
-    .sub.menu
-    {
-        inset: unset;
-        top: anchor(top);
-        right: anchor(left);
-    }
 }
