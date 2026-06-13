@@ -94,6 +94,7 @@
 
         <nav>
             {% for nav_key, nav_cat in nav_list %}
+            {% if nav_cat.inactive != true %}
             <div>
             <h2{% if nav_cat.id %} id="{{ nav_cat.id }}"{% endif %}>{{ nav_key }}</h2>
             <ul>
@@ -102,6 +103,7 @@
                 {% endfor %}
             </ul>
             </div>
+            {% endif %}
             {% endfor %}
         </nav>
 
