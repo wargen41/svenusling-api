@@ -14,13 +14,17 @@
         {% macro node(nav_cat) %}
         {% for nav_item in nav_cat.items %}
         <li>
-        {% if nav_item.inactive != true %}
-            <a href="{{ nav_item.href }}">
-        {% else %}
-            <a href="#">
-        {% endif %}
-                {{ nav_item.label }}
-            </a>
+            {% if nav_item.href %}
+            {% if nav_item.inactive != true %}
+                <a href="{{ nav_item.href }}">
+            {% else %}
+                <a href="#">
+            {% endif %}
+                    {{ nav_item.label }}
+                </a>
+            {% else %}
+                <button type="button">{{ nav_item.label }}</button>
+            {% endif %}
         </li>
         {% endfor %}
         {% endmacro %}
