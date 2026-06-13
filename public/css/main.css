@@ -1442,6 +1442,11 @@ nav[popover] > .content {
 {
     position-anchor: --menu-persons-relations-button;
 } */
+@media (width > 32rem) {
+  .menu nav {
+    display: none;
+  }
+}
 .menu li {
   width: 100%;
 }
