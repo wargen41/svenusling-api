@@ -1370,15 +1370,15 @@ nav[popover] > .content {
         }
     }
 } */
-/* #menu-widget-button
+/* #main-menu-button
 {
-    anchor-name: --menu-widget-button;
+    anchor-name: --main-menu-button;
 }
 
 #main-menu
 {
     inset: unset;
-    position-anchor: --menu-widget-button;
+    position-anchor: --main-menu-button;
     top: calc(anchor(top) + $WPT);
     right: anchor(left);
 }

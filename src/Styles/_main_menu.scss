@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use 'vars' as var;
+
+#main-menu-button
+{
+    anchor-name: --main-menu-button;
+}
+
+#main-menu
+{
+    inset: unset;
+    position-anchor: --main-menu-button;
+    top: anchor(bottom);
+    right: anchor(left);
+
+    li
+    {
+        width: 100%;
+
+        a
+        {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+}
