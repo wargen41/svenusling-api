@@ -15,5 +15,10 @@ $mobile: map.get(var.$breakpoints, 'mobile');
         position-anchor: --main-menu-button;
         top: calc(anchor(top) + map.get(var.$sticky, 'position-top'));
         right: anchor(left);
+
+        nav
+        {
+            display: none;
+        }
     }
 }

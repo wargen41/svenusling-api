@@ -1460,6 +1460,9 @@ nav[popover] > .content {
     top: calc(anchor(top) + 0.5rem);
     right: anchor(left);
   }
+  #main-menu nav {
+    display: none;
+  }
 }
 #page-nav-button {
   anchor-name: --page-nav-button;
