@@ -1480,7 +1480,7 @@ nav[popover] > .content {
 #main-menu {
   inset: unset;
   position-anchor: --main-menu-button;
-  top: anchor(bottom);
+  top: anchor(top);
   right: anchor(left);
 }
 #main-menu li {
