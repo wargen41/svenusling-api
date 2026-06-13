@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "vars" as var;
+
+$mobile: map.get(var.$breakpoints, "mobile");
+
+.menu
+{
+    li
+    {
+        width: 100%;
+
+        a
+        {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+}
