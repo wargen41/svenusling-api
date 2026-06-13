@@ -1,6 +1,6 @@
 {# id används på startsidan, inte i menyn, för att page_nav ska ha id att hoppa till #}
 {% set nav_list = {
-    'Betygsatta': { href: constant('API').PUBLIC_SITE_URL~'/movies.php', items: [
+    'Betygsatta': { inactive: true, href: constant('API').PUBLIC_SITE_URL~'/movies.php', items: [
 { label: 'Efter typ', items: [
     { label: 'Filmer', href: constant('API').PUBLIC_SITE_URL~'/films.php' },
     { label: 'Serier', href: constant('API').PUBLIC_SITE_URL~'/series.php' },
