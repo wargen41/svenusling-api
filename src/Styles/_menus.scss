@@ -6,9 +6,14 @@ $mobile: map.get(var.$breakpoints, "mobile");
 // Attribut popover för högre specificitet
 .menu[popover]
 {
-    > header
-    {
-        @media (width > $mobile){
+    @media (width > $mobile){
+        &::backdrop
+        {
+            backdrop-filter: none;
+        }
+
+        > header
+        {
             nav
             {
                 display: none;

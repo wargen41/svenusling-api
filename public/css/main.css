@@ -1443,6 +1443,9 @@ nav[popover] > .content {
     position-anchor: --menu-persons-relations-button;
 } */
 @media (width > 32rem) {
+  .menu[popover]::backdrop {
+    backdrop-filter: none;
+  }
   .menu[popover] > header nav {
     display: none;
   }
