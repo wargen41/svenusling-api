@@ -25,8 +25,8 @@
                     {{ nav_item.label }}
                 </a>
             {% else %}
-                <button type="button" style="anchor-name:--menu{{ nav_counter }}">{{ nav_item.label }}</button>
-                <nav popover style="position-anchor:--menu{{ nav_counter }}">Test</nav>
+                <button type="button" popovertarget="menu{{ nav_counter }}" style="anchor-name:--menu{{ nav_counter }}">{{ nav_item.label }}</button>
+                <nav popover id="menu{{ nav_counter }}" style="position-anchor:--menu{{ nav_counter }}">Test</nav>
             {% endif %}
         </li>
         {% endfor %}
