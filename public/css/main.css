@@ -1443,14 +1443,14 @@ nav[popover] > .content {
     position-anchor: --menu-persons-relations-button;
 } */
 @media (width > 32rem) {
-  .menu nav {
+  .menu[popover] > header nav {
     display: none;
   }
 }
-.menu li {
+.menu[popover] li {
   width: 100%;
 }
-.menu li a {
+.menu[popover] li a {
   display: inline-block;
   width: 100%;
 }
