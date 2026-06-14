@@ -3,6 +3,7 @@
 
 $mobile: map.get(var.$breakpoints, "mobile");
 $column-width: map.get(var.$popover, "column-width");
+$inline-margin: map.get(var.$popover, "content-inline-margin");
 
 // Attribut popover för högre specificitet
 .menu[popover]
@@ -28,7 +29,7 @@ $column-width: map.get(var.$popover, "column-width");
 
                 > ul
                 {
-                    padding: 0 3rem; //test
+                    padding: 0 0 0 $inline-margin;
                 }
             }
 
@@ -64,7 +65,7 @@ $column-width: map.get(var.$popover, "column-width");
                     {
                         li
                         {
-                            flex: calc($column-width - map.get(var.$popover, "content-inline-margin")) 1 0;
+                            flex: calc($column-width - $inline-margin) 1 0;
                             min-width: 0;
                         }
                     }
