@@ -70,7 +70,11 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
                         }
                     }
                 }
+            }
 
+            .user
+            {
+                justify-content: flex-end;
             }
 
         }
