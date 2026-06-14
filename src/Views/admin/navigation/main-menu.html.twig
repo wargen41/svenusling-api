@@ -31,7 +31,12 @@
                     id="menu{{ nav_counter }}"
                     style="position-anchor: --menu{{ nav_counter }};"
                 >
-                {{ _self.render_submenus(nav_item) }}
+                    <header>
+                        <button popovertarget="main-menu" popovertargetaction="hide"><span aria-hidden="true">×</span></button>
+                    </header>
+                    <section class="content">
+                        {{ _self.render_submenus(nav_item) }}
+                    </section>
                 </nav>
                 {% endif %}
             {% endif %}
