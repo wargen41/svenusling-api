@@ -31,6 +31,7 @@
                     style="position-anchor: --menu{{ nav_counter }};"
                 >
                     {% if nav_item.items is defined %}
+                    <span>Hello</span>
                         {{ _self.render_submenus(nav_item.items) }}
                     {% endif %}
                 </nav>
