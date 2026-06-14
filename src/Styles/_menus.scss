@@ -2,6 +2,7 @@
 @use "vars" as var;
 
 $mobile: map.get(var.$breakpoints, "mobile");
+$column-width: map.get(var.$popover, "column-width");
 
 // Attribut popover för högre specificitet
 .menu[popover]
@@ -29,18 +30,43 @@ $mobile: map.get(var.$breakpoints, "mobile");
         }
     }
 
-    li
+    ul
     {
-        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
 
-        a,
-        button
+        > li
         {
-            display: inline-block;
-            width: 100%;
-            text-align: left;
+            flex: $column-width 1 0;
+            min-width: 0;
 
+            a,
+            button
+            {
+                display: inline-block;
+                width: 100%;
+                text-align: left;
+
+            }
+
+            > ul
+            {
+                padding: 0 3rem; //test
+
+                li
+                {
+                    flex: calc($column-width - map.get(var.$popover, "content-inline-margin")) 1 0;
+                    min-width: 0;
+                }
+            }
         }
+
+        li
+        {
+            display: flex;
+            flex-direction: column;
+        }
+
     }
 
     button[popovertarget]::after

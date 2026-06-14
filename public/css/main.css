@@ -1464,14 +1464,30 @@ nav[popover] > .content {
     position-try-fallbacks: --right-down, --left-up, --right-up, --bottom-down, --bottom-up;
   }
 }
-.menu[popover] li {
-  width: 100%;
+.menu[popover] ul {
+  display: flex;
+  flex-wrap: wrap;
 }
-.menu[popover] li a,
-.menu[popover] li button {
+.menu[popover] ul > li {
+  flex: 10em 1 0;
+  min-width: 0;
+}
+.menu[popover] ul > li a,
+.menu[popover] ul > li button {
   display: inline-block;
   width: 100%;
   text-align: left;
+}
+.menu[popover] ul > li > ul {
+  padding: 0 3rem;
+}
+.menu[popover] ul > li > ul li {
+  flex: calc(10em - 0.55rem) 1 0;
+  min-width: 0;
+}
+.menu[popover] ul li {
+  display: flex;
+  flex-direction: column;
 }
 .menu[popover] button[popovertarget]::after {
   content: " >";
