@@ -32,7 +32,7 @@
                 >
                     {% if nav_item.items is defined %}
                     <span>Hello {{ nav_item.items|length }}</span>
-                        {{ _self.render_submenus(nav_item.items) }}
+                        {{ _self.render_submenus(nav_item) }}
                     {% endif %}
                 </nav>
             {% endif %}
