@@ -48,6 +48,7 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
 
     }
 
+    // Desktop
     @media (width > $mobile){
         .content
         {
@@ -76,7 +77,7 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
             {
                 justify-content: flex-end;
 
-                > *
+                *
                 {
                     text-align: right;
                 }
