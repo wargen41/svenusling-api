@@ -576,11 +576,14 @@ body > .message.error {
   color: var(--color-on-error-default);
 }
 
-button {
+button,
+.button,
+.counter {
   background-color: var(--color-secondary-container-default);
   color: var(--color-on-secondary-container-default);
   border-color: var(--color-outline-secondary);
 }
+
 button.add {
   background-color: var(--color-primary-default);
   color: var(--color-on-primary-container-default);
