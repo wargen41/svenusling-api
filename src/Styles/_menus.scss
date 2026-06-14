@@ -18,8 +18,8 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
             > li
             {
 
-                > a,
-                > button
+                a,
+                button
                 {
                     display: inline-block;
                     width: 100%;
@@ -27,7 +27,7 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
 
                 }
 
-                > button[popovertarget]::after
+                :not(header) button[popovertarget]::after
                 {
                   content: " >";
                 }
