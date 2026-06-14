@@ -1450,25 +1450,25 @@ nav[popover] > .content {
 {
     position-anchor: --menu-persons-relations-button;
 } */
-.menu[popover] .content ul {
+.menu[popover] .content > ul {
   display: flex;
   flex-direction: column;
 }
-.menu[popover] .content ul > li a,
-.menu[popover] .content ul > li button {
+.menu[popover] .content > ul > li a,
+.menu[popover] .content > ul > li button {
   display: inline-block;
   width: 100%;
   text-align: left;
 }
-.menu[popover] .content ul > li > ul {
+.menu[popover] .content > ul > li button[popovertarget]::after {
+  content: " >";
+}
+.menu[popover] .content > ul > li > ul {
   padding: 0 0 0 0.55rem;
 }
-.menu[popover] .content ul li {
+.menu[popover] .content > ul li {
   display: flex;
   flex-direction: column;
-}
-.menu[popover] .content button[popovertarget]::after {
-  content: " >";
 }
 @media (width > 32rem) {
   .menu[popover] .content ul {
