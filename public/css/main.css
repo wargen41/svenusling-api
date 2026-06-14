@@ -1486,6 +1486,9 @@ nav[popover] > .content {
   .menu[popover] .content .user {
     justify-content: flex-end;
   }
+  .menu[popover] .content .user > * {
+    text-align: right;
+  }
   .menu[popover]::backdrop {
     backdrop-filter: none;
   }
