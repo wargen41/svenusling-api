@@ -1460,7 +1460,7 @@ nav[popover] > .content {
   width: 100%;
   text-align: left;
 }
-.menu[popover] .content > ul > li :not(header) button[popovertarget]::after {
+.menu[popover] .content > ul > li > button[popovertarget]::after {
   content: " >";
 }
 .menu[popover] .content > ul > li > ul {

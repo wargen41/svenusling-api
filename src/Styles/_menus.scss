@@ -27,7 +27,7 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
 
                 }
 
-                :not(header) button[popovertarget]::after
+                > button[popovertarget]::after
                 {
                   content: " >";
                 }
