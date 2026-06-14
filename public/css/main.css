@@ -1455,6 +1455,9 @@ nav[popover] > .content {
     right: anchor(left);
     position-try-fallbacks: --right-down, --left-up, --right-up, --bottom-down, --bottom-up;
   }
+  .menu[popover] button[popovertarget]::after {
+    content: " >";
+  }
 }
 .menu[popover] li {
   width: 100%;

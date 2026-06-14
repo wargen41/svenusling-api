@@ -27,6 +27,11 @@ $mobile: map.get(var.$breakpoints, "mobile");
             right: anchor(left);
             position-try-fallbacks: --right-down, --left-up, --right-up, --bottom-down, --bottom-up;
         }
+
+        button[popovertarget]::after
+        {
+          content: " >";
+        }
     }
 
     li
