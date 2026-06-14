@@ -26,14 +26,14 @@
                 </a>
             {% else %}
                 <button type="button" popovertarget="menu{{ nav_counter }}" style="anchor-name:--menu{{ nav_counter }}">{{ nav_item.label }}</button>
+                {% if nav_item.items is defined %}
                 <nav popover class="sub menu"
                     id="menu{{ nav_counter }}"
                     style="position-anchor: --menu{{ nav_counter }};"
                 >
-                    {% if nav_item.items is defined %}
-                        {{ _self.render_submenus(nav_item) }}
-                    {% endif %}
+                {{ _self.render_submenus(nav_item) }}
                 </nav>
+                {% endif %}
             {% endif %}
         </li>
         {% endfor %}
@@ -46,19 +46,6 @@
                     {{ _self.render_submenus(nav_cat) }}
                 </ul>
             </li>
-            {# <li>{{ nav_key }}<ul>
-                {% for nav_item in nav_cat.items %}
-                <li>
-                {% if nav_item.inactive != true %}
-                    <a href="{{ nav_item.href }}">
-                {% else %}
-                    <a href="#">
-                {% endif %}
-                        {{ nav_item.label }}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul></li> #}
             {% endfor %}
             <li class="user"><p>Inloggad som {{ user.username }} <a class="button" href="/admin/logout">Logga ut</a></p></li>
         </ul>
