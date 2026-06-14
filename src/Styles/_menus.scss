@@ -12,6 +12,7 @@ $column-width: map.get(var.$popover, "column-width");
         ul
         {
             display: flex;
+            flex-direction: column;
 
             > li
             {

@@ -1452,6 +1452,7 @@ nav[popover] > .content {
 } */
 .menu[popover] .content ul {
   display: flex;
+  flex-direction: column;
 }
 .menu[popover] .content ul > li a,
 .menu[popover] .content ul > li button {
