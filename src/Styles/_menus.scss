@@ -2,6 +2,17 @@
 @use "vars" as var;
 
 $mobile: map.get(var.$breakpoints, "mobile");
+$block-relative-box-padding: map.get(var.$padding, 'block-relative-box');
+$inline-relative-box-padding: map.get(var.$padding, 'inline-relative-box');
+$block-relative-phrasing-padding: map.get(var.$padding, 'block-relative-phrasing');
+$inline-relative-phrasing-padding: map.get(var.$padding, 'inline-relative-phrasing');
+$block-relative-box-margin: map.get(var.$margin, 'block-relative-box');
+$inline-relative-phrasing-margin: map.get(var.$margin, 'inline-relative-phrasing');
+$border-width: map.get(var.$border, 'width');
+$border-style: map.get(var.$border, 'style');
+$border-style-alt: map.get(var.$border, 'style-alt');
+$pill-shape: map.get(var.$border, 'pill-shape-radius');
+$icon-size: map.get(var.$sticky, 'icon-size');
 
 // Attribut popover för högre specificitet
 .menu[popover]
@@ -38,6 +49,19 @@ $mobile: map.get(var.$breakpoints, "mobile");
         {
             display: inline-block;
             width: 100%;
+            text-align: left;
+
+            padding: $inline-relative-phrasing-padding $block-relative-phrasing-padding;
+            border-radius: $pill-shape;
+            border-width: $border-width;
+            border-style: $border-style;
+            height: $icon-size;
+            min-width: $icon-size;
+            max-width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
         }
     }
 
