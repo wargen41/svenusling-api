@@ -1472,6 +1472,7 @@ nav[popover] > .content {
 }
 @media (width > 32rem) {
   .menu[popover] .content ul {
+    flex-direction: row;
     flex-wrap: wrap;
   }
   .menu[popover] .content ul > li {

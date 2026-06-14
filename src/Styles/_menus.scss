@@ -52,6 +52,7 @@ $column-width: map.get(var.$popover, "column-width");
         {
             ul
             {
+                flex-direction: row;
                 flex-wrap: wrap;
 
                 > li
