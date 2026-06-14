@@ -12,7 +12,7 @@
         </form>
 
         {% set nav_counter = 0 %}
-        {% macro node(nav_cat) %}
+        {% macro render_submenus(nav_cat) %}
         {% for nav_item in nav_cat.items %}
         {% set nav_counter = nav_counter + 1 %}
         <li>
@@ -29,7 +29,11 @@
                 <nav popover class="sub menu"
                     id="menu{{ nav_counter }}"
                     style="position-anchor: --menu{{ nav_counter }};"
-                >Test</nav>
+                >
+                    {% if nav_item.items is defined %}
+                        {{ _self.render_submenus(nav_item.items) }}
+                    {% endif %}
+                </nav>
             {% endif %}
         </li>
         {% endfor %}
@@ -39,7 +43,7 @@
             {% for nav_key, nav_cat in nav_list %}
             <li>{{ nav_key }}
                 <ul>
-                    {{ _self.node(nav_cat) }}
+                    {{ _self.render_submenus(nav_cat) }}
                 </ul>
             </li>
             {# <li>{{ nav_key }}<ul>
