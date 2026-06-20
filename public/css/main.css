@@ -1475,11 +1475,13 @@ nav[popover] > .content {
     display: grid;
   }
   .menu[popover] .content ul {
-    flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+    flex-direction: column;
   }
   .menu[popover] .content ul > li {
-    flex: 10em 1 0;
+    /* flex: $column-width 1 0; */
+    flex: auto;
     min-width: 0;
   }
   .menu[popover] .content ul > li > ul li {

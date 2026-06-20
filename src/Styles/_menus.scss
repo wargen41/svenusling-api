@@ -59,12 +59,14 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
 
             ul
             {
-                flex-direction: row;
-                flex-wrap: wrap;
+                /* flex-direction: row;
+                flex-wrap: wrap; */
+                flex-direction: column;
 
                 > li
                 {
-                    flex: $column-width 1 0;
+                    /* flex: $column-width 1 0; */
+                    flex: auto;
                     min-width: 0;
 
                     > ul
