@@ -1472,15 +1472,16 @@ nav[popover] > .content {
 }
 @media (width > 32rem) {
   .menu[popover] .content ul {
-    flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+    display: grid;
   }
   .menu[popover] .content ul > li {
-    flex: 10em 1 0;
+    /* flex: $column-width 1 0; */
     min-width: 0;
   }
   .menu[popover] .content ul > li > ul li {
-    flex: calc(10em - 0.55rem) 1 0;
+    /* flex: calc($column-width - $inline-margin) 1 0; */
     min-width: 0;
   }
   .menu[popover] .content .user {
