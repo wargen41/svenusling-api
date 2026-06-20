@@ -1483,10 +1483,15 @@ nav[popover] > .content {
     /* flex: $column-width 1 0; */
     flex: auto;
     min-width: 0;
-  }
-  .menu[popover] .content ul > li > ul li {
-    flex: calc(10em - 0.55rem) 1 0;
-    min-width: 0;
+    /* > ul
+    {
+        li
+        { */
+    /* flex: calc($column-width - $inline-margin) 1 0; */
+    /* flex: auto;
+            min-width: 0;
+        }
+    } */
   }
   .menu[popover] .content .user {
     justify-content: flex-end;
