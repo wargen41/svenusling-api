@@ -10,7 +10,7 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
 {
     .content
     {
-        > ul
+        ul
         {
             display: flex;
             flex-direction: column;
