@@ -1473,6 +1473,7 @@ nav[popover] > .content {
 @media (width > 32rem) {
   .menu[popover] .content > ul {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
   .menu[popover] .content ul {
     /* flex-direction: row;

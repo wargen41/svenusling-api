@@ -55,6 +55,7 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
             > ul
             {
                 display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
             }
 
             ul
