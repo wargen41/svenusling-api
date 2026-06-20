@@ -52,22 +52,26 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
     @media (width > $mobile){
         .content
         {
+            > ul
+            {
+                display: grid;
+            }
+
             ul
             {
-                /* flex-direction: row;
-                flex-wrap: wrap; */
-                display: grid;
+                flex-direction: row;
+                flex-wrap: wrap;
 
                 > li
                 {
-                    /* flex: $column-width 1 0; */
+                    flex: $column-width 1 0;
                     min-width: 0;
 
                     > ul
                     {
                         li
                         {
-                            /* flex: calc($column-width - $inline-margin) 1 0; */
+                            flex: calc($column-width - $inline-margin) 1 0;
                             min-width: 0;
                         }
                     }
