@@ -3,6 +3,7 @@
 
 $mobile: map.get(var.$breakpoints, "mobile");
 $column-width: map.get(var.$popover, "column-width");
+$column-gap: map.get(var.$popover, "column-gap");
 $inline-margin: map.get(var.$popover, "content-inline-margin");
 
 // Attribut popover för högre specificitet
@@ -55,7 +56,8 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
             > ul
             {
                 display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-columns: repeat(auto-fill, $column-width);
+                grid-column-gap: $column-gap;
             }
 
             ul

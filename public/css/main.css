@@ -1473,7 +1473,8 @@ nav[popover] > .content {
 @media (width > 32rem) {
   .menu[popover] .content > ul {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, 10em);
+    grid-column-gap: 1.1em;
   }
   .menu[popover] .content ul {
     /* flex-direction: row;
