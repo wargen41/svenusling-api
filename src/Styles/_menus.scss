@@ -9,6 +9,8 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
 // Attribut popover för högre specificitet
 .menu[popover]
 {
+    box-sizing: border-box;
+
     .content
     {
         ul

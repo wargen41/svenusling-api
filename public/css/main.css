@@ -1450,6 +1450,9 @@ nav[popover] > .content {
 {
     position-anchor: --menu-persons-relations-button;
 } */
+.menu[popover] {
+  box-sizing: border-box;
+}
 .menu[popover] .content ul {
   display: flex;
   flex-direction: column;
