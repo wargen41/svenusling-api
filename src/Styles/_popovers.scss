@@ -174,7 +174,7 @@ nav[popover]
         margin-inline: $inline-margin;
         padding-inline: $inline-padding;
 
-        max-height: calc(100% - 4rem);
+        max-height: calc(100vh - 12rem);
         overflow: auto;
         flex: auto;
     }
