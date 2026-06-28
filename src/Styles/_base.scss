@@ -15,7 +15,7 @@ $link-decoration: map.get(var.$text-decoration, 'links');
 
 html
 {
-    border-inline: 10px dashed black;
+    border-inline: map.get(var.$html-decoration, 'width') map.get(var.$html-decoration, 'style') black;
 
     @media (width <= map.get(var.$breakpoints, 'mobile')) {
         border: none;

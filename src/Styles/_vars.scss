@@ -47,6 +47,11 @@ $sticky: (
     "icon-gap": map.get(cfg.$sticky, 'icon-gap'),
 );
 
+$html-decoration: (
+    "width": map.get(cfg.$html-decoration, 'width'),
+    "style": map.get(cfg.$html-decoration, 'style'),
+);
+
 $text-decoration: (
     "links": map.get(cfg.$text-decoration, 'links'),
 );

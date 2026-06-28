@@ -17,6 +17,6 @@ $menu-margin: map.get(var.$widget, 'padding-outer') + map.get(var.$widget, 'padd
         top: calc(anchor(top) + map.get(var.$widget, 'padding-top'));
         right: anchor(left);
 
-        width: calc(100vw - ($menu-margin * 2));
+        width: calc(100vw - (($menu-margin + map.get(var.$html-decoration, 'width')) * 2));
     }
 }
