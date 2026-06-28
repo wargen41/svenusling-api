@@ -2,6 +2,7 @@
 @use 'vars' as var;
 
 $mobile: map.get(var.$breakpoints, 'mobile');
+$menu-margin: map.get(var.$widget, 'padding-outer') + map.get(var.$widget, 'padding-inner') + map.get(var.$widget, 'img-size');
 
 @media (width > $mobile){
     #main-menu-button
@@ -13,9 +14,9 @@ $mobile: map.get(var.$breakpoints, 'mobile');
     {
         inset: unset;
         position-anchor: --main-menu-button;
-        top: calc(anchor(top) + map.get(var.$sticky, 'position-top'));
+        top: calc(anchor(top) + map.get(var.$widget, 'padding-top'));
         right: anchor(left);
 
-        width: calc(100vw - (map.get(var.$sticky, 'position-inline') * 2));
+        width: calc(100vw - ($menu-margin * 2));
     }
 }

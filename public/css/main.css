@@ -1525,7 +1525,7 @@ nav[popover] > .content {
     position-anchor: --main-menu-button;
     top: calc(anchor(top) + 0.5rem);
     right: anchor(left);
-    width: calc(100vw - 2rem);
+    width: calc(100vw - 8rem);
   }
 }
 #page-nav-button {
