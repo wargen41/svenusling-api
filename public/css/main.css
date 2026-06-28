@@ -1529,6 +1529,7 @@ nav[popover] > .content {
     top: calc(anchor(top) + 0.5rem);
     right: anchor(left);
     width: calc(100vw - (4rem + 10px) * 2);
+    max-width: 40em;
   }
 }
 #page-nav-button {

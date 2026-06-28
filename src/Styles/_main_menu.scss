@@ -18,5 +18,6 @@ $menu-margin: map.get(var.$widget, 'padding-outer') + map.get(var.$widget, 'padd
         right: anchor(left);
 
         width: calc(100vw - (($menu-margin + map.get(var.$html-decoration, 'width')) * 2));
+        max-width: map.get(var.$popover, "column-width") * 4;
     }
 }
