@@ -92,7 +92,7 @@ h1
     font-size: map.get($size, 'h1');
 }
 
-footer
+body > footer
 {
     font-family: map.get($family, 'footer');
     font-size: map.get($size, 'footer');

@@ -704,7 +704,7 @@ h1 {
   font-size: 200%;
 }
 
-footer {
+body > footer {
   font-family: var(--font-stack-slab-serif);
   font-size: 40.5px;
 }
