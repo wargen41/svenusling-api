@@ -54,7 +54,12 @@
                 </ul>
             </li>
             {% endfor %}
-            <li class="user"><p>Inloggad som {{ user.username }} <a class="button" href="/admin/logout">Logga ut</a></p></li>
+            <li class="user"></li>
         </ul>
     </section>
+    <footer>
+        <div class="user">
+            <p>Inloggad som {{ user.username }} <a class="button" href="/admin/logout">Logga ut</a></p>
+        </div>
+    </footer>
 </nav>

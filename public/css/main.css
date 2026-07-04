@@ -1260,7 +1260,7 @@ nav[popover] > .content {
   padding-block: 0.55rem;
   margin-inline: 0.55rem;
   padding-inline: 0.55rem;
-  max-height: calc(100vh - 12rem);
+  max-height: calc(100vh - 11rem);
   overflow: auto;
   flex: auto;
 }
