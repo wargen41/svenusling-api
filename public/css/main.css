@@ -1252,6 +1252,8 @@ nav[popover] > header h2 {
 }
 dialog[popover] > footer,
 nav[popover] > footer {
+  margin-inline: 0.55rem;
+  padding-inline: 0.55rem;
   padding-bottom: 1.1rem;
 }
 dialog[popover] > .content,

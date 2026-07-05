@@ -164,6 +164,8 @@ nav[popover]
 
     > footer
     {
+        margin-inline: $inline-margin;
+        padding-inline: $inline-padding;
         //min-height: $border-radius;
         padding-bottom: $border-radius;
     }
