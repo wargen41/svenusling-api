@@ -164,7 +164,8 @@ nav[popover]
 
     > footer
     {
-        min-height: $border-radius;
+        //min-height: $border-radius;
+        padding-bottom: $border-radius;
     }
 
     > .content

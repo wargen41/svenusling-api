@@ -1252,7 +1252,7 @@ nav[popover] > header h2 {
 }
 dialog[popover] > footer,
 nav[popover] > footer {
-  min-height: 1.1rem;
+  padding-bottom: 1.1rem;
 }
 dialog[popover] > .content,
 nav[popover] > .content {
