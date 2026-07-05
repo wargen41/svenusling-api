@@ -168,6 +168,8 @@ nav[popover]
         padding-inline: $inline-padding;
         //min-height: $border-radius;
         padding-bottom: $border-radius;
+
+        text-align: right;
     }
 
     > .content
