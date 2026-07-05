@@ -1256,8 +1256,8 @@ nav[popover] > footer {
   padding-inline: 0.55rem;
   padding-bottom: 1.1rem;
 }
-dialog[popover] > footer > *,
-nav[popover] > footer > * {
+dialog[popover] > footer p,
+nav[popover] > footer p {
   text-align: right;
 }
 dialog[popover] > .content,
