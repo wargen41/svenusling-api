@@ -160,7 +160,8 @@ nav[popover]
             {
                 width: $nav-button-width;
 
-                border-width: 0 0 0 $border-width;
+                border-width: 0 0 $border-width $border-width;
+                border-radius: 0 0 0 $border-radius;
             }
         }
 

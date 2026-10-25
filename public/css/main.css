@@ -1259,7 +1259,8 @@ nav[popover] > header > nav:has(> :only-child) {
 dialog[popover] > header > nav > button,
 nav[popover] > header > nav > button {
   width: 3.7rem;
-  border-width: 0 0 0 var(--border-width);
+  border-width: 0 0 var(--border-width) var(--border-width);
+  border-radius: 0 0 0 1.1rem;
 }
 dialog[popover] > header h2,
 nav[popover] > header h2 {
