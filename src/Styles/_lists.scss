@@ -19,12 +19,12 @@ body
 
         li
         {
-            padding: unset;
+            padding-left: $inline-relative-phrasing-padding;
 
             ul
             {
                 list-style-type: unset;
-                padding: unset;
+                padding-left: $inline-relative-phrasing-padding;
             }
         }
     }
