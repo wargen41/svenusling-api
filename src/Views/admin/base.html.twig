@@ -2,9 +2,9 @@
 {% set nav_list = {
     'Betygsatta': { inactive: false, target: '_blank', href: constant('API').PUBLIC_SITE_URL~'/movies.php', items: [
 { label: 'Efter typ', items: [
-    { label: 'Filmer', href: constant('API').PUBLIC_SITE_URL~'/films.php' },
-    { label: 'Serier', href: constant('API').PUBLIC_SITE_URL~'/series.php' },
-    { label: 'Miniserier', href: constant('API').PUBLIC_SITE_URL~'/miniseries.php' },
+    { label: 'Filmer', target: '_blank', href: constant('API').PUBLIC_SITE_URL~'/films.php' },
+    { label: 'Serier', target: '_blank', href: constant('API').PUBLIC_SITE_URL~'/series.php' },
+    { label: 'Miniserier', target: '_blank', href: constant('API').PUBLIC_SITE_URL~'/miniseries.php' },
 ] },
 { label: 'Efter betyg', items: [
     { label: '+++++', href: constant('API').PUBLIC_SITE_URL~'/404.php' },
