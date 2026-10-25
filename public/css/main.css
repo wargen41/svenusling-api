@@ -1302,7 +1302,7 @@ nav[popover] > .content > form > *:not(button) {
 }
 dialog[popover] > .content > form > * + *,
 nav[popover] > .content > form > * + * {
-  margin-right: 0.55rem;
+  margin-left: 0.55rem;
 }
 
 /* .pseudo-modalOLD[popover],
