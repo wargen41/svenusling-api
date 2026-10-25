@@ -1245,6 +1245,7 @@ nav[popover]::backdrop {
 dialog[popover] > header,
 nav[popover] > header {
   min-height: 1.1rem;
+  padding-bottom: 1rem;
 }
 dialog[popover] > header > nav,
 nav[popover] > header > nav {

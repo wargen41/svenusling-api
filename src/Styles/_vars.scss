@@ -108,7 +108,9 @@ $popover: (
     "content-block-padding": (0.5 * $pop-border-radius),
     // mobile
     "mobile-margin": map.get($widget, 'padding-outer'),
-    "nav-button-width": map.get(cfg.$popover, 'nav-button-width')
+    "nav-button-width": map.get(cfg.$popover, 'nav-button-width'),
+    // header
+    "header-padding-bottom": map.get(cfg.$popover, 'header-padding-bottom'),
 );
 
 $WPT: map.get($widget, 'padding-top');
