@@ -1,6 +1,8 @@
 @use "sass:map";
 
 // Grundinställningar som sedan variablerna i _vars baseras på
+// Tanken är att den här filen med grundvärden ska vara lättläst
+// medan uträkningar som baseras på definierade värden finns i vars
 
 $breakpoints: (
     "mobile": 32rem,

@@ -1459,6 +1459,9 @@ nav[popover] > .content {
 .menu[popover] {
   box-sizing: border-box;
 }
+.menu[popover] > header button {
+  background-color: gold;
+}
 .menu[popover] .content ul {
   display: flex;
   flex-direction: column;

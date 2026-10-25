@@ -11,6 +11,15 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
 {
     box-sizing: border-box;
 
+    // Grundinställningar / mobilbredd
+    > header
+    {
+        button
+        {
+            background-color: gold;
+        }
+    }
+
     .content
     {
         ul
