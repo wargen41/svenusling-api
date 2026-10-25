@@ -1300,6 +1300,10 @@ dialog[popover] > .content > form > *:not(button),
 nav[popover] > .content > form > *:not(button) {
   flex: 1;
 }
+dialog[popover] > .content > form > * + *,
+nav[popover] > .content > form > * + * {
+  margin-right: 0.55rem;
+}
 
 /* .pseudo-modalOLD[popover],
 .menuOLD[popover]

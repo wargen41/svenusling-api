@@ -211,6 +211,11 @@ nav[popover]
             {
                 flex: 1;
             }
+
+            > * + *
+            {
+                margin-right: $inline-margin;
+            }
         }
     }
 }
