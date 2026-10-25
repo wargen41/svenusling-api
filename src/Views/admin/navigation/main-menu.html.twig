@@ -17,13 +17,13 @@
         {% set nav_counter = nav_counter + 1 %}
         <li>
             {% if nav_item.href %}
+
             {% if nav_item.inactive != true %}
-                <a class="button" href="{{ nav_item.href }}"{% if nav_item.target is defined %} target="{{ nav_item.target }}"{% endif %}>
+                <a class="button" href="{{ nav_item.href }}"{% if nav_item.target is defined %} target="{{ nav_item.target }}"{% endif %}>{{ nav_item.label }}</a>
             {% else %}
-                <a class="button" href="">
+                {{ nav_item.label }}
             {% endif %}
-                    {{ nav_item.label }}
-                </a>
+
             {% else %}
                 <button type="button" popovertarget="menu{{ nav_counter }}" style="anchor-name:--menu{{ nav_counter }}">{{ nav_item.label }}</button>
                 {% if nav_item.items is defined %}
