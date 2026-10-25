@@ -21,7 +21,7 @@
             {% if nav_item.inactive != true %}
                 <a class="button" href="{{ nav_item.href }}"{% if nav_item.target is defined %} target="{{ nav_item.target }}"{% endif %}>{{ nav_item.label }}</a>
             {% else %}
-                {{ nav_item.label }}
+               <button>{{ nav_item.label }}</button>
             {% endif %}
 
             {% else %}
