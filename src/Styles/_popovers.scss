@@ -145,7 +145,7 @@ nav[popover]
     > header
     {
         min-height: $border-radius;
-        padding-bottom: $header-padding-bottom;
+        padding-bottom: $header-padding-bottom; // Why you no working?
 
         > nav
         {
