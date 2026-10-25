@@ -1251,8 +1251,8 @@ nav[popover] > header > nav {
   display: flex;
   justify-content: space-between;
 }
-dialog[popover] > header > nav:has(*:only-child),
-nav[popover] > header > nav:has(*:only-child) {
+dialog[popover] > header > nav:has(> :only-child),
+nav[popover] > header > nav:has(> :only-child) {
   justify-content: flex-end;
 }
 dialog[popover] > header > nav > button,

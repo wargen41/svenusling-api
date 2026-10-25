@@ -150,7 +150,7 @@ nav[popover]
             display: flex;
             justify-content: space-between;
 
-            &:has(*:only-child)
+            &:has(> :only-child)
             {
                 justify-content: flex-end;
             }
