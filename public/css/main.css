@@ -1479,7 +1479,6 @@ nav[popover] > .content {
 .menu[popover] .content ul > li a,
 .menu[popover] .content ul > li button {
   display: inline-block;
-  width: 100%;
   text-align: left;
 }
 .menu[popover] .content ul > li > button[popovertarget]::after {
