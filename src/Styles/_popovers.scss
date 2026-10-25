@@ -159,6 +159,8 @@ nav[popover]
             > button
             {
                 width: $nav-button-width;
+
+                border-width: 0 0 0 $border-width;
             }
         }
 
