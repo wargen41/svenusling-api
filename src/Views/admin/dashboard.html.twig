@@ -117,15 +117,14 @@
         {% endmacro %}
 
         <nav>
-            <ul class="inset">
-                {% for nav_key, nav_cat in nav_list %}
-                <li>{{ nav_key }}
-                    <ul>
-                        {{ _self.render_submenus(nav_cat, 'dash-' ~ loop.index) }}
-                    </ul>
-                </li>
-                {% endfor %}
-            </ul>
+            {% for nav_key, nav_cat in nav_list %}
+            <div>
+                <h2{% if nav_cat.id %} id="{{ nav_cat.id }}"{% endif %}>{{ nav_key }}</h2>
+                <ul class="inset">
+                    {{ _self.render_submenus(nav_cat, 'dash-' ~ loop.index) }}
+                </ul>
+            </div>
+            {% endfor %}
         </nav>
 
         <nav>
