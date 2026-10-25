@@ -1292,6 +1292,14 @@ nav[popover] > .content {
   overflow: auto;
   flex: auto;
 }
+dialog[popover] > .content > form,
+nav[popover] > .content > form {
+  display: flex;
+}
+dialog[popover] > .content > form > *:not(button),
+nav[popover] > .content > form > *:not(button) {
+  flex: 1;
+}
 
 /* .pseudo-modalOLD[popover],
 .menuOLD[popover]
