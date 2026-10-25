@@ -665,8 +665,12 @@ main article > hgroup:first-of-type {
 }
 
 *[popover] {
-  background-color: var(--color-surface-container-default);
+  background-color: var(--color-surface-default);
   border-color: var(--color-outline-default);
+}
+
+.menu[popover] {
+  background-color: var(--color-surface-container-default);
 }
 
 .pseudo-modal[popover] > .top button,
