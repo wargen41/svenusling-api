@@ -24,7 +24,7 @@ $nav-button-width: map.get(var.$popover, 'nav-button-width');
 
 // Detta är en salig blandning av variabler som gäller endast menyn samt både meny och popover
 // Behöver reda ut det så småningom, men just nu vill jag bara få rätt på utseendet för tillfället
-$popoverOLD: (
+/*$popoverOLD: (
     border-radius-relative-padding-inline: 0.75,
     border-radius-relative-padding-block: 0.6,
     padding-inline-relative-box-list-padding: 0.3,
@@ -32,7 +32,7 @@ $popoverOLD: (
     sub-offset: 0.5rem,
     // items
     padding-inline-relative-box-item-padding: 0.7,
-);
+);*/
 
 /* $mbr: map.get($popover, 'border-radius');
 $mbw: map.get($popover, 'border-width');
@@ -153,6 +153,11 @@ nav[popover]
             &:has(*:only-child)
             {
                 justify-content: flex-end;
+            }
+
+            button
+            {
+                width: $nav-button-width;
             }
         }
 

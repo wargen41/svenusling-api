@@ -1146,6 +1146,15 @@ details > summary > * {
   padding: 0.82rem 0 1.25rem 0;
 }
 
+/*$popoverOLD: (
+    border-radius-relative-padding-inline: 0.75,
+    border-radius-relative-padding-block: 0.6,
+    padding-inline-relative-box-list-padding: 0.3,
+    list-padding-relative-sub-list-padding: 4,
+    sub-offset: 0.5rem,
+    // items
+    padding-inline-relative-box-item-padding: 0.7,
+);*/
 /* $mbr: map.get($popover, 'border-radius');
 $mbw: map.get($popover, 'border-width');
 $mbs: map.get($popover, 'border-style');
@@ -1245,6 +1254,10 @@ nav[popover] > header nav {
 dialog[popover] > header nav:has(*:only-child),
 nav[popover] > header nav:has(*:only-child) {
   justify-content: flex-end;
+}
+dialog[popover] > header nav button,
+nav[popover] > header nav button {
+  width: 3rem;
 }
 dialog[popover] > header h2,
 nav[popover] > header h2 {
@@ -1458,9 +1471,6 @@ nav[popover] > .content {
 } */
 .menu[popover] {
   box-sizing: border-box;
-}
-.menu[popover] > header button {
-  background-color: gold;
 }
 .menu[popover] .content ul {
   display: flex;
