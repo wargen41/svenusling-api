@@ -11,10 +11,9 @@
             <button type="submit">Sök</button>
         </form>
 
-        {% set nav_counter = 0 %}
-        {% macro render_submenus(nav_cat) %}
+        {% macro render_submenus(nav_cat, parent_id) %}
         {% for nav_item in nav_cat.items %}
-        {% set nav_counter = nav_counter + 1 %}
+        {% set submenu_id = parent_id ~ '-' ~ loop.index %}
         <li>
             {% if nav_item.href %}
 
@@ -25,22 +24,22 @@
             {% endif %}
 
             {% else %}
-                <button type="button" popovertarget="menu{{ nav_counter }}" style="anchor-name:--menu{{ nav_counter }}">{{ nav_item.label }}</button>
+                <button type="button" popovertarget="{{ submenu_id }}" style="anchor-name:--{{ submenu_id }}">{{ nav_item.label }}</button>
                 {% if nav_item.items is defined %}
                 <nav popover class="sub menu"
-                    id="menu{{ nav_counter }}"
-                    style="position-anchor: --menu{{ nav_counter }};"
+                    id="{{ submenu_id }}"
+                    style="position-anchor: --{{ submenu_id }};"
                 >
                     <header>
                         <nav>
                             <button popovertarget="main-menu" popovertargetaction="hide"><span aria-hidden="true">×</span></button>
-                            <label for="menu{{ nav_counter }}-back">{{ nav_item.label }}</label>
-                            <button id="menu{{ nav_counter }}-back" popovertarget="menu{{ nav_counter }}" popovertargetaction="hide"><span aria-hidden="true">&lt;</span></button>
+                            <label for="{{ submenu_id }}-back">{{ nav_item.label }}</label>
+                            <button id="{{ submenu_id }}-back" popovertarget="{{ submenu_id }}" popovertargetaction="hide"><span aria-hidden="true">&lt;</span></button>
                         </nav>
                     </header>
                     <section class="content">
                         <ul>
-                        {{ _self.render_submenus(nav_item) }}
+                        {{ _self.render_submenus(nav_item, submenu_id) }}
                         </ul>
                     </section>
                 </nav>
@@ -54,7 +53,7 @@
             {% for nav_key, nav_cat in nav_list %}
             <li>{{ nav_key }}
                 <ul>
-                    {{ _self.render_submenus(nav_cat) }}
+                    {{ _self.render_submenus(nav_cat, 'menu-' ~ loop.index) }}
                 </ul>
             </li>
             {% endfor %}
