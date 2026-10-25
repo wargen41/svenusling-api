@@ -1262,6 +1262,11 @@ nav[popover] > header > nav > button {
   border-width: 0 0 var(--border-width) var(--border-width);
   border-radius: 0 0 0 1.1rem;
 }
+dialog[popover] > header > nav > button:nth-of-type(2),
+nav[popover] > header > nav > button:nth-of-type(2) {
+  border-width: 0 var(--border-width) var(--border-width) 0;
+  border-radius: 0 0 1.1rem 0;
+}
 dialog[popover] > header h2,
 nav[popover] > header h2 {
   margin-inline: 3.7rem;
