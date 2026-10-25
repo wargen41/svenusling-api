@@ -21,6 +21,7 @@ $block-padding: map.get(var.$popover, 'content-block-padding');
 $inline-margin: map.get(var.$popover, 'content-inline-margin');
 $inline-padding: map.get(var.$popover, 'content-inline-padding');
 $nav-button-width: map.get(var.$popover, 'nav-button-width');
+$header-margin: map.get(var.$popover, 'header-margin');
 
 // Detta är en salig blandning av variabler som gäller endast menyn samt både meny och popover
 // Behöver reda ut det så småningom, men just nu vill jag bara få rätt på utseendet för tillfället
