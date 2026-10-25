@@ -6,7 +6,10 @@
 { label: 'Artiklar/texter', inactive: true, href: '/admin/articles' },
 ] },
 'Listor': { id: 'listor', items: [
-{ label: 'Filmer', href: '/admin/films' },
+{ label: 'Filmer', href: '/admin/films', items: [
+    { label: 'Kortfilmer', href: '/admin/films?type=short' },
+    { label: 'Långfilmer', href: '/admin/films?type=film' },
+] },
 { label: 'Serier', inactive: true, href: '/admin/series' },
 { label: 'VIP', href: '/admin/persons' },
 ] },
