@@ -149,10 +149,11 @@ nav[popover]
         {
             display: flex;
             justify-content: space-between;
+            flex-direction: row-reverse;
 
             &:has(> :only-child)
             {
-                justify-content: flex-end;
+                justify-content: flex-start;
             }
 
             > button

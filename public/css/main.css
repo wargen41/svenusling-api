@@ -1250,10 +1250,11 @@ dialog[popover] > header > nav,
 nav[popover] > header > nav {
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
 }
 dialog[popover] > header > nav:has(> :only-child),
 nav[popover] > header > nav:has(> :only-child) {
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 dialog[popover] > header > nav > button,
 nav[popover] > header > nav > button {
