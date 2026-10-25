@@ -18,9 +18,9 @@
         <li>
             {% if nav_item.href %}
             {% if nav_item.inactive != true %}
-                <a class="button" href="{{ nav_item.href }}">
+                <a class="button" href="{{ nav_item.href }}"{% if nav_item.target is defined %} target="{{ nav_item.target }}"{% endif %}>
             {% else %}
-                <a class="button" href="#">
+                <a class="button" href="">
             {% endif %}
                     {{ nav_item.label }}
                 </a>
