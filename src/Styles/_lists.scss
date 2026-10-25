@@ -1,0 +1,31 @@
+@use "sass:map";
+@use 'vars' as var;
+
+$BM: map.get(var.$margin, 'base'); // Base Margin
+$BP: map.get(var.$padding, 'base'); // Base Padding
+$block-relative-box-padding: map.get(var.$padding, 'block-relative-box');
+$inline-relative-box-padding: map.get(var.$padding, 'inline-relative-box');
+$block-relative-phrasing-padding: map.get(var.$padding, 'block-relative-phrasing');
+$inline-relative-phrasing-padding: map.get(var.$padding, 'inline-relative-phrasing');
+$block-relative-box-margin: map.get(var.$margin, 'block-relative-box');
+$inline-relative-phrasing-margin: map.get(var.$margin, 'inline-relative-phrasing');
+
+body
+{
+    ul.inset
+    {
+        list-style-type: unset;
+        padding: unset;
+
+        li
+        {
+            padding: unset;
+
+            ul
+            {
+                list-style-type: unset;
+                padding: unset;
+            }
+        }
+    }
+}

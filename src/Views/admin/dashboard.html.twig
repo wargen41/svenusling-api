@@ -99,7 +99,7 @@
             {% if nav_item.href %}
 
             {% if nav_item.inactive != true %}
-                <a class="button" href="{{ nav_item.href }}"{% if nav_item.target is defined %} target="{{ nav_item.target }}"{% endif %}>{{ nav_item.label }}</a>
+                <a href="{{ nav_item.href }}"{% if nav_item.target is defined %} target="{{ nav_item.target }}"{% endif %}>{{ nav_item.label }}</a>
             {% else %}
                {{ nav_item.label }}
             {% endif %}
@@ -117,7 +117,7 @@
         {% endmacro %}
 
         <nav>
-            <ul>
+            <ul class="inset">
                 {% for nav_key, nav_cat in nav_list %}
                 <li>{{ nav_key }}
                     <ul>

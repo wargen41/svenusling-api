@@ -944,6 +944,18 @@ body .actions > li > *[type=submit] {
   }
 }
 
+body ul.inset {
+  list-style-type: unset;
+  padding: unset;
+}
+body ul.inset li {
+  padding: unset;
+}
+body ul.inset li ul {
+  list-style-type: unset;
+  padding: unset;
+}
+
 html [id] {
   scroll-margin-top: 5rem;
 }
