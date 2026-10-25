@@ -14,7 +14,7 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
     // Grundinställningar / mobilbredd
     .content
     {
-        > ul
+        ul
         {
             display: flex;
             flex-direction: column;
