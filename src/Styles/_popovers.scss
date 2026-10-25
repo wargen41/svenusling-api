@@ -145,7 +145,7 @@ nav[popover]
     {
         min-height: $border-radius;
 
-        nav
+        > nav
         {
             display: flex;
             justify-content: space-between;
@@ -155,7 +155,7 @@ nav[popover]
                 justify-content: flex-end;
             }
 
-            button
+            > button
             {
                 width: $nav-button-width;
             }

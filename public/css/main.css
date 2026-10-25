@@ -1246,17 +1246,17 @@ dialog[popover] > header,
 nav[popover] > header {
   min-height: 1.1rem;
 }
-dialog[popover] > header nav,
-nav[popover] > header nav {
+dialog[popover] > header > nav,
+nav[popover] > header > nav {
   display: flex;
   justify-content: space-between;
 }
-dialog[popover] > header nav:has(*:only-child),
-nav[popover] > header nav:has(*:only-child) {
+dialog[popover] > header > nav:has(*:only-child),
+nav[popover] > header > nav:has(*:only-child) {
   justify-content: flex-end;
 }
-dialog[popover] > header nav button,
-nav[popover] > header nav button {
+dialog[popover] > header > nav > button,
+nav[popover] > header > nav > button {
   width: 3.7rem;
 }
 dialog[popover] > header h2,
@@ -1472,23 +1472,23 @@ nav[popover] > .content {
 .menu[popover] {
   box-sizing: border-box;
 }
-.menu[popover] .content ul {
+.menu[popover] .content > ul {
   display: flex;
   flex-direction: column;
 }
-.menu[popover] .content ul > li a,
-.menu[popover] .content ul > li button {
+.menu[popover] .content > ul > li a,
+.menu[popover] .content > ul > li button {
   display: inline-block;
   width: 100%;
   text-align: left;
 }
-.menu[popover] .content ul > li > button[popovertarget]::after {
+.menu[popover] .content > ul > li > button[popovertarget]::after {
   content: " >";
 }
-.menu[popover] .content ul > li > ul {
+.menu[popover] .content > ul > li > ul {
   padding: 0 0 0 0.55rem;
 }
-.menu[popover] .content ul li {
+.menu[popover] .content > ul li {
   display: flex;
   flex-direction: column;
 }
