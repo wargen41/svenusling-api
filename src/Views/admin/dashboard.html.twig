@@ -105,25 +105,11 @@
             {% endif %}
 
             {% else %}
-                <button type="button" popovertarget="{{ submenu_id }}" style="anchor-name:--{{ submenu_id }}">{{ nav_item.label }}</button>
+                {{ nav_item.label }}
                 {% if nav_item.items is defined %}
-                <nav popover class="sub menu"
-                    id="{{ submenu_id }}"
-                    style="position-anchor: --{{ submenu_id }};"
-                >
-                    <header>
-                        <nav>
-                            <button popovertarget="main-menu" popovertargetaction="hide"><span aria-hidden="true">×</span></button>
-                            <label for="{{ submenu_id }}-back">{{ nav_item.label }}</label>
-                            <button id="{{ submenu_id }}-back" popovertarget="{{ submenu_id }}" popovertargetaction="hide"><span aria-hidden="true">&lt;</span></button>
-                        </nav>
-                    </header>
-                    <section class="content">
-                        <ul>
-                        {{ _self.render_submenus(nav_item, submenu_id) }}
-                        </ul>
-                    </section>
-                </nav>
+                    <ul>
+                    {{ _self.render_submenus(nav_item, submenu_id) }}
+                    </ul>
                 {% endif %}
             {% endif %}
         </li>
