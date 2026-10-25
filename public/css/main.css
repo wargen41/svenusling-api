@@ -1476,8 +1476,8 @@ nav[popover] > .content {
   display: flex;
   flex-direction: column;
 }
-.menu[popover] .content ul > li a,
-.menu[popover] .content ul > li button {
+.menu[popover] .content ul > li > a,
+.menu[popover] .content ul > li > button {
   display: inline-block;
   text-align: left;
 }

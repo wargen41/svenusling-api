@@ -22,8 +22,8 @@ $inline-margin: map.get(var.$popover, "content-inline-margin");
             > li
             {
 
-                a,
-                button
+                > a,
+                > button
                 {
                     display: inline-block;
                     text-align: left;
