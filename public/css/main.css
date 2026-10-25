@@ -1257,11 +1257,11 @@ nav[popover] > header nav:has(*:only-child) {
 }
 dialog[popover] > header nav button,
 nav[popover] > header nav button {
-  width: 3rem;
+  width: 3.7rem;
 }
 dialog[popover] > header h2,
 nav[popover] > header h2 {
-  margin-inline: 3rem;
+  margin-inline: 3.7rem;
 }
 dialog[popover] > footer,
 nav[popover] > footer {

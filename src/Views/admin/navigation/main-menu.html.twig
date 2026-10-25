@@ -32,7 +32,10 @@
                     style="position-anchor: --menu{{ nav_counter }};"
                 >
                     <header>
-                        <button popovertarget="main-menu" popovertargetaction="hide"><span aria-hidden="true">×</span></button>
+                        <nav>
+                            <button popovertarget="menu{{ nav_counter }}" popovertargetaction="hide"><span aria-hidden="true">&lt;</span></button>
+                            <button popovertarget="main-menu" popovertargetaction="hide"><span aria-hidden="true">×</span></button>
+                        </nav>
                     </header>
                     <section class="content">
                         <ul>
