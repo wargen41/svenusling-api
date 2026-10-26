@@ -19,6 +19,12 @@
 
 {% set this_page = '/admin/movies/' ~ item.id %}
 
+<datalist id="viplist">
+{% for person in vip %}
+    <option value="{{ vip.id }}">{{ vip.name }}</option>
+{% endfor %}
+</datalist>
+
     <article>
         <h1>{{ item.title }}</h1>
 
