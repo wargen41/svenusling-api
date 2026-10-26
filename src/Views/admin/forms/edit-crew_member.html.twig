@@ -14,6 +14,7 @@
             </div>
             <div class="form-row">
                 <label for="{{ pop_id }}-person_id">VIP</label>
+                {{ vip|length }}
                 <input type="text" id="{{ pop_id }}-person_id" name="person_id" value="{{ sub_item.person_id }}">
             </div>
             {% if category == 'actor' %}
