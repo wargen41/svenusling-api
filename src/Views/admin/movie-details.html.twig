@@ -19,9 +19,15 @@
 
 {% set this_page = '/admin/movies/' ~ item.id %}
 
+<!-- Datalistor -->
 <datalist id="viplist">
 {% for person in vip %}
     <option value="{{ person.id }}">{{ person.name }}</option>
+{% endfor %}
+</datalist>
+<datalist id="genrelist">
+{% for genre in genres %}
+    <option value="{{ genre.id }}">{{ genre.sv }}</option>
 {% endfor %}
 </datalist>
 

@@ -1243,6 +1243,9 @@ class AdminController
             // Fetch VIP from API
             $persons = $this->callApiGet("/persons?limit=-1", $token);
 
+            // Fetch genres from API
+            $genres = $this->callApiGet("/genres", $token);
+
             return Twig::fromRequest($request)->render(
                 $response,
                 'admin/movie-details.html.twig',
@@ -1250,6 +1253,7 @@ class AdminController
                     'user' => $user,
                     'item' => $movie['data'],
                     'vip' => $persons['data'],
+                    'genres' => $genres['data'],
                     'message' => $message,
                     'message_type' => $messageType,
                     'pageTitle' => $movie['data']['title']
