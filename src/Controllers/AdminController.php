@@ -965,16 +965,12 @@ class AdminController
             // Fetch movie from API
             $movie = $this->callApiGet("/movies/$movieId", $token);
 
-            // Fetch VIP from API
-            $persons = $this->callApiGet("/persons", $token);
-
             return Twig::fromRequest($request)->render(
                 $response,
                 'admin/film-details.html.twig',
                 [
                     'user' => $user,
                     'item' => $movie['data'],
-                    'vip' => $persons['data'],
                     'message' => $message,
                     'message_type' => $messageType,
                     'pageTitle' => $movie['data']['title']
@@ -1244,12 +1240,16 @@ class AdminController
             // Fetch movie from API
             $movie = $this->callApiGet("/movies/$movieId", $token);
 
+            // Fetch VIP from API
+            $persons = $this->callApiGet("/persons", $token);
+
             return Twig::fromRequest($request)->render(
                 $response,
                 'admin/movie-details.html.twig',
                 [
                     'user' => $user,
                     'item' => $movie['data'],
+                    'vip' => $persons['data'],
                     'message' => $message,
                     'message_type' => $messageType,
                     'pageTitle' => $movie['data']['title']
