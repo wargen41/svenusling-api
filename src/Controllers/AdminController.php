@@ -1241,7 +1241,7 @@ class AdminController
             $movie = $this->callApiGet("/movies/$movieId", $token);
 
             // Fetch VIP from API
-            $persons = $this->callApiGet("/persons?limit=0", $token);
+            $persons = $this->callApiGet("/persons?limit=-1", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
