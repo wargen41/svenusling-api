@@ -3,6 +3,9 @@
 
 $mobile: map.get(var.$breakpoints, 'mobile');
 $menu-margin: map.get(var.$widget, 'padding-outer') + map.get(var.$widget, 'padding-inner') + map.get(var.$widget, 'img-size');
+$column-gap: map.get(var.$popover, "column-gap");
+$column-width: map.get(var.$popover, "column-width");
+$column-max-count: map.get(var.$popover, "column-max-count");
 
 @media (width > $mobile){
     #main-menu-button
@@ -18,6 +21,6 @@ $menu-margin: map.get(var.$widget, 'padding-outer') + map.get(var.$widget, 'padd
         right: anchor(left);
 
         width: calc(100vw - (($menu-margin + map.get(var.$html-decoration, 'width')) * 2));
-        max-width: map.get(var.$popover, "column-width") * 4;
+        max-width: ($column-width * $column-max-count) + ($column-gap * ($column-max-count - 1));
     }
 }
