@@ -949,11 +949,11 @@ body ul.inset {
   padding: unset;
 }
 body ul.inset li {
-  padding-left: 0.15em;
+  padding-left: 0.6em;
 }
 body ul.inset li ul {
   list-style-type: unset;
-  padding-left: 0.15em;
+  padding-left: 0.6em;
 }
 
 html [id] {
