@@ -489,7 +489,12 @@ class AdminController
             }
 
             // Fetch persons from API
-            $persons = $this->callApiGet("/persons?limit=$limit&category=$category&search=$search", $token);
+            $query = http_build_query([
+                'limit' => $limit,
+                'category' => $category,
+                'search' => $search,
+            ]);
+            $persons = $this->callApiGet("/persons?$query", $token);
 
             return Twig::fromRequest($request)->render(
                 $response,
@@ -905,9 +910,25 @@ class AdminController
 
             // Fetch movies from API
             if(isset($hidden)){
-                $movies = $this->callApiGet("/movies/hidden?details=userreviews&limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
+                $query = http_build_query([
+                    'details' => 'userreviews',
+                    'limit' => $limit,
+                    'type' => $type,
+                    'year' => $year,
+                    'rating' => $rating,
+                    'search' => $search,
+                ]);
+                $movies = $this->callApiGet("/movies/hidden?$query", $token);
             }else{
-                $movies = $this->callApiGet("/movies?details=userreviews&limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
+                $query = http_build_query([
+                    'details' => 'userreviews',
+                    'limit' => $limit,
+                    'type' => $type,
+                    'year' => $year,
+                    'rating' => $rating,
+                    'search' => $search,
+                ]);
+                $movies = $this->callApiGet("/movies?$query", $token);
             }
 
             return Twig::fromRequest($request)->render(
@@ -1027,9 +1048,23 @@ class AdminController
 
             // Fetch movies from API
             if(isset($hidden)){
-                $movies = $this->callApiGet("/movies/hidden?limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
+                $query = http_build_query([
+                    'limit' => $limit,
+                    'type' => $type,
+                    'year' => $year,
+                    'rating' => $rating,
+                    'search' => $search,
+                ]);
+                $movies = $this->callApiGet("/movies/hidden?$query", $token);
             }else{
-                $movies = $this->callApiGet("/movies?limit=$limit&type=$type&year=$year&rating=$rating&search=$search", $token);
+                $query = http_build_query([
+                    'limit' => $limit,
+                    'type' => $type,
+                    'year' => $year,
+                    'rating' => $rating,
+                    'search' => $search,
+                ]);
+                $movies = $this->callApiGet("/movies?$query", $token);
             }
 
             return Twig::fromRequest($request)->render(
