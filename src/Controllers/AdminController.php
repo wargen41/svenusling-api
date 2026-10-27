@@ -900,10 +900,10 @@ class AdminController
             $hidden = $params['hidden'] ?? null;
 
             $limit = $params['limit'] ?? '-1';
-            $search = $params['search'] ?? '';
-            $type = $params['type'] ?? '';
-            $year = $params['year'] ?? '';
-            $rating = $params['rating'] ?? '';
+            $search = $params['search'] ?? null;
+            $type = $params['type'] ?? null;
+            $year = $params['year'] ?? null;
+            $rating = $params['rating'] ?? null;
             if($type == null){
                 $limit = 0; // Visa inget genom att ange limit 0
             }
@@ -1038,10 +1038,10 @@ class AdminController
             $hidden = $params['hidden'] ?? null;
 
             $limit = $params['limit'] ?? '-1';
-            $search = $params['search'] ?? '';
-            $type = $params['type'] ?? '';
-            $year = $params['year'] ?? '';
-            $rating = $params['rating'] ?? '';
+            $search = $params['search'] ?? null;
+            $type = $params['type'] ?? null;
+            $year = $params['year'] ?? null;
+            $rating = $params['rating'] ?? null;
             if($type == null){
                 $limit = 0; // Visa inget genom att ange limit 0
             }
