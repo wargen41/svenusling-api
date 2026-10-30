@@ -1,11 +1,20 @@
 @use 'sass:map';
 @use 'vars' as var;
 
+$inline-margin: map.get(var.$popover, 'content-inline-margin');
+$inline-padding: map.get(var.$popover, 'content-inline-padding');
 $mobile: map.get(var.$breakpoints, 'mobile');
 $menu-margin: map.get(var.$widget, 'padding-outer') + map.get(var.$widget, 'padding-inner') + map.get(var.$widget, 'img-size');
 $column-gap: map.get(var.$popover, "column-gap");
 $column-width: map.get(var.$popover, "column-width");
 $column-max-count: map.get(var.$popover, "column-max-count");
+
+$column-width-sum: $column-width * $column-max-count;
+$column-gap-sum: $column-gap * ($column-max-count - 1);
+$outer-space-sum: ($inline-margin + $inline-padding) * 2;
+$menu-max-width-sum: $column-width-sum + $column-gap-sum + $outer-space-sum;
+// Lägg till ett par procent extra för säkerhets skull
+$menu-max-width: $menu-max-width-sum * 1.02;
 
 @media (width > $mobile){
     #main-menu-button
@@ -20,7 +29,9 @@ $column-max-count: map.get(var.$popover, "column-max-count");
         top: calc(anchor(top) + map.get(var.$widget, 'padding-top'));
         right: anchor(left);
 
+        // Grundbredden är hela tillgängliga ytan minus marginaler
         width: calc(100vw - (($menu-margin + map.get(var.$html-decoration, 'width')) * 2));
-        max-width: ($column-width * $column-max-count) + ($column-gap * ($column-max-count - 1));
+        // Men menyn ska aldrig vara bredare än specificerat antal spalter
+        max-width: $menu-max-width;
     }
 }
