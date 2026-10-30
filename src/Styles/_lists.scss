@@ -14,8 +14,7 @@ body
 {
     ul.inset
     {
-        list-style-type: unset;
-        padding: unset;
+        padding-left: unset;
 
         li
         {
@@ -23,7 +22,6 @@ body
 
             ul
             {
-                list-style-type: unset;
                 padding-left: 4 * $inline-relative-phrasing-padding;
             }
         }

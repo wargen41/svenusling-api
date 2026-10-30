@@ -945,14 +945,12 @@ body .actions > li > *[type=submit] {
 }
 
 body ul.inset {
-  list-style-type: unset;
-  padding: unset;
+  padding-left: unset;
 }
 body ul.inset li {
   padding-left: 0.6em;
 }
 body ul.inset li ul {
-  list-style-type: unset;
   padding-left: 0.6em;
 }
 
