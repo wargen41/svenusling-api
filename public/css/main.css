@@ -1248,7 +1248,7 @@ nav[popover] {
   nav[popover] {
     width: fit-content;
     height: fit-content;
-    min-width: 10rem;
+    min-width: 11rem;
   }
 }
 dialog[popover]::backdrop,
@@ -1529,7 +1529,7 @@ nav[popover] > .content > form > * + * {
 @media (width > 32rem) {
   .menu[popover] .content > ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
     grid-column-gap: 1.1rem;
     align-content: start;
   }
@@ -1582,7 +1582,7 @@ nav[popover] > .content > form > * + * {
     top: calc(anchor(top) + 0.5rem);
     right: anchor(left);
     width: calc(100vw - (4rem + 10px) * 2);
-    max-width: 46.41rem;
+    max-width: 50.49rem;
   }
 }
 #page-nav-button {
