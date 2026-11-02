@@ -383,22 +383,6 @@ fieldset
 
 }
 
-input:where(
-    [type=date],
-    [type=datetime-local],
-    [type=email],
-    [type=number],
-    [type=password],
-    [type=search],
-    [type=text],
-    [type=url]
-),
-textarea
-{
-    background-color: var(--color-input-text-default);
-    color: var(--color-on-input-text-default);
-}
-
 input:focus,
 select:focus,
 textarea:focus
