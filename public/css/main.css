@@ -633,18 +633,6 @@ fieldset {
 fieldset > legend {
   background-color: inherit;
 }
-fieldset input:where([type=date],
-[type=datetime-local],
-[type=email],
-[type=number],
-[type=password],
-[type=search],
-[type=text],
-[type=url]),
-fieldset textarea {
-  background-color: var(--color-input-text-default);
-  color: var(--color-on-input-text-default);
-}
 
 input:focus,
 select:focus,
