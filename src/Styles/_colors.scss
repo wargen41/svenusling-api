@@ -128,7 +128,7 @@ $role-colors: (
     ),
     "input": (
         "default": (
-            "input-text": (95, 20),
+            "input-text": (90, 25),
             "on-input-text": (0, 90),
             "input-button": (70, 30),
             "on-input-button": (0, 90)
@@ -364,6 +364,23 @@ fieldset
     {
         background-color: inherit;
     }
+
+    input:where(
+        [type=date],
+        [type=datetime-local],
+        [type=email],
+        [type=number],
+        [type=password],
+        [type=search],
+        [type=text],
+        [type=url]
+    ),
+    textarea
+    {
+        background-color: var(--color-input-text-default);
+        color: var(--color-on-input-text-default);
+    }
+
 }
 
 input:where(

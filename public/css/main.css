@@ -301,7 +301,7 @@ body {
   --color-on-surface-feather: light-dark(var(--color-surface-0), var(--color-surface-100));
   --color-surface-container-feather: light-dark(var(--color-surface-98), var(--color-surface-30));
   --color-on-surface-container-feather: light-dark(var(--color-surface-0), var(--color-surface-90));
-  --color-input-text-default: light-dark(var(--color-input-95), var(--color-input-20));
+  --color-input-text-default: light-dark(var(--color-input-90), var(--color-input-25));
   --color-on-input-text-default: light-dark(var(--color-input-0), var(--color-input-90));
   --color-input-button-default: light-dark(var(--color-input-70), var(--color-input-30));
   --color-on-input-button-default: light-dark(var(--color-input-0), var(--color-input-90));
@@ -632,6 +632,18 @@ fieldset {
 }
 fieldset > legend {
   background-color: inherit;
+}
+fieldset input:where([type=date],
+[type=datetime-local],
+[type=email],
+[type=number],
+[type=password],
+[type=search],
+[type=text],
+[type=url]),
+fieldset textarea {
+  background-color: var(--color-input-text-default);
+  color: var(--color-on-input-text-default);
 }
 
 input:where([type=date],
