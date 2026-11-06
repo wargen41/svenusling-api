@@ -116,6 +116,49 @@ class GenreControllerTest extends TestCase
         self::assertSame('Comedy films', $this->genreName($genreId));
     }
 
+    public function testNonAdminCannotUpdateGenre(): void
+    {
+        $genreId = $this->insertGenre('Comedy', 'Komedi');
+        $request = $this->request(['en' => 'Comedy films'], 'user');
+
+        $response = $this->controller->updateGenre(
+            $request,
+            new Response(),
+            ['id' => (string) $genreId]
+        );
+
+        self::assertSame(403, $response->getStatusCode());
+        self::assertSame('Comedy', $this->genreName($genreId));
+    }
+
+    public function testUpdatingGenreRequiresAtLeastOneField(): void
+    {
+        $genreId = $this->insertGenre('Comedy', 'Komedi');
+        $request = $this->request([], 'admin');
+
+        $response = $this->controller->updateGenre(
+            $request,
+            new Response(),
+            ['id' => (string) $genreId]
+        );
+
+        self::assertSame(400, $response->getStatusCode());
+        self::assertSame('Comedy', $this->genreName($genreId));
+    }
+
+    public function testUpdatingUnknownGenreReturnsNotFound(): void
+    {
+        $request = $this->request(['en' => 'Comedy films'], 'admin');
+
+        $response = $this->controller->updateGenre(
+            $request,
+            new Response(),
+            ['id' => '999']
+        );
+
+        self::assertSame(404, $response->getStatusCode());
+    }
+
     public function testAdminCanDeleteGenre(): void
     {
         $genreId = $this->insertGenre('Comedy', 'Komedi');
@@ -129,6 +172,34 @@ class GenreControllerTest extends TestCase
 
         self::assertSame(200, $response->getStatusCode());
         self::assertSame(0, $this->genreCount());
+    }
+
+    public function testNonAdminCannotDeleteGenre(): void
+    {
+        $genreId = $this->insertGenre('Comedy', 'Komedi');
+        $request = $this->request([], 'user');
+
+        $response = $this->controller->deleteGenre(
+            $request,
+            new Response(),
+            ['id' => (string) $genreId]
+        );
+
+        self::assertSame(403, $response->getStatusCode());
+        self::assertSame('Comedy', $this->genreName($genreId));
+    }
+
+    public function testDeletingUnknownGenreReturnsNotFound(): void
+    {
+        $request = $this->request([], 'admin');
+
+        $response = $this->controller->deleteGenre(
+            $request,
+            new Response(),
+            ['id' => '999']
+        );
+
+        self::assertSame(404, $response->getStatusCode());
     }
 
     private function request(array $body = [], ?string $role = null): ServerRequestInterface
