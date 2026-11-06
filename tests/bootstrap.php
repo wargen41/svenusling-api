@@ -2,6 +2,8 @@
 
 $testDirectory = sys_get_temp_dir() . '/svenusling-api-tests-' . bin2hex(random_bytes(8));
 define('DB_PATH', $testDirectory . '/data/database.sqlite');
+define('JWT_SECRET', 'phpunit-test-signing-key-not-for-production');
+define('JWT_ALGORITHM', 'HS256');
 
 require __DIR__ . '/../vendor/autoload.php';
 
