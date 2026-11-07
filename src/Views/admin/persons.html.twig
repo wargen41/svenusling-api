@@ -5,6 +5,13 @@
 
 {% block mainContent %}
 
+    <!-- Datalistor -->
+    <datalist id="viplist">
+    {% for person in persons %}
+        <option value="{{ person.id }}">{{ person.name }}</option>
+    {% endfor %}
+    </datalist>
+
     <article>
         <h1>{{ pageTitle }}</h1>
 
