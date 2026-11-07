@@ -496,12 +496,16 @@ class AdminController
             ]);
             $persons = $this->callApiGet("/persons?$query", $token);
 
+            // Fetch VIP from API
+            $vip = $this->callApiGet("/persons?limit=-1", $token);
+
             return Twig::fromRequest($request)->render(
                 $response,
                 'admin/persons.html.twig',
                 [
                     'user' => $user,
                     'persons' => $persons['data'] ?? [],
+                    'vip' => $vip['data'],
                     'pagination' => $persons['pagination'] ?? [],
                     'params' => $params,
                     'message' => $message,
@@ -1276,7 +1280,7 @@ class AdminController
             $movie = $this->callApiGet("/movies/$movieId", $token);
 
             // Fetch VIP from API
-            $persons = $this->callApiGet("/persons?limit=-1", $token);
+            $vip = $this->callApiGet("/persons?limit=-1", $token);
 
             // Fetch genres from API
             $genres = $this->callApiGet("/genres", $token);
@@ -1287,7 +1291,7 @@ class AdminController
                 [
                     'user' => $user,
                     'item' => $movie['data'],
-                    'vip' => $persons['data'],
+                    'vip' => $vip['data'],
                     'genres' => $genres['data'],
                     'message' => $message,
                     'message_type' => $messageType,
