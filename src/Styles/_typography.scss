@@ -98,6 +98,11 @@ body > footer
     font-size: map.get($size, 'footer');
 }
 
+body .rating
+{
+    font-size: 3rem;
+}
+
 // Definiera vilka listor med variabler som ska bli CSS-variabler och med vilket prefix
 // Exportera inte i onödan, eftersom det kan påverka prestanda
 // Övriga är endast interna Sass-variabler och ska bli fasta värden i CSS-koden

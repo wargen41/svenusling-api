@@ -700,6 +700,10 @@ body > footer {
   font-size: 40.5px;
 }
 
+body .rating {
+  font-size: 3rem;
+}
+
 * {
   border-color: var(--color-outline-default);
   border-width: 0;
@@ -828,6 +832,9 @@ body .button {
   white-space: nowrap;
   text-overflow: ellipsis;
   box-sizing: border-box;
+}
+body .rating {
+  height: auto;
 }
 body .button-list,
 body .button-list .items {
