@@ -1,0 +1,16 @@
+{# 1. Define the map of steps to symbols #}
+{# rating_map kan egentuellt göras om till en global variabel #}
+{% set rating_map = {
+    0 => '-',
+    1 => '+',
+    2 => '++',
+    3 => '+++',
+    4 => '++++',
+    5 => '+++++'
+} %}
+
+{# 2. Calculate which step the input falls into #}
+{% set step = (value == 0) ? 0 : (value / 20)|round(0, 'ceil') %}
+
+{# 3. Output the symbol associated with that step #}
+{{ rating_map[step] }}
