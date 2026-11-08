@@ -3,7 +3,7 @@
 {% block content %}
         <div class="form-row">
             <label for="search">Sök
-                <input type="text" id="search" name="search" list="viplist" {% if params.search %}value="{{ params.search }}"{% endif %}>
+                <input type="search" id="search" name="search" list="viplist" {% if params.search %}value="{{ params.search }}"{% endif %}>
             </label>
             <label for="filter-category">Kategori
                 <select id="filter-category" name="category">
