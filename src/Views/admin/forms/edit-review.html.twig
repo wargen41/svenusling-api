@@ -1,0 +1,34 @@
+{% extends "admin/forms/edit-base.html.twig" %}
+
+{% set su_id = constant('API').SUPER_USER_ID %}
+{% set su_review = null %}
+{% for review in item.reviews %}
+    {% if review.user_id == su_id %}
+        {% set su_review = review %}
+    {% endif %}
+{% endfor %}
+
+{% block content %}
+
+<form method="POST" action="/admin/reviews/update">
+    <input type="hidden" name="redirect_url" value="{{ this_page }}">
+    <input type="hidden" name="review_id" value="{{ su_review.id }}">
+    <fieldset>
+        <legend>Recension</legend>
+        <div class="form-row">
+            <label for="edit-rating-{{ su_review.id }}">Betyg
+                <input type="number" size="3" min="0" max="100" id="edit-rating-{{ su_review.id }}" name="rating" {% if su_review.rating %}value="{{ su_review.rating }}"{% endif %}>
+            </label>
+        </div>
+        <div class="form-row">
+            <label for="edit-comment-{{ su_review.id }}">Kommentar
+                <textarea id="edit-comment-{{ su_review.id }}" name="comment">{{ su_review.comment }}</textarea>
+            </label>
+        </div>
+        <ul class="actions">
+            <li><button type="submit">Spara</button></li>
+        </ul>
+    </fieldset>
+</form>
+
+{% endblock %}
