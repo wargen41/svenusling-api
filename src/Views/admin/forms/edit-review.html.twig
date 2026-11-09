@@ -9,7 +9,7 @@
 {% endfor %}
 
 {% block content %}
-<pre>{{ su_id }} {{ su_review }}</pre>
+<pre>{{ su_id }} {{ su_review.id }} {{ su_review.rating }}</pre>
 
 <form method="POST" action="/admin/reviews/update">
     <input type="hidden" name="redirect_url" value="{{ this_page }}">
