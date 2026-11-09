@@ -17,7 +17,7 @@
 
 {% for category, label in categories %}
 <details open>
-    <summary>{{ label }}</summary>
+    <summary data-nav_anchor="{{ label }}">{{ label }}</summary>
 
     {% set new_sequence_number = item.persons[category]|last.sequence_number + 1 %}
 
