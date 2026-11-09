@@ -16,7 +16,7 @@
         <legend>Recension</legend>
         <div class="form-row">
             <label for="edit-rating-{{ su_review.id }}">Betyg
-                <input type="number" size="3" min="0" max="100" id="edit-rating-{{ su_review.id }}" name="rating" {% if su_review.rating %}value="{{ su_review.rating }}"{% endif %}>
+                <input type="number" size="3" min="0" max="100" id="edit-rating-{{ su_review.id }}" name="rating" {% if su_review.rating is not empty %}value="{{ su_review.rating }}"{% endif %}>
             </label>
         </div>
         <div class="form-row">
